@@ -1,4 +1,4 @@
-const configureAPI = require('@/server/configure')
+const configureAPI = require('./src/server/configure')
 
 module.exports = {
   transpileDependencies: ["vuetify"],
