@@ -1,34 +1,18 @@
 <template>
-  <v-app style="background-color: #EAE6EF">
+  <v-app light style="background-color: #FBF9EF">
     <v-app-bar app
-      color="primary">
-      <v-toolbar-title>Willowtree Hobbies</v-toolbar-title>
+      color="primary secondary--text">
+      <v-toolbar-title>{{ site_name }}</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn icon>
-        <v-icon>mdi-pot-steam</v-icon>
-      </v-btn>
-      <v-btn icon>
-        <v-icon>mdi-flower</v-icon>
-      </v-btn>
-      <v-btn icon>
-        <v-icon>mdi-content-cut</v-icon>
-      </v-btn>
-      <v-btn icon>
-        <v-icon>mdi-code-json</v-icon>
-      </v-btn>
-      <v-btn icon>
-        <v-icon>mdi-book-open-variant</v-icon>
-      </v-btn>
-      <v-btn icon>
-        <v-icon>mdi-syllabary-hiragana</v-icon>
-      </v-btn>
+      <NavButton link="food" icon="mdi-pot-steam" />
+      <NavButton link="gardening" icon="mdi-flower" />
+      <NavButton link="crafts" icon="mdi-content-cut" />
+      <NavButton link="coding" icon="mdi-code-json" />
+      <NavButton link="books" icon="mdi-book-open-variant" />
+      <NavButton link="lanugages" icon="mdi-syllabary-hiragana" />
       <v-spacer></v-spacer>
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
-      <v-btn icon>
-        <v-icon>mdi-comment-question</v-icon>
-      </v-btn>
+      <NavButton link="#" icon="mdi-magnify" />
+      <NavButton link="about" icon="mdi-comment-question" />
     </v-app-bar>
 
     <!-- Sizes your content based upon application components -->
@@ -38,23 +22,35 @@
         <router-view></router-view>
       </v-container>
     </v-main>
-    <v-footer app
+    <v-footer app centered
       color="primary">
-      &copy; {{ new Date().getFullYear() }} Willowtree Hobbies
+      &copy; {{ new Date().getFullYear() }} {{ site_name }}
     </v-footer>
   </v-app>
 </template>
 
 <script>
+import NavButton from "@/components/NavButton"
 
 export default {
   name: "App",
 
   components: {
+    NavButton
   },
 
   data: () => ({
-    //
+    site_name: "Poppyland"
   }),
 };
 </script>
+
+<style>
+  .v-btn {
+    color: var(--v-secondary-base) !important;
+  }
+
+  .router-link-active {
+    color: var(--v-accent-base) !important;
+  }
+</style>
