@@ -1,19 +1,40 @@
 <template>
   <v-app light style="background-color: #FBF9EF">
-    <v-app-bar app
+    <v-app-bar app clipped-left
       color="primary secondary--text">
-      <v-toolbar-title>{{ site_name }}</v-toolbar-title>
+      <v-toolbar-title><router-link to="/">{{ site_name }}</router-link></v-toolbar-title>
+      <v-spacer v-if="$vuetify.breakpoint.smAndUp"></v-spacer>
+      <NavButtons v-if="$vuetify.breakpoint.smAndUp" />
+      <template v-slot:extension v-if="$vuetify.breakpoint.xsOnly">
+        <NavButtons />
+      </template>
       <v-spacer></v-spacer>
-      <NavButton link="food" icon="mdi-pot-steam" />
-      <NavButton link="gardening" icon="mdi-flower" />
-      <NavButton link="crafts" icon="mdi-content-cut" />
-      <NavButton link="coding" icon="mdi-code-json" />
-      <NavButton link="books" icon="mdi-book-open-variant" />
-      <NavButton link="lanugages" icon="mdi-syllabary-hiragana" />
-      <v-spacer></v-spacer>
-      <NavButton link="#" icon="mdi-magnify" />
+      <v-btn icon><v-icon>mdi-magnify</v-icon></v-btn>
       <NavButton link="about" icon="mdi-comment-question" />
     </v-app-bar>
+
+    <!--
+    <v-navigation-drawer app clipped>
+      <v-list-item>
+              <v-list-item-content>
+                <v-list-item-title class="title">
+                  category
+                </v-list-item-title>
+                <v-list-item-subtitle>
+                  subtext
+                </v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+
+            <v-divider></v-divider>
+
+            <v-list
+              dense
+              nav
+            ></v-list>
+
+    </v-navigation-drawer>
+    -->
 
     <!-- Sizes your content based upon application components -->
     <v-main >
@@ -22,7 +43,7 @@
         <router-view></router-view>
       </v-container>
     </v-main>
-    <v-footer app centered
+    <v-footer app
       color="primary">
       &copy; {{ new Date().getFullYear() }} {{ site_name }}
     </v-footer>
@@ -30,12 +51,14 @@
 </template>
 
 <script>
+import NavButtons from "@/components/NavButtons"
 import NavButton from "@/components/NavButton"
 
 export default {
   name: "App",
 
   components: {
+    NavButtons,
     NavButton
   },
 
@@ -50,7 +73,13 @@ export default {
     color: var(--v-secondary-base) !important;
   }
 
-  .router-link-active {
+  .router-link-active .v-btn {
     color: var(--v-accent-base) !important;
+    border: 1px solid var(--v-accent-base);
+  }
+
+  .v-toolbar__title a {
+    color: inherit !important;
+    text-decoration: none;
   }
 </style>
