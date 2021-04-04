@@ -1,28 +1,37 @@
 <template>
   <v-container class="d-flex flex-column align-center">
-    <v-card elevation="2" outlined shaped :min-width="width">
-      <v-card-title>{{ category }} Card</v-card-title>
-      <v-card-subtitle>subtitle</v-card-subtitle>
-      <v-card-text>blah, blah, blah..</v-card-text>
-    </v-card>
+    <ArticleCard v-for="article in articles" :key="article.id" :article="article"/>
   </v-container>
 </template>
 
 <script>
+import ArticleCard from "@/components/ArticleCard"
+
 export default {
   name: "Browse",
   props: ["category"],
-  computed: {
-    width() {
-      switch (this.$vuetify.breakpoint.name) {
-        case 'xs': return "100%"
-        case 'sm': return "35rem"
-        case 'md': return "40rem"
-        case 'lg': return "50rem"
-        case 'xl': return "50rem"
+
+  components: {
+    ArticleCard
+  },
+
+  data: () => ({
+    articles: [
+      {
+        id: 1,
+        title: "My Awesome Article",
+        subtitle: "A guide on being awesome",
+        text: "asdfasdfasdfasdfasdf, sdflkjasd;l, askjalksd, asd;.",
+        img: "logo.png"
+      },
+      {
+        id: 2,
+        title: "You won't believe",
+        subtitle: "you wont believ",
+        text: "aasdf, alka,d . aoie,a fiasd, . aieja.skdfj...",
+        img: "logo.png"
       }
-      return "100%"
-    }
-  }
+    ]
+  }),
 }
 </script>
