@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="link">
+  <router-link :to="{ path: `/${link.toLowerCase()}` }">
     <v-btn icon>
       <v-icon>{{ icon }}</v-icon>
     </v-btn>

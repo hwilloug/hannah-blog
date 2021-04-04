@@ -17,46 +17,17 @@ const routes = [
       import("@/views/About.vue"),
   },
   {
-    path: "/food",
-    name: "Food",
-    component: () =>
-      import("@/views/Browse.vue"),
-    props: { category: "Food" }
+    path: "/:category",
+    name: "Browse",
+    component: () => import("@/views/Browse.vue"),
+    props: true
   },
   {
-    path: "/gardening",
-    name: "Gardening",
+    path: "articles/:articleId",
+    name: "Article",
     component: () =>
-      import("@/views/Browse.vue"),
-    props: { category: "Gardening" }
-  },
-  {
-    path: "/crafts",
-    name: "Crafts",
-    component: () =>
-      import("@/views/Browse.vue"),
-    props: { category: "Crafts" }
-  },
-  {
-    path: "/coding",
-    name: "Coding",
-    component: () =>
-      import("@/views/Browse.vue"),
-    props: { category: "Coding" }
-  },
-  {
-    path: "/books",
-    name: "Books",
-    component: () =>
-      import("@/views/Browse.vue"),
-    props: { category: "Books" }
-  },
-  {
-    path: "/languages",
-    name: "Languages",
-    component: () =>
-      import("@/views/Browse.vue"),
-    props: { category: "Languages" }
+      import("@/views/Article.vue"),
+    props: true
   }
 ];
 
