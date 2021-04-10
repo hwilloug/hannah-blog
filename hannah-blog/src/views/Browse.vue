@@ -7,6 +7,8 @@
 <script>
 import ArticleCard from "@/components/ArticleCard"
 
+import api from '@/api/Articles.js'
+
 export default {
   name: "Browse",
   props: ["category"],
@@ -16,22 +18,13 @@ export default {
   },
 
   data: () => ({
-    articles: [
-      {
-        id: 1,
-        title: "My Awesome Article",
-        subtitle: "A guide on being awesome",
-        text: "asdfasdfasdfasdfasdf, sdflkjasd;l, askjalksd, asd;.",
-        img: "logo.png"
-      },
-      {
-        id: 2,
-        title: "You won't believe",
-        subtitle: "you wont believ",
-        text: "aasdf, alka,d . aoie,a fiasd, . aieja.skdfj...",
-        img: "logo.png"
-      }
-    ]
+    articles: []
   }),
+
+  mounted: function() {
+    api.getArticles(this.category).then(resp => {
+      this.articles = resp.data
+    })
+  }
 }
 </script>

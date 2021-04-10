@@ -1,7 +1,8 @@
 <template>
   <v-app light style="background-color: #FBF9EF">
     <v-app-bar app clipped-left
-      color="primary secondary--text">
+      color="primary secondary--text"
+    >
       <v-toolbar-title><router-link to="/">{{ site_name }}</router-link></v-toolbar-title>
       <v-spacer v-if="$vuetify.breakpoint.smAndUp"></v-spacer>
       <NavButtons v-if="$vuetify.breakpoint.smAndUp" />
@@ -40,7 +41,7 @@
     <v-main >
       <!-- Provides the application the proper gutter -->
       <v-container fluid>
-        <router-view></router-view>
+        <router-view :key="$route.path"></router-view>
       </v-container>
     </v-main>
     <v-footer app

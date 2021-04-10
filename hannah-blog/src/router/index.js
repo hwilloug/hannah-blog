@@ -19,11 +19,12 @@ const routes = [
   {
     path: "/:category",
     name: "Browse",
-    component: () => import("@/views/Browse.vue"),
+    component: () =>
+      import("@/views/Browse.vue"),
     props: true
   },
   {
-    path: "articles/:articleId",
+    path: "/articles/:articleId",
     name: "Article",
     component: () =>
       import("@/views/Article.vue"),
