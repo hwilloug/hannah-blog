@@ -18,7 +18,7 @@
           <v-col>
             <v-card-title>{{ article.title }}</v-card-title>
             <v-card-subtitle>{{ article.subtitle }}<br>{{ article.created }}</v-card-subtitle>
-            <v-card-text>{{ article.text.substr(0, 100) }}...</v-card-text>
+            <CategoryChip :category="article.category" :subcategories="article.subcategory" />
           </v-col>
         </v-row>
       </v-container>
@@ -36,9 +36,16 @@
 </template>
 
 <script>
+import CategoryChip from '@/components/CategoryChip'
+
 export default {
   name: "ArticleCard",
   props: [ "article" ],
+
+  components: {
+    CategoryChip
+  },
+
   computed: {
     width() {
       switch (this.$vuetify.breakpoint.name) {

@@ -13,29 +13,23 @@
       ></v-img>
       <v-card-title>{{ article.title }}</v-card-title>
       <v-card-subtitle>{{ article.subtitle }}<br>{{ article.created }}</v-card-subtitle>
-      <v-chip
-        color="primary secondary--text"
-        small
-        style="margin-left: 5px"
-      >{{ article.category }}</v-chip>
-      <v-chip
-        v-for="subcategory in article.subcategory"
-        :key="subcategory"
-        color="accent"
-        small
-        style="margin-left: 5px"
-      >{{ subcategory }}</v-chip>
-      <v-card-text>{{ article.text }}</v-card-text>
+      <CategoryChip :category="article.category" :subcategories="article.subcategory" />
+      <component :is="content"></component>
     </v-card>
   </v-container>
 </template>
 
 <script>
 import api from '@/api/Articles.js'
+import CategoryChip from '@/components/CategoryChip'
 
 export default {
   name: "Article",
   props: [ "articleId" ],
+
+  components: {
+    CategoryChip
+  },
 
   data: () => ({
     article: {}
@@ -43,9 +37,14 @@ export default {
 
   mounted: function() {
     api.getArticle(this.articleId).then( resp => {
-      console.log(resp.data)
       this.article = resp.data
     })
+  },
+
+  computed: {
+    content() {
+      return () => import(`../../entries/${this.articleId}`)
+    }
   }
 }
 </script>
