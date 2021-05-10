@@ -4,10 +4,10 @@
       outlined shaped
       elevation="2"
       style="margin: 0px auto 10px auto;"
-      :width="width"
+      :width="$vuetify.breakpoint.lgAndUp ? '45rem' : '90vw'"
       color="secondary--text"
     >
-      <v-container v-if="$vuetify.breakpoint.smAndUp">
+      <v-container v-if="$vuetify.breakpoint.mdAndUp">
         <v-row align="center">
           <v-col cols="auto" max-width="20rem">
             <v-img
@@ -43,19 +43,6 @@ export default {
 
   components: {
     CategoryChip
-  },
-
-  computed: {
-    width() {
-      switch (this.$vuetify.breakpoint.name) {
-        case 'xs': return "90%"
-        case 'sm': return "35rem"
-        case 'md': return "50rem"
-        case 'lg': return "50rem"
-        case 'xl': return "50rem"
-      }
-      return "90%"
-    }
   }
 }
 </script>
