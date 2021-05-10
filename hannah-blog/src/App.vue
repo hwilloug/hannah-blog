@@ -13,7 +13,7 @@
       <v-btn icon><v-icon>mdi-magnify</v-icon></v-btn>
       <NavButton link="about" icon="mdi-comment-question" />
 
-      <template v-slot:extension v-if="$vuetify.breakpoint.smAndDown">
+      <template v-slot:extension v-if="$vuetify.breakpoint.smAndDown && $route.name != 'Home'">
         <NavButtons />
       </template>
 
@@ -100,5 +100,9 @@ export default {
 
   .centered {
     margin: auto;
+  }
+
+  .small-padding {
+    padding: 10px;
   }
 </style>
