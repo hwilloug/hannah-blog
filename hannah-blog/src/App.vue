@@ -8,10 +8,15 @@
       <v-app-bar-title align-self="start"><router-link to="/">{{ site_name }}</router-link></v-app-bar-title>
 
       <v-spacer class="hidden-small-and-up"></v-spacer>
-      <NavButtons v-if="$vuetify.breakpoint.smAndUp && $route.name != 'Home'" />
+      <NavButtons v-if="$vuetify.breakpoint.mdAndUp && $route.name != 'Home'" />
       <v-spacer></v-spacer>
       <v-btn icon><v-icon>mdi-magnify</v-icon></v-btn>
       <NavButton link="about" icon="mdi-comment-question" />
+
+      <template v-slot:extension v-if="$vuetify.breakpoint.smAndDown">
+        <NavButtons />
+      </template>
+
     </v-app-bar>
 
     <!--
