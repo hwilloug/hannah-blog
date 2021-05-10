@@ -34,6 +34,11 @@ const routes = [
     }
   },
   {
+    path: "/404",
+    name: "FileNotFound",
+    component: () => import("@/views/FileNotFound.vue")
+  },
+  {
     path: "/:category",
     name: "BrowseCategory",
     component: () => import("@/views/Browse.vue"),
@@ -75,11 +80,6 @@ const routes = [
         }
       ]
     }
-  },
-  {
-    path: "*",
-    name: "FileNotFound",
-    component: () => import("@/views/FileNotFound.vue")
   }
 ];
 

@@ -21,14 +21,13 @@
 
 <script>
 import api from '@/api/Articles.js'
-import CategoryChip from '@/components/CategoryChip'
 
 export default {
   name: "Article",
   props: [ "articleId" ],
 
   components: {
-    CategoryChip
+    CategoryChip: () => import('@/components/CategoryChip'),
   },
 
   data: () => ({
@@ -38,8 +37,10 @@ export default {
   mounted: function() {
     api.getArticle(this.articleId).then( resp => {
       this.article = resp.data
-      
+
       document.title = `${process.env.VUE_APP_TITLE} | ${this.article.title}`
+    }).catch( () => {
+      window.location.href = "/404"
     })
   },
 
