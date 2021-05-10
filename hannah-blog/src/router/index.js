@@ -75,11 +75,17 @@ const routes = [
         }
       ]
     }
+  },
+  {
+    path: "*",
+    name: "FileNotFound",
+    component: () => import("@/views/FileNotFound.vue")
   }
 ];
 
 const router = new VueRouter({
-  //mode: history,
+  mode: "history",
+  base: process.env.BASE_URL,
   routes,
 });
 
