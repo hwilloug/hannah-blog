@@ -2,6 +2,6 @@ import axios from 'axios'
 
 export default () => {
 	return axios.create({
-		baseURL: "http://localhost:8080/api"
+		baseURL: "https://y014mdl7zl.execute-api.us-east-2.amazonaws.com/testing"
 	})
 }

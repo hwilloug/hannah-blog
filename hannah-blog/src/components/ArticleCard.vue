@@ -29,7 +29,6 @@
         ></v-img>
         <v-card-title>{{ article.title }}</v-card-title>
         <v-card-subtitle>{{ article.subtitle }}<br>{{ article.created }}</v-card-subtitle>
-        <v-card-text>{{ article.text.substr(0, 100) }}...</v-card-text>
       </v-container>
     </v-card>
   </router-link>

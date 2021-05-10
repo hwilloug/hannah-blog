@@ -3,12 +3,12 @@
     <v-app-bar app clipped-left
       color="primary secondary--text"
     >
-      <v-toolbar-title><router-link to="/">{{ site_name }}</router-link></v-toolbar-title>
-      <v-spacer v-if="$vuetify.breakpoint.smAndUp"></v-spacer>
-      <NavButtons v-if="$vuetify.breakpoint.smAndUp" />
-      <template v-slot:extension v-if="$vuetify.breakpoint.xsOnly">
-        <NavButtons />
-      </template>
+
+      <v-img style="flex-grow:0" :src="require(`@/assets/poppy_transparent.gif`)" contain max-height="50" v-if="$route.name != 'Home'"></v-img>
+      <v-app-bar-title align-self="start"><router-link to="/">{{ site_name }}</router-link></v-app-bar-title>
+
+      <v-spacer class="hidden-small-and-up"></v-spacer>
+      <NavButtons v-if="$vuetify.breakpoint.smAndUp && $route.name != 'Home'" />
       <v-spacer></v-spacer>
       <v-btn icon><v-icon>mdi-magnify</v-icon></v-btn>
       <NavButton link="about" icon="mdi-comment-question" />
@@ -74,6 +74,10 @@ export default {
     color: var(--v-secondary-base) !important;
   }
 
+  .multiline-button {
+    white-space: normal;
+  }
+
   .router-link-active .v-btn {
     color: var(--v-accent-base) !important;
     border: 1px solid var(--v-accent-base);
@@ -82,5 +86,14 @@ export default {
   .v-toolbar__title a {
     color: inherit !important;
     text-decoration: none;
+  }
+
+  .no-decoration {
+    color: inherit !important;
+    text-decoration: none;
+  }
+
+  .centered {
+    margin: auto;
   }
 </style>

@@ -4,6 +4,7 @@
       color="primary secondary--text"
       small
       style="margin-left: 5px"
+      :to="{ path: `/${category.toLowerCase()}`}"
     >{{ category }}</v-chip>
     <v-chip
       v-for="subcategory in subcategories"
@@ -11,6 +12,7 @@
       color="accent"
       small
       style="margin-left: 5px"
+      :to="{ name: 'Browse', query: { subcategory: `${subcategory.toLowerCase()}` }}"
     >{{ subcategory }}</v-chip>
   </v-container>
 </template>

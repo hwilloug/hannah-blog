@@ -9,7 +9,7 @@
       <v-card-title>About Me</v-card-title>
       <v-card-text>
         <p>
-          Hello, and welcome to my blog! I'm Hannah, and this is where I write about the stuff I do. Currently, I live in Boston with my two cats and my fiance. I like to keep myself busy by keeping up with a multitude of hobbies, which include cooking, gardening, needle arts, coding, reading, and learning Japanese. These things help me overcome my anxiety and depression.
+          Hello, and welcome to my blog! I'm Hannah, and this is where I write about the stuff I do. Currently, I live in Boston with my two cats and my fiance. I like to keep myself busy by keeping up with a multitude of hobbies, which include cooking, gardening, needle arts, coding, reading, and learning Japanese.
         </p>
         <p>
           Find me on:

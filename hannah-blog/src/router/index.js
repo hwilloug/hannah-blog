@@ -18,10 +18,16 @@ const routes = [
   },
   {
     path: "/:category",
-    name: "Browse",
+    name: "BrowseCategory",
     component: () =>
       import("@/views/Browse.vue"),
     props: true
+  },
+  {
+    path: "/articles",
+    name: "Browse",
+    component: () =>
+      import("@/views/Browse.vue")
   },
   {
     path: "/articles/:articleId",
@@ -33,6 +39,7 @@ const routes = [
 ];
 
 const router = new VueRouter({
+  //mode: history,
   routes,
 });
 

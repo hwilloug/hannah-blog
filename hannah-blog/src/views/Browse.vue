@@ -22,7 +22,14 @@ export default {
   }),
 
   mounted: function() {
-    api.getArticles(this.category).then(resp => {
+    let query = {};
+    if (this.category) {
+      query.category = this.category
+    } else if (this.$route.query) {
+      query = this.$route.query
+    }
+    console.log(query)
+    api.getArticles(query).then(resp => {
       this.articles = resp.data
     })
   }

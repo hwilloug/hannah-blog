@@ -1,5 +1,35 @@
 <template>
 <v-card-text>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris consequat purus ac sagittis tincidunt. Aliquam dapibus ac enim vitae volutpat. Sed ut semper arcu. Suspendisse fringilla leo volutpat tempor ullamcorper. Mauris interdum risus at metus finibus, quis posuere arcu pharetra. Suspendisse rutrum placerat consequat. Duis venenatis tortor quis orci condimentum, id facilisis turpis pharetra. Etiam dignissim, orci id tristique congue, lacus ipsum tempor ligula, a sagittis leo augue et eros. Duis rhoncus interdum pulvinar. Donec nec lectus tincidunt, sagittis eros sed, ultricies ante. Proin iaculis ex sapien, eu fringilla lectus congue sit amet. Phasellus a consequat libero. Cras sit amet tortor porttitor, luctus felis tincidunt, fringilla nunc. Nam semper lorem in dignissim laoreet. Ut bibendum placerat neque eu porta.<br>Suspendisse lobortis dui vel massa gravida, eu pulvinar diam tincidunt. Aenean ut blandit ipsum. Nullam elementum ut lorem vitae commodo. Integer placerat suscipit metus, nec dapibus libero. Cras pellentesque ligula quis libero aliquam, non dictum ex luctus. Nam congue justo aliquet mi facilisis, vitae tincidunt lorem pellentesque. Mauris nec vulputate ex. Donec in felis vel eros euismod ultrices ac quis ligula. In vel tellus orci. Etiam eget augue in justo facilisis tempor. Aliquam pellentesque mi nunc, vitae gravida mi fringilla eget. Integer finibus, orci et rhoncus pulvinar, mauris enim blandit ante, vel pharetra diam erat consectetur risus. Vivamus quis feugiat justo, eget condimentum ex. Phasellus in lectus nec dolor lacinia tristique. Aenean dapibus magna neque, ac volutpat mauris sodales in. Cras aliquet ex turpis, sed luctus mauris egestas sit amet. 
+  <p>
+    Materials
+    <ul>
+      <li>4.5 mm (US 7) Knitting Needles</li>
+      <li>White Yarn</li>
+      <li>Orange Yarn</li>
+    </ul>
+  </p>
+  <p>
+    Abbreviations and notes:
+    <ul>
+      <li><i>st st</i> = stockinette stitch. Knit on right side or purl on wrong side</li>
+    </ul>
+  </p>
+  <p>
+    Written Instructions:
+    <ol>
+      <li>Cast on 34 stitches in white</li>
+      <li>Rows 1-6: st st white</li>
+      <li>Row 7-10: st 11st white, st 12st orange, st 11st white</li>
+      <li>Row 11: st 13st white, st 8st orange, st 13st white</li>
+      <li>Row 12: st 14st white, st 6st orange, st 14st white</li>
+      <li>Row 13-25: st 15st white, st 4st orange, st 15st white</li>
+      <li>Row 26-27: st 6st white, [st 4st orange, st 4st white]x2, st 4st orange, st 6st white</li>
+      <li>Row 28: st 6st  white, st 5st orange, st 3st white, st 4st orange, st 3st white, st 5st orange, st 6st white</li>
+      <li>Row 29: st 6st white, st 6st orange, st 2st white, st 4st orange, st 2st white, st 6st orange, st 6st white</li>
+      <li>Row 30-35: st 6st white, st 20st orange, st 6st white</li>
+      <li>Row 36-39: st st white</li>
+      <li>Cast off loosely</li>
+    </ol>
+  </p>
 </v-card-text>
 </template>
