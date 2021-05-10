@@ -5,9 +5,9 @@
       elevation="2"
       width="100%"
       height="80vh"
-      class="d-flex flex-column align-content-space-around"
+      class="d-flex flex-column align-content-space-around small-padding"
     >
-      <h3 class="display-3 centered" style="padding: 10px; text-shadow: 2px 2px 2px black">
+      <h3 class="display-3 centered" style="text-shadow: 2px 2px 2px black">
         <b><span v-for="word in welcomeMessage" :key="word.text" :style="{color: word.color}">
           {{word.text}}
         </span></b>
