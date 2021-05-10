@@ -22,13 +22,14 @@ export default {
   }),
 
   mounted: function() {
+    document.title = `${process.env.VUE_APP_TITLE} | ${this.category}`
+
     let query = {};
     if (this.category) {
       query.category = this.category
     } else if (this.$route.query) {
       query = this.$route.query
     }
-    console.log(query)
     api.getArticles(query).then(resp => {
       this.articles = resp.data
     })
