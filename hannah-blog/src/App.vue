@@ -1,7 +1,7 @@
 <template>
-  <v-app light style="background-color: #FBF9EF">
+  <v-app id="body" light>
     <v-app-bar app clipped-left
-      color="primary secondary--text"
+      color="primary tertiary--text"
     >
 
       <v-img style="flex-grow:0" :src="require(`@/assets/poppy_transparent.gif`)" contain max-height="50" v-if="$route.name != 'Home'"></v-img>
@@ -11,10 +11,10 @@
       <NavButtons v-if="$vuetify.breakpoint.mdAndUp && $route.name != 'Home'" />
       <v-spacer></v-spacer>
       <v-btn icon><v-icon>mdi-magnify</v-icon></v-btn>
-      <NavButton link="about" icon="mdi-comment-question" />
+      <NavButton link="about" icon="mdi-comment-question" color="tertiary"/>
 
       <template v-slot:extension v-if="$vuetify.breakpoint.smAndDown && $route.name != 'Home'">
-        <NavButtons />
+        <NavButtons color="tertiary" />
       </template>
 
     </v-app-bar>
@@ -50,7 +50,7 @@
       </v-container>
     </v-main>
     <v-footer app
-      color="primary">
+      color="primary tertiary--text">
       &copy; {{ new Date().getFullYear() }} {{ site_name }}
     </v-footer>
   </v-app>
@@ -75,12 +75,12 @@ export default {
 </script>
 
 <style>
-  .v-btn {
-    color: var(--v-secondary-base) !important;
+  #body {
+    background-color: var(--v-background-base);
   }
 
-  .multiline-button {
-    white-space: normal;
+  .v-btn {
+    color: var(--v-tertiary-base) !important;
   }
 
   .router-link-active .v-btn {

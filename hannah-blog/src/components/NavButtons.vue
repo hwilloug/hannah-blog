@@ -1,21 +1,11 @@
 <template>
   <div>
-    <div v-if="expanded">
-      <NavButton link="Food" icon="mdi-pot-steam" />
-      <NavButton link="Gardening" icon="mdi-flower" />
-      <NavButton link="Crafts" icon="mdi-content-cut" />
-      <NavButton link="Coding" icon="mdi-code-json" />
-      <NavButton link="Books" icon="mdi-book-open-variant" />
-      <NavButton link="Languages" icon="mdi-syllabary-hiragana" />
-    </div>
-    <div v-else>
-      <NavButton link="Food" icon="mdi-pot-steam" />
-      <NavButton link="Gardening" icon="mdi-flower" />
-      <NavButton link="Crafts" icon="mdi-content-cut" />
-      <NavButton link="Coding" icon="mdi-code-json" />
-      <NavButton link="Books" icon="mdi-book-open-variant" />
-      <NavButton link="Languages" icon="mdi-syllabary-hiragana" />
-    </div>
+    <NavButton link="Food" icon="mdi-pot-steam" :color="color" />
+    <NavButton link="Gardening" icon="mdi-flower" :color="color" />
+    <NavButton link="Crafts" icon="mdi-content-cut" :color="color" />
+    <NavButton link="Coding" icon="mdi-code-json" :color="color" />
+    <NavButton link="Books" icon="mdi-book-open-variant" :color="color" />
+    <NavButton link="Languages" icon="mdi-syllabary-hiragana" :color="color" />
   </div>
 </template>
 
@@ -24,7 +14,9 @@ import NavButton from "@/components/NavButton"
 
 export default {
   name: "NavButtons",
-  props: ["expanded"],
+  props: [
+    "color"
+  ],
   components: {
     NavButton
   }

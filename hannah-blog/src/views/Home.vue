@@ -13,7 +13,7 @@
         </span></b>
       </h3>
 
-      <NavButtons class="centered" />
+      <NavButtons class="centered" color="secondary" />
 
       <v-img :src="require(`@/assets/poppy_transparent.gif`)" contain max-height="50"></v-img>
 
