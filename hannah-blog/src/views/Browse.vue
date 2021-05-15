@@ -1,24 +1,29 @@
 <template>
-  <v-container class="d-flex flex-column align-center">
-    <ArticleCard v-for="article in articles" :key="article.id" :article="article"/>
-  </v-container>
+  <div>
+    <v-container class="d-flex flex-column align-center" v-if="loading">
+      <LoadingArticleCard v-for="i in 3" :key="i" />
+    </v-container>
+    <v-container class="d-flex flex-column align-center" v-else>
+      <ArticleCard v-for="article in articles" :key="article.id" :article="article" />
+    </v-container>
+  </div>
 </template>
 
 <script>
-import ArticleCard from "@/components/ArticleCard"
-
-import api from '@/api/Articles.js'
+import api from "@/api/Articles.js"
 
 export default {
   name: "Browse",
   props: ["category"],
 
   components: {
-    ArticleCard
+    ArticleCard: () => import("@/components/ArticleCard"),
+    LoadingArticleCard: () => import("@/components/LoadingArticleCard")
   },
 
   data: () => ({
-    articles: []
+    articles: [],
+    loading: true
   }),
 
   mounted: function() {
@@ -32,6 +37,7 @@ export default {
     }
     api.getArticles(query).then(resp => {
       this.articles = resp.data
+      this.loading = false
     })
   }
 }

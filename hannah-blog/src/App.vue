@@ -19,29 +19,6 @@
 
     </v-app-bar>
 
-    <!--
-    <v-navigation-drawer app clipped>
-      <v-list-item>
-              <v-list-item-content>
-                <v-list-item-title class="title">
-                  category
-                </v-list-item-title>
-                <v-list-item-subtitle>
-                  subtext
-                </v-list-item-subtitle>
-              </v-list-item-content>
-            </v-list-item>
-
-            <v-divider></v-divider>
-
-            <v-list
-              dense
-              nav
-            ></v-list>
-
-    </v-navigation-drawer>
-    -->
-
     <!-- Sizes your content based upon application components -->
     <v-main >
       <!-- Provides the application the proper gutter -->

@@ -7,6 +7,7 @@
       style="padding: 5px;"
       color="secondary--text"
     >
+     <!-- Actual article content -->
       <v-img
         :src="require(`@/assets/${article.img}`)"
         max-height="20rem"
@@ -15,6 +16,12 @@
       <v-card-subtitle>{{ article.subtitle }}<br>{{ article.created }}</v-card-subtitle>
       <CategoryChip :category="article.category" :subcategories="article.subcategory" />
       <component :is="content"></component>
+
+      <!-- Loading placeholders -->
+      <v-skeleton-loader type="image" max-height="20rem" v-if="loading"></v-skeleton-loader>
+      <v-skeleton-loader type="card-heading" v-if="loading"></v-skeleton-loader>
+      <v-skeleton-loader type="chip" class="small-padding" v-if="loading"></v-skeleton-loader>
+      <v-skeleton-loader type="text@10" v-if="loading"></v-skeleton-loader>
     </v-card>
   </v-container>
 </template>
@@ -31,12 +38,14 @@ export default {
   },
 
   data: () => ({
-    article: {}
+    article: {},
+    loading: true
   }),
 
   mounted: function() {
     api.getArticle(this.articleId).then( resp => {
       this.article = resp.data
+      this.loading = false;
 
       document.title = `${process.env.VUE_APP_TITLE} | ${this.article.title}`
     }).catch( () => {
