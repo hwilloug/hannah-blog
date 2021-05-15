@@ -7,7 +7,7 @@
     >
       <span class="multiline-button" >
         <v-icon>{{ icon }}</v-icon><br>
-        <v-text class="caption">{{ link }}</v-text>
+        <v-text class="caption">{{ name }}</v-text>
       </span>
     </v-btn>
     <v-btn icon :color="color" v-else>
@@ -20,6 +20,7 @@
 export default {
   name: "NavButton",
   props: [
+    "name",
     "link",
     "icon",
     "color"

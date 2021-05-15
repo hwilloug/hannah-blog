@@ -1,11 +1,6 @@
 <template>
   <div>
-    <NavButton link="Food" icon="mdi-pot-steam" :color="color" />
-    <NavButton link="Gardening" icon="mdi-flower" :color="color" />
-    <NavButton link="Crafts" icon="mdi-content-cut" :color="color" />
-    <NavButton link="Coding" icon="mdi-code-json" :color="color" />
-    <NavButton link="Books" icon="mdi-book-open-variant" :color="color" />
-    <NavButton link="Languages" icon="mdi-syllabary-hiragana" :color="color" />
+    <NavButton v-for="category in categories" :key="category.name" :name="category.name" :link="category.link" :icon="category.icon" :color="color" />
   </div>
 </template>
 
@@ -19,6 +14,40 @@ export default {
   ],
   components: {
     NavButton
-  }
+  },
+  data: () => ({
+    categories: [
+      {
+        name: 'Food',
+        link: 'articles/categories/food',
+        icon: 'mdi-pot-steam'
+      },
+      {
+        name: 'Gardening',
+        link: 'articles/categories/gardening',
+        icon: 'mdi-flower'
+      },
+      {
+        name: 'Crafts',
+        link: 'articles/categories/crafts',
+        icon: 'mdi-content-cut'
+      },
+      {
+        name: 'Coding',
+        link: 'articles/categories/coding',
+        icon: 'mdi-code-json'
+      },
+      {
+        name: 'Books',
+        link: 'articles/categories/books',
+        icon: 'mdi-book-open-variant'
+      },
+      {
+        name: 'Languages',
+        link: 'articles/categories/languages',
+        icon: 'mdi-syllabary-hiragana'
+      },
+    ]
+  })
 }
 </script>

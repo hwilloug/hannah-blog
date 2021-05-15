@@ -1,5 +1,5 @@
 module.exports = {
-  Food: [
+  food: [
     {
       id: 1,
       title: "Lemon Dijon Baked Salmon",
@@ -19,7 +19,7 @@ module.exports = {
       created: "Sun, April 4, 2021 09:25 PM"
     }
   ],
-  Gardening: [
+  gardening: [
     {
       id: 2,
       title: "Transplanting my Pansies",
@@ -30,7 +30,7 @@ module.exports = {
       created: "Sun, April 4, 2021 09:25 PM"
     }
   ],
-  Crafts: [
+  crafts: [
     {
       id: 4,
       title: "Knit UT Hotpad",
@@ -41,7 +41,7 @@ module.exports = {
       created: "Sun, April 4, 2021 09:25 PM"
     }
   ],
-  Coding: [
+  coding: [
     {
       id: 5,
       title: "Making a blog",
@@ -52,7 +52,7 @@ module.exports = {
       created: "Sun, April 4, 2021 09:25 PM"
     }
   ],
-  Books: [
+  books: [
     {
       id: 6,
       title: "Later by Stephen King",
@@ -63,7 +63,7 @@ module.exports = {
       created: "Sun, April 4, 2021 09:25 PM"
     }
   ],
-  Languages: [
+  languages: [
     {
       id: 7,
       title: "I've obtained the cake",

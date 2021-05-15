@@ -36,10 +36,19 @@ const routes = [
   {
     path: "/404",
     name: "FileNotFound",
-    component: () => import("@/views/FileNotFound.vue")
+    component: () => import("@/views/FileNotFound.vue"),
+    meta: {
+      title: `${process.env.VUE_APP_TITLE} | 404 Not Found`,
+      metaTags: [
+        {
+          name: 'description',
+          content: '404 Page Not Found'
+        }
+      ]
+    }
   },
   {
-    path: "/:category",
+    path: "/articles/categories/:category",
     name: "BrowseCategory",
     component: () => import("@/views/Browse.vue"),
     props: true,
