@@ -9,7 +9,7 @@
     >
      <!-- Actual article content -->
       <v-img
-        :src="require(`@/assets/${article.img}`)"
+        :src="image"
         max-height="20rem"
       ></v-img>
       <v-card-title>{{ article.title }}</v-card-title>
@@ -18,7 +18,7 @@
       <component :is="content"></component>
 
       <!-- Loading placeholders -->
-      <v-skeleton-loader type="image" max-height="20rem" v-if="loading"></v-skeleton-loader>
+      <v-skeleton-loader type="image" max-height="20rem" v-if="image == ''"></v-skeleton-loader>
       <v-skeleton-loader type="card-heading" v-if="loading"></v-skeleton-loader>
       <v-skeleton-loader type="chip" class="small-padding" v-if="loading"></v-skeleton-loader>
       <v-skeleton-loader type="text@10" v-if="loading"></v-skeleton-loader>
@@ -38,13 +38,20 @@ export default {
   },
 
   data: () => ({
-    article: {},
-    loading: true
+    article: {
+      title: '',
+      subtitie: '',
+      category: '',
+      subcategory: ''
+    },
+    loading: true,
+    image: ''
   }),
 
   mounted: function() {
     api.getArticle(this.articleId).then( resp => {
       this.article = resp.data
+      this.image = require(`@/assets/${this.article.img}`)
       this.loading = false;
 
       document.title = `${process.env.VUE_APP_TITLE} | ${this.article.title}`
