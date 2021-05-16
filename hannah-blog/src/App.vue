@@ -68,6 +68,10 @@ export default {
     text-decoration: none;
   }
 
+  .v-card__text, .v-card__title {
+    word-break: normal;
+  }
+
   .no-decoration {
     color: inherit !important;
     text-decoration: none;

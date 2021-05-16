@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="{ path: `/articles/${article.id}` }">
+  <router-link :to="{ path: `/articles/${article.id}` }" class="no-decoration">
     <v-card
       outlined shaped
       elevation="2"
