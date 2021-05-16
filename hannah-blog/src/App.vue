@@ -1,6 +1,7 @@
 <template>
-  <v-app id="body" light>
-    <v-app-bar app clipped-left
+  <v-theme-provider root>
+  <v-app id="body">
+    <v-app-bar app clipped-left absolute
       color="primary tertiary--text"
     >
 
@@ -26,11 +27,19 @@
         <router-view :key="$route.path"></router-view>
       </v-container>
     </v-main>
-    <v-footer app
+    <v-footer app absolute
       color="primary tertiary--text">
       &copy; {{ new Date().getFullYear() }} {{ site_name }}
+      <v-spacer></v-spacer>
+      <span style="padding-right: 5px">Dark</span><v-switch
+        :input-value="false"
+        :rules="[toggleDark]"
+        inset dense
+        color="tertiary"
+      ></v-switch>
     </v-footer>
   </v-app>
+  </v-theme-provider>
 </template>
 
 <script>
@@ -48,6 +57,14 @@ export default {
   data: () => ({
     site_name: "Poppyland"
   }),
+
+  methods: {
+    toggleDark(isDark) {
+      console.log(isDark)
+      this.$vuetify.theme.dark = isDark;
+      return true
+    }
+  }
 };
 </script>
 

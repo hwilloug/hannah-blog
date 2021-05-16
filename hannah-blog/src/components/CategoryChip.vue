@@ -9,7 +9,7 @@
     <v-chip
       v-for="subcategory in subcategories"
       :key="subcategory"
-      color="tertiary"
+      color="tertiary black--text"
       small
       style="margin-left: 5px"
       :to="{ name: 'Browse', query: { subcategory: `${subcategory.toLowerCase()}` }}"

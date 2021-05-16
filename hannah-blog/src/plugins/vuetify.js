@@ -5,7 +5,7 @@ Vue.use(Vuetify);
 
 export default new Vuetify({
   theme: {
-    defaultTheme: 'light',
+    dark: false,
     options: {
       customProperties: true
     },
@@ -21,6 +21,17 @@ export default new Vuetify({
         warning: '#FB8C00',
         error: '#FF5252'
       },
+      dark: {
+        primary: "#231A1E",
+        secondary: "#BEB1C7",
+        tertiary: "#D0B3BA",
+        accent: "#A8BBA0",
+        background: "#3F3842",
+        success: '#4CAF50',
+        info: '#2196F3',
+        warning: '#FB8C00',
+        error: '#FF5252'
+      }
     },
   },
   breakpoint: {
