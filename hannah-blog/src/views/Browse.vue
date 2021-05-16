@@ -1,9 +1,9 @@
 <template>
   <div>
-    <v-container class="d-flex flex-column align-center" v-if="loading">
+    <v-container class="d-flex flex-column align-center align-md-end" v-if="loading">
       <LoadingArticleCard v-for="i in 3" :key="i" />
     </v-container>
-    <v-container class="d-flex flex-column align-center" v-else>
+    <v-container class="d-flex flex-column align-center align-md-end" v-else>
       <ArticleCard v-for="article in articlesPage" :key="article.id" :article="article" />
       <v-pagination
       v-model="page"

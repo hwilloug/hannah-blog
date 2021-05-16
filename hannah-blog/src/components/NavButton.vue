@@ -7,7 +7,7 @@
     >
       <span class="multiline-button" >
         <v-icon>{{ icon }}</v-icon><br>
-        <v-text class="caption">{{ name }}</v-text>
+        <span class="caption">{{ name }}</span>
       </span>
     </v-btn>
     <v-btn icon :color="color" v-else>
