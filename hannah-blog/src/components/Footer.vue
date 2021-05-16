@@ -15,6 +15,7 @@
 <script>
 export default {
   name: "Footer",
+  props: ["site_name"],
 
   methods: {
     toggleDark(isDark) {
