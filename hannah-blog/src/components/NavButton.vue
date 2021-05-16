@@ -1,9 +1,10 @@
 <template>
-  <router-link :to="{ path: `/${link}` }">
+  <router-link :to="{ path: `/${link}` }" id="nav-button">
     <v-btn
       v-if="$route.name == 'Home'"
       text rounded large
       :color="color"
+      id="nav-button"
     >
       <span class="multiline-button" >
         <v-icon>{{ icon }}</v-icon><br>

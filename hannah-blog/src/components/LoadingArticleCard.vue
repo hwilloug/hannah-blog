@@ -3,7 +3,7 @@
     outlined shaped
     elevation="2"
     style="margin: 0px auto 10px auto;"
-    :width="$vuetify.breakpoint.lgAndUp ? '45rem' : '90vw'"
+    :width="$vuetify.breakpoint.mdAndUp ? '39rem' : '90vw'"
     color="secondary--text"
   >
     <v-container v-if="$vuetify.breakpoint.mdAndUp">

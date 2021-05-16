@@ -7,21 +7,22 @@
       style="padding: 5px;"
       color="secondary--text"
     >
-     <!-- Actual article content -->
-      <v-img
-        :src="image"
-        max-height="20rem"
-      ></v-img>
-      <v-card-title>{{ article.title }}</v-card-title>
-      <v-card-subtitle>{{ article.subtitle }}<br>{{ article.created }}</v-card-subtitle>
-      <CategoryChip :category="article.category" :subcategories="article.subcategory" />
-      <component :is="content"></component>
-
       <!-- Loading placeholders -->
       <v-skeleton-loader type="image" max-height="20rem" v-if="image == ''"></v-skeleton-loader>
       <v-skeleton-loader type="card-heading" v-if="loading"></v-skeleton-loader>
       <v-skeleton-loader type="chip" class="small-padding" v-if="loading"></v-skeleton-loader>
       <v-skeleton-loader type="text@10" v-if="loading"></v-skeleton-loader>
+
+     <!-- Actual article content -->
+      <v-img
+        :src="image"
+        max-height="20rem"
+      ></v-img>
+      <v-card-title class="title">{{ article.title }}</v-card-title>
+      <v-card-subtitle>{{ article.subtitle }}<br>{{ article.created }}</v-card-subtitle>
+      <CategoryChip :category="article.category" :subcategories="article.subcategory" />
+      <component :is="content"></component>
+
     </v-card>
   </v-container>
 </template>

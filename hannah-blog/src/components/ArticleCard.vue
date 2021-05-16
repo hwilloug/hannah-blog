@@ -16,8 +16,8 @@
             ></v-img>
           </v-col>
           <v-col>
-            <v-card-title>{{ article.title }}</v-card-title>
-            <v-card-subtitle>{{ article.subtitle }}<br>{{ article.created }}</v-card-subtitle>
+            <v-card-title class="title">{{ article.title }}</v-card-title>
+            <v-card-subtitle >{{ article.subtitle }}<br>{{ article.created }}</v-card-subtitle>
             <CategoryChip :category="article.category" :subcategories="article.subcategory" />
           </v-col>
         </v-row>
@@ -27,7 +27,7 @@
           :width="$parent.$el.offsetWidth"
           :src="require(`@/assets/${article.img}`)"
         ></v-img>
-        <v-card-title>{{ article.title }}</v-card-title>
+        <v-card-title class="title">{{ article.title }}</v-card-title>
         <v-card-subtitle>{{ article.subtitle }}<br>{{ article.created }}</v-card-subtitle>
       </v-container>
     </v-card>

@@ -7,7 +7,7 @@
       class="medium-padding"
       :width="$vuetify.breakpoint.mdAndUp ? '17rem' : '100%'"
     >
-      <h2>Welcome to Poppyland</h2>
+      <h2 class="text-h4">Welcome to Poppyland</h2><br>
       <p>
         Hello, and welcome to my blog! I'm Hannah, and this is where I write about the stuff I do outside of work.
       </p>

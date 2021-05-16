@@ -53,7 +53,7 @@ export default {
     color: var(--v-tertiary-base) !important;
   }
 
-  .router-link-active .v-btn {
+  #nav-button.router-link-active .v-btn {
     color: var(--v-accent-base) !important;
     border: 1px solid var(--v-accent-base);
   }
