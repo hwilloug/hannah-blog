@@ -49,6 +49,11 @@ export default {
     background-color: var(--v-background-base);
   }
 
+  #app-title {
+    color: var(--v-tertiary-base) !important;
+    text-decoration: none;
+  }
+
   .v-btn {
     color: var(--v-tertiary-base) !important;
   }
