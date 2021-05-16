@@ -4,7 +4,13 @@
       <LoadingArticleCard v-for="i in 3" :key="i" />
     </v-container>
     <v-container class="d-flex flex-column align-center" v-else>
-      <ArticleCard v-for="article in articles" :key="article.id" :article="article" />
+      <ArticleCard v-for="article in articlesPage" :key="article.id" :article="article" />
+      <v-pagination
+      v-model="page"
+      :length="pages"
+      circle
+      color="accent"
+    ></v-pagination>
     </v-container>
   </div>
 </template>
@@ -23,6 +29,9 @@ export default {
 
   data: () => ({
     articles: [],
+    pages: 1,
+    articlesPerPage: 10,
+    page: 1,
     loading: true
   }),
 
@@ -38,7 +47,15 @@ export default {
     api.getArticles(query).then(resp => {
       this.articles = resp.data
       this.loading = false
+      this.pages = Math.ceil(this.articles.length / this.articlesPerPage)
     })
+  },
+
+  computed: {
+    articlesPage() {
+      let pageIndex = this.page - 1;
+      return this.articles.slice(pageIndex, this.articlesPerPage + pageIndex )
+    }
   }
 }
 </script>
