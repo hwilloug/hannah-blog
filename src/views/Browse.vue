@@ -1,16 +1,16 @@
 <template>
   <div>
-    <v-container class="d-flex flex-column align-center align-md-end" v-if="loading">
-      <LoadingArticleCard v-for="i in 3" :key="i" />
+    <v-container class="d-flex flex-column align-center" v-if="loading">
+      <v-progress-circular indeterminate color="secondary"></v-progress-circular>
     </v-container>
     <v-container class="d-flex flex-column align-center align-md-end" v-else>
       <ArticleCard v-for="article in articlesPage" :key="article.id" :article="article" />
       <v-pagination
-      v-model="page"
-      :length="pages"
-      circle
-      color="accent"
-    ></v-pagination>
+        v-model="page"
+        :length="pages"
+        circle
+        color="accent"
+      ></v-pagination>
     </v-container>
   </div>
 </template>
@@ -23,8 +23,7 @@ export default {
   props: ["category"],
 
   components: {
-    ArticleCard: () => import("@/components/ArticleCard"),
-    LoadingArticleCard: () => import("@/components/LoadingArticleCard")
+    ArticleCard: () => import("@/components/ArticleCard")
   },
 
   data: () => ({

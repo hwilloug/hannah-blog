@@ -61,6 +61,15 @@ module.exports = {
       category: "Books",
       subcategory: ["Book Review", "Fiction", "Thriller"],
       created: "Sun, April 4, 2021 09:25 PM"
+    },
+    {
+      id: 8,
+      title: "Jurassic Park: A Review",
+      subtitle: "I've got dinosaurs on the brain",
+      img: "jurassic_park.png",
+      category: "Books",
+      subcategory: ["Book Review", "Fiction", "Science Fiction"],
+      created: "Sun, July 18, 2021 11:25 AM"
     }
   ],
   languages: [

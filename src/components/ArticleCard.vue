@@ -13,7 +13,11 @@
             <v-img
               width="10rem"
               :src="require(`@/assets/${article.img}`)"
-            ></v-img>
+            >
+            <template v-slot:placeholder>
+              <v-progress-circular indeterminate color="primary"></v-progress-circular>
+            </template>
+            </v-img>
           </v-col>
           <v-col>
             <v-card-title class="title">{{ article.title }}</v-card-title>
@@ -26,7 +30,11 @@
         <v-img
           :width="$parent.$el.offsetWidth"
           :src="require(`@/assets/${article.img}`)"
-        ></v-img>
+        >
+          <template v-slot:placeholder>
+            <v-progress-circular indeterminate color="primary"></v-progress-circular>
+          </template>
+        </v-img>
         <v-card-title class="title">{{ article.title }}</v-card-title>
         <v-card-subtitle>{{ article.subtitle }}<br>{{ article.created }}</v-card-subtitle>
       </v-container>
