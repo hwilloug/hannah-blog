@@ -19,7 +19,7 @@
     </v-card>
 
     <div id="latest-articles">
-      <Browse :articlesPerPage="5" :title="'Latest articles:'"/>
+      <Browse :articlesPerPage="5" :title="'Latest articles:'" :showBackButton="false"/>
     </div>
   </v-container>
 </template>

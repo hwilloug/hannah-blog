@@ -1,5 +1,13 @@
 <template>
   <v-container class="d-flex flex-column align-center align-md-end">
+    <v-container class="tertiary primary--text align-self-center align-self-md-end back-container"
+      :style="{width: $vuetify.breakpoint.mdAndUp ? '35rem' : '90vw'}"
+    >
+      <v-btn 
+        x-small depressed
+        v-on:click="$router.go(-1)"
+      ><v-icon>mdi-arrow-left-bold</v-icon> back</v-btn>
+    </v-container>
     <v-card
       outlined shaped
       elevation="2"
@@ -81,6 +89,10 @@ export default {
 
 .signature {
   text-align: right;
+}
+
+.back-container {
+  margin: 10px 0px;
 }
 
 </style>

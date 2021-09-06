@@ -1,6 +1,10 @@
 <template>
-  <div>
-    <h5 class="text-h5" id="title-header">{{ title || category }}</h5>
+  <v-container class="d-flex flex-column">
+    <div class="tertiary primary--text align-self-center align-self-md-end"
+      :style="{width: $vuetify.breakpoint.mdAndUp ? '40rem' : '90vw'}"
+    >
+      <h5 class="text-h5" id="title-header">{{ title || category }}</h5>
+    </div>
     <v-container class="d-flex flex-column align-center" v-if="loading">
       <v-progress-circular indeterminate color="secondary"></v-progress-circular>
     </v-container>
@@ -14,7 +18,7 @@
         previous=""
       ></v-pagination>
     </v-container>
-  </div>
+  </v-container>
 </template>
 
 <script>

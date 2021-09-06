@@ -53,6 +53,7 @@ const routes = [
     component: () => import("@/views/Browse.vue"),
     props: true,
     meta: {
+      title: `${process.env.VUE_APP_TITLE} | Browse`,
       metaTags: [
         {
           name: 'description',

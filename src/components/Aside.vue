@@ -25,11 +25,12 @@
       class="medium-padding aside-card"
       :width="$vuetify.breakpoint.mdAndUp ? '17rem' : '100%'"
     >
-     <h5 class="text-h5">Reading Goal</h5>
+     <h5 class="text-h5">2021 Reading Goal</h5>
      <v-progress-linear
       height="25"
       :value="readingProgress"
       rounded
+      color="secondary"
      >
       <template v-slot:default="{value}"> 
         <span style="color: white">{{ value }}%</span>

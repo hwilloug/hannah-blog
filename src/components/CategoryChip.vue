@@ -4,7 +4,7 @@
       color="primary"
       small
       style="margin-left: 5px"
-      :to="{ path: `/${category.toLowerCase()}`}"
+      :to="{ path: `/articles/categories/${category.toLowerCase()}`}"
     >{{ category }}</v-chip>
     <v-chip
       v-for="subcategory in subcategories"
