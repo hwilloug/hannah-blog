@@ -4,7 +4,7 @@
       outlined shaped
       elevation="2"
       color="secondary--text"
-      class="medium-padding"
+      class="medium-padding aside-card"
       :width="$vuetify.breakpoint.mdAndUp ? '17rem' : '100%'"
     >
       <h2 class="text-h4">Welcome to Poppyland</h2><br>
@@ -17,5 +17,47 @@
         small
       >More about me</v-btn></router-link>
     </v-card>
+
+    <v-card
+      outlined shaped
+      elevation="2"
+      color="secondary--text"
+      class="medium-padding aside-card"
+      :width="$vuetify.breakpoint.mdAndUp ? '17rem' : '100%'"
+    >
+     <h5 class="text-h5">Reading Goal</h5>
+     <v-progress-linear
+      height="25"
+      :value="readingProgress"
+      rounded
+     >
+      <template v-slot:default="{value}"> 
+        <span style="color: white">{{ value }}%</span>
+      </template>
+     </v-progress-linear> 
+     <a href="https://www.goodreads.com/user_challenges/25814200" target="_blank">{{ readingComplete }}/{{ readingGoal }} books</a>
+    </v-card>
   </v-container>
 </template>
+
+<script>
+
+export default {
+  data: () => ({
+    readingGoal: 60,
+    readingComplete: 54,
+    readingProgress: 0
+  }),
+  mounted() {
+      this.readingProgress = this.readingComplete / this.readingGoal * 100
+  }
+}
+
+</script>
+
+
+<style scoped>
+.aside-card {
+  margin-bottom: 20px;
+}
+</style>

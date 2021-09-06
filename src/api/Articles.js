@@ -11,7 +11,6 @@ export default {
       queryUrl = queryUrl.join('&');
       url += `?${queryUrl}`
     }
-    console.log(url)
     return Api().get(url)
   },
 

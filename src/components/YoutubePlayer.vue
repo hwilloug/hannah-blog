@@ -1,5 +1,5 @@
 <template>
-    <iframe id="ytplayer" type="text/html" width="480" height="270"
+    <iframe id="ytplayer" type="text/html" width="100%" height="auto"
         :src="'https://www.youtube.com/embed/' + video_id"
         frameborder="0">
     </iframe>

@@ -5,12 +5,13 @@
       <v-progress-circular indeterminate color="secondary"></v-progress-circular>
     </v-container>
     <v-container class="d-flex flex-column align-center align-md-end" v-else>
-      <ArticleCard v-for="article in articlesPage" :key="article.id" :article="article" />
+      <ArticleCard v-for="article in articlesInPage" :key="article.id" :article="article" />
       <v-pagination
         v-model="page"
         :length="pages"
         circle
         color="accent"
+        previous=""
       ></v-pagination>
     </v-container>
   </div>
@@ -52,20 +53,28 @@ export default {
     }
     api.getArticles(query).then(resp => {
       this.articles = resp.data
-      console.log(this.articles)
       this.loading = false
       this.pages = Math.ceil(this.articles.length / this.articlesPerPage)
+
+      this.page = this.$route.query.p && this.$route.query.p <= this.pages 
+        ? parseInt(this.$route.query.p) : this.page
     })
   },
 
   computed: {
-    articlesPage() {
+    articlesInPage() {
       const pageIndex = this.page - 1;
       let currentArticleIdx = pageIndex * this.articlesPerPage
       if (pageIndex !== 0) {
         currentArticleIdx++
       }
       return this.articles.slice(currentArticleIdx, currentArticleIdx + this.articlesPerPage )
+    }
+  },
+
+  watch: {
+    page: function(newPage) {
+      this.$router.push(`?p=${newPage}`)
     }
   }
 }

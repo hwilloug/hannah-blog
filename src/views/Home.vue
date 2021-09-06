@@ -6,7 +6,7 @@
       width="100%"
       class="d-flex flex-column align-content-space-around small-padding"
     >
-      <h3 class="display-3 centered" id="welcome-banner">
+      <h3 class="centered" id="welcome-banner" :class="$vuetify.breakpoint.sm ? 'text-h4' : 'text-h3'">
         <b><span v-for="word in welcomeMessage" :key="word.text" :style="{color: word.color}">
           {{word.text}}
         </span></b>
@@ -79,6 +79,7 @@ export default {
   text-shadow: 2px 2px 2px black; 
   text-align: center;
   margin: 40px;
+  word-wrap: normal;
 }
 
 #latest-articles { 
