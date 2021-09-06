@@ -6,9 +6,23 @@ const api = express.Router();
 let testData = require('../../../tests/mock-data/articles.js')
 
 api.get('/', (req, res, next) => {
-  if ( req.query.category ) {
-    res.send(testData[req.query.category]);
-  } else {
+  const categories = ['food', 'gardening', 'crafts', 'coding', 'books', 'languages']
+  try {
+    if ( !req.query.category ) {
+      let data = []
+      for (var i = 0; i < categories.length; i++) {
+        for (var j = 0; j < testData[categories[i]].length; j++) {
+          data.push(testData[categories[i]][j])
+        }
+      }
+      res.send(data)
+    } else if ( categories.includes(req.query.category) ) {
+      res.send(testData[req.query.category]);
+    } else {
+      res.status.send(400).send('Invalid category')
+    }
+  }
+  catch {
     res.status(400).send('Please enter a category');
   }
 })

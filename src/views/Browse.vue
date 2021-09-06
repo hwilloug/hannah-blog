@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h5 class="text-h5" id="title-header">{{ title || category }}</h5>
     <v-container class="d-flex flex-column align-center" v-if="loading">
       <v-progress-circular indeterminate color="secondary"></v-progress-circular>
     </v-container>
@@ -20,7 +21,14 @@ import api from "@/api/Articles.js"
 
 export default {
   name: "Browse",
-  props: ["category"],
+  props: {
+    category: String, 
+    articlesPerPage: {
+      type: Number,
+      default: 10
+    },
+    title: String
+  },
 
   components: {
     ArticleCard: () => import("@/components/ArticleCard")
@@ -29,7 +37,6 @@ export default {
   data: () => ({
     articles: [],
     pages: 1,
-    articlesPerPage: 10,
     page: 1,
     loading: true
   }),
@@ -45,6 +52,7 @@ export default {
     }
     api.getArticles(query).then(resp => {
       this.articles = resp.data
+      console.log(this.articles)
       this.loading = false
       this.pages = Math.ceil(this.articles.length / this.articlesPerPage)
     })
@@ -52,9 +60,19 @@ export default {
 
   computed: {
     articlesPage() {
-      let pageIndex = this.page - 1;
-      return this.articles.slice(pageIndex, this.articlesPerPage + pageIndex )
+      const pageIndex = this.page - 1;
+      let currentArticleIdx = pageIndex * this.articlesPerPage
+      if (pageIndex !== 0) {
+        currentArticleIdx++
+      }
+      return this.articles.slice(currentArticleIdx, currentArticleIdx + this.articlesPerPage )
     }
   }
 }
 </script>
+
+<style scoped>
+  #title-header {
+    text-align: center;
+  }
+</style>

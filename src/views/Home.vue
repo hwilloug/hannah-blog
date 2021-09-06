@@ -4,35 +4,36 @@
       outlined
       elevation="2"
       width="100%"
-      height="80vh"
       class="d-flex flex-column align-content-space-around small-padding"
     >
-      <h3 class="display-3 centered" style="text-shadow: 2px 2px 2px black">
+      <h3 class="display-3 centered" id="welcome-banner">
         <b><span v-for="word in welcomeMessage" :key="word.text" :style="{color: word.color}">
           {{word.text}}
         </span></b>
       </h3>
 
-      <NavButtons class="centered" color="secondary" />
+      <NavButtons class="centered" color="secondary" style="margin-bottom: 20px;"/>
 
       <v-img :src="require(`@/assets/poppy_transparent.gif`)" contain max-height="50"></v-img>
 
-      <p class="centered">
-        Click one of the buttons above to start browsing.
-      </p>
-
     </v-card>
+
+    <div id="latest-articles">
+      <Browse :articlesPerPage="5" :title="'Latest articles:'"/>
+    </div>
   </v-container>
 </template>
 
 <script>
 import NavButtons from "@/components/NavButtons"
+import Browse from "@/views/Browse"
 
 export default {
   name: "Home",
 
   components: {
-    NavButtons
+    NavButtons,
+    Browse
   },
 
   data: () => ({
@@ -72,3 +73,15 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+#welcome-banner {
+  text-shadow: 2px 2px 2px black; 
+  text-align: center;
+  margin: 40px;
+}
+
+#latest-articles { 
+  margin-top: 30px;
+}
+</style>
