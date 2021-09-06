@@ -1,35 +1,53 @@
 <template>
 <v-card-text>
-    <p><i>CONTAINS SPOILERS</i></p>
+    <BlockQuote
+        :quote="quote1.quote"
+        :citation="quote1.citation" 
+    />
     <p>
-        <blockquote class="blockquote">
-            The planet is not in jeopardy. We are in jeopardy. We haven't got the power to destroy the planet -- or to save it. But we might have the power to save ourselves.
-        </blockquote>
-        <p class="quote-citation">
-            <cite>- Ian Malcom</cite>
+        L.M. Montgomery's <i>Anne of Green Gables</i> is a classic coming-of-age novel about an orphan girl who gets adopted by a brother and sister in a small town in Nova Scotia. While the siblings had originally requested to adopt a boy to help on the farm, they ended up with Anne, a young girl with bright red hair who talks a lot. And by a lot I mean A LOT. One would think that would get annoying, Anne is able to imagine the romance in everything she sees and is able to share that with everyone around her.
     </p>
     <p>
-        Michael Crichton's <i>Jurassic Park</i> was a wonderful read for sifi/fantasy week. When I started reading it, I didn't know how different the novel was going to be from the movie. In fact, I haven't seen the movie in years, which made me excited to have more of a clean-slate for reading it. I was pleasantly pleased at the amount of scientific background given and the build-up of everyone getting to the island. The descriptions of how the dinosaurs look and behave caused my imagination to bloom and really has put "dinosaurs on my brain."
+        Reading <i>Anne of Green Gables</i> cleared the fog in my brain. It wasn't so much the plot, which was mostly just Anne getting in trouble and learning from her mistakes, but it was that romance and imagination. She brings to life and gives meaning to everything and everyone she sees. Every time I put the book down, I wanted to pick it back up and see the world as she was seeing it. I was struggling with some depression at the time, and everything was looking so dull, if I was even looking aroud at my surroundings at all. But Anne is hopeful and adds that sparkle to even the littlest things, and she made me want to get outside and actually practice some mindfulness.
+    </p>
+    <BlockQuote 
+        :quote="quote2.quote" 
+        :citation="quote2.citation" 
+    />
+    <p>
+        The above quote from Anne really resonantes with me. I couldn't wait to grow up when I was a pre-teen/teenager, and then now that I'm actually an adult, it really doesn't feel any different. Maybe it's just that our desires change, or maybe it's that it really is more about the buildup and expectation.
+    </p>
+    <br><br>
+    <p>
+        My Japanese teacher told me that there was an Anne of Green Gables Anime from back in the 70s! The series is called 赤毛のアン - "Red Headed Anne". I'm going to have to watch it to get some listening practice! And my sibling and mom told me about the <i>Anne of Green Gables: The Musical</i>, which according to Wikipedia is the longest running annual musical theater production in the world! Next time I need a pick-me-up, I'll be trying to find a performance :)
     </p>
     <p>
-        The theme that I pulled from reading <i>Jurassic Park</i> is encapsulated in the quote from Ian Malcom at the beginning of this article: The earth will continue on, no matter if we kill ourselves off or not. I think this is especially relevent now, when humanity is burdened by the imminent disaster that will come from climate change. The novel raises the question of whether more technology will solve our problems or just cause more. Based on the outcome of Hammond's experiment, I will say that the theme is that more technology <i>won't</i> improve our outcome, only make it worse. Hammond had the best-of-the-best technology and even developed some on his own through his team, however, he still ended up causing complete disaster.
-    </p>
-    <p>
-        The only element I was really disappointed in was the lack of contribution by the women in the novel. There were only TWO women in the whole book. First, there is Lex: an annoying pre-teen with daddy issues; a simple recipe for a pre-teen girl and nothing more. I was more pleased that Ellie is a strong, smart, and capable woman. However, her role in the novel is miniscuile, and she does not have much room to showcase herself. She solves one minor problem in the beginning, and makes a brave contribution towards the end, but otherwise she is only a tool towards which Malcom can spew his nonsense. Early in the novel, when she and Grant first meet Hammond and Gennaro, Gennaro is surprised that "Dr. Sattler" is a woman. At the time, I supposed this was to give the reader the impression that Gennaro was someone who should not be liked as a character, causing me to expect Ellie to have a larger role and prove herself, but this never really happened. 
-    </p>
-    <p>
-        All in all, <i>Jurassic Park</i> is a wonderful blend of science fiction and thriller, and I am looking forward to reading the second book in the series, <i>The Lost World</i>.
+        <YoutubePlayer :video_id="'DBQgH2o8YKI'" />
     </p>
 </v-card-text>
 </template>
 
-<style >
-.blockquote {
-    border-left: 2px solid var(--v-accent-base);
-    padding-left: 5px;
-}
+<script>
+import YoutubePlayer from "@/components/YoutubePlayer"
+import BlockQuote from "@/components/BlockQuote"
 
-.quote-citation {
-    text-align: right;
+export default {
+    name: "AnneOfGreenGables",
+
+    components: {
+        YoutubePlayer,
+        BlockQuote
+    },
+
+    data: () => ({
+        quote1: {
+            quote: "Mrs. Lynds says, 'Blessed are they who expect nothing for they shall not be disappointed.' But I think it would be worse to expect nothing than to be disappointed.",
+            citation: "Anne"
+        },
+        quote2: {
+            quote: "That's the worst of growing up, and I'm beginning to realize it. The things you wanted so much when you were a child don't seem half so wonderful to you when you get them.",
+            citation: "Anne"
+        }
+    })
 }
-</style>
+</script>

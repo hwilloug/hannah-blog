@@ -70,6 +70,15 @@ module.exports = {
       category: "Books",
       subcategory: ["Book Review", "Fiction", "Science Fiction"],
       created: "Sun, July 18, 2021 11:25 AM"
+    },
+    {
+      id: 9,
+      title: "Thoughts on Anne of Green Gables",
+      subtitle: "...",
+      img: "anne.png",
+      category: "Books",
+      subcategory: ["Book Review", "Fiction", "Classics"],
+      created: "Sun, September 5, 2021 6:50 PM"
     }
   ],
   languages: [
