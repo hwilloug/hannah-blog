@@ -50,6 +50,15 @@
             </ul>
         </ul>
     </p>
+    <p>
+        Petunias are supposed to be good for keeping the squash beetles away, so I'm really looking forward to seeing if that works. Borage is new to me as well; it's a wildflower that's supposed to be a good overall pest deterrant.
+    </p>
+    <p>
+        And of course, there's the classic corn/bean/squash "three sisters" combination (although I replaced beans with peas).
+    </p>
+    <p>
+        As for the asparagus/cosmos combination, the cosmos foliage is very similar in appearance to the asparagus fern, so I planted them together.
+    </p>
 </v-card-text>
 </template>
 
