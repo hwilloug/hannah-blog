@@ -26,8 +26,17 @@ module.exports = {
       subtitle: "",
       img: "garden_boxes.png",
       category: "Gardening",
-      subcategory: ["Raised Beds"],
+      subcategory: ["Raised Beds", "Construction"],
       created: "Monday, May 1, 2023 01:30 PM"
+    },
+    {
+      id: 11,
+      title: "Building a Pig Pen",
+      subtitle: "A shelter for my future piggies",
+      img: "pig_shelter_4.png",
+      category: "Gardening",
+      subcategory: ["Pigs", "Livestock", "Construction"],
+      created: "Tuesday, May 2, 2023 03:40 PM"
     }
   ],
   crafts: [
