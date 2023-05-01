@@ -21,13 +21,13 @@ module.exports = {
   ],
   gardening: [
     {
-      id: 2,
-      title: "Transplanting my Pansies",
-      subtitle: "Finally!",
-      img: "test/matrix-pansies-blotch-mix.jpg",
+      id: 10,
+      title: "Summer 2023 Garden",
+      subtitle: "",
+      img: "garden_boxes.png",
       category: "Gardening",
-      subcategory: ["Flowers", "Container Gardening"],
-      created: "Sun, April 4, 2021 09:25 PM"
+      subcategory: ["Raised Beds"],
+      created: "Monday, May 1, 2023 01:30 PM"
     }
   ],
   crafts: [
