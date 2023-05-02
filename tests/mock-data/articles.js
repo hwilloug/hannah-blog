@@ -52,13 +52,13 @@ module.exports = {
   ],
   coding: [
     {
-      id: 5,
-      title: "Making a blog",
-      subtitle: "Blogging about blogging!",
-      img: "test/blog.jpg",
+      id: 12,
+      title: "Connecting a Django Backend to a React Frontend via Cloudfront and Terraform",
+      subtitle: "",
+      img: "tcahdotcom.png",
       category: "Coding",
-      subcategory: ["Vue.js", "Vuetify.js", "Express.js", "Web Development"],
-      created: "Sun, April 4, 2021 09:25 PM"
+      subcategory: ["React.js", "Django", "Web Development"],
+      created: "Tuesday, May 2, 2023 09:25 AM"
     }
   ],
   books: [
