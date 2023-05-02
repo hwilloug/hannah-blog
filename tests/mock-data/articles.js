@@ -1,13 +1,13 @@
 module.exports = {
   food: [
     {
-      id: 1,
-      title: "Lemon Dijon Baked Salmon",
-      subtitle: "The best weekday meal.",
-      img: "test/Baked-Salmon-3.jpg",
+      id: 13,
+      title: "Fried Porkchops",
+      subtitle: "A delicious breakfast or great with curry or gravy.",
+      img: "fried_porkchops_2.png",
       category: "Food",
-      subcategory: ["Fish", "Weeknight", "Recipe"],
-      created: "Sun, April 4, 2021 09:25 PM"
+      subcategory: ["Pork", "Breakfast", "Dinner", 'Recipe'],
+      created: "Tue, May 2, 2023 04:50 PM"
     },
     {
       id: 3,
