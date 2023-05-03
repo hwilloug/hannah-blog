@@ -1,8 +1,13 @@
 <template>
-  <v-footer app absolute
-    color="primary tertiary--text">
+  <v-footer 
+    app
+    absolute
+    color="primary tertiary--text"
+  >
+    <BuyMeABook />
+    <v-spacer />
     &copy; {{ new Date().getFullYear() }} {{ site_name }}
-    <v-spacer></v-spacer>
+    <v-spacer />
     <span style="padding-right: 5px">Dark</span><v-switch
       :input-value="false"
       :rules="[toggleDark]"
@@ -13,15 +18,17 @@
 </template>
 
 <script>
-export default {
-  name: "Footer",
-  props: ["site_name"],
+import BuyMeABook from './BuyMeABook.vue';
 
-  methods: {
-    toggleDark(isDark) {
-      this.$vuetify.theme.dark = isDark;
-      return true
-    }
-  }
+export default {
+    name: "Footer",
+    props: ["site_name"],
+    methods: {
+        toggleDark(isDark) {
+            this.$vuetify.theme.dark = isDark;
+            return true;
+        }
+    },
+    components: { BuyMeABook }
 };
 </script>
