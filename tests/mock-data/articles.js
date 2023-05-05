@@ -59,6 +59,15 @@ module.exports = {
       category: "Coding",
       subcategory: ["React.js", "Django", "Web Development"],
       created: "Tuesday, May 2, 2023 09:25 AM"
+    },
+    {
+      id: 14,
+      title: "A Local Band's Website",
+      subtitle: "NoseyNeighborBand.com",
+      img: "noseyneighbor.png",
+      category: "Coding",
+      subcategory: ["React.js", "Web Development"],
+      created: "Friday, May 5, 2023 04:38 PM"
     }
   ],
   books: [
