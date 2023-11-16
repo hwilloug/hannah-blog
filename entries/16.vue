@@ -4,7 +4,7 @@
             I made a website for controlling a Raspberry Pi that controls a drip irrigation system! Check it out here -- <a href="https://raincloud.poppyland.dev/home" target="_blank">raincloud.poppyland.dev/home</a>
         </p>
         <p>
-            The site is written using FastAPI and basic HTML and CSS, and the api is served via a nginx proxy over HTTPS through my router. Route 53 routes the DNS name to my router, which has port mapping for HTTPS to be forwarded to my RPi. Check out the source code <a href="https://github.com/hwilloug/raincloud" target="_blank">~here~</a>.
+            The site is written using FastAPI and basic HTML and CSS, and the api is served via a nginx proxy over HTTPS through my router at home. Route 53 routes the DNS name to my router, which has port mapping for HTTPS to be forwarded to my RPi. Check out the source code <a href="https://github.com/hwilloug/raincloud" target="_blank">~here~</a>.
         </p>
         <p>
             Here's a list of articles that I used to make this project happen:
