@@ -50,6 +50,10 @@ export default {
       {
         text: "Poppyland",
         color: 'khaki'
+      },
+      {
+        text: "Blog",
+        color: "lightblue"
       }
     ]
   }),

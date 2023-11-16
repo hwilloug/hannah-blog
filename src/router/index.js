@@ -14,7 +14,7 @@ const routes = [
       metaTags: [
         {
           name: 'description',
-          content: 'The homepage of poppyland.dev'
+          content: 'The homepage of blog.poppyland.dev'
         }
       ]
     }
@@ -28,7 +28,7 @@ const routes = [
       metaTags: [
         {
           name: 'description',
-          content: 'About poppyland.dev'
+          content: 'About blog.poppyland.dev'
         }
       ]
     }
@@ -57,7 +57,7 @@ const routes = [
       metaTags: [
         {
           name: 'description',
-          content: 'Browsing articles of poppyland.dev'
+          content: 'Browsing articles of blog.poppyland.dev'
         }
       ]
     }
@@ -71,7 +71,7 @@ const routes = [
       metaTags: [
         {
           name: 'description',
-          content: 'Browsing articles of poppyland.dev'
+          content: 'Browsing articles of blog.poppyland.dev'
         }
       ]
     }
@@ -86,7 +86,7 @@ const routes = [
       metaTags: [
         {
           name: 'description',
-          content: 'An article on poppyland.dev'
+          content: 'An article on blog.poppyland.dev'
         }
       ]
     }

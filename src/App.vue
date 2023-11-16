@@ -38,7 +38,7 @@ export default {
   },
 
   data: () => ({
-    site_name: "Poppyland"
+    site_name: "Poppyland Blog"
   })
 
 };
