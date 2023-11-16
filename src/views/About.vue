@@ -55,6 +55,11 @@ export default {
         name: "Goodreads",
         link: "https://www.goodreads.com/hannah218",
         icon: "mdi-goodreads"
+      },
+      {
+        name: "HannahWilloughby.dev",
+        link: "https://hannahwilloughby.dev",
+        icon: "mdi-web"
       }
     ]
   })

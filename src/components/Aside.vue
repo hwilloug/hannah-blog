@@ -46,7 +46,7 @@
 export default {
   data: () => ({
     readingGoal: 50,
-    readingComplete: 17,
+    readingComplete: 50,
     readingProgress: 0
   }),
   mounted() {
