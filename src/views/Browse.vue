@@ -56,7 +56,7 @@ export default {
       query = this.$route.query
     }
     api.getArticles(query).then(resp => {
-      this.articles = resp.data
+      this.articles = resp.data.toSorted((a, b) => new Date(b.created) - new Date(a.created))
       this.loading = false
       this.pages = Math.ceil(this.articles.length / this.articlesPerPage)
 

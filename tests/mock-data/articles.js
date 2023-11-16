@@ -68,6 +68,24 @@ module.exports = {
       category: "Coding",
       subcategory: ["React.js", "Web Development"],
       created: "Friday, May 5, 2023 04:38 PM"
+    },
+    {
+      id: 15,
+      title: "A Journaling/Diary Website",
+      subtitle: "https://journal.poppyland.dev",
+      img: "poppylandjournal.png",
+      category: "Coding",
+      subcategory: ["React.js", "Web Development", "AWS", "Serverless"],
+      created: "Thursday, November 16, 2023 11:19 AM"
+    },
+    {
+      id: 16,
+      title: "Drip Irrigation via Raspberry Pi",
+      subtitle: "Lazily watering my plants",
+      img: "poppylandraincloud.png",
+      category: "Coding",
+      subcategory: ["Raspberry Pi", "Gardening", "Drip Irrigation"],
+      created: "Thursday, November 16, 2023 11:20 AM"
     }
   ],
   books: [
