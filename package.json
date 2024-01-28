@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "NODE_OPTIONS=--openssl-legacy-provider vue-cli-service serve --port 3000",
-    "build": "vue-cli-service build",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider OPENSSL_DIR=$(brew --prefix openssl) vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "deploy": "aws --region us-east-2 s3 sync ./dist s3://poppyland-dev --delete"
