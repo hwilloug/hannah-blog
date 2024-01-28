@@ -28,7 +28,7 @@
           </v-list>
         </p>
         <v-img
-          :src="require(`@/assets/poppy_buddy.jpeg`)"
+          :src="require(`@/assets/family_photo.png`)"
           alt="A picture of my cats."
           style="border: 5px solid var(--v-secondary-base); margin: 20px;"
         ></v-img>

@@ -25,7 +25,7 @@
       class="medium-padding aside-card"
       :width="$vuetify.breakpoint.mdAndUp ? '17rem' : '100%'"
     >
-     <h5 class="text-h5">2023 Reading Goal</h5>
+     <h5 class="text-h5">2024 Reading Goal</h5>
      <v-progress-linear
       height="25"
       :value="readingProgress"
@@ -36,7 +36,7 @@
         <span style="color: white">{{ value }}%</span>
       </template>
      </v-progress-linear> 
-     <a href="https://www.goodreads.com/user_challenges/40928984" target="_blank">{{ readingComplete }}/{{ readingGoal }} books</a>
+     <a href="https://www.goodreads.com/user_challenges/52076751" target="_blank">{{ readingComplete }}/{{ readingGoal }} books</a>
     </v-card>
   </v-container>
 </template>
@@ -46,7 +46,7 @@
 export default {
   data: () => ({
     readingGoal: 50,
-    readingComplete: 50,
+    readingComplete: 2,
     readingProgress: 0
   }),
   mounted() {

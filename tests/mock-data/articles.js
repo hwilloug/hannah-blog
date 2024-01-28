@@ -7,7 +7,7 @@ module.exports = {
       img: "fried_porkchops_2.png",
       category: "Food",
       subcategory: ["Pork", "Breakfast", "Dinner", 'Recipe'],
-      created: "Tue, May 2, 2023 04:50 PM"
+      created: "Tuesday, May 2, 2023 04:50 PM"
     },
     {
       id: 3,
@@ -16,7 +16,16 @@ module.exports = {
       img: "test/sourdough.jpg",
       category: "Food",
       subcategory: ["Baking", "Bread", "Easier than it looks"],
-      created: "Sun, April 4, 2021 09:25 PM"
+      created: "Sunday, April 4, 2021 09:25 PM"
+    },
+    {
+      id: 18,
+      title: "Smother Me In Lemon Curd",
+      subtitle: "Recipes of things to make that pair well with lemon curd.",
+      img: "lemon_curd.png",
+      category: "Food",
+      subcategory: ["Baking", "Lists"],
+      created: "Sunday, November 26, 2023 8:15 PM"
     }
   ],
   gardening: [
@@ -26,7 +35,7 @@ module.exports = {
       subtitle: "",
       img: "garden_boxes.png",
       category: "Gardening",
-      subcategory: ["Raised Beds", "Construction"],
+      subcategory: ["Raised Beds", "Companion Planting"],
       created: "Monday, May 1, 2023 01:30 PM"
     },
     {
@@ -35,8 +44,17 @@ module.exports = {
       subtitle: "A shelter for my future piggies",
       img: "pig_shelter_4.png",
       category: "Gardening",
-      subcategory: ["Pigs", "Livestock", "Construction"],
+      subcategory: ["Pigs", "Livestock", "Woodworking"],
       created: "Tuesday, May 2, 2023 03:40 PM"
+    },
+    {
+      id: 20,
+      title: "2024 Spring/Summer Garden Plan",
+      subtitle: "Yet again, going overboard",
+      img: "garden_2024.png",
+      category: "Gardening",
+      subcategory: ["Raised Beds", "Companion Planting", "Woodworking"],    
+      created: "Saturday, January 27, 2024 8:10 PM"
     }
   ],
   crafts: [
@@ -47,7 +65,52 @@ module.exports = {
       img: "test/yarn-over-increase1.jpg",
       category: "Crafts",
       subcategory: ["Knitting"],
-      created: "Sun, April 4, 2021 09:25 PM"
+      created: "Sunday, April 4, 2021 09:25 PM"
+    },
+    {
+      id: 19,
+      title: "Making Curtains & Valences",
+      subtitle: "Getting to Know My Sewing Machine",
+      img: "curtain_2.png",
+      category: "Crafts",
+      subcategory: ["Sewing", "DIY"],
+      created: "Saturday, January 27, 2024 7:13 PM"
+    },
+    {
+      id: 21,
+      title: "I Built An Arbor!",
+      subtitle: "",
+      img: "arbor_2.png",
+      category: "Crafts",
+      subcategory: ["Woodworking", "Easy Projects", "Backyard Projects"],
+      created: "Saturday, January 27, 2024 7:41 PM"
+    },
+    {
+      id: 22,
+      title: "Home is Where the Cake Is",
+      subtitle: "A surprise for my boyfriend who's moving in with me",
+      img: "cake_home_3.png",
+      category: "Crafts",
+      subcategory: ["Cross Stitch"],
+      created: "Saturday, January 27, 2024 7:50 PM"
+    },
+    {
+      id: 23,
+      title: "A Squirrel Sampler",
+      subtitle: "A present for my mom",
+      img: "squirrel_sampler_2.png",
+      category: "Crafts",
+      subcategory: ["Cross Stitch"],
+      created: "Saturday, January 27, 2024 7:55 PM"
+    },
+    {
+      id: 24,
+      title: "Fresh Baked Pies!",
+      subtitle: "A present for my aunt!",
+      img: "pies_2.png",
+      category: "Crafts",
+      subcategory: ["Cross Stitch"],
+      created: "Saturday, January 27, 2024 7:56 PM"
     }
   ],
   coding: [
@@ -96,7 +159,7 @@ module.exports = {
       img: "test/later.jpg",
       category: "Books",
       subcategory: ["Book Review", "Fiction", "Thriller"],
-      created: "Sun, April 4, 2021 09:25 PM"
+      created: "Sunday, April 4, 2021 09:25 PM"
     },
     {
       id: 8,
@@ -105,7 +168,7 @@ module.exports = {
       img: "jurassic_park.png",
       category: "Books",
       subcategory: ["Book Review", "Fiction", "Science Fiction"],
-      created: "Sun, July 18, 2021 11:25 AM"
+      created: "Sunday, July 18, 2021 11:25 AM"
     },
     {
       id: 9,
@@ -114,7 +177,7 @@ module.exports = {
       img: "anne.png",
       category: "Books",
       subcategory: ["Book Review", "Fiction", "Classics"],
-      created: "Sun, September 5, 2021 6:50 PM"
+      created: "Sunday, September 5, 2021 6:50 PM"
     }
   ],
   languages: [
@@ -125,7 +188,7 @@ module.exports = {
       img: "test/durtle-cake.jpg",
       category: "Languages",
       subcategory: ["Japanese", "WaniKani", "Kanji"],
-      created: "Sun, April 4, 2021 09:25 PM"
+      created: "Sunday, April 4, 2021 09:25 PM"
     }
   ]
 }

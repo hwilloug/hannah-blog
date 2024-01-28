@@ -1,6 +1,6 @@
 <template>
 <v-card-text>
-    <p>My dad and I build a pig shelter and pen!</p>
+    <p>My dad and I built a pig shelter and pen!</p>
     <img src="@/assets/pig_shelter_2.png" />
     <p>The finished base</p>
     <img src="@/assets/pig_shelter_4.png" />
