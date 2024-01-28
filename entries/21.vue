@@ -10,6 +10,12 @@
         <div class="section">
             <img src="@/assets/arbor_2.png" />
         </div>
+        <div id="resources">
+            <h2>Resources</h2>
+            <ul>
+                <li><a href="https://www.woodshopdiaries.com/how-to-build-a-garden-arbor/">How to Build a Garden Arbor</a></li>
+            </ul>
+        </div>
     </v-card-text>
 </template>
     
@@ -27,6 +33,10 @@
 <style>
 img {
     width: 100%;
+}
+
+h2 {
+    margin-bottom: 20px;
 }
 
 .section {

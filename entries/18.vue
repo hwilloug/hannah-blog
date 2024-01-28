@@ -25,5 +25,15 @@
 </script>
     
 <style>
+img {
+    width: 100%;
+}
 
+h2 {
+    margin-bottom: 20px;
+}
+
+.section {
+    margin-bottom: 50px;
+}
 </style>

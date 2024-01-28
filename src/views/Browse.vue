@@ -69,9 +69,6 @@ export default {
     articlesInPage() {
       const pageIndex = this.page - 1;
       let currentArticleIdx = pageIndex * this.articlesPerPage
-      if (pageIndex !== 0) {
-        currentArticleIdx++
-      }
       return this.articles.slice(currentArticleIdx, currentArticleIdx + this.articlesPerPage )
     }
   },

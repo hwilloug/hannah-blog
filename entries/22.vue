@@ -47,8 +47,12 @@
 </script>
     
 <style>
-img { 
+img {
     width: 100%;
+}
+
+h2 {
+    margin-bottom: 20px;
 }
 
 .section {

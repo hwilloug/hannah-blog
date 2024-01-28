@@ -19,13 +19,22 @@
                 </p>
             </div>
             <div class="section">
+                <img src="@/assets/door_curtain_3.png" />
+                <p>
+                    And here's the second scalloped valence for the front door! I thought after having practice on the first one that the second one would turn out better, but it's pretty uneven and I still had problems with puckering and breaking thread.
+                </p>
+            </div>
+            <div class="section">
                 MORE TO COME
             </div>
         </div>
         <div id="resources">
             <h2>Resources Used:</h2>
-            <a href="https://www.housebeautiful.com/design-inspiration/a31187477/how-to-make-curtains/">How to Make Curtains</a>
-            <YoutubePlayer :video_id="'cTKfXw7SMMI'" />
+            <ul>
+                <li><a href="https://www.housebeautiful.com/design-inspiration/a31187477/how-to-make-curtains/">How to Make Curtains</a></li>
+                <li><YoutubePlayer :video_id="'cTKfXw7SMMI'" /></li>
+                <li><a href="https://siemachtsewingblog.com/2023/05/how-to-fix-puckered-fabric/">How to Fix Puckered Fabric</a></li>
+            </ul>
         </div>
     </v-card-text>
 </template>
@@ -55,5 +64,9 @@
 
     .section {
         margin-bottom: 50px;
+    }
+
+    h2 {
+        margin-bottom: 20px;
     }
 </style>

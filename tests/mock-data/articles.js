@@ -111,6 +111,15 @@ module.exports = {
       category: "Crafts",
       subcategory: ["Cross Stitch"],
       created: "Saturday, January 27, 2024 7:56 PM"
+    },
+    {
+      id: 25,
+      title: "Making a Workbench",
+      subtitle: "So I can finally not work on the floor",
+      img: "workbench_2.png",
+      category: "Crafts",
+      subcategory: ["Woodworking", "Easy Projects"],
+      created: "Sunday, January 28, 2024 2:24 PM"
     }
   ],
   coding: [
