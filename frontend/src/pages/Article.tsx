@@ -45,6 +45,18 @@ const Divider = styled.hr`
     margin: 20px 0;
 `
 
+const SignatureContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+`
+
+const Signature = styled.p`
+    font-style: italic;
+    font-weight: lighter;
+    margin: 5px;
+`
+
 const ArticlePage: React.FunctionComponent = (): ReactElement => {
     let { articleSlug } = useParams()
     const navigate = useNavigate()
@@ -98,6 +110,14 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
                 <Categories category={articleInfo?.category || ""} subcategories={articleInfo?.subcategory || []} />
                 <Divider />
                 {loadedArticle}
+                <SignatureContainer>
+                    <Signature>
+                        Written by Hannah Willoughby
+                    </Signature>
+                    <Signature>
+                        {articleInfo?.createdAt}
+                    </Signature>
+                </SignatureContainer>
             </ArticleContainer>
         </ArticlePageContainer>
     )
