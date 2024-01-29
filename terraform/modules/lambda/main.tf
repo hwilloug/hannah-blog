@@ -67,5 +67,10 @@ resource "aws_lambda_function" "function" {
   role             = aws_iam_role.lambda_role.arn
   handler          = "${var.function_name}.lambda_handler"
   runtime          = "python3.10"
+  environment {
+    variables = {
+      TABLE_NAME = var.table_name
+    }
+  }
   depends_on       = [aws_iam_role_policy_attachment.lambda_attach_policy_to_role]
 }
