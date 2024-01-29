@@ -33,7 +33,7 @@ module "articles_api" {
   source = "./modules/api"
 
   partition_key = module.articles_table.hash_key
-  search_key = module.articles_table.gsi_hash_key
-  sort_key = module.articles_table.range_key
-  table_name = module.articles_table.table_name
+  search_key    = module.articles_table.gsi_hash_key
+  sort_key      = module.articles_table.range_key
+  table_name    = module.articles_table.table_name
 }

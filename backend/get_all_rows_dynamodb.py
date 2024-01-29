@@ -24,12 +24,14 @@ def lambda_handler(event, context):
                 KeyConditionExpression=f"{search_key} = :value",
                 ExpressionAttributeValues={
                     ":value": {"S": query}
-                }
+                },
+                ScanIndexForward=False
             )
         elif start_key is not None and query is None:
             response = table.scan(
                 Limit=page_size,
-                ExclusiveStartKey=start_key
+                ExclusiveStartKey=start_key,
+                ScanIndexForward=False
             )
         elif start_key is None and query is not None:
             response = table.scan(
@@ -37,11 +39,13 @@ def lambda_handler(event, context):
                 KeyConditionExpression=f"{search_key} = :value",
                 ExpressionAttributeValues={
                     ":value": {"S": query}
-                }
+                },
+                ScanIndexForward=False
             )
         else:
             response = table.scan(
-                Limit=page_size
+                Limit=page_size,
+                ScanIndexForward=False
             )
         items = response.get("Items")
         

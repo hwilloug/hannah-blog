@@ -75,5 +75,5 @@ resource "aws_lambda_function" "function" {
       SORT_KEY      = var.sort_key
     }
   }
-  depends_on       = [aws_iam_role_policy_attachment.lambda_attach_policy_to_role]
+  depends_on = [aws_iam_role_policy_attachment.lambda_attach_policy_to_role]
 }
