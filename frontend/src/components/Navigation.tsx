@@ -10,12 +10,15 @@ import { mdiBookOpenVariant } from '@mdi/js';
 import { mdiSyllabaryHiragana } from '@mdi/js';
 
 const NavigationContainer = styled.div`
+    flex-grow: 4;
+
     display: flex;
     flex-direction: row;
     gap: 20px;
+    justify-content: center;
 `
 
-const NavigationItem = styled.button`
+export const NavigationItem = styled.button`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -30,7 +33,11 @@ const NavLink = styled(Link)`
     color: black;
 `
 
-const Navigation: React.FunctionComponent = (): ReactElement => {
+interface NavigationProps {
+    showText?: boolean
+}
+
+const Navigation: React.FunctionComponent<NavigationProps> = ({showText}): ReactElement => {
     const navItems = [
         {
             name: "Food",
@@ -72,7 +79,7 @@ const Navigation: React.FunctionComponent = (): ReactElement => {
                 <NavLink to={navItem.path} key={navItem.name}>
                     <NavigationItem>
                         <Icon path={navItem.icon} size={navItemSize} />
-                        <NavigationItemText>{navItem.name}</NavigationItemText>
+                        {showText && <NavigationItemText>{navItem.name}</NavigationItemText>}
                     </NavigationItem>
                 </NavLink>
             ))}

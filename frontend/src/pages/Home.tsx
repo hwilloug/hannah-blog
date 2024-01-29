@@ -31,8 +31,6 @@ const LatestArticlesContainer = styled.div`
     flex-direction: column;
     gap: 20px;
     align-items: center;
-
-    border: 1px solid black;
 `
 
 const ArticleContainer = styled.div`
@@ -295,10 +293,10 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
     ]
 
     return (
-        <>
+        <div>
             <WelcomeBanner>
                 <Title>Welcome to Poppyland Blog</Title>
-                <Navigation />
+                <Navigation showText={true} />
             </WelcomeBanner>
             <LatestArticlesContainer>
                 <SectionTitle>Latest Articles:</SectionTitle>
@@ -321,7 +319,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
                     ))
                 }
             </LatestArticlesContainer>
-        </>
+        </div>
     )
 }
 

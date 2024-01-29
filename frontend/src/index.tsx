@@ -4,12 +4,19 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import HomePage from './pages/Home';
+import Layout from './Layout';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />
+    element: <Layout />,
+    children: [
+      {
+        path: "",
+        element: <HomePage />
+      }
+    ]
   }
 ])
 
