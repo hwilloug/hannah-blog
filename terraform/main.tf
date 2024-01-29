@@ -16,3 +16,15 @@ module "articles_table" {
   range_key_type = "S"
   table_name = "PoppylandBlogArticles"
 }
+
+module "newsletter_list_table" {
+  source = "./modules/dynamo_db_table"
+
+  gsi_hash_key = "CreatedAt"
+  gsi_hash_key_type = "S"
+  hash_key = "Email"
+  hash_key_type = "S"
+  range_key = "Subscribed"
+  range_key_type = "S"
+  table_name = "PoppylandBlogNewsletterList"
+}

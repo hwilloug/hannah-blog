@@ -19,11 +19,6 @@ resource "aws_dynamodb_table" "table" {
     type = var.gsi_hash_key_type
   }
 
-  ttl {
-    attribute_name = "TimeToExist"
-    enabled        = false
-  }
-
   global_secondary_index {
     name = "${var.gsi_hash_key}Index"
     hash_key = var.gsi_hash_key
