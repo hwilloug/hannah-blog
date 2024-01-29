@@ -11,7 +11,7 @@ const Garden2024Plan: React.FunctionComponent = (): ReactElement => {
             </Section>
             <SectionHeader>Planting Plan</SectionHeader>
             <Section>
-                <FullSizeImage src="https://blog-images.poppyland.dev/garden_2024.png" />
+                <FullSizeImage src={`${process.env.REACT_APP_IMAGES_BASE_URL}/garden_2024.png`} />
                 <p>
                     The above image is my current plan for the year. The top left box will be planted in late winter/early spring, and the bottom two boxes will be my summer boxes. My asparagus and strawberry beds are still going strong(ish), dispite my lack of care for my garden last year, and I'm going to add some annuals to those two beds with their respective companion plant pairings.
                 </p>
@@ -72,19 +72,19 @@ const Garden2024Plan: React.FunctionComponent = (): ReactElement => {
                 </p>
             </Section>
             <Section>
-                <FullSizeImage src="https://blog-images.poppyland.dev/garden_bed_design.png" />
+                <FullSizeImage src={`${process.env.REACT_APP_IMAGES_BASE_URL}/garden_bed_design.png`} />
                 <p>
                     The design for the L-shaped bed. The long sides are 8 ft long and the short sides are 3 1/2 ft long. The beds are 12" deep, and the corners are squared using 4x4 blocks.
                 </p>
             </Section>
             <Section>
-                <FullSizeImage src="https://blog-images.poppyland.dev/garden_beds_1.png" />
+                <FullSizeImage src={`${process.env.REACT_APP_IMAGES_BASE_URL}/garden_beds_1.png`} />
                 <p>
                     Cuts made and boards laid out in-shape.
                 </p>
             </Section>
             <Section>
-                <FullSizeImage src="https://blog-images.poppyland.dev/garden_beds_2.png" />
+                <FullSizeImage src={`${process.env.REACT_APP_IMAGES_BASE_URL}/garden_beds_2.png`} />
                 <p>
                     The final result! This completes all the beds I wanted to build. Next up is adding fencing and an arbor gate!
                 </p>

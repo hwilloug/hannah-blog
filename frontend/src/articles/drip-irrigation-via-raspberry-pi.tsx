@@ -25,15 +25,15 @@ const DripIrrigation: React.FunctionComponent = (): ReactElement => {
                 <p>
                     Building the circuit was not challenging, but I ordered the wrong type of MOSFET at first (P-channel rather than N-channel). I tried using it anyway, but I couldn't find any information on how to wire it up in a way that would cause the relay to be triggered. I ended up just ordering an N-channel, and it worked!
                 </p>
-                <FullSizeImage src="https://blog-images.poppyland.dev/raincloud_circuit.png" />
+                <FullSizeImage src={`${process.env.REACT_APP_IMAGES_BASE_URL}/raincloud_circuit.png`} />
                 <p>
                     The circuit diagram
                 </p>
-                <FullSizeImage src="https://blog-images.poppyland.dev/raincloud_circuit_pic.png" />
+                <FullSizeImage src={`${process.env.REACT_APP_IMAGES_BASE_URL}/raincloud_circuit_pic.png`} />
                 <p>
                     Added an LCD screen to show the status
                 </p>
-                <FullSizeImage src="https://blog-images.poppyland.dev/poppy_and_circuit.png" />
+                <FullSizeImage src={`${process.env.REACT_APP_IMAGES_BASE_URL}/poppy_and_circuit.png`} />
                 <p>
                     Poppy being cute!
                 </p>
@@ -43,9 +43,9 @@ const DripIrrigation: React.FunctionComponent = (): ReactElement => {
                 <p>
                     One thing I had to do compared to the blog article is wrap the threads of the hose accessories in teflon tape to prevent leakage. We also tied up some string to get our trench straight.
                 </p>
-                <FullSizeImage src="https://blog-images.poppyland.dev/solenoid_valve.png" />
-                <FullSizeImage src="https://blog-images.poppyland.dev/valve_and_pipes.png" />
-                <FullSizeImage src="https://blog-images.poppyland.dev/raincloud_trench_1.png" />
+                <FullSizeImage src={`${process.env.REACT_APP_IMAGES_BASE_URL}/solenoid_valve.png`} />
+                <FullSizeImage src={`${process.env.REACT_APP_IMAGES_BASE_URL}/valve_and_pipes.png`} />
+                <FullSizeImage src={`${process.env.REACT_APP_IMAGES_BASE_URL}/raincloud_trench_1.png`} />
             </Section>
             <Section>
                 <p>

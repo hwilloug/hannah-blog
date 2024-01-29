@@ -10,25 +10,25 @@ const HomeIsWhereTheCakeIs: React.FunctionComponent = (): ReactElement => {
                 </p>
             </Section>
             <Section>
-                <FullSizeImage src="https://blog-images.poppyland.dev/cake_home_4.png" />
+                <FullSizeImage src={`${process.env.REACT_APP_IMAGES_BASE_URL}/cake_home_4.png`} />
                 <p>
                     I knew I'd have a hard time finding a frame that was long enough for the original design, so I cut off the bottom section. The above screenshot is the pared-down design that I used.
                 </p>
             </Section>
             <Section>
-                <FullSizeImage src="https://blog-images.poppyland.dev/cake_home_1.png" />
+                <FullSizeImage src={`${process.env.REACT_APP_IMAGES_BASE_URL}/cake_home_1.png`} />
                 <p>
                     In progress...
                 </p>
             </Section>
             <Section>
-                <FullSizeImage src="https://blog-images.poppyland.dev/cake_home_2.png" />
+                <FullSizeImage src={`${process.env.REACT_APP_IMAGES_BASE_URL}/cake_home_2.png`} />
                 <p>
                     Almost done!
                 </p>
             </Section>
             <Section>
-                <FullSizeImage src="https://blog-images.poppyland.dev/cake_home_3.png" />
+                <FullSizeImage src={`${process.env.REACT_APP_IMAGES_BASE_URL}/cake_home_3.png`} />
                 <p>
                     And here is the final result! I added stitching along the lighter colors' borders so that they'd stand out better against the background fabric color. And I found this frame at a local thrift store that goes with it perfectly!
                 </p>

@@ -9,13 +9,13 @@ const Workbench: React.FunctionComponent = (): ReactElement => {
                     I bought a Kreg pocket hole jig, and it came with a free trial to <a href="https://academy.kregtool.com" target="_blank">Kreg Academy</a>, so I started the beginner course. The first project in the course is <a href="https://academy.kregtool.com/courses/foundations-of-building-series/simple-workbench-shelves" target="_blank">a simple workbench with shelves</a>, which I needed, so I decided to build it! It also gave me an excuse to buy a circular saw.</p>
             </Section>
             <Section>
-                <FullSizeImage src="https://blog-images.poppyland.dev/workbench_1.png" />
+                <FullSizeImage src={`${process.env.REACT_APP_IMAGES_BASE_URL}/workbench_1.png`} />
                 <p>
                     In progress...
                 </p>
             </Section>
             <Section>
-                <FullSizeImage src="https://blog-images.poppyland.dev/workbench_2.png" />
+                <FullSizeImage src={`${process.env.REACT_APP_IMAGES_BASE_URL}/workbench_2.png`} />
                 <p>
                     And here's the final result! Some problems I encountered were:
                     <ul>

@@ -10,17 +10,17 @@ const Arbor: React.FunctionComponent = (): ReactElement => {
                 </p>
             </Section>
             <Section>
-                <FullSizeImage src="https://blog-images.poppyland.dev/arbor_3.png" />
+                <FullSizeImage src={`${process.env.REACT_APP_IMAGES_BASE_URL}/arbor_3.png`} />
                 <p>
                 </p>
             </Section>
             <Section>
-                <FullSizeImage src="https://blog-images.poppyland.dev/arbor_1.png" />
+                <FullSizeImage src={`${process.env.REACT_APP_IMAGES_BASE_URL}/arbor_1.png`} />
                 <p>
                 </p>
             </Section>
             <Section>
-                <FullSizeImage src="https://blog-images.poppyland.dev/arbor_2.png" />
+                <FullSizeImage src={`${process.env.REACT_APP_IMAGES_BASE_URL}/arbor_2.png`} />
                 <p>
                 </p>
             </Section>

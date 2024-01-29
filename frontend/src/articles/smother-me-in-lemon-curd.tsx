@@ -5,7 +5,7 @@ const Curtains: React.FunctionComponent = (): ReactElement => {
     return (
         <ArticleContentContainer>
             <Section>
-                <FullSizeImage src="https://blog-images.poppyland.dev/lemon_curd.gif" />
+                <FullSizeImage src={`${process.env.REACT_APP_IMAGES_BASE_URL}/lemon_curd.gif`} />
                 <ul>
                     <li>Meringue: Use those egg whites</li>
                     <ul>

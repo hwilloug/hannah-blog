@@ -13,7 +13,7 @@ const FriedPorkchops: React.FunctionComponent = (): ReactElement => {
                 </StyledListItem>
                 <StyledListItem>
                     Next, prepare your breading. I just dump some flour into a plate, scramble two eggs on a second plate, and dump some panko bread crumbs on a third plate.
-                    <FullSizeImage src="https://blog-images.poppyland.dev/fried_porkchops_1.png" />
+                    <FullSizeImage src={`${process.env.REACT_APP_IMAGES_BASE_URL}/fried_porkchops_1.png`} />
                 </StyledListItem>
                 <StyledListItem>
                     After that, pat the pork chops dry with a paper towel. This will allow the breading to better stick to the meat.
@@ -29,7 +29,7 @@ const FriedPorkchops: React.FunctionComponent = (): ReactElement => {
                 </StyledListItem>
                 <StyledListItem>
                     Once the pork chops are golden brown, they are done. If you are worried about them being cooked through, pull one out and ensure the internal temperature is at least 145 degrees Farenheight. But, since these are thin and your oil was hot enough, they will most likely be done once they are golden. Place the cooked pork chops on a cooling rack, and sprinkle with a bit of salt while they are still hot.
-                    <FullSizeImage src="https://blog-images.poppyland.dev/fried_porkchops_2.png" />
+                    <FullSizeImage src={`${process.env.REACT_APP_IMAGES_BASE_URL}/fried_porkchops_2.png`} />
                 </StyledListItem>
                 <StyledListItem>Continue until all your pork chops are cooked to golden perfection. In between batches, it's helpful to sift out any panko that is sitting in the oil so that it doesn't burn.</StyledListItem>
             </ol>
