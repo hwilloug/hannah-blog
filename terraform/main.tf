@@ -10,8 +10,8 @@ module "articles_table" {
 
   gsi_hash_key = "Category"
   gsi_hash_key_type = "S"
-  hash_key = "Id"
-  hash_key_type = "N"
+  hash_key = "Slug"
+  hash_key_type = "S"
   range_key = "CreatedAt"
   range_key_type = "S"
   table_name = "PoppylandBlogArticles"

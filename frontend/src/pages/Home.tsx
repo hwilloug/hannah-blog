@@ -89,7 +89,7 @@ const ArticleImage = styled.img`
 `
 
 interface Article {
-    id: number
+    slug: string
     title: string
     subtitle: string
     img: string
@@ -101,7 +101,7 @@ interface Article {
 const HomePage: React.FunctionComponent = (): ReactElement => {
     const articles: Article[] = [
         {
-            id: 13,
+            slug: "fried-porkchops",
             title: "Fried Porkchops",
             subtitle: "A delicious breakfast or great with curry or gravy.",
             img: "fried_porkchops_2.png",
@@ -110,7 +110,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
             created: "Tuesday, May 2, 2023 4:50 PM"
         },
         {
-            id: 3,
+            slug: "sourdough-bread",
             title: "Sourdough Bread",
             subtitle: "This should be called wonder bread!",
             img: "test/sourdough.jpg",
@@ -119,7 +119,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
             created: "Sunday, April 4, 2021 9:25 PM"
         },
         {
-            id: 18,
+            slug: "smother-me-in-lemon-curd",
             title: "Smother Me In Lemon Curd",
             subtitle: "Recipes of things to make that pair well with lemon curd.",
             img: "lemon_curd.png",
@@ -128,7 +128,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
             created: "Sunday, November 26, 2023 8:15 PM"
         },
         {
-            id: 10,
+            slug: "summer-2023-garden",
             title: "Summer 2023 Garden",
             subtitle: "",
             img: "garden_boxes.png",
@@ -137,8 +137,8 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
             created: "Monday, May 1, 2023 1:30 PM"
         },
         {
-            id: 11,
-            title: "Building a Pig Pen",
+            slug: "building-a-pig-shelter",
+            title: "Building a Pig Shelter",
             subtitle: "A shelter for my future piggies",
             img: "pig_shelter_4.png",
             category: "Gardening",
@@ -146,7 +146,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
             created: "Tuesday, May 2, 2023 3:40 PM"
         },
         {
-            id: 20,
+            slug: "2024-spring-summer-garden-plan",
             title: "2024 Spring/Summer Garden Plan",
             subtitle: "Yet again, going overboard",
             img: "garden_2024.png",
@@ -155,7 +155,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
             created: "Saturday, January 27, 2024 8:10 PM"
         },
         {
-            id: 4,
+            slug: "knit-ut-hotpad",
             title: "Knit UT Hotpad",
             subtitle: "Go Vols!",
             img: "test/yarn-over-increase1.jpg",
@@ -164,7 +164,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
             created: "Sunday, April 4, 2021 9:25 PM"
         },
         {
-            id: 19,
+            slug: "making-curtains-and-valences",
             title: "Making Curtains & Valences",
             subtitle: "Getting to Know My Sewing Machine",
             img: "curtain_2.png",
@@ -173,7 +173,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
             created: "Saturday, January 27, 2024 7:13 PM"
         },
         {
-            id: 21,
+            slug: 'i-built-an-arbor',
             title: "I Built An Arbor!",
             subtitle: "",
             img: "arbor_2.png",
@@ -182,7 +182,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
             created: "Saturday, January 27, 2024 7:41 PM"
         },
         {
-            id: 22,
+            slug: 'home-is-where-the-cake-is',
             title: "Home is Where the Cake Is",
             subtitle: "A surprise for my boyfriend who's moving in with me",
             img: "cake_home_3.png",
@@ -191,7 +191,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
             created: "Saturday, January 27, 2024 7:50 PM"
         },
         {
-            id: 23,
+            slug: 'squirrel-sampler',
             title: "A Squirrel Sampler",
             subtitle: "A present for my mom",
             img: "squirrel_sampler_2.png",
@@ -200,7 +200,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
             created: "Saturday, January 27, 2024 7:55 PM"
         },
         {
-            id: 24,
+            slug: 'fresh-baked-pies',
             title: "Fresh Baked Pies!",
             subtitle: "A present for my aunt!",
             img: "pies_2.png",
@@ -209,7 +209,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
             created: "Saturday, January 27, 2024 7:56 PM"
         },
         {
-            id: 25,
+            slug: 'making-a-workbench',
             title: "Making a Workbench",
             subtitle: "So I can finally not work on the floor",
             img: "workbench_2.png",
@@ -218,7 +218,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
             created: "Sunday, January 28, 2024 2:24 PM"
         },
         {
-            id: 12,
+            slug: 'connecting-a-django-backend-to-a-react-frontend-via-cloudfront-and-terraform',
             title: "Connecting a Django Backend to a React Frontend via Cloudfront and Terraform",
             subtitle: "",
             img: "tcahdotcom.png",
@@ -227,7 +227,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
             created: "Tuesday, May 2, 2023 9:25 AM"
         },
         {
-            id: 14,
+            slug: 'a-local-bands-website',
             title: "A Local Band's Website",
             subtitle: "NoseyNeighborBand.com",
             img: "noseyneighbor.png",
@@ -236,7 +236,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
             created: "Friday, May 5, 2023 4:38 PM"
         },
         {
-            id: 15,
+            slug: 'a-journaling-diary-website',
             title: "A Journaling/Diary Website",
             subtitle: "https://journal.poppyland.dev",
             img: "poppylandjournal.png",
@@ -245,7 +245,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
             created: "Thursday, November 16, 2023 11:19 AM"
         },
         {
-            id: 16,
+            slug: 'drip-irrigation-via-raspberry-pi',
             title: "Drip Irrigation via Raspberry Pi",
             subtitle: "Lazily watering my plants",
             img: "poppylandraincloud.png",
@@ -254,8 +254,8 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
             created: "Thursday, November 16, 2023 11:20 AM"
         },
         {
-            id: 6,
-            title: "Later by Stephen King",
+            slug: 'later-review',
+            title: "Later by Stephen King: A Review",
             subtitle: "More like, now",
             img: "test/later.jpg",
             category: "Books",
@@ -263,7 +263,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
             created: "Sunday, April 4, 2021 9:25 PM"
         },
         {
-            id: 8,
+            slug: 'jurassic-park-review',
             title: "Jurassic Park: A Review",
             subtitle: "I've got dinosaurs on the brain",
             img: "jurassic_park.png",
@@ -272,7 +272,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
             created: "Sunday, July 18, 2021 11:25 AM"
         },
         {
-            id: 9,
+            slug: 'thoughts-on-anne-of-green-gables',
             title: "Thoughts on Anne of Green Gables",
             subtitle: "...",
             img: "anne.png",
@@ -281,7 +281,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
             created: "Sunday, September 5, 2021 6:50 PM"
         },
         {
-            id: 7,
+            slug: 'ive-obtained-the-cake',
             title: "I've obtained the cake",
             subtitle: "Reaching level 60 on WaniKani",
             img: "test/durtle-cake.jpg",
@@ -302,7 +302,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
                 <SectionTitle>Latest Articles:</SectionTitle>
                 {articles.sort((a: Article, b: Article) => new Date(b.created) as any - (new Date(a.created) as any))
                     .map((article) => (
-                        <ArticleLink to={`articles/${article.id}`} key={article.id}>
+                        <ArticleLink to={`articles/${article.slug}`} key={article.slug}>
                             <ArticleContainer>
                                 <ArticleImage src={`https://blog-images.poppyland.dev/${article.img}`} />
                                 <ArticleDetailContainer>

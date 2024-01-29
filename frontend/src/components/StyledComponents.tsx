@@ -8,3 +8,17 @@ export const StyledButton = styled.button`
     text-transform: uppercase;
     padding: 5px 5px;
 `
+
+export const ArticleContentContainer = styled.div``
+
+export const Section = styled.div`
+    margin-bottom: 50px;
+`
+
+export const FullSizeImage = styled.img`
+    width: 100%;
+`
+
+export const SectionHeader = styled.h2`
+ margin-bottom: 20px;
+`
