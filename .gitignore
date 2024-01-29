@@ -113,3 +113,5 @@ src/assets/test/
 .terraform
 .terraform.tfstate.lock.info
 .terraform.lock.hcl
+terraform.tfstate.backup
+lambda_deployment_packages
