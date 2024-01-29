@@ -6,36 +6,37 @@ from json import dumps
 
 def lambda_handler(event, context):
     table_name = environ.get("TABLE_NAME")
+    search_key = environ.get("SEARCH_KEY")
     page_size = 5
     start_key = event.get("exclusive_start_key")
     query_params = event.get("queryStringParameters", {})
-    category = query_params.get("category")
+    query = query_params.get(search_key.lower())
 
     dynamodb = resource('dynamodb')
 
     table = dynamodb.Table(table_name)
 
     try:
-        if start_key is not None and category is not None:
+        if start_key is not None and query is not None:
             response = table.scan(
                 Limit=page_size,
                 ExclusiveStartKey=start_key,
-                KeyConditionExpression="Category = :value",
+                KeyConditionExpression=f"{search_key} = :value",
                 ExpressionAttributeValues={
-                    ":value": {"S": category}
+                    ":value": {"S": query}
                 }
             )
-        elif start_key is not None and category is None:
+        elif start_key is not None and query is None:
             response = table.scan(
                 Limit=page_size,
                 ExclusiveStartKey=start_key
             )
-        elif start_key is None and category is not None:
+        elif start_key is None and query is not None:
             response = table.scan(
                 Limit=page_size,
-                KeyConditionExpression="Category = :value",
+                KeyConditionExpression=f"{search_key} = :value",
                 ExpressionAttributeValues={
-                    ":value": {"S": category}
+                    ":value": {"S": query}
                 }
             )
         else:

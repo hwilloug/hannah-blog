@@ -2,6 +2,9 @@ module "get_all_rows_lambda" {
   source = "../lambda"
 
   function_name = "get_all_rows_dynamodb"
+  partition_key = var.partition_key
+  search_key    = var.search_key
+  sort_key      = var.sort_key
   table_name    = var.table_name
 }
 

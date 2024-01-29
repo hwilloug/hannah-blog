@@ -69,7 +69,10 @@ resource "aws_lambda_function" "function" {
   runtime          = "python3.10"
   environment {
     variables = {
-      TABLE_NAME = var.table_name
+      TABLE_NAME    = var.table_name
+      SEARCH_KEY    = var.search_key
+      PARTITION_KEY = var.partition_key
+      SORT_KEY      = var.sort_key
     }
   }
   depends_on       = [aws_iam_role_policy_attachment.lambda_attach_policy_to_role]
