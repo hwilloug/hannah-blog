@@ -108,3 +108,8 @@ dist
 .DS_Store
 src/.DS_Store
 src/assets/test/
+
+# terraform
+.terraform
+.terraform.tfstate.lock.info
+.terraform.lock.hcl
