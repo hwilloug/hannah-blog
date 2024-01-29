@@ -1,4 +1,4 @@
 output "base_url" {
-  value       = aws_api_gateway_deployment.api.invoke_url
+  value       = aws_apigatewayv2_stage.stage.invoke_url
   description = "The API's URL"
 }

@@ -4,7 +4,7 @@ variable "function_name" {
 }
 
 output "function_name" {
-  value       = var.function_name
+  value       = aws_lambda_function.function.function_name
   description = "Same as input variable"
 }
 

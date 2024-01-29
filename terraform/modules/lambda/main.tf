@@ -61,10 +61,11 @@ data "archive_file" "function_code_zip" {
 }
 
 resource "aws_lambda_function" "function" {
-  filename      = data.archive_file.function_code_zip.output_path
-  function_name = var.function_name
-  role          = aws_iam_role.lambda_role.arn
-  handler       = "${var.function_name}.lambda_handler"
-  runtime       = "python3.8"
-  depends_on    = [aws_iam_role_policy_attachment.lambda_attach_policy_to_role]
+  filename         = data.archive_file.function_code_zip.output_path
+  source_code_hash = data.archive_file.function_code_zip.output_sha256
+  function_name    = "${var.table_name}_${var.function_name}"
+  role             = aws_iam_role.lambda_role.arn
+  handler          = "${var.function_name}.lambda_handler"
+  runtime          = "python3.10"
+  depends_on       = [aws_iam_role_policy_attachment.lambda_attach_policy_to_role]
 }
