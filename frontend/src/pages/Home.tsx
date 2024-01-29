@@ -3,6 +3,7 @@ import { ReactElement } from "react";
 import Navigation from "../components/Navigation";
 import { Link } from "react-router-dom";
 import Categories from "../components/Categories";
+import { BodyContainer } from "../components/StyledComponents";
 
 const WelcomeBanner = styled.div`
     border: 1px solid black;
@@ -90,15 +91,6 @@ export const articles: Article[] = [
         createdAt: "Tuesday, May 2, 2023 4:50 PM"
     },
     {
-        slug: "sourdough-bread",
-        title: "Sourdough Bread",
-        subtitle: "This should be called wonder bread!",
-        img: "test/sourdough.jpg",
-        category: "Food",
-        subcategory: ["Baking", "Bread", "Easier than it looks"],
-        createdAt: "Sunday, April 4, 2021 9:25 PM"
-    },
-    {
         slug: "smother-me-in-lemon-curd",
         title: "Smother Me In Lemon Curd",
         subtitle: "Recipes of things to make that pair well with lemon curd.",
@@ -133,15 +125,6 @@ export const articles: Article[] = [
         category: "Gardening",
         subcategory: ["Raised Beds", "Companion Planting", "Woodworking"],    
         createdAt: "Saturday, January 27, 2024 8:10 PM"
-    },
-    {
-        slug: "knit-ut-hotpad",
-        title: "Knit UT Hotpad",
-        subtitle: "Go Vols!",
-        img: "test/yarn-over-increase1.jpg",
-        category: "Crafts",
-        subcategory: ["Knitting"],
-        createdAt: "Sunday, April 4, 2021 9:25 PM"
     },
     {
         slug: "making-curtains-and-valences",
@@ -234,15 +217,6 @@ export const articles: Article[] = [
         createdAt: "Thursday, November 16, 2023 11:20 AM"
     },
     {
-        slug: 'later-review',
-        title: "Later by Stephen King: A Review",
-        subtitle: "More like, now",
-        img: "test/later.jpg",
-        category: "Books",
-        subcategory: ["Book Review", "Fiction", "Thriller"],
-        createdAt: "Sunday, April 4, 2021 9:25 PM"
-    },
-    {
         slug: 'jurassic-park-review',
         title: "Jurassic Park: A Review",
         subtitle: "I've got dinosaurs on the brain",
@@ -254,27 +228,17 @@ export const articles: Article[] = [
     {
         slug: 'thoughts-on-anne-of-green-gables',
         title: "Thoughts on Anne of Green Gables",
-        subtitle: "...",
+        subtitle: "A reminder that it's okay to be a romantic",
         img: "anne.png",
         category: "Books",
         subcategory: ["Book Review", "Fiction", "Classics"],
         createdAt: "Sunday, September 5, 2021 6:50 PM"
-    },
-    {
-        slug: 'ive-obtained-the-cake',
-        title: "I've obtained the cake",
-        subtitle: "Reaching level 60 on WaniKani",
-        img: "test/durtle-cake.jpg",
-        category: "Languages",
-        subcategory: ["Japanese", "WaniKani", "Kanji"],
-        createdAt: "Sunday, April 4, 2021 9:25 PM"
-    }
-      
+    } 
 ]
 
 const HomePage: React.FunctionComponent = (): ReactElement => {
     return (
-        <div>
+        <BodyContainer>
             <WelcomeBanner>
                 <Title>Welcome to Poppyland Blog</Title>
                 <Navigation showText={true} />
@@ -297,7 +261,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
                     ))
                 }
             </LatestArticlesContainer>
-        </div>
+        </BodyContainer>
     )
 }
 

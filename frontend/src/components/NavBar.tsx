@@ -4,7 +4,7 @@ import Navigation, { NavigationItem } from "./Navigation";
 import { mdiMagnify } from '@mdi/js';
 import Icon from "@mdi/react";
 import { mdiHelpCircleOutline } from '@mdi/js';
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 const NavBarContainer = styled.div`

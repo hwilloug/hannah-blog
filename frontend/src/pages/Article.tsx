@@ -1,18 +1,19 @@
 import styled from "@emotion/styled";
 import { ReactElement, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { StyledButton } from "../components/StyledComponents";
+import { BodyContainer, StyledButton } from "../components/StyledComponents";
 import { mdiArrowLeftThick } from '@mdi/js';
 import Icon from "@mdi/react";
 import { Article, articles } from "./Home";
 import Categories from "../components/Categories";
 
 
-const ArticlePageContainer = styled.div`
+const ArticlePageContainer = styled(BodyContainer)`
     display: flex;
     flex-direction: column;
     gap: 20px;
     max-width: 35rem;
+    min-width: 35rem;
 `
 
 const BackButtonContainer = styled.div`
@@ -35,10 +36,12 @@ const ArticleTitle = styled.h1``
 
 const ArticleSubtitle = styled.h5`
     color: grey;
+    font-weight: lighter;
 `
 
 const ArticleImage = styled.img`
     max-height: 30rem;
+    width: 100%;
 `
 
 const Divider = styled.hr`

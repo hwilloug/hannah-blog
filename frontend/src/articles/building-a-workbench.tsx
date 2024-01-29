@@ -6,7 +6,7 @@ const Workbench: React.FunctionComponent = (): ReactElement => {
         <ArticleContentContainer>
             <Section>
                 <p>
-                    I bought a Kreg pocket hole jig, and it came with a free trial to <a href="https://academy.kregtool.com">Kreg Academy</a>, so I started the beginner course. The first project in the course is <a href="https://academy.kregtool.com/courses/foundations-of-building-series/simple-workbench-shelves">a simple workbench with shelves</a>, which I needed, so I decided to build it! It also gave me an excuse to buy a circular saw.</p>
+                    I bought a Kreg pocket hole jig, and it came with a free trial to <a href="https://academy.kregtool.com" target="_blank">Kreg Academy</a>, so I started the beginner course. The first project in the course is <a href="https://academy.kregtool.com/courses/foundations-of-building-series/simple-workbench-shelves" target="_blank">a simple workbench with shelves</a>, which I needed, so I decided to build it! It also gave me an excuse to buy a circular saw.</p>
             </Section>
             <Section>
                 <FullSizeImage src="https://blog-images.poppyland.dev/workbench_1.png" />
@@ -28,7 +28,7 @@ const Workbench: React.FunctionComponent = (): ReactElement => {
             <Section>
                 <SectionHeader>Resources</SectionHeader>
                 <ul>
-                    <li><a href="https://academy.kregtool.com/courses/foundations-of-building-series/simple-workbench-shelves">Kreg Academy Foundations of Building Series: Simple Workbench + Shelves</a></li>
+                    <li><a href="https://academy.kregtool.com/courses/foundations-of-building-series/simple-workbench-shelves" target="_blank">Kreg Academy Foundations of Building Series: Simple Workbench + Shelves</a></li>
                 </ul>
             </Section>
         </ArticleContentContainer>

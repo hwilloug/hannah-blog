@@ -16,7 +16,6 @@ const ContentContainer = styled.div`
     display: flex;
     flex-direction: row;
     gap: 50px;
-    padding: 20px;
     justify-content: center;
 `
 

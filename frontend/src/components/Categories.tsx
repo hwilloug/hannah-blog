@@ -31,7 +31,7 @@ const Categories: React.FunctionComponent<CategoriesProps> = ({category, subcate
     return (
         <CategoryContainer>
             <Category>{category}</Category>
-            {subcategories.map((subcategory) => <Subcategory>{subcategory}</Subcategory>)}
+            {subcategories.map((subcategory) => <Subcategory key={subcategory}>{subcategory}</Subcategory>)}
         </CategoryContainer>
     )
 }
