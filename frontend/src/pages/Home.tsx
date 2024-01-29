@@ -43,7 +43,7 @@ const ArticleContainer = styled.div`
 
     border: 1px solid black;
     width: 35rem;
-    padding: 20px;
+    padding: 10px;
     background-color: white;
 `
 
@@ -66,6 +66,7 @@ const CategoryContainer = styled.div`
     flex-direction: row;
     gap: 10px;
     text-transform: capitalize;
+    flex-wrap: wrap;
 `
 
 const Category = styled.div`
@@ -83,6 +84,10 @@ const Subcategory = styled(Category)`
 const ArticleLink = styled(Link)`
     text-decoration: none;
     color: black;
+`
+
+const ArticleImage = styled.img`
+    width: 10rem;
 `
 
 interface Article {
@@ -299,8 +304,9 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
                 <SectionTitle>Latest Articles:</SectionTitle>
                 {articles.sort((a: Article, b: Article) => new Date(b.created) as any - (new Date(a.created) as any))
                     .map((article) => (
-                        <ArticleLink to={`articles/${article.id}`}>
+                        <ArticleLink to={`articles/${article.id}`} key={article.id}>
                             <ArticleContainer>
+                                <ArticleImage src={`https://blog-images.poppyland.dev/${article.img}`} />
                                 <ArticleDetailContainer>
                                     <ArticleTitle>{article.title}</ArticleTitle>
                                     <ArticleSubtitle>{article.subtitle}</ArticleSubtitle>
