@@ -115,3 +115,6 @@ src/assets/test/
 .terraform.lock.hcl
 terraform.tfstate.backup
 lambda_deployment_packages
+
+batch-write-input.json
+articles.json
