@@ -4,6 +4,7 @@ import Navigation, { NavigationItem } from "./Navigation";
 import { mdiMagnify } from '@mdi/js';
 import Icon from "@mdi/react";
 import { mdiHelpCircleOutline } from '@mdi/js';
+import { Link, useNavigate } from "react-router-dom";
 
 
 const NavBarContainer = styled.div`
@@ -19,10 +20,14 @@ const Title = styled.span`
     color: white;
 `
 
+const HomeLink = styled(Link)`
+    text-decoration: none;
+`
+
 const NavBar: React.FunctionComponent = (): ReactElement => {
     return (
         <NavBarContainer>
-            <Title>Poppyland Blog</Title>
+            <HomeLink to="/"><Title>Poppyland Blog</Title></HomeLink>
             <Navigation />
             <NavigationItem><Icon path={mdiMagnify} size={1} /></NavigationItem>
             <NavigationItem><Icon path={mdiHelpCircleOutline} size={1} /></NavigationItem>

@@ -17,6 +17,7 @@ const ContentContainer = styled.div`
     flex-direction: row;
     gap: 50px;
     padding: 20px;
+    justify-content: center;
 `
 
 const Layout: React.FunctionComponent = (): ReactElement => {
