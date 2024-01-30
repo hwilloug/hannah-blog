@@ -21,8 +21,8 @@ const ContentContainer = styled.div`
 `;
 
 const Layout: React.FunctionComponent = (): ReactElement => {
-  const theme = useTheme()
-  const md = useMediaQuery(theme.breakpoints.up('md'))
+  const theme = useTheme();
+  const md = useMediaQuery(theme.breakpoints.up("md"));
 
   const [darkMode, setDarkMode] = useState<boolean>(false);
 
@@ -36,19 +36,17 @@ const Layout: React.FunctionComponent = (): ReactElement => {
   return (
     <LayoutContainer>
       <NavBar />
-      {
-        md ? (
-          <ContentContainer>
-            <Outlet />
-            <Aside />
-          </ContentContainer>
-        ) : (
-          <>
-            <Outlet />
-            <Aside />
-          </>
-        )
-      }
+      {md ? (
+        <ContentContainer>
+          <Outlet />
+          <Aside />
+        </ContentContainer>
+      ) : (
+        <>
+          <Outlet />
+          <Aside />
+        </>
+      )}
       <Footer darkMode={darkMode} handleDarkModeChange={handleDarkModeChange} />
     </LayoutContainer>
   );

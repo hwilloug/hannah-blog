@@ -33,9 +33,9 @@ const theme = createTheme({
       md: 900,
       lg: 1200,
       xl: 1536,
-    }
-  }
-})
+    },
+  },
+});
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,

@@ -10,7 +10,7 @@ import { BreakPointProps } from "./StyledComponents";
 
 const NavBarContainer = styled.div<BreakPointProps>`
   display: flex;
-  flex-direction: ${(props) => props.break ? "column": "row"};
+  flex-direction: ${(props) => (props.break ? "column" : "row")};
   gap: 20px;
   background-color: grey;
   min-width: 100vw;
@@ -24,7 +24,7 @@ const RightIconContainer = styled.div`
   flex-direction: row;
   gap: 20px;
   margin: 0 20px;
-`
+`;
 
 const Title = styled.span`
   font-size: 24px;
@@ -37,8 +37,8 @@ const HomeLink = styled(Link)`
 `;
 
 const NavBar: React.FunctionComponent = (): ReactElement => {
-  const theme = useTheme()
-  const sm = useMediaQuery(theme.breakpoints.down('sm'))
+  const theme = useTheme();
+  const sm = useMediaQuery(theme.breakpoints.down("sm"));
 
   const smallPartial = (
     <>
@@ -57,7 +57,7 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
       </NavBarContainer>
       <Navigation />
     </>
-  )
+  );
 
   const defaultPartial = (
     <>
@@ -72,11 +72,11 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
         <Icon path={mdiHelpCircleOutline} size={1} />
       </NavigationItem>
     </>
-  )
+  );
 
   return (
     <NavBarContainer break={sm}>
-      { sm ? smallPartial : defaultPartial }
+      {sm ? smallPartial : defaultPartial}
     </NavBarContainer>
   );
 };

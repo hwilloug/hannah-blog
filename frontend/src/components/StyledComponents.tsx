@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export interface BreakPointProps {
-  break: boolean
+  break: boolean;
 }
 
 export const BodyContainer = styled.div`
