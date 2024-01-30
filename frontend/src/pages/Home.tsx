@@ -71,6 +71,16 @@ const ArticleImage = styled.img`
     width: 10rem;
 `
 
+export interface ArticlesApiResponse {
+    Slug: string
+    Title: string
+    Subtitle: string
+    Img: string
+    Category: string
+    Subcategory: string[]
+    CreatedAt: string
+}
+
 export interface Article {
     slug: string
     title: string
@@ -87,7 +97,6 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
 
     useMemo(() => {
          const getArticles = async () => {
-            // @ts-ignore
             try {
                 const resp = await axios.get(
                     `${process.env.REACT_APP_API_URL}/articles`,
@@ -97,7 +106,15 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
                         }
                     }
                 )
-                setArticles(resp.data)
+                setArticles(resp.data.map((d: ArticlesApiResponse) => ({
+                    slug: d.Slug,
+                    title: d.Title,
+                    subtitle: d.Subtitle,
+                    img: d.Img,
+                    category: d.Category,
+                    subcategory: d.Subcategory,
+                    createdAt: d.CreatedAt
+                })))
             } catch (e) {
                 console.error("Error getting articles", e)
             }
