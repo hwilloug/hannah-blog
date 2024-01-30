@@ -108,3 +108,13 @@ dist
 .DS_Store
 src/.DS_Store
 src/assets/test/
+
+# terraform
+.terraform
+.terraform.tfstate.lock.info
+.terraform.lock.hcl
+terraform.tfstate.backup
+lambda_deployment_packages
+
+batch-write-input.json
+articles.json
