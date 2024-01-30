@@ -30,7 +30,10 @@ def lambda_handler(event, context):
         items = response.get("Items")
         return {
             "statusCode": 200,
-            "body": dumps(items)
+            "body": dumps(items),
+            'headers' : {
+                'Access-Control-Allow-Origin' : '*'
+            }
         }
     except ClientError as e:
         print(f"Error scanning DynamoDB table: {e}")

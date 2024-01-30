@@ -31,7 +31,10 @@ def lambda_handler(event, context):
         else:
             return {
                 "statusCode": 404,
-                "body": f"Item with {partition_key}: '{value}' not found"
+                "body": f"Item with {partition_key}: '{value}' not found",
+                'headers' : {
+                    'Access-Control-Allow-Origin' : '*'
+                }
             }
 
     except ClientError as e:

@@ -88,8 +88,19 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
     useMemo(() => {
          const getArticles = async () => {
             // @ts-ignore
-            const resp = await axios.get(`${process.env.REACT_APP_API_URL}/articles`)
-            setArticles(resp.data)
+            try {
+                const resp = await axios.get(
+                    `${process.env.REACT_APP_API_URL}/articles`,
+                    {
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    }
+                )
+                setArticles(resp.data)
+            } catch (e) {
+                console.error("Error getting articles", e)
+            }
          }
 
         getArticles()
