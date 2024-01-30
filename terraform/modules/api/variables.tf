@@ -1,3 +1,13 @@
+variable "domain" {
+  type        = string
+  description = "The name of domain name in which to deploy the api"
+}
+
+output "domain" {
+  value       = var.domain
+  description = "Same as input variable"
+}
+
 variable "partition_key" {
   type        = string
   description = "The name of the partition on which to query"
