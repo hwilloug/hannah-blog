@@ -1,13 +1,18 @@
 import { ReactElement } from "react";
-import { ArticleContentContainer, FullSizeImage, RecipeContainer, Section, SectionHeader, StyledListItem } from "../components/StyledComponents";
+import {
+  ArticleContentContainer,
+  FullSizeImage,
+  RecipeContainer,
+  Section,
+  SectionHeader,
+  StyledListItem,
+} from "../components/StyledComponents";
 import styled from "@emotion/styled";
-import SyntaxHighlighter from 'react-syntax-highlighter'
-
+import SyntaxHighlighter from "react-syntax-highlighter";
 
 const TcahDotCom: React.FunctionComponent = (): ReactElement => {
-
-    const code = [
-`locals {
+  const code = [
+    `locals {
     s3_origin_id = "S3-origin-react-app"
     alb_origin_id = "ALB-origin-django-app"
   }
@@ -151,31 +156,67 @@ const TcahDotCom: React.FunctionComponent = (): ReactElement => {
         restriction_type = "none"
       }
     }
-  }`
-    ]
+  }`,
+  ];
 
+  return (
+    <ArticleContentContainer>
+      <Section>
+        <p>
+          Using a combination of{" "}
+          <a
+            href="https://earthly.dev/blog/deploy-dockcontainers-to-awsecs-using-terraform/"
+            target="_blank"
+          >
+            this blog post
+          </a>{" "}
+          and{" "}
+          <a
+            href="https://medium.com/geekculture/serve-your-react-app-with-aws-cloudfront-using-gitlab-and-terraform-322b2526943e"
+            target="_blank"
+          >
+            this blog post
+          </a>
+          , I created the infrastructure in code for my dad's website. The only
+          things I really changed were some variable names and how I connected
+          the backend up to the frontend. Below is the terraform code for my
+          cloudfront distribution.
+        </p>
+      </Section>
+      <Section>
+        <SyntaxHighlighter language="hcl" showLineNumbers>
+          {code}
+        </SyntaxHighlighter>
+      </Section>
+      <Section>
+        <p>
+          {" "}
+          To get the frontend talking to the backend, I added another origin for
+          my ALB. Then, I added the ordered_cache_behavior for the{" "}
+          <SyntaxHighlighter customStyle={{ display: "inline" }}>
+            /api/*
+          </SyntaxHighlighter>{" "}
+          and{" "}
+          <SyntaxHighlighter customStyle={{ display: "inline" }}>
+            /admin/*
+          </SyntaxHighlighter>{" "}
+          endpoints of the backend. Now, the same Cloudfront distribution serves
+          the front- and back-ends, and the fronend can just make a call to
+          /api/entry to get the entries from the database, as opposed to having
+          to use the full URL for the backend ALB and having to deal with CORS.
+        </p>
+      </Section>
+      <Section>
+        <p>
+          To visit the full website,{" "}
+          <a href="https://d1pvqbo0it77t5.cloudfront.net/" target="_blank">
+            click here
+          </a>
+          !
+        </p>
+      </Section>
+    </ArticleContentContainer>
+  );
+};
 
-    return (
-        <ArticleContentContainer>
-            <Section>
-                <p>Using a combination of <a href="https://earthly.dev/blog/deploy-dockcontainers-to-awsecs-using-terraform/" target="_blank">this blog post</a> and <a href="https://medium.com/geekculture/serve-your-react-app-with-aws-cloudfront-using-gitlab-and-terraform-322b2526943e" target="_blank">this blog post</a>, I created the infrastructure in code for my dad's website. The only things I really changed were some variable names and how I connected the backend up to the frontend. Below is the terraform code for my cloudfront distribution.</p>
-            </Section>
-            <Section>
-                <SyntaxHighlighter 
-                    language="hcl"
-                    showLineNumbers
-                >
-                    {code}
-                </SyntaxHighlighter>
-            </Section>
-            <Section>
-                <p> To get the frontend talking to the backend, I added another origin for my ALB. Then, I added the ordered_cache_behavior for the <SyntaxHighlighter customStyle={{display: 'inline'}}>/api/*</SyntaxHighlighter> and <SyntaxHighlighter customStyle={{display: 'inline'}}>/admin/*</SyntaxHighlighter> endpoints of the backend. Now, the same Cloudfront distribution serves the front- and back-ends, and the fronend can just make a call to /api/entry to get the entries from the database, as opposed to having to use the full URL for the backend ALB and having to deal with CORS.</p>
-            </Section>
-            <Section>
-                <p>To visit the full website, <a href="https://d1pvqbo0it77t5.cloudfront.net/" target="_blank">click here</a>!</p>
-            </Section>
-        </ArticleContentContainer>
-    )
-}
-
-export default TcahDotCom
+export default TcahDotCom;

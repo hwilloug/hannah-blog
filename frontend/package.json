@@ -17,6 +17,7 @@
     "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.18",
     "axios": "^1.6.7",
+    "prettier": "^3.2.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.3",
@@ -30,6 +31,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "format": "npx prettier . --write",
     "invalidatecache": "aws cloudfront create-invalidation --distribution-id E2U5RN0983NUOG --paths '/*'",
     "deploy": "npm run build && aws s3 sync ./build s3://poppyland-blog-frontend && npm run invalidatecache"
   },

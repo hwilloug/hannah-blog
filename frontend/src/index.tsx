@@ -1,12 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import reportWebVitals from './reportWebVitals';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import HomePage from './pages/Home';
-import Layout from './Layout';
-import ArticlePage from './pages/Article';
-
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import HomePage from "./pages/Home";
+import Layout from "./Layout";
+import ArticlePage from "./pages/Article";
 
 const router = createBrowserRouter([
   {
@@ -15,23 +14,23 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <HomePage />
+        element: <HomePage />,
       },
       {
         path: "articles/:articleSlug",
-        element: <ArticlePage />
-      }
-    ]
-  }
-])
+        element: <ArticlePage />,
+      },
+    ],
+  },
+]);
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement,
 );
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function
