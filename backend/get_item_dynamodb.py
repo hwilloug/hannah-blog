@@ -26,7 +26,10 @@ def lambda_handler(event, context):
         if items:
             return {
                 "statusCode": 200,
-                "body": dumps(items[0])
+                "body": dumps(items[0]),
+                'headers' : {
+                    'Access-Control-Allow-Origin' : '*'
+                }
             }
         else:
             return {

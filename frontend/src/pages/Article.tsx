@@ -88,8 +88,16 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
     useMemo(() => {
         const getArticleInfo = async () => {
             try {
-                const resp = axios.get(`${process.env.REACT_APP_API_URL}/articles/${articleSlug}`)
-                setArticleInfo(articleInfo)
+                const resp = await axios.get(`${process.env.REACT_APP_API_URL}/articles/${articleSlug}`)
+                setArticleInfo({
+                    slug: resp.data.Slug,
+                    title: resp.data.Title,
+                    subtitle: resp.data.Subtitle,
+                    img: resp.data.Img,
+                    category: resp.data.Category,
+                    subcategory: resp.data.Subcategory,
+                    createdAt: resp.data.CreatedAt
+                })
             } catch (e) {
                 console.error('Error loading article info for article:', articleSlug, e)
             }

@@ -128,6 +128,9 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
             <WelcomeBanner>
                 <Title>Welcome to Poppyland Blog</Title>
                 <Navigation showText={true} />
+                <p>
+                    We're currently undergoing an overhaul! Thank you for your patience :)
+                </p>
             </WelcomeBanner>
             <LatestArticlesContainer>
                 <SectionTitle>Latest Articles:</SectionTitle>

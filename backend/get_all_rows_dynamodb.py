@@ -39,5 +39,8 @@ def lambda_handler(event, context):
         print(f"Error scanning DynamoDB table: {e}")
         return {
             'statusCode': 500,
-            'body': f"Error scanning DynamoDB table: {e}"
+            'body': f"Error scanning DynamoDB table: {e}",
+            'headers' : {
+                'Access-Control-Allow-Origin' : '*'
+            }
         }
