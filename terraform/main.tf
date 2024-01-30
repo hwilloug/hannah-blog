@@ -32,9 +32,19 @@ module "newsletter_list_table" {
 module "articles_api" {
   source = "./modules/api"
 
-  domain        = "blog-api.poppyland.dev" 
+  domain        = "blog-api.poppyland.dev"
   partition_key = module.articles_table.hash_key
   search_key    = module.articles_table.gsi_hash_key
   sort_key      = module.articles_table.range_key
   table_name    = module.articles_table.table_name
+}
+
+module "frontend_bucket" {
+  source = "./modules/cloudfront_s3_bucket"
+
+  api_id         = module.articles_api.id
+  api_origin_id  = module.articles_api.origin_id
+  api_stage_name = module.articles_api.stage_name
+  bucket_name    = "poppyland-blog-frontend"
+  domain         = "blog.poppyland.dev"
 }

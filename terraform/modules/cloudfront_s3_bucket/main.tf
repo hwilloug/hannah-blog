@@ -102,9 +102,9 @@ data "aws_iam_policy_document" "s3_cloudfront_access" {
     ]
 
     condition {
-      test = "StringEquals"
+      test     = "StringEquals"
       variable = "AWS:SourceArn"
-      values = ["arn:aws:cloudfront::132507767948:distribution/${aws_cloudfront_distribution.s3_distribution.id}"]
+      values   = ["arn:aws:cloudfront::132507767948:distribution/${aws_cloudfront_distribution.s3_distribution.id}"]
     }
   }
 }

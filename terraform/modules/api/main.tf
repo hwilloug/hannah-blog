@@ -100,74 +100,34 @@ data "aws_acm_certificate" "acm_certificate" {
   domain = "poppyland.dev"
 }
 
-resource "aws_cloudfront_distribution" "api_distribution" {
-  origin {
-    domain_name              = "${aws_apigatewayv2_api.api.id}.execute-api.us-east-1.amazonaws.com"
-    origin_id                = local.api_origin_id
-    origin_path              = "/${aws_apigatewayv2_stage.stage.name}"
-  
-    custom_origin_config {
-      http_port              = 80
-      https_port             = 443
-      origin_protocol_policy = "https-only"
-      origin_ssl_protocols   = ["TLSv1.2"]
-    }
-  }
-
-  enabled         = true
-  is_ipv6_enabled = true
-
-  aliases = [var.domain]
-
-  default_cache_behavior {
-    allowed_methods  = ["GET", "HEAD", "OPTIONS"]
-    cached_methods   = ["GET", "HEAD"]
-    target_origin_id = local.api_origin_id
-
-    forwarded_values {
-      query_string = false
-
-      cookies {
-        forward = "none"
-      }
-    }
-
-    viewer_protocol_policy = "redirect-to-https"
-    min_ttl                = 0
-    default_ttl            = 3600
-    max_ttl                = 86400
-  }
-
-  restrictions {
-    geo_restriction {
-      restriction_type = "none"
-    }
-  }
-
-  tags = {
-    Name        = "PoppylandBlog"
-    Environment = "Production"
-  }
-
-  viewer_certificate {
-    acm_certificate_arn = data.aws_acm_certificate.acm_certificate.arn
-    ssl_support_method  = "sni-only"
-  }
-}
-
-
 data "aws_route53_zone" "poppyland_route53_zone" {
   name = "poppyland.dev"
 }
 
+resource "aws_apigatewayv2_domain_name" "api_domain_name" {
+  domain_name = "blog-api.poppyland.dev"
+
+  domain_name_configuration {
+    certificate_arn = data.aws_acm_certificate.acm_certificate.arn
+    endpoint_type   = "REGIONAL"
+    security_policy = "TLS_1_2"
+  }
+}
+
+resource "aws_apigatewayv2_api_mapping" "mapping" {
+  api_id      = aws_apigatewayv2_api.api.id
+  domain_name = aws_apigatewayv2_domain_name.api_domain_name.id
+  stage       = aws_apigatewayv2_stage.stage.id
+}
+
 resource "aws_route53_record" "route53_record" {
-  zone_id = data.aws_route53_zone.poppyland_route53_zone.zone_id
-  type    = "A"
   name    = var.domain
+  type    = "A"
+  zone_id = data.aws_route53_zone.poppyland_route53_zone.zone_id
 
   alias {
-    name                   = aws_cloudfront_distribution.api_distribution.domain_name
-    zone_id                = aws_cloudfront_distribution.api_distribution.hosted_zone_id
+    name                   = aws_apigatewayv2_domain_name.api_domain_name.domain_name_configuration[0].target_domain_name
+    zone_id                = aws_apigatewayv2_domain_name.api_domain_name.domain_name_configuration[0].hosted_zone_id
     evaluate_target_health = false
   }
 }
