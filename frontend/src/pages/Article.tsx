@@ -14,6 +14,7 @@ const ArticlePageContainer = styled(BodyContainer)`
   gap: 20px;
   max-width: 35rem;
   min-width: 35rem;
+  align-items: stretch;
 `;
 
 const BackButtonContainer = styled.div`
@@ -123,7 +124,7 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
       </BackButtonContainer>
       <ArticleContainer>
         <ArticleImage
-          src={`https://blog-images.poppyland.dev/${articleInfo?.img}`}
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${articleInfo?.img}`}
         />
         <ArticleTitle>{articleInfo?.title}</ArticleTitle>
         <ArticleSubtitle>

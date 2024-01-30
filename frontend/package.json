@@ -33,7 +33,8 @@
     "eject": "react-scripts eject",
     "format": "npx prettier . --write",
     "invalidatecache": "aws cloudfront create-invalidation --distribution-id E2U5RN0983NUOG --paths '/*'",
-    "deploy": "npm run build && aws s3 sync ./build s3://poppyland-blog-frontend && npm run invalidatecache"
+    "deploy": "npm run build && aws s3 sync ./build s3://poppyland-blog-frontend && npm run invalidatecache",
+    "push": "npm run format && git add . && git push"
   },
   "eslintConfig": {
     "extends": [

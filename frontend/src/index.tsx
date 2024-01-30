@@ -6,6 +6,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import HomePage from "./pages/Home";
 import Layout from "./Layout";
 import ArticlePage from "./pages/Article";
+import { ThemeProvider, createTheme } from "@mui/material";
 
 const router = createBrowserRouter([
   {
@@ -24,12 +25,26 @@ const router = createBrowserRouter([
   },
 ]);
 
+const theme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 652,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+    }
+  }
+})
+
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
 );
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider theme={theme}>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </React.StrictMode>,
 );
 

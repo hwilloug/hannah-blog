@@ -1,6 +1,15 @@
 import styled from "@emotion/styled";
 
-export const BodyContainer = styled.div``;
+export interface BreakPointProps {
+  break: boolean
+}
+
+export const BodyContainer = styled.div`
+  margin: 0px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 export const StyledButton = styled.button`
   background-color: grey;

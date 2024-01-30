@@ -4,11 +4,13 @@ import Aside from "./components/Aside";
 import Footer from "./components/Footer";
 import styled from "@emotion/styled";
 import { ChangeEvent, ReactElement, useState } from "react";
+import { useMediaQuery, useTheme } from "@mui/material";
 
 const LayoutContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  align-items: center;
 `;
 
 const ContentContainer = styled.div`
@@ -19,6 +21,9 @@ const ContentContainer = styled.div`
 `;
 
 const Layout: React.FunctionComponent = (): ReactElement => {
+  const theme = useTheme()
+  const md = useMediaQuery(theme.breakpoints.up('md'))
+
   const [darkMode, setDarkMode] = useState<boolean>(false);
 
   const handleDarkModeChange = (
@@ -31,10 +36,19 @@ const Layout: React.FunctionComponent = (): ReactElement => {
   return (
     <LayoutContainer>
       <NavBar />
-      <ContentContainer>
-        <Outlet />
-        <Aside />
-      </ContentContainer>
+      {
+        md ? (
+          <ContentContainer>
+            <Outlet />
+            <Aside />
+          </ContentContainer>
+        ) : (
+          <>
+            <Outlet />
+            <Aside />
+          </>
+        )
+      }
       <Footer darkMode={darkMode} handleDarkModeChange={handleDarkModeChange} />
     </LayoutContainer>
   );

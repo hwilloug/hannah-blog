@@ -16,6 +16,7 @@ const NavigationContainer = styled.div`
   flex-direction: row;
   gap: 20px;
   justify-content: center;
+  flex-wrap: wrap;
 `;
 
 export const NavigationItem = styled.button`

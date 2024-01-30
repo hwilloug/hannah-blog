@@ -3,12 +3,14 @@ import { ReactElement, useMemo, useState } from "react";
 import Navigation from "../components/Navigation";
 import { Link } from "react-router-dom";
 import Categories from "../components/Categories";
-import { BodyContainer } from "../components/StyledComponents";
+import { BodyContainer, BreakPointProps } from "../components/StyledComponents";
 import axios from "axios";
+import { useMediaQuery, useTheme } from "@mui/material";
 
-const WelcomeBanner = styled.div`
+const WelcomeBanner = styled.div<BreakPointProps>`
   border: 1px solid black;
   padding: 20px;
+  max-width: ${(props) => props.break ? "90vw": "100%"};
 
   display: flex;
   flex-direction: column;
@@ -36,14 +38,13 @@ const LatestArticlesContainer = styled.div`
   align-items: center;
 `;
 
-const ArticleContainer = styled.div`
+const ArticleContainer = styled.div<BreakPointProps>`
   display: flex;
-  flex-direction: row;
+  flex-direction: ${(props) => props.break ? "column": "row"};
   gap: 20px;
-  align-items: center;
 
   border: 1px solid black;
-  width: 35rem;
+  width: ${(props) => props.break ? "90vw": "35rem"};
   padding: 10px;
   background-color: white;
 `;
@@ -67,8 +68,8 @@ const ArticleLink = styled(Link)`
   color: black;
 `;
 
-const ArticleImage = styled.img`
-  width: 10rem;
+const ArticleImage = styled.img<BreakPointProps>`
+  width: ${(props) => props.break ? "100%": "10rem"};
 `;
 
 export interface ArticlesApiResponse {
@@ -92,6 +93,9 @@ export interface Article {
 }
 
 const HomePage: React.FunctionComponent = (): ReactElement => {
+  const theme = useTheme()
+  const sm = useMediaQuery(theme.breakpoints.down('sm'))
+
   const [articles, setArticles] = useState<Article[]>([]);
 
   useMemo(() => {
@@ -126,7 +130,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
 
   return (
     <BodyContainer>
-      <WelcomeBanner>
+      <WelcomeBanner break={sm}>
         <Title>Welcome to Poppyland Blog</Title>
         <Navigation showText={true} />
         <p>
@@ -142,9 +146,10 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
           )
           .map((article) => (
             <ArticleLink to={`articles/${article.slug}`} key={article.slug}>
-              <ArticleContainer>
+              <ArticleContainer break={sm}>
                 <ArticleImage
                   src={`https://blog-images.poppyland.dev/${article.img}`}
+                  break={sm}
                 />
                 <ArticleDetailContainer>
                   <ArticleTitle>{article.title}</ArticleTitle>

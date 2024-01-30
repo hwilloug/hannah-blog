@@ -11,9 +11,12 @@ const FooterContainer = styled.div`
 
   background-color: grey;
   padding: 20px;
+  min-width: 100vw;
 `;
 
-const BuyMeABookButton = styled(StyledButton)``;
+const BuyMeABookButton = styled(StyledButton)`
+  margin: 0 20px;
+`;
 
 const Copyright = styled.div``;
 
