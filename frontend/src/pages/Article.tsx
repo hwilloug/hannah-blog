@@ -4,8 +4,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import { BodyContainer, StyledButton } from "../components/StyledComponents";
 import { mdiArrowLeftThick } from '@mdi/js';
 import Icon from "@mdi/react";
-import { Article, articles } from "./Home";
+import { Article } from "./Home";
 import Categories from "../components/Categories";
+import axios from "axios";
 
 
 const ArticlePageContainer = styled(BodyContainer)`
@@ -87,8 +88,7 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
     useMemo(() => {
         const getArticleInfo = async () => {
             try {
-                // TODO update to call api gateway to get 
-                const articleInfo = articles.find((article) => article.slug === articleSlug)
+                const resp = axios.get(`${process.env.REACT_APP_API_URL}/articles/${articleSlug}`)
                 setArticleInfo(articleInfo)
             } catch (e) {
                 console.error('Error loading article info for article:', articleSlug, e)
