@@ -7,6 +7,7 @@ import HomePage from "./pages/Home";
 import Layout from "./Layout";
 import ArticlePage from "./pages/Article";
 import { ThemeProvider, createTheme } from "@mui/material";
+import CategoryBrowse from "./pages/CategoryBrowse";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,30 @@ const router = createBrowserRouter([
       {
         path: "articles/:articleSlug",
         element: <ArticlePage />,
+      },
+      {
+        path: "food",
+        element: <CategoryBrowse category="Food" />,
+      },
+      {
+        path: "gardening",
+        element: <CategoryBrowse category="Gardening" />,
+      },
+      {
+        path: "crafts",
+        element: <CategoryBrowse category="Crafts" />,
+      },
+      {
+        path: "coding",
+        element: <CategoryBrowse category="Coding" />,
+      },
+      {
+        path: "books",
+        element: <CategoryBrowse category="Books" />,
+      },
+      {
+        path: "languages",
+        element: <CategoryBrowse category="Languages" />,
       },
     ],
   },
