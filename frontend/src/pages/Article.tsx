@@ -1,15 +1,10 @@
 import styled from "@emotion/styled";
 import { ReactElement, useMemo, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import {
-  BodyContainer,
-  ColorProps,
-  StyledButton,
-} from "../components/StyledComponents";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
+import { BodyContainer, StyledButton } from "../components/StyledComponents";
 import { mdiArrowLeftThick } from "@mdi/js";
 import Icon from "@mdi/react";
 import Categories from "../components/Categories";
-import axios from "axios";
 import { Article } from "..";
 import { useTheme } from "@mui/material";
 
@@ -70,13 +65,13 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
   let { articleSlug } = useParams();
   const navigate = useNavigate();
   const theme = useTheme();
+  const articleInfo = useLoaderData() as Article;
 
   const goBack = () => {
     navigate(-1);
   };
 
   const [loadedArticle, setLoadedArticle] = useState<ReactElement | null>(null);
-  const [articleInfo, setArticleInfo] = useState<Article>();
 
   useMemo(() => {
     const lazyLoadArticle = async () => {
@@ -93,33 +88,6 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
     lazyLoadArticle();
   }, [articleSlug]);
 
-  useMemo(() => {
-    const getArticleInfo = async () => {
-      try {
-        const resp = await axios.get(
-          `${process.env.REACT_APP_API_URL}/articles/${articleSlug}`,
-        );
-        setArticleInfo({
-          slug: resp.data.Slug,
-          title: resp.data.Title,
-          subtitle: resp.data.Subtitle,
-          img: resp.data.Img,
-          category: resp.data.Category,
-          subcategory: resp.data.Subcategory,
-          createdAt: resp.data.CreatedAt,
-        });
-      } catch (e) {
-        console.error(
-          "Error loading article info for article:",
-          articleSlug,
-          e,
-        );
-      }
-    };
-
-    return getArticleInfo();
-  }, [articleSlug]);
-
   return (
     <ArticlePageContainer>
       <BackButtonContainer>
@@ -132,20 +100,20 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
         <ArticleImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${articleInfo?.img}`}
         />
-        <ArticleTitle>{articleInfo?.title}</ArticleTitle>
+        <ArticleTitle>{articleInfo.title}</ArticleTitle>
         <ArticleSubtitle>
-          <p>{articleInfo?.subtitle}</p>
-          <p>{articleInfo?.createdAt}</p>
+          <p>{articleInfo.subtitle}</p>
+          <p>{articleInfo.createdAt}</p>
         </ArticleSubtitle>
         <Categories
-          category={articleInfo?.category || ""}
-          subcategories={articleInfo?.subcategory || []}
+          category={articleInfo.category || ""}
+          subcategories={articleInfo.subcategory || []}
         />
         <Divider />
         {loadedArticle}
         <SignatureContainer>
           <Signature>Written by Hannah Willoughby</Signature>
-          <Signature>{articleInfo?.createdAt}</Signature>
+          <Signature>{articleInfo.createdAt}</Signature>
         </SignatureContainer>
       </ArticleContainer>
     </ArticlePageContainer>

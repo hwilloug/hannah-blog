@@ -37,7 +37,7 @@ export interface Article {
   createdAt: string;
 }
 
-const articleLoader: LoaderFunction = async ({ params }) => {
+const articlesLoader: LoaderFunction = async ({ params }) => {
   const category = params.category
     ? params.category.split("")[0].toUpperCase() +
       params.category.split("").splice(1).join("")
@@ -66,6 +66,29 @@ const articleLoader: LoaderFunction = async ({ params }) => {
   }
 };
 
+const articleLoader: LoaderFunction = async ({ params }) => {
+  try {
+    const resp = await axios.get(
+      `${process.env.REACT_APP_API_URL}/articles/${params.articleSlug}`,
+    );
+    return {
+      slug: resp.data.Slug,
+      title: resp.data.Title,
+      subtitle: resp.data.Subtitle,
+      img: resp.data.Img,
+      category: resp.data.Category,
+      subcategory: resp.data.Subcategory,
+      createdAt: resp.data.CreatedAt,
+    };
+  } catch (e) {
+    console.error(
+      "Error loading article info for article:",
+      params.articleSlug,
+      e,
+    );
+  }
+};
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -74,7 +97,7 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <HomePage />,
-        loader: articleLoader,
+        loader: articlesLoader,
       },
       {
         path: "about",
@@ -83,11 +106,12 @@ const router = createBrowserRouter([
       {
         path: "articles/:articleSlug",
         element: <ArticlePage />,
+        loader: articleLoader,
       },
       {
         path: ":category",
         element: <CategoryBrowse />,
-        loader: articleLoader,
+        loader: articlesLoader,
       },
     ],
   },
