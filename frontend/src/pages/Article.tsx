@@ -4,9 +4,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import { BodyContainer, StyledButton } from "../components/StyledComponents";
 import { mdiArrowLeftThick } from "@mdi/js";
 import Icon from "@mdi/react";
-import { Article } from "../components/Browse";
 import Categories from "../components/Categories";
 import axios from "axios";
+import { Article } from "..";
 
 const ArticlePageContainer = styled(BodyContainer)`
   display: flex;

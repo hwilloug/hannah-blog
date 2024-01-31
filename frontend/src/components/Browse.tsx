@@ -2,9 +2,9 @@ import styled from "@emotion/styled";
 import { ReactElement, useMemo, useState } from "react";
 import { BreakPointProps } from "./StyledComponents";
 import { Pagination, useMediaQuery, useTheme } from "@mui/material";
-import axios from "axios";
 import Categories from "./Categories";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
+import { Article } from "..";
 
 const ArticleContainer = styled.div<BreakPointProps>`
   display: flex;
@@ -40,26 +40,6 @@ const ArticleImage = styled.img<BreakPointProps>`
   width: ${(props) => (props.break ? "100%" : "10rem")};
 `;
 
-export interface ArticlesApiResponse {
-  Slug: string;
-  Title: string;
-  Subtitle: string;
-  Img: string;
-  Category: string;
-  Subcategory: string[];
-  CreatedAt: string;
-}
-
-export interface Article {
-  slug: string;
-  title: string;
-  subtitle: string;
-  img: string;
-  category: string;
-  subcategory: string[];
-  createdAt: string;
-}
-
 interface BrowseProps {
   category?: string;
 }
@@ -69,8 +49,8 @@ const Browse: React.FunctionComponent<BrowseProps> = ({
 }): ReactElement => {
   const theme = useTheme();
   const sm = useMediaQuery(theme.breakpoints.down("sm"));
+  const articles: Article[] = useLoaderData() as Article[];
 
-  const [articles, setArticles] = useState<Article[]>([]);
   const [page, setPage] = useState<number>(1);
   const [numPages, setNumPages] = useState<number>(1);
   const PAGE_SIZE = 5;
@@ -81,40 +61,12 @@ const Browse: React.FunctionComponent<BrowseProps> = ({
   };
 
   useMemo(() => {
-    const getArticles = async () => {
-      try {
-        const resp = await axios.get(
-          `${process.env.REACT_APP_API_URL}/articles${category ? "?category=" + category : ""}`,
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          },
-        );
-        setArticles(
-          resp.data.map((d: ArticlesApiResponse) => ({
-            slug: d.Slug,
-            title: d.Title,
-            subtitle: d.Subtitle,
-            img: d.Img,
-            category: d.Category,
-            subcategory: d.Subcategory,
-            createdAt: d.CreatedAt,
-          })),
-        );
-      } catch (e) {
-        console.error("Error getting articles", e);
-      }
-    };
-
-    getArticles();
-  }, [category]);
-
-  useMemo(() => {
     setNumPages(Math.ceil(articles.length / PAGE_SIZE));
   }, [articles]);
 
-  return (
+  const noArticlesPartial = <p>No articles found :(</p>;
+
+  const articlesPartial = (
     <>
       {articles
         .sort(
@@ -149,6 +101,7 @@ const Browse: React.FunctionComponent<BrowseProps> = ({
       <Pagination count={numPages} page={page} onChange={handlePageChange} />
     </>
   );
+  return articles.length ? articlesPartial : noArticlesPartial;
 };
 
 export default Browse;

@@ -23,6 +23,7 @@ const WelcomeBanner = styled.div<BreakPointProps>`
 
 const Title = styled.span`
   font-size: 60px;
+  text-align: center;
 `;
 
 const LatestArticlesContainer = styled.div`

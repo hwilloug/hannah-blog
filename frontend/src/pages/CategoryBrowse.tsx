@@ -3,6 +3,7 @@ import { ReactElement } from "react";
 import { BodyContainer, SectionTitle } from "../components/StyledComponents";
 import Browse from "../components/Browse";
 import { useMediaQuery, useTheme } from "@mui/material";
+import { useParams } from "react-router-dom";
 
 const LatestArticlesContainer = styled.div`
   display: flex;
@@ -11,15 +12,11 @@ const LatestArticlesContainer = styled.div`
   align-items: center;
 `;
 
-interface CategoryBrowseProps {
-  category: string;
-}
-
-const CategoryBrowse: React.FunctionComponent<CategoryBrowseProps> = ({
-  category,
-}): ReactElement => {
+const CategoryBrowse: React.FunctionComponent = (): ReactElement => {
   const theme = useTheme();
   const sm = useMediaQuery(theme.breakpoints.down("sm"));
+  const params = useParams();
+  const category = params.category;
 
   return (
     <BodyContainer>

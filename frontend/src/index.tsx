@@ -2,13 +2,68 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  LoaderFunction,
+  LoaderFunctionArgs,
+  RouterProvider,
+  createBrowserRouter,
+} from "react-router-dom";
 import HomePage from "./pages/Home";
 import Layout from "./Layout";
 import ArticlePage from "./pages/Article";
 import { ThemeProvider, createTheme } from "@mui/material";
 import CategoryBrowse from "./pages/CategoryBrowse";
 import About from "./pages/About";
+import axios from "axios";
+
+export interface ArticlesApiResponse {
+  Slug: string;
+  Title: string;
+  Subtitle: string;
+  Img: string;
+  Category: string;
+  Subcategory: string[];
+  CreatedAt: string;
+}
+
+export interface Article {
+  slug: string;
+  title: string;
+  subtitle: string;
+  img: string;
+  category: string;
+  subcategory: string[];
+  createdAt: string;
+}
+
+const articleLoader: LoaderFunction = async ({ params }) => {
+  const category = params.category
+    ? params.category.split("")[0].toUpperCase() +
+      params.category.split("").splice(1).join("")
+    : undefined;
+
+  try {
+    const resp = await axios.get(
+      `${process.env.REACT_APP_API_URL}/articles${category ? "?category=" + category : ""}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      },
+    );
+    return resp.data.map((d: ArticlesApiResponse) => ({
+      slug: d.Slug,
+      title: d.Title,
+      subtitle: d.Subtitle,
+      img: d.Img,
+      category: d.Category,
+      subcategory: d.Subcategory,
+      createdAt: d.CreatedAt,
+    }));
+  } catch (e) {
+    console.error("Error getting articles", e);
+  }
+};
 
 const router = createBrowserRouter([
   {
@@ -18,6 +73,7 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <HomePage />,
+        loader: articleLoader,
       },
       {
         path: "about",
@@ -28,28 +84,9 @@ const router = createBrowserRouter([
         element: <ArticlePage />,
       },
       {
-        path: "food",
-        element: <CategoryBrowse category="Food" />,
-      },
-      {
-        path: "gardening",
-        element: <CategoryBrowse category="Gardening" />,
-      },
-      {
-        path: "crafts",
-        element: <CategoryBrowse category="Crafts" />,
-      },
-      {
-        path: "coding",
-        element: <CategoryBrowse category="Coding" />,
-      },
-      {
-        path: "books",
-        element: <CategoryBrowse category="Books" />,
-      },
-      {
-        path: "languages",
-        element: <CategoryBrowse category="Languages" />,
+        path: ":category",
+        element: <CategoryBrowse />,
+        loader: articleLoader,
       },
     ],
   },
