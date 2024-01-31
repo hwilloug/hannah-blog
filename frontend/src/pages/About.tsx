@@ -3,13 +3,13 @@ import { ReactElement } from "react";
 import { useMediaQuery, useTheme } from "@mui/material";
 import {
   BodyContainer,
+  BorderedFullSizeImage,
   BreakPointProps,
   FullSizeImage,
   SectionHeader,
   UnstyledLink,
 } from "../components/StyledComponents";
 import { mdiGithub, mdiGoodreads, mdiLinkedin, mdiWeb } from "@mdi/js";
-import { Link } from "react-router-dom";
 import Icon from "@mdi/react";
 
 const AboutContainer = styled.div<BreakPointProps>`
@@ -38,10 +38,6 @@ const LinkItemLink = styled(UnstyledLink)`
   align-items: center;
   justify-content: stretch;
   gap: 10px;
-`;
-
-const CatsImage = styled(FullSizeImage)`
-  border: 5px solid black;
 `;
 
 const About: React.FunctionComponent = (): ReactElement => {
@@ -76,11 +72,12 @@ const About: React.FunctionComponent = (): ReactElement => {
       <AboutContainer break={sm}>
         <SectionHeader>About Me</SectionHeader>
         <p>
-          Hello, and welcome to my blog! I'm Hannah, and this is where I write
-          about the stuff I do. Currently, I live in Fort Mill, SC with my
-          boyfriend and four cats. I like to keep myself busy by keeping up with
-          a multitude of hobbies, which include cooking, gardening, needle arts,
-          coding, reading, woodworking, and learning Japanese.
+          Hello world, and welcome to my blog! I'm Hannah, and this is where I
+          write about the stuff I do for fun. Currently, I live in Fort Mill, SC
+          with my boyfriend and four cats. As my day job, I am a software
+          engineer, but I like to keep myself busy outside of work by keeping up
+          with a multitude of hobbies, which include cooking, gardening, needle
+          arts, coding, reading, woodworking, and learning Japanese.
         </p>
         <p>Find me on:</p>
         <LinksContainer>
@@ -93,7 +90,7 @@ const About: React.FunctionComponent = (): ReactElement => {
             </LinkItem>
           ))}
         </LinksContainer>
-        <CatsImage
+        <BorderedFullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/family_photo.png`}
         />
       </AboutContainer>

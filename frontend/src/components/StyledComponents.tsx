@@ -57,3 +57,7 @@ export const UnstyledLink = styled(Link)`
   text-decoration: none;
   color: black;
 `;
+
+export const BorderedFullSizeImage = styled(FullSizeImage)`
+  border: 5px solid black;
+`;

@@ -1,6 +1,11 @@
 import styled from "@emotion/styled";
 import { ReactElement } from "react";
-import { StyledButton, UnstyledLink } from "./StyledComponents";
+import {
+  BorderedFullSizeImage,
+  FullSizeImage,
+  StyledButton,
+  UnstyledLink,
+} from "./StyledComponents";
 
 const AsideContainer = styled.div`
   max-width: 17rem;
@@ -12,6 +17,10 @@ const WelcomeContainer = styled.div`
   background-color: white;
   border: 1px solid black;
   padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const WelcomeTitle = styled.span`
@@ -29,9 +38,12 @@ const Aside: React.FunctionComponent = (): ReactElement => {
     <AsideContainer>
       <WelcomeContainer>
         <WelcomeTitle>Welcome to Poppyland Blog</WelcomeTitle>
+        <BorderedFullSizeImage
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/me.png`}
+        />
         <WelcomeText>
-          Hello, and welcome to my blog! I'm Hannah, and this is where I write
-          about the stuff I do outside of work.
+          Hello world! It's me, Hannah. This is where I write about what I do
+          outside of work!
         </WelcomeText>
         <UnstyledLink to="/about">
           <AboutButton>More About Me</AboutButton>
