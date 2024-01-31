@@ -32,11 +32,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "format": "npx prettier . --write",
-<<<<<<< HEAD
     "invalidatecache": "aws cloudfront create-invalidation --distribution-id E2U5RN0983NUOG --paths '/*' --no-cli-pager",
-=======
-    "invalidatecache": "aws cloudfront create-invalidation --distribution-id E2U5RN0983NUOG --paths '/*'",
->>>>>>> react-refactor
     "deploy": "npm run build && aws s3 sync ./build s3://poppyland-blog-frontend && npm run invalidatecache",
     "push": "npm run format && git add . && git push"
   },
