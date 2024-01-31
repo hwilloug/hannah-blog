@@ -34,7 +34,7 @@
     "format": "npx prettier . --write",
     "invalidatecache": "aws cloudfront create-invalidation --distribution-id E2U5RN0983NUOG --paths '/*' --no-cli-pager",
     "deploy": "npm run build && aws s3 sync ./build s3://poppyland-blog-frontend && npm run invalidatecache",
-    "push": "npm run format && git add . && git push"
+    "prep-commit": "npm run format && git add ."
   },
   "eslintConfig": {
     "extends": [

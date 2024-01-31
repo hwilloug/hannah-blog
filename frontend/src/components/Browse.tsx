@@ -128,7 +128,7 @@ const Browse: React.FunctionComponent<BrowseProps> = ({
           );
         })
         .map((article) => (
-          <ArticleLink to={`articles/${article.slug}`} key={article.slug}>
+          <ArticleLink to={`/articles/${article.slug}`} key={article.slug}>
             <ArticleContainer break={sm}>
               <ArticleImage
                 src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}

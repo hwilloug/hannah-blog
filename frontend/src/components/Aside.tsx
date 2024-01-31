@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { ReactElement } from "react";
-import { StyledButton } from "./StyledComponents";
+import { StyledButton, UnstyledLink } from "./StyledComponents";
 
 const AsideContainer = styled.div`
   max-width: 17rem;
@@ -32,7 +32,9 @@ const Aside: React.FunctionComponent = (): ReactElement => {
           Hello, and welcome to my blog! I'm Hannah, and this is where I write
           about the stuff I do outside of work.
         </WelcomeText>
-        <AboutButton>More About Me</AboutButton>
+        <UnstyledLink to="/about">
+          <AboutButton>More About Me</AboutButton>
+        </UnstyledLink>
       </WelcomeContainer>
     </AsideContainer>
   );

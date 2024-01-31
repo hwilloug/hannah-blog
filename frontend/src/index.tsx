@@ -8,6 +8,7 @@ import Layout from "./Layout";
 import ArticlePage from "./pages/Article";
 import { ThemeProvider, createTheme } from "@mui/material";
 import CategoryBrowse from "./pages/CategoryBrowse";
+import About from "./pages/About";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <HomePage />,
+      },
+      {
+        path: "about",
+        element: <About />,
       },
       {
         path: "articles/:articleSlug",

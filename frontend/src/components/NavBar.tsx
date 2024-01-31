@@ -6,7 +6,7 @@ import Icon from "@mdi/react";
 import { mdiHelpCircleOutline } from "@mdi/js";
 import { Link } from "react-router-dom";
 import { useMediaQuery, useTheme } from "@mui/material";
-import { BreakPointProps } from "./StyledComponents";
+import { BreakPointProps, UnstyledLink } from "./StyledComponents";
 
 const NavBarContainer = styled.div<BreakPointProps>`
   display: flex;
@@ -69,7 +69,9 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
         <Icon path={mdiMagnify} size={1} />
       </NavigationItem>
       <NavigationItem>
-        <Icon path={mdiHelpCircleOutline} size={1} />
+        <UnstyledLink to="/about">
+          <Icon path={mdiHelpCircleOutline} size={1} />
+        </UnstyledLink>
       </NavigationItem>
     </>
   );

@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 
 export interface BreakPointProps {
   break: boolean;
@@ -42,4 +43,9 @@ export const RecipeContainer = styled.div`
 
 export const StyledListItem = styled.li`
   margin: 20px 0;
+`;
+
+export const UnstyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
 `;
