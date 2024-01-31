@@ -1,18 +1,23 @@
 import styled from "@emotion/styled";
 import { ReactElement } from "react";
-import Navigation, { NavigationItem } from "./Navigation";
+import Navigation from "./Navigation";
 import { mdiMagnify } from "@mdi/js";
-import Icon from "@mdi/react";
 import { mdiHelpCircleOutline } from "@mdi/js";
 import { Link } from "react-router-dom";
 import { useMediaQuery, useTheme } from "@mui/material";
-import { BreakPointProps, UnstyledLink } from "./StyledComponents";
+import {
+  CssProps,
+  StyledIcon,
+  UnstyledLink,
+  NavigationItem,
+  NavigationLink,
+} from "./StyledComponents";
 
-const NavBarContainer = styled.div<BreakPointProps>`
+const NavBarContainer = styled.div<CssProps>`
   display: flex;
   flex-direction: ${(props) => (props.break ? "column" : "row")};
-  gap: 20px;
-  background-color: grey;
+  gap: ${(props) => (props.break ? "0" : "20px")};
+  background-color: ${(props) => props.colors.primary.main};
   justify-content: space-between;
   align-items: center;
   padding: 20px;
@@ -38,19 +43,20 @@ const HomeLink = styled(Link)`
 const NavBar: React.FunctionComponent = (): ReactElement => {
   const theme = useTheme();
   const sm = useMediaQuery(theme.breakpoints.down("sm"));
+  const colors = theme.palette;
 
   const smallPartial = (
     <>
-      <NavBarContainer break={false}>
+      <NavBarContainer break={false} colors={colors}>
         <HomeLink to="/">
           <Title>Poppyland Blog</Title>
         </HomeLink>
         <RightIconContainer>
-          <NavigationItem>
-            <Icon path={mdiMagnify} size={1} />
+          <NavigationItem colors={colors}>
+            <StyledIcon path={mdiMagnify} size={1} colors={colors} />
           </NavigationItem>
-          <NavigationItem>
-            <Icon path={mdiHelpCircleOutline} size={1} />
+          <NavigationItem colors={colors}>
+            <StyledIcon path={mdiHelpCircleOutline} size={1} colors={colors} />
           </NavigationItem>
         </RightIconContainer>
       </NavBarContainer>
@@ -64,19 +70,19 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
         <Title>Poppyland Blog</Title>
       </HomeLink>
       <Navigation />
-      <NavigationItem>
-        <Icon path={mdiMagnify} size={1} />
+      <NavigationItem colors={colors}>
+        <StyledIcon path={mdiMagnify} size={1} colors={colors} />
       </NavigationItem>
-      <NavigationItem>
-        <UnstyledLink to="/about">
-          <Icon path={mdiHelpCircleOutline} size={1} />
-        </UnstyledLink>
-      </NavigationItem>
+      <NavigationLink to="/about">
+        <NavigationItem colors={colors}>
+          <StyledIcon path={mdiHelpCircleOutline} size={1} colors={colors} />
+        </NavigationItem>
+      </NavigationLink>
     </>
   );
 
   return (
-    <NavBarContainer break={sm}>
+    <NavBarContainer break={sm} colors={colors}>
       {sm ? smallPartial : defaultPartial}
     </NavBarContainer>
   );

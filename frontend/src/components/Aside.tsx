@@ -2,10 +2,10 @@ import styled from "@emotion/styled";
 import { ReactElement } from "react";
 import {
   BorderedFullSizeImage,
-  FullSizeImage,
   StyledButton,
   UnstyledLink,
 } from "./StyledComponents";
+import { useTheme } from "@mui/material";
 
 const AsideContainer = styled.div`
   max-width: 17rem;
@@ -16,6 +16,7 @@ const AsideContainer = styled.div`
 const WelcomeContainer = styled.div`
   background-color: white;
   border: 1px solid black;
+  border-radius: 5px;
   padding: 20px;
 
   display: flex;
@@ -34,6 +35,8 @@ const WelcomeText = styled.p`
 const AboutButton = styled(StyledButton)``;
 
 const Aside: React.FunctionComponent = (): ReactElement => {
+  const theme = useTheme();
+
   return (
     <AsideContainer>
       <WelcomeContainer>
@@ -46,7 +49,7 @@ const Aside: React.FunctionComponent = (): ReactElement => {
           outside of work!
         </WelcomeText>
         <UnstyledLink to="/about">
-          <AboutButton>More About Me</AboutButton>
+          <AboutButton colors={theme.palette}>More About Me</AboutButton>
         </UnstyledLink>
       </WelcomeContainer>
     </AsideContainer>

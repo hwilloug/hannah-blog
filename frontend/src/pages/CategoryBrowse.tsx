@@ -21,7 +21,9 @@ const CategoryBrowse: React.FunctionComponent = (): ReactElement => {
   return (
     <BodyContainer>
       <LatestArticlesContainer>
-        <SectionTitle break={sm}>{category} Articles:</SectionTitle>
+        <SectionTitle break={sm} colors={theme.palette}>
+          {category} Articles:
+        </SectionTitle>
         <Browse category={category} />
       </LatestArticlesContainer>
     </BodyContainer>

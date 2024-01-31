@@ -5,13 +5,14 @@ import Footer from "./components/Footer";
 import styled from "@emotion/styled";
 import { ChangeEvent, ReactElement, useState } from "react";
 import { useMediaQuery, useTheme } from "@mui/material";
-import { BreakPointProps } from "./components/StyledComponents";
+import { BreakPointProps, ColorProps } from "./components/StyledComponents";
 
-const LayoutContainer = styled.div`
+const LayoutContainer = styled.div<ColorProps>`
   display: flex;
   flex-direction: column;
   gap: 20px;
   align-items: stretch;
+  background-color: ${(props) => props.colors.primary.light};
 `;
 
 const ContentContainer = styled.div<BreakPointProps>`
@@ -25,6 +26,7 @@ const ContentContainer = styled.div<BreakPointProps>`
 const Layout: React.FunctionComponent = (): ReactElement => {
   const theme = useTheme();
   const md = useMediaQuery(theme.breakpoints.up("md"));
+  const colors = theme.palette;
 
   const [darkMode, setDarkMode] = useState<boolean>(false);
 
@@ -36,7 +38,7 @@ const Layout: React.FunctionComponent = (): ReactElement => {
   };
 
   return (
-    <LayoutContainer>
+    <LayoutContainer colors={colors}>
       <NavBar />
       <ContentContainer break={md}>
         <Outlet />

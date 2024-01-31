@@ -15,6 +15,7 @@ import { ThemeProvider, createTheme } from "@mui/material";
 import CategoryBrowse from "./pages/CategoryBrowse";
 import About from "./pages/About";
 import axios from "axios";
+import { theme } from "./theme";
 
 export interface ArticlesApiResponse {
   Slug: string;
@@ -91,18 +92,6 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-
-const theme = createTheme({
-  breakpoints: {
-    values: {
-      xs: 0,
-      sm: 652,
-      md: 900,
-      lg: 1200,
-      xl: 1536,
-    },
-  },
-});
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,

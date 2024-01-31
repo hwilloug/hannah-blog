@@ -1,16 +1,17 @@
 import styled from "@emotion/styled";
 import { ChangeEvent, ReactElement } from "react";
-import { StyledButton } from "./StyledComponents";
-import { Switch } from "@mui/material";
+import { ColorProps, StyledButton } from "./StyledComponents";
+import { Switch, useTheme } from "@mui/material";
 
-const FooterContainer = styled.div`
+const FooterContainer = styled.div<ColorProps>`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 
-  background-color: grey;
+  background-color: ${({ colors }) => colors.primary.main};
   padding: 20px;
+  color: white;
 `;
 
 const BuyMeABookButton = styled(StyledButton)`
@@ -37,9 +38,11 @@ const Footer: React.FunctionComponent<FooterProps> = ({
   darkMode,
   handleDarkModeChange,
 }): ReactElement => {
+  const theme = useTheme();
+  const colors = theme.palette;
   return (
-    <FooterContainer>
-      <BuyMeABookButton>📖 Buy Me a Book</BuyMeABookButton>
+    <FooterContainer colors={colors}>
+      <BuyMeABookButton colors={colors}>📖 Buy Me a Book</BuyMeABookButton>
       <Copyright>© {new Date().getFullYear()} Poppyland</Copyright>
       <DarkModeToggleContainer>
         <p>Dark Mode</p>

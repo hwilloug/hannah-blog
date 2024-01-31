@@ -11,6 +11,7 @@ import Browse from "../components/Browse";
 
 const WelcomeBanner = styled.div<BreakPointProps>`
   border: 1px solid black;
+  border-radius: 5px;
   padding: 20px;
   max-width: ${(props) => (props.break ? "90vw" : "100%")};
 
@@ -42,12 +43,12 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
       <WelcomeBanner break={sm}>
         <Title>Welcome to Poppyland Blog</Title>
         <Navigation showText={true} />
-        <p>
-          We're currently undergoing an overhaul! Thank you for your patience :)
-        </p>
+        <p>Browse latest articles below, or click a category above.</p>
       </WelcomeBanner>
       <LatestArticlesContainer>
-        <SectionTitle break={sm}>Latest Articles:</SectionTitle>
+        <SectionTitle break={sm} colors={theme.palette}>
+          Latest Articles:
+        </SectionTitle>
         <Browse />
       </LatestArticlesContainer>
     </BodyContainer>

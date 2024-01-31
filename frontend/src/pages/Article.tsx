@@ -1,12 +1,17 @@
 import styled from "@emotion/styled";
 import { ReactElement, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { BodyContainer, StyledButton } from "../components/StyledComponents";
+import {
+  BodyContainer,
+  ColorProps,
+  StyledButton,
+} from "../components/StyledComponents";
 import { mdiArrowLeftThick } from "@mdi/js";
 import Icon from "@mdi/react";
 import Categories from "../components/Categories";
 import axios from "axios";
 import { Article } from "..";
+import { useTheme } from "@mui/material";
 
 const ArticlePageContainer = styled(BodyContainer)`
   display: flex;
@@ -18,7 +23,6 @@ const ArticlePageContainer = styled(BodyContainer)`
 `;
 
 const BackButtonContainer = styled.div`
-  background-color: darkgrey;
   padding: 10px;
 `;
 
@@ -59,11 +63,13 @@ const Signature = styled.p`
   font-style: italic;
   font-weight: lighter;
   margin: 5px;
+  color: grey;
 `;
 
 const ArticlePage: React.FunctionComponent = (): ReactElement => {
   let { articleSlug } = useParams();
   const navigate = useNavigate();
+  const theme = useTheme();
 
   const goBack = () => {
     navigate(-1);
@@ -117,7 +123,7 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
   return (
     <ArticlePageContainer>
       <BackButtonContainer>
-        <BackButton onClick={goBack}>
+        <BackButton onClick={goBack} colors={theme.palette}>
           <Icon path={mdiArrowLeftThick} size={1} />
           Back
         </BackButton>

@@ -5,8 +5,10 @@ import {
   BodyContainer,
   BorderedFullSizeImage,
   BreakPointProps,
+  ColorProps,
   FullSizeImage,
   SectionHeader,
+  StyledIcon,
   UnstyledLink,
 } from "../components/StyledComponents";
 import { mdiGithub, mdiGoodreads, mdiLinkedin, mdiWeb } from "@mdi/js";
@@ -15,21 +17,22 @@ import Icon from "@mdi/react";
 const AboutContainer = styled.div<BreakPointProps>`
   background-color: white;
   border: 1px solid black;
+  border-radius: 5px;
   padding: 20px;
   width: ${(props) => (props.break ? "100%" : "35rem")};
 `;
 
 const LinksContainer = styled.ul`
   list-style-type: none;
-  margin: 0;
   margin: 0 10px;
   padding: 0;
 `;
 
-const LinkItem = styled.li`
-  background-color: lightgrey;
+const LinkItem = styled.li<ColorProps>`
+  background-color: ${({ colors }) => colors.primary.dark};
   margin: 20px 0;
   padding: 10px;
+  align: center;
 `;
 
 const LinkItemLink = styled(UnstyledLink)`
@@ -38,6 +41,8 @@ const LinkItemLink = styled(UnstyledLink)`
   align-items: center;
   justify-content: stretch;
   gap: 10px;
+  color: white;
+  justify-content: center;
 `;
 
 const About: React.FunctionComponent = (): ReactElement => {
@@ -82,9 +87,9 @@ const About: React.FunctionComponent = (): ReactElement => {
         <p>Find me on:</p>
         <LinksContainer>
           {links.map((link) => (
-            <LinkItem>
+            <LinkItem colors={theme.palette} key={link.name}>
               <LinkItemLink to={link.link}>
-                <Icon path={link.icon} size={1} />
+                <StyledIcon path={link.icon} size={1} colors={theme.palette} />
                 <p>{link.name}</p>
               </LinkItemLink>
             </LinkItem>

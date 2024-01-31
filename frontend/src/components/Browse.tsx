@@ -1,17 +1,18 @@
 import styled from "@emotion/styled";
 import { ReactElement, useMemo, useState } from "react";
-import { BreakPointProps } from "./StyledComponents";
+import { BreakPointProps, CssProps, UnstyledLink } from "./StyledComponents";
 import { Pagination, useMediaQuery, useTheme } from "@mui/material";
 import Categories from "./Categories";
 import { Link, useLoaderData } from "react-router-dom";
 import { Article } from "..";
 
-const ArticleContainer = styled.div<BreakPointProps>`
+const ArticleContainer = styled.div<CssProps>`
   display: flex;
   flex-direction: ${(props) => (props.break ? "column" : "row")};
   gap: 20px;
 
-  border: 1px solid black;
+  border: 1px solid ${(props) => props.colors.primary.dark};
+  border-radius: 25px 5px;
   width: ${(props) => (props.break ? "90vw" : "35rem")};
   padding: 10px;
   background-color: white;
@@ -29,11 +30,6 @@ const ArticleTitle = styled.span`
 
 const ArticleSubtitle = styled.span`
   font-size: 18px;
-`;
-
-const ArticleLink = styled(Link)`
-  text-decoration: none;
-  color: black;
 `;
 
 const ArticleImage = styled.img<BreakPointProps>`
@@ -80,8 +76,8 @@ const Browse: React.FunctionComponent<BrowseProps> = ({
           );
         })
         .map((article) => (
-          <ArticleLink to={`/articles/${article.slug}`} key={article.slug}>
-            <ArticleContainer break={sm}>
+          <UnstyledLink to={`/articles/${article.slug}`} key={article.slug}>
+            <ArticleContainer break={sm} colors={theme.palette}>
               <ArticleImage
                 src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
                 break={sm}
@@ -96,7 +92,7 @@ const Browse: React.FunctionComponent<BrowseProps> = ({
                 />
               </ArticleDetailContainer>
             </ArticleContainer>
-          </ArticleLink>
+          </UnstyledLink>
         ))}
       <Pagination count={numPages} page={page} onChange={handlePageChange} />
     </>

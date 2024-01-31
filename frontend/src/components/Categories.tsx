@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
+import { useTheme } from "@mui/material";
 import { ReactElement } from "react";
+import { ColorProps } from "./StyledComponents";
 
 const CategoryContainer = styled.div`
   display: flex;
@@ -9,16 +11,16 @@ const CategoryContainer = styled.div`
   flex-wrap: wrap;
 `;
 
-const Category = styled.div`
+const Category = styled.div<ColorProps>`
   color: white;
-  background-color: grey;
+  background-color: ${({ colors }) => colors.primary.main};
   border-radius: 15px;
   padding: 5px 10px;
 `;
 
 const Subcategory = styled(Category)`
   color: black;
-  background-color: lightgrey;
+  background-color: ${({ colors }) => colors.primary.light};
 `;
 
 interface CategoriesProps {
@@ -30,11 +32,16 @@ const Categories: React.FunctionComponent<CategoriesProps> = ({
   category,
   subcategories,
 }): ReactElement => {
+  const theme = useTheme();
+  const colors = theme.palette;
+
   return (
     <CategoryContainer>
-      <Category>{category}</Category>
+      <Category colors={colors}>{category}</Category>
       {subcategories.map((subcategory) => (
-        <Subcategory key={subcategory}>{subcategory}</Subcategory>
+        <Subcategory key={subcategory} colors={colors}>
+          {subcategory}
+        </Subcategory>
       ))}
     </CategoryContainer>
   );
