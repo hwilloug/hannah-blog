@@ -12,6 +12,14 @@ export const BodyContainer = styled.div`
   min-height: 80vh;
 `;
 
+export const SectionTitle = styled.span<BreakPointProps>`
+  background-color: grey;
+  font-size: 24px;
+  text-align: center;
+  margin-top: 20px;
+  width: ${(props) => (props.break ? "100%" : "40rem")};
+`;
+
 export const StyledButton = styled.button`
   background-color: grey;
   color: white;

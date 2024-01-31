@@ -1,7 +1,11 @@
 import styled from "@emotion/styled";
 import { ReactElement } from "react";
 import Navigation from "../components/Navigation";
-import { BodyContainer, BreakPointProps } from "../components/StyledComponents";
+import {
+  BodyContainer,
+  BreakPointProps,
+  SectionTitle,
+} from "../components/StyledComponents";
 import { useMediaQuery, useTheme } from "@mui/material";
 import Browse from "../components/Browse";
 
@@ -19,14 +23,6 @@ const WelcomeBanner = styled.div<BreakPointProps>`
 
 const Title = styled.span`
   font-size: 60px;
-`;
-
-const SectionTitle = styled.span`
-  background-color: grey;
-  font-size: 24px;
-  text-align: center;
-  margin-top: 20px;
-  width: 40rem;
 `;
 
 const LatestArticlesContainer = styled.div`
@@ -50,7 +46,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
         </p>
       </WelcomeBanner>
       <LatestArticlesContainer>
-        <SectionTitle>Latest Articles:</SectionTitle>
+        <SectionTitle break={sm}>Latest Articles:</SectionTitle>
         <Browse />
       </LatestArticlesContainer>
     </BodyContainer>

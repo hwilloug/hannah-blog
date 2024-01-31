@@ -1,15 +1,8 @@
 import styled from "@emotion/styled";
 import { ReactElement } from "react";
-import { BodyContainer } from "../components/StyledComponents";
+import { BodyContainer, SectionTitle } from "../components/StyledComponents";
 import Browse from "../components/Browse";
-
-const SectionTitle = styled.span`
-  background-color: grey;
-  font-size: 24px;
-  width: 40rem;
-  text-align: center;
-  margin-top: 20px;
-`;
+import { useMediaQuery, useTheme } from "@mui/material";
 
 const LatestArticlesContainer = styled.div`
   display: flex;
@@ -25,10 +18,13 @@ interface CategoryBrowseProps {
 const CategoryBrowse: React.FunctionComponent<CategoryBrowseProps> = ({
   category,
 }): ReactElement => {
+  const theme = useTheme();
+  const sm = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <BodyContainer>
       <LatestArticlesContainer>
-        <SectionTitle>{category} Articles:</SectionTitle>
+        <SectionTitle break={sm}>{category} Articles:</SectionTitle>
         <Browse category={category} />
       </LatestArticlesContainer>
     </BodyContainer>
