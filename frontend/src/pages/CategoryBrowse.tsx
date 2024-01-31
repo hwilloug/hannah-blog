@@ -3,7 +3,6 @@ import { ReactElement } from "react";
 import { BodyContainer } from "../components/StyledComponents";
 import Browse from "../components/Browse";
 
-
 const SectionTitle = styled.span`
   background-color: grey;
   font-size: 24px;
@@ -20,11 +19,12 @@ const LatestArticlesContainer = styled.div`
 `;
 
 interface CategoryBrowseProps {
-  category: string
+  category: string;
 }
 
-const CategoryBrowse: React.FunctionComponent<CategoryBrowseProps> = ({category}): ReactElement => {
-
+const CategoryBrowse: React.FunctionComponent<CategoryBrowseProps> = ({
+  category,
+}): ReactElement => {
   return (
     <BodyContainer>
       <LatestArticlesContainer>
