@@ -24,9 +24,9 @@ const Title = styled.span`
 const SectionTitle = styled.span`
   background-color: grey;
   font-size: 24px;
-  width: 35rem;
   text-align: center;
   margin-top: 20px;
+  width: 40rem;
 `;
 
 const LatestArticlesContainer = styled.div`

@@ -6,7 +6,7 @@ import Browse from "../components/Browse";
 const SectionTitle = styled.span`
   background-color: grey;
   font-size: 24px;
-  width: 35rem;
+  width: 40rem;
   text-align: center;
   margin-top: 20px;
 `;

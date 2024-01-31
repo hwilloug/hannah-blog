@@ -9,7 +9,7 @@ export const BodyContainer = styled.div`
   margin: 0px 50px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  min-height: 80vh;
 `;
 
 export const StyledButton = styled.button`

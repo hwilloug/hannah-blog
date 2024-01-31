@@ -5,6 +5,7 @@ import { StyledButton, UnstyledLink } from "./StyledComponents";
 const AsideContainer = styled.div`
   max-width: 17rem;
   min-width: 17rem;
+  margin-right: 50px;
 `;
 
 const WelcomeContainer = styled.div`

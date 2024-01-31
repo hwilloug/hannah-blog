@@ -13,7 +13,6 @@ const NavBarContainer = styled.div<BreakPointProps>`
   flex-direction: ${(props) => (props.break ? "column" : "row")};
   gap: 20px;
   background-color: grey;
-  min-width: 100vw;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
