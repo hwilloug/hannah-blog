@@ -1,19 +1,23 @@
 import styled from "@emotion/styled";
 import { ReactElement, useMemo, useState } from "react";
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
-import { BodyContainer, StyledButton } from "../components/StyledComponents";
+import {
+  BodyContainer,
+  BreakPointProps,
+  StyledButton,
+} from "../components/StyledComponents";
 import { mdiArrowLeftThick } from "@mdi/js";
 import Icon from "@mdi/react";
 import Categories from "../components/Categories";
 import { Article } from "..";
-import { useTheme } from "@mui/material";
+import { useMediaQuery, useTheme } from "@mui/material";
 
-const ArticlePageContainer = styled(BodyContainer)`
+const ArticlePageContainer = styled(BodyContainer)<BreakPointProps>`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  max-width: 35rem;
-  min-width: 35rem;
+  max-width: ${(props) => (props.break ? "90%" : "35rem")};
+  min-width: ${(props) => (props.break ? "90%" : "35rem")};
   align-items: stretch;
 `;
 
@@ -40,8 +44,10 @@ const ArticleSubtitle = styled.h5`
 `;
 
 const ArticleImage = styled.img`
+  display: block;
   max-height: 30rem;
-  width: 100%;
+  min-width: 100%;
+  object-fit: cover;
 `;
 
 const Divider = styled.hr`
@@ -66,6 +72,7 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
   const navigate = useNavigate();
   const theme = useTheme();
   const articleInfo = useLoaderData() as Article;
+  const sm = useMediaQuery(theme.breakpoints.down("xs"));
 
   const goBack = () => {
     navigate(-1);
@@ -89,7 +96,7 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
   }, [articleSlug]);
 
   return (
-    <ArticlePageContainer>
+    <ArticlePageContainer break={sm}>
       <BackButtonContainer>
         <BackButton onClick={goBack} colors={theme.palette}>
           <Icon path={mdiArrowLeftThick} size={1} />
