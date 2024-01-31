@@ -1,12 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import reportWebVitals from './reportWebVitals';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import HomePage from './pages/Home';
-import Layout from './Layout';
-import ArticlePage from './pages/Article';
-
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import HomePage from "./pages/Home";
+import Layout from "./Layout";
+import ArticlePage from "./pages/Article";
+import { ThemeProvider, createTheme } from "@mui/material";
+import CategoryBrowse from "./pages/CategoryBrowse";
 
 const router = createBrowserRouter([
   {
@@ -15,23 +16,61 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <HomePage />
+        element: <HomePage />,
       },
       {
         path: "articles/:articleSlug",
-        element: <ArticlePage />
-      }
-    ]
-  }
-])
+        element: <ArticlePage />,
+      },
+      {
+        path: "food",
+        element: <CategoryBrowse category="Food" />,
+      },
+      {
+        path: "gardening",
+        element: <CategoryBrowse category="Gardening" />,
+      },
+      {
+        path: "crafts",
+        element: <CategoryBrowse category="Crafts" />,
+      },
+      {
+        path: "coding",
+        element: <CategoryBrowse category="Coding" />,
+      },
+      {
+        path: "books",
+        element: <CategoryBrowse category="Books" />,
+      },
+      {
+        path: "languages",
+        element: <CategoryBrowse category="Languages" />,
+      },
+    ],
+  },
+]);
+
+const theme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 652,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+    },
+  },
+});
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement,
 );
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+    <ThemeProvider theme={theme}>
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  </React.StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function

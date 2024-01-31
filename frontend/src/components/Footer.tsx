@@ -3,43 +3,51 @@ import { ChangeEvent, ReactElement } from "react";
 import { StyledButton } from "./StyledComponents";
 import { Switch } from "@mui/material";
 
-
 const FooterContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 
-    background-color: grey;
-    padding: 20px;
-`
+  background-color: grey;
+  padding: 20px;
+  min-width: 100vw;
+`;
 
-const BuyMeABookButton = styled(StyledButton)``
+const BuyMeABookButton = styled(StyledButton)`
+  margin: 0 20px;
+`;
 
-const Copyright = styled.div``
+const Copyright = styled.div``;
 
 const DarkModeToggleContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
 
 interface FooterProps {
-    darkMode: boolean
-    handleDarkModeChange: (event: ChangeEvent<HTMLInputElement>, checked: boolean) => void
+  darkMode: boolean;
+  handleDarkModeChange: (
+    event: ChangeEvent<HTMLInputElement>,
+    checked: boolean,
+  ) => void;
 }
 
-const Footer: React.FunctionComponent<FooterProps> = ({darkMode, handleDarkModeChange}): ReactElement => {
-    return (
-        <FooterContainer>
-            <BuyMeABookButton>📖 Buy Me a Book</BuyMeABookButton>
-            <Copyright>© {new Date().getFullYear()} Poppyland</Copyright>
-            <DarkModeToggleContainer>
-                <p>Dark Mode</p>
-                <Switch checked={darkMode} onChange={handleDarkModeChange} />
-            </DarkModeToggleContainer>
-        </FooterContainer>
-    )
-}
+const Footer: React.FunctionComponent<FooterProps> = ({
+  darkMode,
+  handleDarkModeChange,
+}): ReactElement => {
+  return (
+    <FooterContainer>
+      <BuyMeABookButton>📖 Buy Me a Book</BuyMeABookButton>
+      <Copyright>© {new Date().getFullYear()} Poppyland</Copyright>
+      <DarkModeToggleContainer>
+        <p>Dark Mode</p>
+        <Switch checked={darkMode} onChange={handleDarkModeChange} />
+      </DarkModeToggleContainer>
+    </FooterContainer>
+  );
+};
 
-export default Footer
+export default Footer;
