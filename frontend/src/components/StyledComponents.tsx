@@ -13,6 +13,10 @@ export interface ColorProps {
 
 export type CssProps = BreakPointProps & ColorProps;
 
+export type NavProps = ColorProps & {
+  isActive: boolean;
+};
+
 export const BodyContainer = styled.div`
   margin: 0px 50px;
   display: flex;
@@ -83,7 +87,7 @@ export const BorderedFullSizeImage = styled(FullSizeImage)`
 
 export const StyledIcon = styled(Icon)<ColorProps>``;
 
-export const NavigationItem = styled.button<ColorProps>`
+export const NavigationItem = styled.button<NavProps>`
   all: unset;
 
   display: flex;
@@ -91,7 +95,8 @@ export const NavigationItem = styled.button<ColorProps>`
   align-items: center;
 
   color: white;
-  background-color: ${({ colors }) => colors.primary.dark};
+  background-color: ${({ colors, isActive }) =>
+    isActive ? colors.secondary.main : colors.primary.dark};
 
   padding: 10px;
 

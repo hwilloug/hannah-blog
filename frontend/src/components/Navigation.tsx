@@ -78,16 +78,18 @@ const Navigation: React.FunctionComponent<NavigationProps> = ({
     <NavigationContainer>
       {navItems.map((navItem) => (
         <NavigationLink to={navItem.path} key={navItem.name}>
-          <NavigationItem colors={theme.palette}>
-            <StyledIcon
-              path={navItem.icon}
-              size={navItemSize}
-              colors={theme.palette}
-            />
-            {showText && (
-              <NavigationItemText>{navItem.name}</NavigationItemText>
-            )}
-          </NavigationItem>
+          {({ isActive }) => (
+            <NavigationItem colors={theme.palette} isActive={isActive}>
+              <StyledIcon
+                path={navItem.icon}
+                size={navItemSize}
+                colors={theme.palette}
+              />
+              {showText && (
+                <NavigationItemText>{navItem.name}</NavigationItemText>
+              )}
+            </NavigationItem>
+          )}
         </NavigationLink>
       ))}
     </NavigationContainer>

@@ -52,12 +52,20 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
           <Title>Poppyland Blog</Title>
         </HomeLink>
         <RightIconContainer>
-          <NavigationItem colors={colors}>
+          {/*<NavigationItem colors={colors}>
             <StyledIcon path={mdiMagnify} size={1} colors={colors} />
-          </NavigationItem>
-          <NavigationItem colors={colors}>
-            <StyledIcon path={mdiHelpCircleOutline} size={1} colors={colors} />
-          </NavigationItem>
+          </NavigationItem>*/}
+          <NavigationLink to="/about">
+            {({ isActive }) => (
+              <NavigationItem colors={colors} isActive={isActive}>
+                <StyledIcon
+                  path={mdiHelpCircleOutline}
+                  size={1}
+                  colors={colors}
+                />
+              </NavigationItem>
+            )}
+          </NavigationLink>
         </RightIconContainer>
       </NavBarContainer>
       <Navigation />
@@ -70,13 +78,15 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
         <Title>Poppyland Blog</Title>
       </HomeLink>
       <Navigation />
-      <NavigationItem colors={colors}>
+      {/* <NavigationItem colors={colors}>
         <StyledIcon path={mdiMagnify} size={1} colors={colors} />
-      </NavigationItem>
+      </NavigationItem>*/}
       <NavigationLink to="/about">
-        <NavigationItem colors={colors}>
-          <StyledIcon path={mdiHelpCircleOutline} size={1} colors={colors} />
-        </NavigationItem>
+        {({ isActive }) => (
+          <NavigationItem colors={colors} isActive={isActive}>
+            <StyledIcon path={mdiHelpCircleOutline} size={1} colors={colors} />
+          </NavigationItem>
+        )}
       </NavigationLink>
     </>
   );
