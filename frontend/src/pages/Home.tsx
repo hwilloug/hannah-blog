@@ -23,7 +23,7 @@ const WelcomeBanner = styled.div<BreakPointProps>`
 `;
 
 const Title = styled.span`
-  font-size: 60px;
+  font-size: 2.75rem;
   text-align: center;
 
   font-family: Montserrat, Arial, Helvetica, sans-serif;
