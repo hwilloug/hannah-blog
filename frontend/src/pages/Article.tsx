@@ -12,6 +12,7 @@ import Categories from "../components/Categories";
 import { Article, mapRespToArticle } from "..";
 import { useMediaQuery, useTheme } from "@mui/material";
 import { AxiosResponse } from "axios";
+import Loading from "../components/Loading";
 
 const ArticlePageContainer = styled(BodyContainer)<BreakPointProps>`
   display: flex;
@@ -108,7 +109,7 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
           Back
         </BackButton>
       </BackButtonContainer>
-      <Suspense>
+      <Suspense fallback={<Loading />}>
         <Await
           resolve={data.article}
           errorElement={<p>Error loading article!</p>}
