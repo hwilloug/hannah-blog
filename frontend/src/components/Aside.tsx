@@ -30,6 +30,7 @@ const WelcomeTitle = styled.span`
 
 const WelcomeText = styled.p`
   font-size: 18px;
+  line-height: 1.75;
 `;
 
 const AboutButton = styled(StyledButton)``;

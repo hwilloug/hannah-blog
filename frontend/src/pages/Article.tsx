@@ -36,9 +36,13 @@ export const ArticleContainer = styled.div`
   padding: 20px;
 `;
 
-const ArticleTitle = styled.h1``;
+const ArticleTitle = styled.p`
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+`;
 
-const ArticleSubtitle = styled.h5`
+const ArticleSubtitle = styled.p`
   color: grey;
   font-weight: lighter;
 `;

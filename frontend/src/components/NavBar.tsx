@@ -1,14 +1,12 @@
 import styled from "@emotion/styled";
 import { ReactElement } from "react";
 import Navigation from "./Navigation";
-import { mdiMagnify } from "@mdi/js";
 import { mdiHelpCircleOutline } from "@mdi/js";
 import { Link } from "react-router-dom";
 import { useMediaQuery, useTheme } from "@mui/material";
 import {
   CssProps,
   StyledIcon,
-  UnstyledLink,
   NavigationItem,
   NavigationLink,
 } from "./StyledComponents";
@@ -34,6 +32,8 @@ const Title = styled.span`
   font-size: 24px;
   color: white;
   margin: 0 20px;
+
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
 `;
 
 const HomeLink = styled(Link)`

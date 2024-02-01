@@ -22,6 +22,7 @@ const ArticleDetailContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding: 10px;
 `;
 
 const ArticleTitle = styled.span`

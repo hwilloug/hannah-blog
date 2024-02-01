@@ -33,6 +33,7 @@ export const SectionTitle = styled.span<CssProps>`
   padding: 5px 0;
   border-radius: 5px;
   width: ${(props) => (props.break ? "100%" : "40rem")};
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
 `;
 
 export const StyledButton = styled.button<ColorProps>`
@@ -46,7 +47,9 @@ export const StyledButton = styled.button<ColorProps>`
   padding: 5px 10px;
 `;
 
-export const ArticleContentContainer = styled.div``;
+export const ArticleContentContainer = styled.div`
+  line-height: 1.75;
+`;
 
 export const Section = styled.div`
   margin-bottom: 50px;

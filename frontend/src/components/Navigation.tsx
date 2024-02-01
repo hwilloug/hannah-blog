@@ -8,12 +8,7 @@ import { mdiContentCut } from "@mdi/js";
 import { mdiCodeBlockTags } from "@mdi/js";
 import { mdiBookOpenVariant } from "@mdi/js";
 import { mdiSyllabaryHiragana } from "@mdi/js";
-import {
-  ColorProps,
-  NavigationItem,
-  NavigationLink,
-  StyledIcon,
-} from "./StyledComponents";
+import { NavigationItem, NavigationLink, StyledIcon } from "./StyledComponents";
 import { useTheme } from "@mui/material";
 
 const NavigationContainer = styled.div`

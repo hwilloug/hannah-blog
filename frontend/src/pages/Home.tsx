@@ -25,6 +25,8 @@ const WelcomeBanner = styled.div<BreakPointProps>`
 const Title = styled.span`
   font-size: 60px;
   text-align: center;
+
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
 `;
 
 const LatestArticlesContainer = styled.div`
@@ -32,6 +34,10 @@ const LatestArticlesContainer = styled.div`
   flex-direction: column;
   gap: 20px;
   align-items: center;
+`;
+
+const WelcomeText = styled.p`
+  line-height: 1.75;
 `;
 
 const HomePage: React.FunctionComponent = (): ReactElement => {
@@ -43,7 +49,9 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
       <WelcomeBanner break={sm}>
         <Title>Welcome to Poppyland Blog</Title>
         <Navigation showText={true} />
-        <p>Browse latest articles below, or click a category above.</p>
+        <WelcomeText>
+          Browse latest articles below, or click a category above.
+        </WelcomeText>
       </WelcomeBanner>
       <LatestArticlesContainer>
         <SectionTitle break={sm} colors={theme.palette}>
