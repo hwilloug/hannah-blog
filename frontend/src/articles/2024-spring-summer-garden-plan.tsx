@@ -18,7 +18,7 @@ const Garden2024Plan: React.FunctionComponent = (): ReactElement => {
       <SectionHeader>Planting Plan</SectionHeader>
       <Section>
         <FullSizeImage
-          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/garden_2024.png`}
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/garden_2024.jpeg`}
         />
         <p>
           The above image is my current plan for the year. The top left box will
@@ -98,7 +98,7 @@ const Garden2024Plan: React.FunctionComponent = (): ReactElement => {
       </Section>
       <Section>
         <FullSizeImage
-          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/garden_bed_design.png`}
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/garden_bed_design.jpeg`}
         />
         <p>
           The design for the L-shaped bed. The long sides are 8 ft long and the
@@ -108,13 +108,13 @@ const Garden2024Plan: React.FunctionComponent = (): ReactElement => {
       </Section>
       <Section>
         <FullSizeImage
-          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/garden_beds_1.png`}
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/garden_beds_1.jpeg`}
         />
         <p>Cuts made and boards laid out in-shape.</p>
       </Section>
       <Section>
         <FullSizeImage
-          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/garden_beds_2.png`}
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/garden_beds_2.jpeg`}
         />
         <p>
           The final result! This completes all the beds I wanted to build. Next

@@ -14,19 +14,19 @@ const Arbor: React.FunctionComponent = (): ReactElement => {
       </Section>
       <Section>
         <FullSizeImage
-          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/arbor_3.png`}
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/arbor_3.jpeg`}
         />
         <p></p>
       </Section>
       <Section>
         <FullSizeImage
-          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/arbor_1.png`}
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/arbor_1.jpeg`}
         />
         <p></p>
       </Section>
       <Section>
         <FullSizeImage
-          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/arbor_2.png`}
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/arbor_2.jpeg`}
         />
         <p></p>
       </Section>

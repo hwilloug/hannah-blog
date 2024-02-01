@@ -97,7 +97,7 @@ const About: React.FunctionComponent = (): ReactElement => {
           ))}
         </LinksContainer>
         <BorderedFullSizeImage
-          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/family_photo.png`}
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/family_photo.jpeg`}
         />
       </AboutContainer>
     </BodyContainer>

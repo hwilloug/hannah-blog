@@ -46,15 +46,15 @@ const DripIrrigation: React.FunctionComponent = (): ReactElement => {
           ordering an N-channel, and it worked!
         </p>
         <FullSizeImage
-          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/raincloud_circuit.png`}
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/raincloud_circuit.jpeg`}
         />
         <p>The circuit diagram</p>
         <FullSizeImage
-          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/raincloud_circuit_pic.png`}
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/raincloud_circuit_pic.jpeg`}
         />
         <p>Added an LCD screen to show the status</p>
         <FullSizeImage
-          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/poppy_and_circuit.png`}
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/poppy_and_circuit.jpeg`}
         />
         <p>Poppy being cute!</p>
       </Section>
@@ -66,13 +66,13 @@ const DripIrrigation: React.FunctionComponent = (): ReactElement => {
           tied up some string to get our trench straight.
         </p>
         <FullSizeImage
-          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/solenoid_valve.png`}
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/solenoid_valve.jpeg`}
         />
         <FullSizeImage
-          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/valve_and_pipes.png`}
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/valve_and_pipes.jpeg`}
         />
         <FullSizeImage
-          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/raincloud_trench_1.png`}
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/raincloud_trench_1.jpeg`}
         />
       </Section>
       <Section>

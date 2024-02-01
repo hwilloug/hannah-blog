@@ -18,13 +18,13 @@ const Pies: React.FunctionComponent = (): ReactElement => {
       </Section>
       <Section>
         <FullSizeImage
-          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/pies_1.png`}
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/pies_1.jpeg`}
         />
         <p>In progress...</p>
       </Section>
       <Section>
         <FullSizeImage
-          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/pies_2.png`}
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/pies_2.jpeg`}
         />
         <p>
           And here's the final result! I had problems with fraying edges, so I

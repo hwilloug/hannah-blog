@@ -23,7 +23,7 @@ const HomeIsWhereTheCakeIs: React.FunctionComponent = (): ReactElement => {
       </Section>
       <Section>
         <FullSizeImage
-          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/cake_home_4.png`}
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/cake_home_4.jpeg`}
         />
         <p>
           I knew I'd have a hard time finding a frame that was long enough for
@@ -33,19 +33,19 @@ const HomeIsWhereTheCakeIs: React.FunctionComponent = (): ReactElement => {
       </Section>
       <Section>
         <FullSizeImage
-          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/cake_home_1.png`}
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/cake_home_1.jpeg`}
         />
         <p>In progress...</p>
       </Section>
       <Section>
         <FullSizeImage
-          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/cake_home_2.png`}
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/cake_home_2.jpeg`}
         />
         <p>Almost done!</p>
       </Section>
       <Section>
         <FullSizeImage
-          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/cake_home_3.png`}
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/cake_home_3.jpeg`}
         />
         <p>
           And here is the final result! I added stitching along the lighter

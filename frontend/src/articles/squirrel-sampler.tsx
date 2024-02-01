@@ -24,7 +24,7 @@ const SquirrelSampler: React.FunctionComponent = (): ReactElement => {
       </Section>
       <Section>
         <FullSizeImage
-          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/squirrel_sampler_3.png`}
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/squirrel_sampler_3.jpeg`}
         />
         <p>
           Here's the final pared-down design I made from the Autumn Band
@@ -36,13 +36,13 @@ const SquirrelSampler: React.FunctionComponent = (): ReactElement => {
       </Section>
       <Section>
         <FullSizeImage
-          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/squirrel_sampler_1.png`}
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/squirrel_sampler_1.jpeg`}
         />
         <p>In progress...</p>
       </Section>
       <Section>
         <FullSizeImage
-          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/squirrel_sampler_2.png`}
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/squirrel_sampler_2.jpeg`}
         />
         <p>
           And here is the final result! I was so so so happy with it, and my mom

@@ -29,7 +29,7 @@ const FriedPorkchops: React.FunctionComponent = (): ReactElement => {
             scramble two eggs on a second plate, and dump some panko bread
             crumbs on a third plate.
             <FullSizeImage
-              src={`${process.env.REACT_APP_IMAGES_BASE_URL}/fried_porkchops_1.png`}
+              src={`${process.env.REACT_APP_IMAGES_BASE_URL}/fried_porkchops_1.jpeg`}
             />
           </StyledListItem>
           <StyledListItem>
@@ -61,7 +61,7 @@ const FriedPorkchops: React.FunctionComponent = (): ReactElement => {
             done once they are golden. Place the cooked pork chops on a cooling
             rack, and sprinkle with a bit of salt while they are still hot.
             <FullSizeImage
-              src={`${process.env.REACT_APP_IMAGES_BASE_URL}/fried_porkchops_2.png`}
+              src={`${process.env.REACT_APP_IMAGES_BASE_URL}/fried_porkchops_2.jpeg`}
             />
           </StyledListItem>
           <StyledListItem>
