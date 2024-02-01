@@ -1,9 +1,9 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Aside from "./components/Aside";
 import Footer from "./components/Footer";
 import styled from "@emotion/styled";
-import { ChangeEvent, ReactElement, useState } from "react";
+import { ChangeEvent, ReactElement, useEffect, useState } from "react";
 import { useMediaQuery, useTheme } from "@mui/material";
 import { BreakPointProps, ColorProps } from "./components/StyledComponents";
 
@@ -23,6 +23,16 @@ const ContentContainer = styled.div<BreakPointProps>`
   gap: 20px;
 `;
 
+function ScrollToTopOnNavigate() {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  return null;
+}
+
 const Layout: React.FunctionComponent = (): ReactElement => {
   const theme = useTheme();
   const md = useMediaQuery(theme.breakpoints.up("md"));
@@ -39,6 +49,7 @@ const Layout: React.FunctionComponent = (): ReactElement => {
 
   return (
     <LayoutContainer colors={colors}>
+      <ScrollToTopOnNavigate />
       <NavBar />
       <ContentContainer break={md}>
         <Outlet />

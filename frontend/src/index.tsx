@@ -4,7 +4,6 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import {
   LoaderFunction,
-  LoaderFunctionArgs,
   RouterProvider,
   createBrowserRouter,
   defer,
@@ -12,10 +11,10 @@ import {
 import HomePage from "./pages/Home";
 import Layout from "./Layout";
 import ArticlePage from "./pages/Article";
-import { ThemeProvider, createTheme } from "@mui/material";
+import { ThemeProvider } from "@mui/material";
 import CategoryBrowse from "./pages/CategoryBrowse";
 import About from "./pages/About";
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import { theme } from "./theme";
 
 export interface ArticleApiResponse {

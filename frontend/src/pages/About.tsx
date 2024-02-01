@@ -20,6 +20,7 @@ const AboutContainer = styled.div<BreakPointProps>`
   border-radius: 5px;
   padding: 20px;
   width: ${(props) => (props.break ? "100%" : "35rem")};
+  line-height: 1.75;
 `;
 
 const LinksContainer = styled.ul`
