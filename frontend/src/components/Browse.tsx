@@ -1,10 +1,12 @@
 import styled from "@emotion/styled";
-import { ReactElement, useMemo, useState } from "react";
+import { ReactElement, Suspense, useState } from "react";
 import { BreakPointProps, CssProps, UnstyledLink } from "./StyledComponents";
 import { Pagination, useMediaQuery, useTheme } from "@mui/material";
 import Categories from "./Categories";
-import { Link, useLoaderData } from "react-router-dom";
-import { Article } from "..";
+import { Await, Link, useLoaderData } from "react-router-dom";
+import { Article, mapRespToArticle } from "..";
+import { AxiosResponse } from "axios";
+import Loading from "./Loading";
 
 const ArticleContainer = styled.div<CssProps>`
   display: flex;
@@ -35,21 +37,17 @@ const ArticleSubtitle = styled.span`
 
 const ArticleImage = styled.img<BreakPointProps>`
   width: ${(props) => (props.break ? "100%" : "10rem")};
+  object-fit: cover;
+  border-radius: 5px;
 `;
 
-interface BrowseProps {
-  category?: string;
-}
-
-const Browse: React.FunctionComponent<BrowseProps> = ({
-  category,
-}): ReactElement => {
+const Browse: React.FunctionComponent = (): ReactElement => {
   const theme = useTheme();
-  const sm = useMediaQuery(theme.breakpoints.down("sm"));
-  const articles: Article[] = useLoaderData() as Article[];
-
+  const sm = useMediaQuery(theme.breakpoints.down("xs"));
+  const data = useLoaderData() as {
+    articles: Promise<AxiosResponse<any, any>>;
+  };
   const [page, setPage] = useState<number>(1);
-  const [numPages, setNumPages] = useState<number>(1);
   const PAGE_SIZE = 5;
 
   const handlePageChange = (e: React.ChangeEvent<unknown>, value: number) => {
@@ -57,48 +55,72 @@ const Browse: React.FunctionComponent<BrowseProps> = ({
     window.scrollTo(0, 0);
   };
 
-  useMemo(() => {
-    setNumPages(Math.ceil(articles.length / PAGE_SIZE));
-  }, [articles]);
+  return (
+    <Suspense fallback={<Loading />}>
+      <Await
+        resolve={data.articles}
+        errorElement={<p>Error loading articles!</p>}
+      >
+        {(resp) => {
+          if (resp === undefined) {
+            return <p>404 not found??</p>;
+          }
 
-  const noArticlesPartial = <p>No articles found :(</p>;
-
-  const articlesPartial = (
-    <>
-      {articles
-        .sort(
-          (a: Article, b: Article) =>
-            (new Date(b.createdAt) as any) - (new Date(a.createdAt) as any),
-        )
-        .filter((a) => {
-          return (
-            articles.indexOf(a) <= page * PAGE_SIZE - 1 &&
-            articles.indexOf(a) >= (page - 1) * PAGE_SIZE
+          const articles: Article[] = resp.data.map((a: any) =>
+            mapRespToArticle(a),
           );
-        })
-        .map((article) => (
-          <UnstyledLink to={`/articles/${article.slug}`} key={article.slug}>
-            <ArticleContainer break={sm} colors={theme.palette}>
-              <ArticleImage
-                src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
-                break={sm}
+
+          const numPages = Math.ceil(articles.length / PAGE_SIZE);
+
+          return articles.length ? (
+            <>
+              {articles
+                .sort(
+                  (a: Article, b: Article) =>
+                    (new Date(b.createdAt) as any) -
+                    (new Date(a.createdAt) as any),
+                )
+                .filter((a) => {
+                  return (
+                    articles.indexOf(a) <= page * PAGE_SIZE - 1 &&
+                    articles.indexOf(a) >= (page - 1) * PAGE_SIZE
+                  );
+                })
+                .map((article: Article) => (
+                  <UnstyledLink
+                    to={`/articles/${article.slug}`}
+                    key={article.slug}
+                  >
+                    <ArticleContainer break={sm} colors={theme.palette}>
+                      <ArticleImage
+                        src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
+                        break={sm}
+                      />
+                      <ArticleDetailContainer>
+                        <ArticleTitle>{article.title}</ArticleTitle>
+                        <ArticleSubtitle>{article.subtitle}</ArticleSubtitle>
+                        <ArticleSubtitle>{article.createdAt}</ArticleSubtitle>
+                        <Categories
+                          category={article.category}
+                          subcategories={article.subcategory}
+                        />
+                      </ArticleDetailContainer>
+                    </ArticleContainer>
+                  </UnstyledLink>
+                ))}
+              <Pagination
+                count={numPages}
+                page={page}
+                onChange={handlePageChange}
               />
-              <ArticleDetailContainer>
-                <ArticleTitle>{article.title}</ArticleTitle>
-                <ArticleSubtitle>{article.subtitle}</ArticleSubtitle>
-                <ArticleSubtitle>{article.createdAt}</ArticleSubtitle>
-                <Categories
-                  category={article.category}
-                  subcategories={article.subcategory}
-                />
-              </ArticleDetailContainer>
-            </ArticleContainer>
-          </UnstyledLink>
-        ))}
-      <Pagination count={numPages} page={page} onChange={handlePageChange} />
-    </>
+            </>
+          ) : (
+            <p>No articles Found</p>
+          );
+        }}
+      </Await>
+    </Suspense>
   );
-  return articles.length ? articlesPartial : noArticlesPartial;
 };
 
 export default Browse;

@@ -16,7 +16,10 @@ const CategoryBrowse: React.FunctionComponent = (): ReactElement => {
   const theme = useTheme();
   const sm = useMediaQuery(theme.breakpoints.down("sm"));
   const params = useParams();
-  const category = params.category;
+  const category = params.category
+    ? params.category.split("")[0].toUpperCase() +
+      params.category.split("").splice(1).join("")
+    : undefined;
 
   return (
     <BodyContainer>
@@ -24,7 +27,7 @@ const CategoryBrowse: React.FunctionComponent = (): ReactElement => {
         <SectionTitle break={sm} colors={theme.palette}>
           {category} Articles:
         </SectionTitle>
-        <Browse category={category} />
+        <Browse />
       </LatestArticlesContainer>
     </BodyContainer>
   );

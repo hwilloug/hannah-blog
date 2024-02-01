@@ -7,6 +7,7 @@ import {
   LoaderFunctionArgs,
   RouterProvider,
   createBrowserRouter,
+  defer,
 } from "react-router-dom";
 import HomePage from "./pages/Home";
 import Layout from "./Layout";
@@ -14,10 +15,10 @@ import ArticlePage from "./pages/Article";
 import { ThemeProvider, createTheme } from "@mui/material";
 import CategoryBrowse from "./pages/CategoryBrowse";
 import About from "./pages/About";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { theme } from "./theme";
 
-export interface ArticlesApiResponse {
+export interface ArticleApiResponse {
   Slug: string;
   Title: string;
   Subtitle: string;
@@ -37,56 +38,47 @@ export interface Article {
   createdAt: string;
 }
 
-const articlesLoader: LoaderFunction = async ({ params }) => {
+const articlesLoader: LoaderFunction = ({ params }) => {
   const category = params.category
     ? params.category.split("")[0].toUpperCase() +
       params.category.split("").splice(1).join("")
     : undefined;
 
-  try {
-    const resp = await axios.get(
+  return defer({
+    articles: axios.get(
       `${process.env.REACT_APP_API_URL}/articles${category ? "?category=" + category : ""}`,
       {
         headers: {
           "Content-Type": "application/json",
         },
       },
-    );
-    return resp.data.map((d: ArticlesApiResponse) => ({
-      slug: d.Slug,
-      title: d.Title,
-      subtitle: d.Subtitle,
-      img: d.Img,
-      category: d.Category,
-      subcategory: d.Subcategory,
-      createdAt: d.CreatedAt,
-    }));
-  } catch (e) {
-    console.error("Error getting articles", e);
-  }
+    ),
+  });
 };
 
-const articleLoader: LoaderFunction = async ({ params }) => {
-  try {
-    const resp = await axios.get(
+const articleLoader: LoaderFunction = ({ params }) => {
+  return defer({
+    article: axios.get(
       `${process.env.REACT_APP_API_URL}/articles/${params.articleSlug}`,
-    );
-    return {
-      slug: resp.data.Slug,
-      title: resp.data.Title,
-      subtitle: resp.data.Subtitle,
-      img: resp.data.Img,
-      category: resp.data.Category,
-      subcategory: resp.data.Subcategory,
-      createdAt: resp.data.CreatedAt,
-    };
-  } catch (e) {
-    console.error(
-      "Error loading article info for article:",
-      params.articleSlug,
-      e,
-    );
-  }
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      },
+    ),
+  });
+};
+
+export const mapRespToArticle = (resp: ArticleApiResponse) => {
+  return {
+    title: resp.Title,
+    slug: resp.Slug,
+    subtitle: resp.Subtitle,
+    img: resp.Img,
+    category: resp.Category,
+    subcategory: resp.Subcategory,
+    createdAt: resp.CreatedAt,
+  } as Article;
 };
 
 const router = createBrowserRouter([

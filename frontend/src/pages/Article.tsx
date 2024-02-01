@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import { ReactElement, useMemo, useState } from "react";
-import { useLoaderData, useNavigate, useParams } from "react-router-dom";
+import { ReactElement, Suspense, useMemo, useState } from "react";
+import { Await, useLoaderData, useNavigate, useParams } from "react-router-dom";
 import {
   BodyContainer,
   BreakPointProps,
@@ -9,8 +9,9 @@ import {
 import { mdiArrowLeftThick } from "@mdi/js";
 import Icon from "@mdi/react";
 import Categories from "../components/Categories";
-import { Article } from "..";
+import { Article, mapRespToArticle } from "..";
 import { useMediaQuery, useTheme } from "@mui/material";
+import { AxiosResponse } from "axios";
 
 const ArticlePageContainer = styled(BodyContainer)<BreakPointProps>`
   display: flex;
@@ -75,7 +76,7 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
   let { articleSlug } = useParams();
   const navigate = useNavigate();
   const theme = useTheme();
-  const articleInfo = useLoaderData() as Article;
+  const data = useLoaderData() as { article: Promise<AxiosResponse<any, any>> };
   const sm = useMediaQuery(theme.breakpoints.down("xs"));
 
   const goBack = () => {
@@ -107,26 +108,42 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
           Back
         </BackButton>
       </BackButtonContainer>
-      <ArticleContainer>
-        <ArticleImage
-          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${articleInfo?.img}`}
-        />
-        <ArticleTitle>{articleInfo.title}</ArticleTitle>
-        <ArticleSubtitle>
-          <p>{articleInfo.subtitle}</p>
-          <p>{articleInfo.createdAt}</p>
-        </ArticleSubtitle>
-        <Categories
-          category={articleInfo.category || ""}
-          subcategories={articleInfo.subcategory || []}
-        />
-        <Divider />
-        {loadedArticle}
-        <SignatureContainer>
-          <Signature>Written by Hannah Willoughby</Signature>
-          <Signature>{articleInfo.createdAt}</Signature>
-        </SignatureContainer>
-      </ArticleContainer>
+      <Suspense>
+        <Await
+          resolve={data.article}
+          errorElement={<p>Error loading article!</p>}
+        >
+          {(resp) => {
+            if (resp === undefined) {
+              return <p>404 not found??</p>;
+            }
+
+            const article: Article = mapRespToArticle(resp.data);
+            return (
+              <ArticleContainer>
+                <ArticleImage
+                  src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
+                />
+                <ArticleTitle>{article.title}</ArticleTitle>
+                <ArticleSubtitle>
+                  <p>{article.subtitle}</p>
+                  <p>{article.createdAt}</p>
+                </ArticleSubtitle>
+                <Categories
+                  category={article.category || ""}
+                  subcategories={article.subcategory || []}
+                />
+                <Divider />
+                {loadedArticle}
+                <SignatureContainer>
+                  <Signature>Written by Hannah Willoughby</Signature>
+                  <Signature>{article.createdAt}</Signature>
+                </SignatureContainer>
+              </ArticleContainer>
+            );
+          }}
+        </Await>
+      </Suspense>
     </ArticlePageContainer>
   );
 };
