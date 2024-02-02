@@ -19,12 +19,14 @@ const Pies: React.FunctionComponent = (): ReactElement => {
       <Section>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/pies_1.jpeg`}
+          alt="In progress pic of the pies embroidery"
         />
         <p>In progress...</p>
       </Section>
       <Section>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/pies_2.jpeg`}
+          alt="The final pies embroidery"
         />
         <p>
           And here's the final result! I had problems with fraying edges, so I

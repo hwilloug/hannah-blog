@@ -30,6 +30,7 @@ const FriedPorkchops: React.FunctionComponent = (): ReactElement => {
             crumbs on a third plate.
             <FullSizeImage
               src={`${process.env.REACT_APP_IMAGES_BASE_URL}/fried_porkchops_1.jpeg`}
+              alt="Fried pork chops in progress"
             />
           </StyledListItem>
           <StyledListItem>
@@ -62,6 +63,7 @@ const FriedPorkchops: React.FunctionComponent = (): ReactElement => {
             rack, and sprinkle with a bit of salt while they are still hot.
             <FullSizeImage
               src={`${process.env.REACT_APP_IMAGES_BASE_URL}/fried_porkchops_2.jpeg`}
+              alt="Fried pork chop"
             />
           </StyledListItem>
           <StyledListItem>

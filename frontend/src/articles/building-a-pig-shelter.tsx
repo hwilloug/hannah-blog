@@ -19,18 +19,21 @@ const Garden2023Plan: React.FunctionComponent = (): ReactElement => {
       <Section>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/pig_shelter_2.jpeg`}
+          alt="The finished pig shelter base"
         />
         <p>The finished base</p>
       </Section>
       <Section>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/pig_shelter_4.jpeg`}
+          alt="The pig shelter frame in progress"
         />
         <p>The frame in progress</p>
       </Section>
       <Section>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/pig_shelter_5.jpeg`}
+          alt="The finished pig shelter frame"
         />
         <p>The finished frame</p>
       </Section>

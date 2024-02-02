@@ -24,6 +24,7 @@ const HomeIsWhereTheCakeIs: React.FunctionComponent = (): ReactElement => {
       <Section>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/cake_home_4.jpeg`}
+          alt="Home is where the cake is design"
         />
         <p>
           I knew I'd have a hard time finding a frame that was long enough for
@@ -34,18 +35,21 @@ const HomeIsWhereTheCakeIs: React.FunctionComponent = (): ReactElement => {
       <Section>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/cake_home_1.jpeg`}
+          alt="Tiger sitting under my cross stitch setup"
         />
         <p>In progress...</p>
       </Section>
       <Section>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/cake_home_2.jpeg`}
+          alt="Cross stitch home is where the cake is almost complete"
         />
         <p>Almost done!</p>
       </Section>
       <Section>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/cake_home_3.jpeg`}
+          alt="Framed home is where the cake is"
         />
         <p>
           And here is the final result! I added stitching along the lighter

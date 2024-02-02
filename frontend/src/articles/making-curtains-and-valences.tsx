@@ -19,6 +19,7 @@ const Curtains: React.FunctionComponent = (): ReactElement => {
       <Section>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/kitchen_curtain_1.jpeg`}
+          alt="Kitchen valence"
         />
         <p>
           Using{" "}
@@ -38,9 +39,11 @@ const Curtains: React.FunctionComponent = (): ReactElement => {
       <Section>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/curtain_1.jpeg`}
+          alt="Bedroom curtain closed"
         />
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/curtain_2.jpeg`}
+          alt="Bedroom curtain open"
         />
         <p>
           Here's how the bedroom curtains turned out! Because of the dark
@@ -56,6 +59,7 @@ const Curtains: React.FunctionComponent = (): ReactElement => {
       <Section>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/living_room_curtain.jpeg`}
+          alt="Living room scalloped valence"
         />
         <p>
           After feeling accomplished from making the bedroom curtains, I
@@ -75,6 +79,7 @@ const Curtains: React.FunctionComponent = (): ReactElement => {
       <Section>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/door_curtain_3.jpeg`}
+          alt="Door scalloped valence"
         />
         <p>
           And here's the second scalloped valence for the front door! I thought

@@ -44,6 +44,7 @@ const Aside: React.FunctionComponent = (): ReactElement => {
         <WelcomeTitle>Welcome to Poppyland Blog</WelcomeTitle>
         <BorderedFullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/me.jpeg`}
+          alt="A pic of Hannah"
         />
         <WelcomeText>
           Hello world! It's me, Hannah. This is where I write about what I do

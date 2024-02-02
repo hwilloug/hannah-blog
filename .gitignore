@@ -117,4 +117,4 @@ terraform.tfstate.backup
 lambda_deployment_packages
 
 batch-write-input.json
-articles.json
+articles_db

@@ -25,6 +25,7 @@ const SquirrelSampler: React.FunctionComponent = (): ReactElement => {
       <Section>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/squirrel_sampler_3.jpeg`}
+          alt="Squirrel sampler cross stitch design"
         />
         <p>
           Here's the final pared-down design I made from the Autumn Band
@@ -37,12 +38,14 @@ const SquirrelSampler: React.FunctionComponent = (): ReactElement => {
       <Section>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/squirrel_sampler_1.jpeg`}
+          alt="Squirrel sampler cross stitch in progress"
         />
         <p>In progress...</p>
       </Section>
       <Section>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/squirrel_sampler_2.jpeg`}
+          alt="Squirrel sampler cross stitch final"
         />
         <p>
           And here is the final result! I was so so so happy with it, and my mom

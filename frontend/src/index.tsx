@@ -22,9 +22,11 @@ export interface ArticleApiResponse {
   Title: string;
   Subtitle: string;
   Img: string;
+  ImgAlt: string;
   Category: string;
   Subcategory: string[];
   CreatedAt: string;
+  UpdatedAt: string;
 }
 
 export interface Article {
@@ -32,9 +34,11 @@ export interface Article {
   title: string;
   subtitle: string;
   img: string;
+  imgAlt: string;
   category: string;
   subcategory: string[];
   createdAt: string;
+  updatedAt: string;
 }
 
 const articlesLoader: LoaderFunction = ({ params }) => {
@@ -74,9 +78,11 @@ export const mapRespToArticle = (resp: ArticleApiResponse) => {
     slug: resp.Slug,
     subtitle: resp.Subtitle,
     img: resp.Img,
+    imgAlt: resp.ImgAlt,
     category: resp.Category,
     subcategory: resp.Subcategory,
     createdAt: resp.CreatedAt,
+    updatedAt: resp.UpdatedAt
   } as Article;
 };
 

@@ -47,14 +47,17 @@ const DripIrrigation: React.FunctionComponent = (): ReactElement => {
         </p>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/raincloud_circuit.jpeg`}
+          alt="The circuit diagram"
         />
         <p>The circuit diagram</p>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/raincloud_circuit_pic.jpeg`}
+          alt="The circuit with an LCD screen"
         />
         <p>Added an LCD screen to show the status</p>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/poppy_and_circuit.jpeg`}
+          alt="Poppy laying by the circuit"
         />
         <p>Poppy being cute!</p>
       </Section>
@@ -67,12 +70,15 @@ const DripIrrigation: React.FunctionComponent = (): ReactElement => {
         </p>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/solenoid_valve.jpeg`}
+          alt="The solenoid valve and box for the drip irrigation system"
         />
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/valve_and_pipes.jpeg`}
+          alt="The valve and pipes for the drip irrigation system"
         />
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/raincloud_trench_1.jpeg`}
+          alt="In progress pic of the trench"
         />
       </Section>
       <Section>

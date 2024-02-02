@@ -15,18 +15,21 @@ const Arbor: React.FunctionComponent = (): ReactElement => {
       <Section>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/arbor_3.jpeg`}
+          alt="The arbor design"
         />
         <p></p>
       </Section>
       <Section>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/arbor_1.jpeg`}
+          alt="The arbor in progress"
         />
         <p></p>
       </Section>
       <Section>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/arbor_2.jpeg`}
+          alt="The built arbor"
         />
         <p></p>
       </Section>

@@ -29,12 +29,14 @@ const Workbench: React.FunctionComponent = (): ReactElement => {
       <Section>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/workbench_1.jpeg`}
+          alt="Workbench in progress"
         />
         <p>In progress...</p>
       </Section>
       <Section>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/workbench_2.jpeg`}
+          alt="The finished workbench"
         />
         <p>
           And here's the final result! Some problems I encountered were:
