@@ -16,7 +16,7 @@ const NavigationContainer = styled.div`
 
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 10px;
   justify-content: center;
   flex-wrap: wrap;
 `;
