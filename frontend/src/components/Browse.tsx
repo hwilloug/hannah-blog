@@ -95,6 +95,7 @@ const Browse: React.FunctionComponent = (): ReactElement => {
                       <ArticleImage
                         src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
                         break={sm}
+                        alt={article.imgAlt}
                       />
                       <ArticleDetailContainer>
                         <ArticleTitle>{article.title}</ArticleTitle>

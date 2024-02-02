@@ -124,6 +124,7 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
               <ArticleContainer>
                 <ArticleImage
                   src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
+                  alt={article.imgAlt}
                 />
                 <ArticleTitle>{article.title}</ArticleTitle>
                 <ArticleSubtitle>
@@ -138,7 +139,8 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
                 {loadedArticle}
                 <SignatureContainer>
                   <Signature>Written by Hannah Willoughby</Signature>
-                  <Signature>{article.createdAt}</Signature>
+                  <Signature>Created: {article.createdAt}</Signature>
+                  <Signature>Updated: {article.updatedAt}</Signature>
                 </SignatureContainer>
               </ArticleContainer>
             );
