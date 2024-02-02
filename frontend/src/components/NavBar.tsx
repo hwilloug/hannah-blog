@@ -28,7 +28,7 @@ const RightIconContainer = styled.div`
   margin: 0 20px;
 `;
 
-const Title = styled.span`
+const Title = styled.h1`
   font-size: 24px;
   color: white;
   margin: 0 20px;

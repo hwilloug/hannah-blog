@@ -24,12 +24,13 @@ export const BodyContainer = styled.div`
   min-height: 80vh;
 `;
 
-export const SectionTitle = styled.span<CssProps>`
+export const SectionTitle = styled.h2<CssProps>`
   background-color: ${({ colors }) => colors.primary.dark};
   color: white;
   font-size: 24px;
+  font-weight: normal;
   text-align: center;
-  margin-top: 20px;
+  margin: 20px 0 0 0;
   padding: 5px 0;
   border-radius: 5px;
   width: ${(props) => (props.break ? "100%" : "40rem")};

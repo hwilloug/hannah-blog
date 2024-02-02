@@ -29,6 +29,12 @@ const Title = styled.span`
   font-family: Montserrat, Arial, Helvetica, sans-serif;
 `;
 
+const Subtitle = styled.h1`
+  margin: 0;
+  font-weight: normal;
+  font-size: 1.5rem;
+`;
+
 const LatestArticlesContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -48,6 +54,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
     <BodyContainer>
       <WelcomeBanner break={sm}>
         <Title>Welcome to Poppyland Blog</Title>
+        <Subtitle>Hannah's Hobby Blog</Subtitle>
         <Navigation showText={true} />
         <WelcomeText>
           Browse latest articles below, or click a category above.

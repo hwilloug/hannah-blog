@@ -4,6 +4,7 @@ import { ReactElement } from "react";
 import { ColorProps } from "./StyledComponents";
 
 const CategoryContainer = styled.div`
+  margin-top: 10px;
   display: flex;
   flex-direction: row;
   gap: 10px;

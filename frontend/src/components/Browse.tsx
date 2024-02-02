@@ -27,16 +27,17 @@ const ArticleDetailContainer = styled.div`
   padding: 10px;
 `;
 
-const ArticleTitle = styled.span`
+const ArticleTitle = styled.h2`
   font-size: 24px;
 `;
 
-const ArticleSubtitle = styled.span`
+const ArticleSubtitle = styled.p`
   font-size: 18px;
+  margin: 3px 0;
 `;
 
 const ArticleImage = styled.img<BreakPointProps>`
-  width: ${(props) => (props.break ? "100%" : "10rem")};
+  width: ${(props) => (props.break ? "100%" : "13rem")};
   object-fit: cover;
   border-radius: 5px;
 `;
@@ -100,7 +101,7 @@ const Browse: React.FunctionComponent = (): ReactElement => {
                       <ArticleDetailContainer>
                         <ArticleTitle>{article.title}</ArticleTitle>
                         <ArticleSubtitle>{article.subtitle}</ArticleSubtitle>
-                        <ArticleSubtitle>{article.createdAt}</ArticleSubtitle>
+                        <ArticleSubtitle>{article.updatedAt}</ArticleSubtitle>
                         <Categories
                           category={article.category}
                           subcategories={article.subcategory}
