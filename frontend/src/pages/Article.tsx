@@ -140,7 +140,9 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
                 <SignatureContainer>
                   <Signature>Written by Hannah Willoughby</Signature>
                   <Signature>Created: {article.createdAt}</Signature>
-                  <Signature>Updated: {article.updatedAt}</Signature>
+                  {article.createdAt !== article.updatedAt && (
+                    <Signature>Updated: {article.updatedAt}</Signature>
+                  )}
                 </SignatureContainer>
               </ArticleContainer>
             );

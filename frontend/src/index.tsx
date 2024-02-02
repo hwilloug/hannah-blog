@@ -82,7 +82,7 @@ export const mapRespToArticle = (resp: ArticleApiResponse) => {
     category: resp.Category,
     subcategory: resp.Subcategory,
     createdAt: resp.CreatedAt,
-    updatedAt: resp.UpdatedAt
+    updatedAt: resp.UpdatedAt,
   } as Article;
 };
 

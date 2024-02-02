@@ -77,8 +77,8 @@ const Browse: React.FunctionComponent = (): ReactElement => {
               {articles
                 .sort(
                   (a: Article, b: Article) =>
-                    (new Date(b.createdAt) as any) -
-                    (new Date(a.createdAt) as any),
+                    (new Date(b.updatedAt) as any) -
+                    (new Date(a.updatedAt) as any),
                 )
                 .filter((a) => {
                   return (
