@@ -13,10 +13,10 @@ const AsideContainer = styled.div`
   margin-right: 50px;
 `;
 
-const WelcomeContainer = styled.div`
+const AsideItemContainer = styled.div`
   background-color: white;
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 25px 5px;
   padding: 20px;
 
   display: flex;
@@ -40,7 +40,7 @@ const Aside: React.FunctionComponent = (): ReactElement => {
 
   return (
     <AsideContainer>
-      <WelcomeContainer>
+      <AsideItemContainer>
         <WelcomeTitle>Welcome to My Hobby Room</WelcomeTitle>
         <BorderedFullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/me.jpeg`}
@@ -53,7 +53,7 @@ const Aside: React.FunctionComponent = (): ReactElement => {
         <UnstyledLink to="/about">
           <AboutButton colors={theme.palette}>More About Me</AboutButton>
         </UnstyledLink>
-      </WelcomeContainer>
+      </AsideItemContainer>
     </AsideContainer>
   );
 };

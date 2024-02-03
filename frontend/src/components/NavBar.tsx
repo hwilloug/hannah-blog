@@ -9,7 +9,6 @@ import {
   StyledIcon,
   NavigationItem,
   NavigationLink,
-  FullSizeImage,
 } from "./StyledComponents";
 
 const NavBarContainer = styled.div<CssProps>`
@@ -42,6 +41,7 @@ const PoppyIcon = styled.img`
 
 const HomeLink = styled(Link)`
   text-decoration: none;
+  margin-top: 20px;
 `;
 
 const NavBar: React.FunctionComponent = (): ReactElement => {
@@ -52,6 +52,9 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
   const smallPartial = (
     <>
       <NavBarContainer break={false} colors={colors}>
+        <HomeLink to="">
+          <PoppyIcon src="poppy.png" />
+        </HomeLink>
         <HomeLink to="/">
           <Title>Hannah's Hobby Room</Title>
         </HomeLink>

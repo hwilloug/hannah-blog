@@ -92,8 +92,6 @@ export const BorderedFullSizeImage = styled(FullSizeImage)`
 export const StyledIcon = styled(Icon)<ColorProps>``;
 
 export const NavigationItem = styled.button<NavProps>`
-  all: unset;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -103,6 +101,7 @@ export const NavigationItem = styled.button<NavProps>`
     isActive ? colors.secondary.main : colors.primary.dark};
 
   padding: 10px;
+  margin-top: 20px;
 
   border-radius: 5px;
   border: 1px solid white;
