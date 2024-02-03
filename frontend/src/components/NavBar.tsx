@@ -9,12 +9,12 @@ import {
   StyledIcon,
   NavigationItem,
   NavigationLink,
+  FullSizeImage,
 } from "./StyledComponents";
 
 const NavBarContainer = styled.div<CssProps>`
   display: flex;
   flex-direction: ${(props) => (props.break ? "column" : "row")};
-  gap: ${(props) => (props.break ? "0" : "20px")};
   background-color: ${(props) => props.colors.primary.main};
   justify-content: space-between;
   align-items: center;
@@ -34,6 +34,10 @@ const Title = styled.h1`
   margin: 0 20px;
 
   font-family: Montserrat, Arial, Helvetica, sans-serif;
+`;
+
+const PoppyIcon = styled.img`
+  height: 75px;
 `;
 
 const HomeLink = styled(Link)`
@@ -74,6 +78,9 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
 
   const defaultPartial = (
     <>
+      <HomeLink to="">
+        <PoppyIcon src="poppy.png" />
+      </HomeLink>
       <HomeLink to="/">
         <Title>Hannah's Hobby Room</Title>
       </HomeLink>

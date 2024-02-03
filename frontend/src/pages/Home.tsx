@@ -9,8 +9,9 @@ import {
 } from "../components/StyledComponents";
 import { useMediaQuery, useTheme } from "@mui/material";
 import Browse from "../components/Browse";
+import WordColorAlternator from "../components/WordColorAlternator";
 
-const WelcomeBanner = styled.div<BreakPointProps>`
+const WelcomeContainer = styled.div<BreakPointProps>`
   border: 1px solid black;
   border-radius: 5px;
   padding: 20px;
@@ -22,18 +23,10 @@ const WelcomeBanner = styled.div<BreakPointProps>`
   background-color: white;
 `;
 
-const Title = styled.span`
-  font-size: 2.75rem;
-  text-align: center;
-
-  font-family: Montserrat, Arial, Helvetica, sans-serif;
-`;
-
 const Subtitle = styled.h1`
-  margin: 0;
+  margin: 30px 0;
   font-weight: normal;
   font-size: 1.5rem;
-  margin-bottom: 30px;
 `;
 
 const LatestArticlesContainer = styled.div`
@@ -64,10 +57,20 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
   const sm = useMediaQuery(theme.breakpoints.down("sm"));
   const colors = theme.palette;
 
+  const wordColors = [
+    "salmon",
+    "#D0F0C0",
+    "sandybrown",
+    "khaki",
+    "lightblue",
+    "thistle",
+  ];
+  const welcomeWords = "Welcome to Hannah's Hobby Room".split(" ");
+
   return (
     <BodyContainer>
-      <WelcomeBanner break={sm}>
-        <Title>Welcome to Hannah's Hobby Room</Title>
+      <WelcomeContainer break={sm}>
+        <WordColorAlternator colors={wordColors} words={welcomeWords} />
         <Subtitle>Hannah's Hobby Blog</Subtitle>
         <Navigation showText={true} />
         <WelcomeText>
@@ -116,12 +119,12 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
             eclectic journey through the things that make life more vibrant.
           </WelcomeP>
           <WelcomeP>
-            Thank you for stopping by, and I can't wait to share this room with
-            you!
+            Thank you for stepping into my world, and I can't wait to share this
+            room with you!
           </WelcomeP>
           <WelcomeP>Warm regards, Hannah</WelcomeP>
         </WelcomeText>
-      </WelcomeBanner>
+      </WelcomeContainer>
       <LatestArticlesContainer>
         <SectionTitle break={sm} colors={theme.palette}>
           Latest Articles:
