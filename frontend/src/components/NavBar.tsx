@@ -49,7 +49,7 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
     <>
       <NavBarContainer break={false} colors={colors}>
         <HomeLink to="/">
-          <Title>Poppyland Blog</Title>
+          <Title>Hannah's Hobby Room</Title>
         </HomeLink>
         <RightIconContainer>
           {/*<NavigationItem colors={colors}>
@@ -75,7 +75,7 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
   const defaultPartial = (
     <>
       <HomeLink to="/">
-        <Title>Poppyland Blog</Title>
+        <Title>Hannah's Hobby Room</Title>
       </HomeLink>
       <Navigation />
       {/* <NavigationItem colors={colors}>

@@ -43,7 +43,7 @@ const Footer: React.FunctionComponent<FooterProps> = ({
   return (
     <FooterContainer colors={colors}>
       <BuyMeABookButton colors={colors}>📖 Buy Me a Book</BuyMeABookButton>
-      <Copyright>© {new Date().getFullYear()} Poppyland</Copyright>
+      <Copyright>© {new Date().getFullYear()} hannahshobbyroom.com</Copyright>
       <DarkModeToggleContainer>
         <p>Dark Mode</p>
         <Switch checked={darkMode} onChange={handleDarkModeChange} />

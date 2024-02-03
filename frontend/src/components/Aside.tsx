@@ -41,7 +41,7 @@ const Aside: React.FunctionComponent = (): ReactElement => {
   return (
     <AsideContainer>
       <WelcomeContainer>
-        <WelcomeTitle>Welcome to Poppyland Blog</WelcomeTitle>
+        <WelcomeTitle>Welcome to My Hobby Room</WelcomeTitle>
         <BorderedFullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/me.jpeg`}
           alt="A pic of Hannah"

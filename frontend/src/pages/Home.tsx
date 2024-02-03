@@ -4,6 +4,7 @@ import Navigation from "../components/Navigation";
 import {
   BodyContainer,
   BreakPointProps,
+  ColorProps,
   SectionTitle,
 } from "../components/StyledComponents";
 import { useMediaQuery, useTheme } from "@mui/material";
@@ -51,51 +52,63 @@ const WelcomeP = styled.p`
   margin: 20px 50px;
 `;
 
+const CategoryB = styled.b<ColorProps>`
+  color: ${({ colors }) => colors.primary.main};
+  text-decoration: underline ${({ colors }) => colors.primary.main} wavy;
+  padding: 10px 0px;
+  text-decoration-thickness: 1.15px;
+`;
+
 const HomePage: React.FunctionComponent = (): ReactElement => {
   const theme = useTheme();
   const sm = useMediaQuery(theme.breakpoints.down("sm"));
+  const colors = theme.palette;
 
   return (
     <BodyContainer>
       <WelcomeBanner break={sm}>
-        <Title>Welcome to Poppyland Blog</Title>
+        <Title>Welcome to Hannah's Hobby Room</Title>
         <Subtitle>Hannah's Hobby Blog</Subtitle>
         <Navigation showText={true} />
         <WelcomeText>
-          <WelcomeP> Welcome to Poppyland Blog! 🌸</WelcomeP>
+          <WelcomeP> Welcome to Hannah's Hobby Room! 🌸</WelcomeP>
           <WelcomeP>
-            Hello there! I'm Hannah, and I'm thrilled to welcome you to my hobby
-            blog. Here, I share my passions and delve into the diverse world of
+            Hi! I'm Hannah, and I'm thrilled to welcome you to my hobby blog.
+            Here, I share my passions and delve into the diverse world of
             activities that bring me joy.
           </WelcomeP>
           <WelcomeP>
-            🍳 <b>Food</b>: Explore the art of culinary creativity with me as I
-            whip up delicious recipes and share the stories behind each dish.
+            🍳 <CategoryB colors={colors}>Food:</CategoryB> Explore the art of
+            culinary creativity with me as I try out delicious recipes and share
+            the stories behind each dish.
           </WelcomeP>
           <WelcomeP>
-            🌿 <b>Gardening</b>: Join me in the garden as I cultivate a vibrant
-            green space, sharing tips on plant care, landscaping, and the pure
-            joy of watching seeds blossom into blooms.
+            🌿 <CategoryB colors={colors}>Gardening:</CategoryB> Join me in the
+            garden as I cultivate a vibrant green space, sharing tips on plant
+            care, landscaping, and the pure joy of watching seeds blossom into
+            blooms.
           </WelcomeP>
           <WelcomeP>
-            ✂️ <b>Crafts</b>: Embark on a journey through the delicate art of
-            needlework and woodworking and discover the beauty of crafting
-            through knitting, embroidery, woodworking, and more.
+            ✂️ <CategoryB colors={colors}>Crafts:</CategoryB> Embark on a
+            journey through the delicate art of needlework and woodworking and
+            discover the beauty of crafting through knitting, embroidery,
+            woodworking, and more.
           </WelcomeP>
           <WelcomeP>
-            💻 <b>Coding</b>: Dive into the world of coding and technology. I
-            share my insights, experiences, and projects as I navigate the
-            exciting realm of programming.
+            💻 <CategoryB colors={colors}>Coding:</CategoryB> Dive into the
+            world of coding and technology. I share my insights, experiences,
+            and projects as I navigate the exciting realm of programming.
           </WelcomeP>
           <WelcomeP>
-            📚 <b>Books</b>: Immerse yourself in the captivating world of
-            literature. I'll recommend books, discuss my latest reads, and
-            explore the magic of storytelling.
+            📚 <CategoryB colors={colors}>Books:</CategoryB> Immerse yourself in
+            the captivating world of literature. I'll recommend books, discuss
+            my latest reads, and explore the magic of storytelling.
           </WelcomeP>
           <WelcomeP>
-            🎌 <b>Languages</b>: Embark on a linguistic adventure with me as I
-            navigate the intricacies of learning Japanese. Share in the
-            challenges and triumphs of mastering a new language.
+            🎌 <CategoryB colors={colors}>Languages:</CategoryB> Embark on a
+            linguistic adventure with me as I navigate the intricacies of
+            learning Japanese. Share in the challenges and triumphs of mastering
+            a new language.
           </WelcomeP>
           <WelcomeP>
             I hope you find inspiration, joy, and perhaps a few new hobbies to
@@ -103,7 +116,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
             eclectic journey through the things that make life more vibrant.
           </WelcomeP>
           <WelcomeP>
-            Thank you for stopping by, and I can't wait to share this space with
+            Thank you for stopping by, and I can't wait to share this room with
             you!
           </WelcomeP>
           <WelcomeP>Warm regards, Hannah</WelcomeP>
