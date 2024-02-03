@@ -23,7 +23,9 @@ const WordColorAlternator: React.FunctionComponent<
 > = ({ colors, words }) => {
   const initalColors = colors.slice().splice(0, colors.length);
   const [wordColors, setWordColors] = useState<string[]>(initalColors);
-  const [currentColorIndex, setCurrentColorIndex] = useState<number>(0);
+  const [currentColorIndex, setCurrentColorIndex] = useState<number>(
+    colors.length - 1,
+  );
   const [currentWordIndex, setCurrentWordIndex] = useState<number>(0);
 
   useEffect(() => {
