@@ -24,7 +24,7 @@ const WelcomeContainer = styled.div<BreakPointProps>`
 `;
 
 const Subtitle = styled.h1`
-  margin: 30px 0;
+  margin-top: 30px;
   font-weight: normal;
   font-size: 1.5rem;
 `;
@@ -38,7 +38,6 @@ const LatestArticlesContainer = styled.div`
 
 const WelcomeText = styled.p`
   line-height: 1.75;
-  margin-top: 30px;
 `;
 
 const WelcomeP = styled.p`
@@ -72,7 +71,6 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
       <WelcomeContainer break={sm}>
         <WordColorAlternator colors={wordColors} words={welcomeWords} />
         <Subtitle>Hannah's Hobby Blog</Subtitle>
-        <Navigation showText={true} />
         <WelcomeText>
           <WelcomeP> Welcome to Hannah's Hobby Room! 🌸</WelcomeP>
           <WelcomeP>
@@ -123,6 +121,12 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
             room with you!
           </WelcomeP>
           <WelcomeP>Warm regards, Hannah</WelcomeP>
+        </WelcomeText>
+        <Navigation showText={true} />
+        <WelcomeText>
+          <WelcomeP>
+            Select a category above, or browse latest articles below.
+          </WelcomeP>
         </WelcomeText>
       </WelcomeContainer>
       <LatestArticlesContainer>
