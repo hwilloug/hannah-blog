@@ -6,10 +6,13 @@ import {
   SectionHeader,
 } from "../components/StyledComponents";
 import YoutubePlayer from "../components/YoutubePlayer";
+import { useTheme } from "@mui/material";
 
 const Curtains: React.FunctionComponent = (): ReactElement => {
+  const theme = useTheme();
+
   return (
-    <ArticleContentContainer>
+    <ArticleContentContainer colors={theme.palette}>
       <Section>
         <p>
           My boyfriend is moving in with me soon, and he wanted some curtains

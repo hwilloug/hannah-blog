@@ -11,11 +11,9 @@ import {
 import HomePage from "./pages/Home";
 import Layout from "./Layout";
 import ArticlePage from "./pages/Article";
-import { ThemeProvider } from "@mui/material";
 import CategoryBrowse from "./pages/CategoryBrowse";
 import About from "./pages/About";
 import axios from "axios";
-import { theme } from "./theme";
 
 export interface ArticleApiResponse {
   Slug: string;
@@ -119,9 +117,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <RouterProvider router={router} />
-    </ThemeProvider>
+    <RouterProvider router={router} />
   </React.StrictMode>,
 );
 

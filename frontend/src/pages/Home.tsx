@@ -3,15 +3,15 @@ import { ReactElement } from "react";
 import Navigation from "../components/Navigation";
 import {
   BodyContainer,
-  BreakPointProps,
   ColorProps,
+  CssProps,
   SectionTitle,
 } from "../components/StyledComponents";
 import { useMediaQuery, useTheme } from "@mui/material";
 import Browse from "../components/Browse";
 import WordColorAlternator from "../components/WordColorAlternator";
 
-const WelcomeContainer = styled.div<BreakPointProps>`
+const WelcomeContainer = styled.div<CssProps>`
   border: 1px solid black;
   border-radius: 5px;
   padding: 20px;
@@ -20,7 +20,9 @@ const WelcomeContainer = styled.div<BreakPointProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: white;
+  background-color: ${({ colors }) =>
+    colors.mode === "dark" ? colors.primary.dark : "white"};
+  color: ${({ colors }) => (colors.mode === "dark" ? "white" : "black")};
 `;
 
 const Subtitle = styled.h1`
@@ -45,7 +47,8 @@ const WelcomeP = styled.p`
 `;
 
 const CategoryB = styled.b<ColorProps>`
-  color: ${({ colors }) => colors.primary.main};
+  color: ${({ colors }) =>
+    colors.mode === "dark" ? colors.secondary.main : colors.primary.main};
   text-decoration: underline ${({ colors }) => colors.primary.main} wavy;
   padding: 10px 0px;
   text-decoration-thickness: 1.15px;
@@ -68,7 +71,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
 
   return (
     <BodyContainer>
-      <WelcomeContainer break={sm}>
+      <WelcomeContainer break={sm} colors={colors}>
         <WordColorAlternator colors={wordColors} words={welcomeWords} />
         <Subtitle>Hannah's Hobby Blog</Subtitle>
         <WelcomeText>

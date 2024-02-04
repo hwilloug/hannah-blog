@@ -5,10 +5,13 @@ import {
   Section,
   SectionHeader,
 } from "../components/StyledComponents";
+import { useTheme } from "@mui/material";
 
 const Garden2024Plan: React.FunctionComponent = (): ReactElement => {
+  const theme = useTheme();
+
   return (
-    <ArticleContentContainer>
+    <ArticleContentContainer colors={theme.palette}>
       <Section>
         <p>
           After planting and mostly forgetting last year, I'm still and yet

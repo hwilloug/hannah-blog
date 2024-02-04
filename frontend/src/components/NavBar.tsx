@@ -53,7 +53,9 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
     <>
       <NavBarContainer break={false} colors={colors}>
         <HomeLink to="">
-          <PoppyIcon src="poppy.png" />
+          <PoppyIcon
+            src={`${process.env.REACT_APP_IMAGES_BASE_URL}/poppy.png`}
+          />
         </HomeLink>
         <HomeLink to="/">
           <Title>Hannah's Hobby Room</Title>

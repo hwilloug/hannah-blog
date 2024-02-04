@@ -39,8 +39,8 @@ export const SectionTitle = styled.h2<CssProps>`
 
 export const StyledButton = styled.button<ColorProps>`
   all: unset;
-  background-color: ${({ colors }) => colors.primary.dark};
-  color: white;
+  background-color: ${({ colors }) => (colors.mode === "dark" ? colors.secondary.main : colors.primary.dark)};
+  color: ${({ colors }) => (colors.mode === "dark" ? "black" : "white")};
   border-radius: 10px;
   border: 1px solid ${({ colors }) => colors.primary.dark}
   border-style: none;
@@ -48,8 +48,13 @@ export const StyledButton = styled.button<ColorProps>`
   padding: 5px 10px;
 `;
 
-export const ArticleContentContainer = styled.div`
+export const ArticleContentContainer = styled.div<ColorProps>`
   line-height: 1.75;
+  color: ${({ colors }) => (colors.mode === "dark" ? "white" : "black")};
+
+  a {
+    color: ${({ colors }) => colors.secondary.main};
+  }
 `;
 
 export const Section = styled.div`

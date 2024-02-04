@@ -4,6 +4,7 @@ import { Await, useLoaderData, useNavigate, useParams } from "react-router-dom";
 import {
   BodyContainer,
   BreakPointProps,
+  ColorProps,
   StyledButton,
 } from "../components/StyledComponents";
 import { mdiArrowLeftThick } from "@mdi/js";
@@ -33,19 +34,21 @@ const BackButton = styled(StyledButton)`
   align-items: center;
 `;
 
-export const ArticleContainer = styled.div`
-  background-color: white;
+export const ArticleContainer = styled.div<ColorProps>`
+  background-color: ${({ colors }) =>
+    colors.mode === "dark" ? colors.primary.dark : "white"};
   padding: 20px;
 `;
 
-const ArticleTitle = styled.h1`
+const ArticleTitle = styled.h2<ColorProps>`
   font-family: Montserrat, Arial, Helvetica, sans-serif;
   font-size: 2.5rem;
   margin-bottom: 10px;
   font-weight: normal;
+  color: ${({ colors }) => (colors.mode === "dark" ? "white" : "black")};
 `;
 
-const ArticleSubtitle = styled.h2`
+const ArticleSubtitle = styled.h3<ColorProps>`
   color: grey;
   font-weight: lighter;
   font-size: 1.2rem;
@@ -123,13 +126,15 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
 
             const article: Article = mapRespToArticle(resp.data);
             return (
-              <ArticleContainer>
+              <ArticleContainer colors={theme.palette}>
                 <ArticleImage
                   src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
                   alt={article.imgAlt}
                 />
-                <ArticleTitle>{article.title}</ArticleTitle>
-                <ArticleSubtitle>
+                <ArticleTitle colors={theme.palette}>
+                  {article.title}
+                </ArticleTitle>
+                <ArticleSubtitle colors={theme.palette}>
                   <p>{article.subtitle}</p>
                   <p>{article.createdAt}</p>
                 </ArticleSubtitle>

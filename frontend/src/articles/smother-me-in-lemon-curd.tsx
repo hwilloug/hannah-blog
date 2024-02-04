@@ -4,10 +4,13 @@ import {
   FullSizeImage,
   Section,
 } from "../components/StyledComponents";
+import { useTheme } from "@mui/material";
 
 const Curtains: React.FunctionComponent = (): ReactElement => {
+  const theme = useTheme();
+
   return (
-    <ArticleContentContainer>
+    <ArticleContentContainer colors={theme.palette}>
       <Section>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/lemon_curd.gif`}

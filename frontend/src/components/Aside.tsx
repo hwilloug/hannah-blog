@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { ReactElement } from "react";
 import {
   BorderedFullSizeImage,
+  ColorProps,
   StyledButton,
   UnstyledLink,
 } from "./StyledComponents";
@@ -13,8 +14,10 @@ const AsideContainer = styled.div`
   margin-right: 50px;
 `;
 
-const AsideItemContainer = styled.div`
-  background-color: white;
+const AsideItemContainer = styled.div<ColorProps>`
+  background-color: ${({ colors }) =>
+    colors.mode === "dark" ? colors.primary.dark : "white"};
+  color: ${({ colors }) => (colors.mode === "dark" ? "white" : "black")};
   border: 1px solid black;
   border-radius: 25px 5px;
   padding: 20px;
@@ -26,11 +29,13 @@ const AsideItemContainer = styled.div`
 
 const WelcomeTitle = styled.span`
   font-size: 36px;
+  color: inherit;
 `;
 
 const WelcomeText = styled.p`
   font-size: 18px;
   line-height: 1.75;
+  color: inherit;
 `;
 
 const AboutButton = styled(StyledButton)``;
@@ -40,7 +45,7 @@ const Aside: React.FunctionComponent = (): ReactElement => {
 
   return (
     <AsideContainer>
-      <AsideItemContainer>
+      <AsideItemContainer colors={theme.palette}>
         <WelcomeTitle>Welcome to My Hobby Room</WelcomeTitle>
         <BorderedFullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/me.jpeg`}

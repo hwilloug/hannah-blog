@@ -1,6 +1,6 @@
-import { createTheme } from "@mui/material";
+import { PaletteMode, createTheme } from "@mui/material";
 
-export const theme = createTheme({
+const theme = {
   breakpoints: {
     values: {
       xs: 591,
@@ -10,16 +10,31 @@ export const theme = createTheme({
       xl: 1536,
     },
   },
+};
+
+export const getDesignTokens = (mode: PaletteMode) => ({
+  ...theme,
   palette: {
-    primary: {
-      light: "#DECFD3",
-      main: "#9B6F7C",
-      dark: "#706677",
-      contrastText: "black",
-    },
-    secondary: {
-      main: "#A8BBA0",
-      contrastText: "black",
-    },
+    mode,
+    ...(mode === "light"
+      ? {
+          primary: {
+            light: "#DECFD3",
+            main: "#9B6F7C",
+            dark: "#706677",
+          },
+          secondary: {
+            main: "#A8BBA0",
+          },
+        }
+      : {
+          primary: {
+            main: "#492E1C",
+            dark: "#29190E",
+          },
+          secondary: {
+            main: "#A8BBA0",
+          },
+        }),
   },
 });

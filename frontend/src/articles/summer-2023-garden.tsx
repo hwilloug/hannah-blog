@@ -3,10 +3,13 @@ import {
   ArticleContentContainer,
   Section,
 } from "../components/StyledComponents";
+import { useTheme } from "@mui/material";
 
 const Garden2023Plan: React.FunctionComponent = (): ReactElement => {
+  const theme = useTheme();
+
   return (
-    <ArticleContentContainer>
+    <ArticleContentContainer colors={theme.palette}>
       <Section>
         <p>
           After moving into my new house, I decided to build some raised beds

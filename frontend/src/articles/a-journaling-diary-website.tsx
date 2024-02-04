@@ -6,10 +6,13 @@ import {
   SectionHeader,
 } from "../components/StyledComponents";
 import YoutubePlayer from "../components/YoutubePlayer";
+import { useTheme } from "@mui/material";
 
 const PoppylandJournal: React.FunctionComponent = (): ReactElement => {
+  const theme = useTheme();
+
   return (
-    <ArticleContentContainer>
+    <ArticleContentContainer colors={theme.palette}>
       <Section>
         <p>
           I made a website for journaling! Check it out here --{" "}

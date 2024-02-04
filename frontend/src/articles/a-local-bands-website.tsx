@@ -6,10 +6,13 @@ import {
   SectionHeader,
 } from "../components/StyledComponents";
 import YoutubePlayer from "../components/YoutubePlayer";
+import { useTheme } from "@mui/material";
 
 const NoseyNeighborBand: React.FunctionComponent = (): ReactElement => {
+  const theme = useTheme();
+
   return (
-    <ArticleContentContainer>
+    <ArticleContentContainer colors={theme.palette}>
       <Section>
         <p>
           I made a website for a local band! Check it out here --{" "}

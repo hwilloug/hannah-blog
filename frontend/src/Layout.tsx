@@ -4,8 +4,14 @@ import Aside from "./components/Aside";
 import Footer from "./components/Footer";
 import styled from "@emotion/styled";
 import { ChangeEvent, ReactElement, useEffect, useState } from "react";
-import { useMediaQuery, useTheme } from "@mui/material";
+import {
+  ThemeProvider,
+  createTheme,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { BreakPointProps, ColorProps } from "./components/StyledComponents";
+import { getDesignTokens } from "./theme";
 
 const LayoutContainer = styled.div<ColorProps>`
   display: flex;
@@ -34,11 +40,11 @@ function ScrollToTopOnNavigate() {
 }
 
 const Layout: React.FunctionComponent = (): ReactElement => {
-  const theme = useTheme();
+  const [darkMode, setDarkMode] = useState<boolean>(false);
+
+  const theme = createTheme(getDesignTokens(darkMode ? "dark" : "light"));
   const md = useMediaQuery(theme.breakpoints.up("md"));
   const colors = theme.palette;
-
-  const [darkMode, setDarkMode] = useState<boolean>(false);
 
   const handleDarkModeChange = (
     event: ChangeEvent<HTMLInputElement>,
@@ -48,15 +54,20 @@ const Layout: React.FunctionComponent = (): ReactElement => {
   };
 
   return (
-    <LayoutContainer colors={colors}>
-      <ScrollToTopOnNavigate />
-      <NavBar />
-      <ContentContainer break={md}>
-        <Outlet />
-        <Aside />
-      </ContentContainer>
-      <Footer darkMode={darkMode} handleDarkModeChange={handleDarkModeChange} />
-    </LayoutContainer>
+    <ThemeProvider theme={theme}>
+      <LayoutContainer colors={colors}>
+        <ScrollToTopOnNavigate />
+        <NavBar />
+        <ContentContainer break={md}>
+          <Outlet />
+          <Aside />
+        </ContentContainer>
+        <Footer
+          darkMode={darkMode}
+          handleDarkModeChange={handleDarkModeChange}
+        />
+      </LayoutContainer>
+    </ThemeProvider>
   );
 };
 

@@ -6,6 +6,7 @@ import {
   BorderedFullSizeImage,
   BreakPointProps,
   ColorProps,
+  CssProps,
   FullSizeImage,
   SectionHeader,
   StyledIcon,
@@ -14,8 +15,10 @@ import {
 import { mdiGithub, mdiGoodreads, mdiLinkedin, mdiWeb } from "@mdi/js";
 import Icon from "@mdi/react";
 
-const AboutContainer = styled.div<BreakPointProps>`
-  background-color: white;
+const AboutContainer = styled.div<CssProps>`
+  background-color: ${({ colors }) =>
+    colors.mode === "dark" ? colors.primary.dark : "white"};
+  color: ${({ colors }) => (colors.mode === "dark" ? "white" : "black")};
   border: 1px solid black;
   border-radius: 5px;
   padding: 20px;
@@ -30,7 +33,8 @@ const LinksContainer = styled.ul`
 `;
 
 const LinkItem = styled.li<ColorProps>`
-  background-color: ${({ colors }) => colors.primary.dark};
+  background-color: ${({ colors }) =>
+    colors.mode === "dark" ? colors.secondary.dark : colors.secondary.main};
   margin: 20px 0;
   padding: 10px;
   align: center;
@@ -75,7 +79,7 @@ const About: React.FunctionComponent = (): ReactElement => {
 
   return (
     <BodyContainer>
-      <AboutContainer break={sm}>
+      <AboutContainer break={sm} colors={theme.palette}>
         <SectionHeader>About Me</SectionHeader>
         <p>
           Hello world, and welcome to my blog! I'm Hannah, and this is where I

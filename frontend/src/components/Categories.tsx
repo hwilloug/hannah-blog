@@ -13,14 +13,14 @@ const CategoryContainer = styled.div`
 `;
 
 const Category = styled.div<ColorProps>`
-  color: white;
+  color: ${({ colors }) => (colors.mode === "dark" ? "white" : "black")};
   background-color: ${({ colors }) => colors.primary.main};
   border-radius: 15px;
   padding: 5px 10px;
 `;
 
 const Subcategory = styled(Category)`
-  color: black;
+  color: ${({ colors }) => (colors.mode === "dark" ? "white" : "black")};
   background-color: ${({ colors }) => colors.primary.light};
 `;
 

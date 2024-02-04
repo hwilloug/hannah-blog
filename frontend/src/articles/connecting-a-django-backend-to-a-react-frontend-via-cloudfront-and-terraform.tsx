@@ -9,8 +9,11 @@ import {
 } from "../components/StyledComponents";
 import styled from "@emotion/styled";
 import SyntaxHighlighter from "react-syntax-highlighter";
+import { useTheme } from "@mui/material";
 
 const TcahDotCom: React.FunctionComponent = (): ReactElement => {
+  const theme = useTheme();
+
   const code = [
     `locals {
     s3_origin_id = "S3-origin-react-app"
@@ -160,7 +163,7 @@ const TcahDotCom: React.FunctionComponent = (): ReactElement => {
   ];
 
   return (
-    <ArticleContentContainer>
+    <ArticleContentContainer colors={theme.palette}>
       <Section>
         <p>
           Using a combination of{" "}

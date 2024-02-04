@@ -5,10 +5,13 @@ import {
   Section,
   SectionHeader,
 } from "../components/StyledComponents";
+import { useTheme } from "@mui/material";
 
 const Arbor: React.FunctionComponent = (): ReactElement => {
+  const theme = useTheme();
+
   return (
-    <ArticleContentContainer>
+    <ArticleContentContainer colors={theme.palette}>
       <Section>
         <p></p>
       </Section>

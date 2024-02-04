@@ -4,10 +4,13 @@ import {
   Section,
 } from "../components/StyledComponents";
 import BlockQuote from "../components/BlockQuote";
+import { useTheme } from "@mui/material";
 
 const JurassicParkReview: React.FunctionComponent = (): ReactElement => {
+  const theme = useTheme();
+
   return (
-    <ArticleContentContainer>
+    <ArticleContentContainer colors={theme.palette}>
       <Section>
         <p>
           <i>CONTAINS SPOILERS</i>

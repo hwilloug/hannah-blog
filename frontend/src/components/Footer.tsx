@@ -46,7 +46,11 @@ const Footer: React.FunctionComponent<FooterProps> = ({
       <Copyright>© {new Date().getFullYear()} hannahshobbyroom.com</Copyright>
       <DarkModeToggleContainer>
         <p>Dark Mode</p>
-        <Switch checked={darkMode} onChange={handleDarkModeChange} />
+        <Switch
+          checked={darkMode}
+          onChange={handleDarkModeChange}
+          color="secondary"
+        />
       </DarkModeToggleContainer>
     </FooterContainer>
   );

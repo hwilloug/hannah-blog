@@ -17,7 +17,9 @@ const ArticleContainer = styled.div<CssProps>`
   border-radius: 25px 5px;
   width: ${(props) => (props.break ? "90vw" : "35rem")};
   padding: 10px;
-  background-color: white;
+  background-color: ${({ colors }) =>
+    colors.mode === "dark" ? colors.primary.dark : "white"};
+  color: ${({ colors }) => (colors.mode === "dark" ? "white" : "black")};
 `;
 
 const ArticleDetailContainer = styled.div`
