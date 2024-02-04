@@ -55,8 +55,8 @@ resource "aws_iam_role_policy_attachment" "lambda_attach_policy_to_role" {
 
 data "archive_file" "function_code_zip" {
   type             = "zip"
-  source_file      = "${path.module}/../../../backend/${var.function_name}.py"
-  output_path      = "${path.module}/../../../backend/lambda_deployment_packages/${var.function_name}.zip"
+  source_file      = "${path.module}/../../../backend/lambdas/${var.function_name}.py"
+  output_path      = "${path.module}/../../../backend/lambdas/lambda_deployment_packages/${var.function_name}.zip"
   output_file_mode = "0666"
 }
 

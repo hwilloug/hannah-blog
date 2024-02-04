@@ -48,3 +48,10 @@ module "frontend_bucket" {
   bucket_name    = "poppyland-blog-frontend"
   domain         = "blog.poppyland.dev"
 }
+
+module "articles_rds_cluster" {
+  source = "./modules/rds"
+
+  cluster_name  = "hannahshobbyroom"
+  database_name = "hannahshobbyroom"
+}

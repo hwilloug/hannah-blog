@@ -118,3 +118,6 @@ lambda_deployment_packages
 
 batch-write-input.json
 articles_db
+
+__pycache__
+script.py.mako
