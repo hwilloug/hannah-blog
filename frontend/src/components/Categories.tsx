@@ -13,7 +13,7 @@ const CategoryContainer = styled.div`
 `;
 
 const Category = styled.div<ColorProps>`
-  color: ${({ colors }) => (colors.mode === "dark" ? "white" : "black")};
+  color: white;
   background-color: ${({ colors }) => colors.primary.main};
   border-radius: 15px;
   padding: 5px 10px;

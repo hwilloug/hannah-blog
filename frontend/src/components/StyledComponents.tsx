@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import Icon from "@mdi/react";
 import { Palette } from "@mui/material";
 import { Link, NavLink } from "react-router-dom";
+import { Icon as MuiIcon } from "@mui/material";
 
 export interface BreakPointProps {
   break: boolean;
@@ -95,6 +96,8 @@ export const BorderedFullSizeImage = styled(FullSizeImage)`
 `;
 
 export const StyledIcon = styled(Icon)<ColorProps>``;
+
+export const SocialIcon = styled(MuiIcon)<ColorProps>``;
 
 export const NavigationItem = styled.button<NavProps>`
   display: flex;
