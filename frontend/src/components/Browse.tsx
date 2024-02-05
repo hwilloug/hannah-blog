@@ -30,12 +30,14 @@ const ArticleDetailContainer = styled.div`
 `;
 
 const ArticleTitle = styled.h2`
-  font-size: 24px;
+  font-size: 1.5rem;
 `;
 
-const ArticleSubtitle = styled.p`
+const ArticleSubtitle = styled.h3`
   font-size: 18px;
   margin: 3px 0;
+  font-weight: lighter;
+  color: grey;
 `;
 
 const ArticleImage = styled.img<BreakPointProps>`
@@ -103,7 +105,9 @@ const Browse: React.FunctionComponent = (): ReactElement => {
                       <ArticleDetailContainer>
                         <ArticleTitle>{article.title}</ArticleTitle>
                         <ArticleSubtitle>{article.subtitle}</ArticleSubtitle>
-                        <ArticleSubtitle>{article.updatedAt}</ArticleSubtitle>
+                        <ArticleSubtitle>
+                          <i>{article.updatedAt}</i>
+                        </ArticleSubtitle>
                         <Categories
                           category={article.category}
                           subcategories={article.subcategory}

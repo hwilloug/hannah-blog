@@ -32,7 +32,7 @@ export const SectionTitle = styled.h2<CssProps>`
   font-size: 24px;
   font-weight: normal;
   text-align: center;
-  margin: 20px 0 0 0;
+  margin: 10px auto;
   padding: 5px 0;
   border-radius: 5px;
   width: ${(props) => (props.break ? "100%" : "40rem")};

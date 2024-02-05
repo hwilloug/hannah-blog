@@ -59,7 +59,15 @@ const Aside: React.FunctionComponent = (): ReactElement => {
   );
   const readingPercent = (readingProgress / readingGoal) * 100;
 
-  const obsessions = ["Hannah's Hobby Room refactor and rebranding"];
+  const obsessions = [
+    "Hannah's Hobby Room refactor and rebranding",
+    <a
+      href="https://www.goodreads.com/book/show/164154.A_Canticle_for_Leibowitz"
+      target="_blank"
+    >
+      A Canticle for Leibowitz by Walter M. Miller Jr.
+    </a>,
+  ];
 
   return (
     <AsideContainer>

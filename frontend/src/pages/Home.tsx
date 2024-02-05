@@ -10,11 +10,13 @@ import {
 import { useMediaQuery, useTheme } from "@mui/material";
 import Browse from "../components/Browse";
 import WordColorAlternator from "../components/WordColorAlternator";
+import FeaturedContent from "../components/FeaturedContent";
 
 const WelcomeContainer = styled.div<CssProps>`
   border: 1px solid black;
   border-radius: 5px;
   padding: 20px;
+  margin: 20px 0 50px 0;
   max-width: ${(props) => (props.break ? "90vw" : "100%")};
 
   display: flex;
@@ -75,9 +77,9 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
 
   return (
     <BodyContainer>
+      <FeaturedContent />
       <WelcomeContainer break={sm} colors={colors}>
         <WordColorAlternator colors={wordColors} words={welcomeWords} />
-        <Subtitle>Hannah's Hobby Blog</Subtitle>
         <WelcomeText>
           <WelcomeP> Welcome to Hannah's Hobby Room! 🌸</WelcomeP>
           <WelcomeP>
