@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
+import { styled as muiStyled } from "@mui/material/styles";
 import Icon from "@mdi/react";
-import { Palette } from "@mui/material";
+import { LinearProgress, Palette, linearProgressClasses } from "@mui/material";
 import { Link, NavLink } from "react-router-dom";
 import { Icon as MuiIcon } from "@mui/material";
 
@@ -114,3 +115,15 @@ export const NavigationItem = styled.button<NavProps>`
   border-radius: 5px;
   border: 1px solid white;
 `;
+
+export const ProgressBar = muiStyled(LinearProgress)(({ theme }) => ({
+  height: 30,
+  borderRadius: 5,
+  [`&.${linearProgressClasses.colorPrimary}`]: {
+    backgroundColor: "lightgrey",
+  },
+  [`& .${linearProgressClasses.bar}`]: {
+    borderRadius: 5,
+    backgroundColor: theme.palette.secondary.main,
+  },
+}));

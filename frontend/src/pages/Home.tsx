@@ -54,6 +54,10 @@ const CategoryB = styled.b<ColorProps>`
   text-decoration-thickness: 1.15px;
 `;
 
+const Signature = styled.img`
+  width: 100px;
+`;
+
 const HomePage: React.FunctionComponent = (): ReactElement => {
   const theme = useTheme();
   const sm = useMediaQuery(theme.breakpoints.down("sm"));
@@ -123,7 +127,12 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
             Thank you for stepping into my world, and I can't wait to share this
             room with you!
           </WelcomeP>
-          <WelcomeP>Warm regards, Hannah</WelcomeP>
+          <WelcomeP>Warm regards,</WelcomeP>
+          <WelcomeP>
+            <Signature
+              src={`${process.env.REACT_APP_IMAGES_BASE_URL}/signature.png`}
+            />
+          </WelcomeP>
         </WelcomeText>
         <Navigation showText={true} />
         <WelcomeText>
