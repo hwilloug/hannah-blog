@@ -31,17 +31,24 @@ const AsideItemContainer = styled.div<ColorProps>`
 `;
 
 const AsideTitle = styled.span`
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: inherit;
+  margin-bottom: 10px;
 `;
 
 const AsideText = styled.p`
   font-size: 18px;
   line-height: 1.75;
   color: inherit;
+  margin-top: 10px;
 `;
 
-const AboutButton = styled(StyledButton)``;
+const AsideList = styled.ul`
+  margin-top: 5px;
+  padding-left: 20px;
+`;
+
+const AsideButton = styled(StyledButton)``;
 
 const Aside: React.FunctionComponent = (): ReactElement => {
   const theme = useTheme();
@@ -51,6 +58,8 @@ const Aside: React.FunctionComponent = (): ReactElement => {
     process.env.REACT_APP_READING_PROGRESS || "0",
   );
   const readingPercent = (readingProgress / readingGoal) * 100;
+
+  const obsessions = ["Hannah's Hobby Room refactor and rebranding"];
 
   return (
     <AsideContainer>
@@ -65,9 +74,21 @@ const Aside: React.FunctionComponent = (): ReactElement => {
           outside of work!
         </AsideText>
         <UnstyledLink to="/about">
-          <AboutButton colors={theme.palette}>More About Me</AboutButton>
+          <AsideButton colors={theme.palette}>More About Me</AsideButton>
         </UnstyledLink>
       </AsideItemContainer>
+
+      <AsideItemContainer colors={theme.palette}>
+        <AsideTitle>Current Obsessions & Upcoming Articles:</AsideTitle>
+        <AsideText>
+          <AsideList>
+            {obsessions.map((item) => (
+              <li>{item}</li>
+            ))}
+          </AsideList>
+        </AsideText>
+      </AsideItemContainer>
+
       <AsideItemContainer colors={theme.palette}>
         <AsideTitle>2024 Reading Challenge</AsideTitle>
         <AsideText>
@@ -81,6 +102,12 @@ const Aside: React.FunctionComponent = (): ReactElement => {
         <AsideText>
           {readingProgress}/{readingGoal} ({readingPercent}%)
         </AsideText>
+        <UnstyledLink
+          to="https://www.goodreads.com/user_challenges/52076751"
+          target="_blank"
+        >
+          <AsideButton colors={theme.palette}>View on Goodreads</AsideButton>
+        </UnstyledLink>
       </AsideItemContainer>
     </AsideContainer>
   );
