@@ -6,6 +6,7 @@ import {
   CssProps,
   SectionHeader,
   SectionTitle,
+  UnstyledLink,
 } from "./StyledComponents";
 import { useMediaQuery, useTheme } from "@mui/material";
 import { Await, useLoaderData } from "react-router-dom";
@@ -28,7 +29,7 @@ const FeaturedArticleContainer = styled.div<CssProps>`
   padding: 10px;
 `;
 
-const FeaturedArticle = styled.div<CssProps>`
+const FeaturedArticle = styled(UnstyledLink)<CssProps>`
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -97,7 +98,11 @@ const FeaturedContent: React.FunctionComponent = () => {
             return (
               <FeaturedArticleContainer break={sm} colors={theme.palette}>
                 {featuredArticles.map((article) => (
-                  <FeaturedArticle break={sm} colors={theme.palette}>
+                  <FeaturedArticle
+                    to={`/articles/${article.slug}`}
+                    break={sm}
+                    colors={theme.palette}
+                  >
                     <FeaturedArticleImage
                       src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
                       break={sm}
