@@ -23,6 +23,8 @@ const FooterRow = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+
   margin: 10px 0;
 `;
 

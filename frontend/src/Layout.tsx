@@ -26,7 +26,6 @@ const ContentContainer = styled.div<BreakPointProps>`
   flex-direction: ${(props) => (props.break ? "row" : "column")};
   justify-content: center;
   align-items: ${(props) => (props.break ? "flex-start" : "center")};
-  gap: 20px;
 `;
 
 function ScrollToTopOnNavigate() {
