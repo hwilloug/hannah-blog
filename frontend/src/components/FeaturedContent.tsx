@@ -8,10 +8,10 @@ import {
   SectionTitle,
   UnstyledLink,
 } from "./StyledComponents";
-import { useMediaQuery, useTheme } from "@mui/material";
+import { Grow, useMediaQuery, useTheme } from "@mui/material";
 import { Await, useLoaderData } from "react-router-dom";
 import { AxiosResponse } from "axios";
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Loading from "./Loading";
 import { Article, mapRespToArticle } from "..";
 
@@ -42,6 +42,10 @@ const FeaturedArticle = styled(UnstyledLink)<CssProps>`
   border-radius: 5px;
   background-color: ${({ colors }) =>
     colors.mode === "dark" ? colors.primary.dark : "white"};
+
+  :hover {
+    border: 5px solid ${({ colors }) => colors.secondary.main};
+  }
 `;
 
 const FeaturedArticleTitle = styled.h2<ColorProps>`

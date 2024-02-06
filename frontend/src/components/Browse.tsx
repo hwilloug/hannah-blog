@@ -15,11 +15,19 @@ const ArticleContainer = styled.div<CssProps>`
 
   border: 1px solid ${(props) => props.colors.primary.dark};
   border-radius: 25px 5px;
+
   width: ${(props) => (props.break ? "90vw" : "35rem")};
   padding: 10px;
+  margin: 20px 0;
+
   background-color: ${({ colors }) =>
     colors.mode === "dark" ? colors.primary.dark : "white"};
   color: ${({ colors }) => (colors.mode === "dark" ? "white" : "black")};
+
+  :hover {
+    border: 5px solid ${({ colors }) => colors.secondary.main};
+    margin: 16px;
+  }
 `;
 
 const ArticleDetailContainer = styled.div`
@@ -82,6 +90,7 @@ const Browse: React.FunctionComponent = (): ReactElement => {
                 count={numPages}
                 page={page}
                 onChange={handlePageChange}
+                color="secondary"
               />
               {articles
                 .sort(
@@ -124,6 +133,7 @@ const Browse: React.FunctionComponent = (): ReactElement => {
                 count={numPages}
                 page={page}
                 onChange={handlePageChange}
+                color="secondary"
               />
             </>
           ) : (

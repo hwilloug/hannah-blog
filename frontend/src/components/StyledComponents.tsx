@@ -49,6 +49,10 @@ export const StyledButton = styled.button<ColorProps>`
   border-style: none;
   text-transform: uppercase;
   padding: 5px 10px;
+
+  :hover {
+    background-color: ${({ colors }) => (colors.mode === "dark" ? colors.secondary.dark : colors.secondary.main)};
+  }
 `;
 
 export const ArticleContentContainer = styled.div<ColorProps>`
@@ -116,6 +120,10 @@ export const NavigationItem = styled.button<NavProps>`
 
   border-radius: 5px;
   border: 1px solid white;
+
+  :hover {
+    background-color: ${({ colors }) => colors.primary.main};
+  }
 `;
 
 export const ProgressBar = muiStyled(LinearProgress)(({ theme }) => ({

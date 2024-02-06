@@ -86,6 +86,11 @@ const SitemapContainer = styled.div<ColorProps>`
 
   a {
     color: ${({ colors }) => colors.secondary.main};
+    text-decoration: none;
+
+    :hover {
+      text-decoration: underline;
+    }
   }
 `;
 

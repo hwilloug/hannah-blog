@@ -17,7 +17,7 @@ import { ContactMail } from "@mui/icons-material";
 const AsideContainer = styled.div<BreakPointProps>`
   max-width: ${(props) => (props.break ? "17rem" : "100%")};
   min-width: ${(props) => (props.break ? "17rem" : "100%")};
-  margin: 50px 50px 0 20px;
+  margin: 50px 100px 0 0;
 
   display: ${(props) => (props.break ? "block" : "flex")};
   flex-wrap: wrap;
@@ -43,6 +43,11 @@ const AsideItemContainer = styled.div<CssProps>`
 
   a {
     color: ${({ colors }) => colors.secondary.main};
+    text-decoration: none;
+
+    :hover {
+      text-decoration: underline;
+    }
   }
 `;
 
@@ -78,6 +83,10 @@ const AsideListLinkedItem = styled.li`
     p {
       margin-top: 5px;
     }
+
+    :hover {
+      text-decoration: underline;
+    }
   }
 `;
 
@@ -99,7 +108,7 @@ const Aside: React.FunctionComponent = (): ReactElement => {
       href="https://www.goodreads.com/book/show/164154.A_Canticle_for_Leibowitz"
       target="_blank"
     >
-      A Canticle for Leibowitz by Walter M. Miller Jr.
+      <i>A Canticle for Leibowitz</i> by Walter M. Miller Jr.
     </a>,
   ];
 
