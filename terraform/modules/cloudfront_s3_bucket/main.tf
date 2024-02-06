@@ -32,10 +32,6 @@ locals {
   s3_origin_id = format("%s-origin", var.bucket_name)
 }
 
-data "aws_acm_certificate" "acm_certificate" {
-  domain = "poppyland.dev"
-}
-
 resource "aws_cloudfront_distribution" "s3_distribution" {
   origin {
     domain_name              = aws_s3_bucket.s3_bucket.bucket_regional_domain_name
@@ -81,7 +77,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   }
 
   viewer_certificate {
-    acm_certificate_arn = data.aws_acm_certificate.acm_certificate.arn
+    acm_certificate_arn = var.acm_certificate_arn
     ssl_support_method  = "sni-only"
   }
 }
@@ -114,14 +110,8 @@ resource "aws_s3_bucket_policy" "s3_bucket_policy" {
   policy = data.aws_iam_policy_document.s3_cloudfront_access.json
 }
 
-
-
-data "aws_route53_zone" "poppyland_route53_zone" {
-  name = "poppyland.dev"
-}
-
 resource "aws_route53_record" "route53_record" {
-  zone_id = data.aws_route53_zone.poppyland_route53_zone.zone_id
+  zone_id = var.route53_zone_id
   type    = "A"
   name    = var.domain
 

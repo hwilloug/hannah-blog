@@ -93,7 +93,7 @@ resource "aws_rds_cluster" "postgresql" {
 
   engine_mode = "serverless"
   scaling_configuration {
-    auto_pause               = false
+    auto_pause               = true
     min_capacity             = 2
     max_capacity             = 32
   }

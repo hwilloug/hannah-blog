@@ -22,6 +22,7 @@ const AboutContainer = styled.div<CssProps>`
   border: 1px solid black;
   border-radius: 5px;
   padding: 20px;
+  margin-bottom: 20px;
   width: ${(props) => (props.break ? "100%" : "35rem")};
   line-height: 1.75;
 `;
@@ -36,8 +37,8 @@ const LinkItem = styled.li<ColorProps>`
   background-color: ${({ colors }) =>
     colors.mode === "dark" ? colors.secondary.dark : colors.secondary.main};
   margin: 20px 0;
-  padding: 10px;
   align: center;
+  border-radius: 5px;
 `;
 
 const LinkItemLink = styled(UnstyledLink)`
@@ -104,6 +105,22 @@ const About: React.FunctionComponent = (): ReactElement => {
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/family_photo.jpeg`}
           alt="A family photo of my cats"
         />
+      </AboutContainer>
+      <AboutContainer break={sm} colors={theme.palette}>
+        <SectionHeader>Contact Me</SectionHeader>
+        <p>Questions, comments, or feedback?</p>
+        <ul>
+          <li>
+            Email me at{" "}
+            <a href="mailto: support@hannahwilloughby.dev">
+              support@hannahwilloughby.dev
+            </a>
+          </li>
+          <li>
+            Connect with me on X!{" "}
+            <a href="https://twitter.com/HannahHobbyRoom">@HannahHobbyRoom</a>
+          </li>
+        </ul>
       </AboutContainer>
     </BodyContainer>
   );

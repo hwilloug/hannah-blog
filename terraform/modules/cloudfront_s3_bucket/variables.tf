@@ -1,3 +1,13 @@
+variable "acm_certificate_arn" {
+  description = "The certificate arn for the domain"
+  type        = string
+}
+
+output "acm_certificate_arn" {
+  description = "Same as input variable"
+  value       = var.acm_certificate_arn
+}
+
 variable "api_id" {
   description = "The api id for the api"
   type        = string
@@ -49,4 +59,14 @@ variable "domain" {
 output "domain" {
   description = "Same as input variable"
   value       = var.domain
+}
+
+variable "route53_zone_id" {
+  description = "route53 zone id in which to create records"
+  type = string
+}
+
+output "route53_zone_id" {
+  description = "Same as input variable"
+  value = var.route53_zone_id
 }

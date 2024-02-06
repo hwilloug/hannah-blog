@@ -4,15 +4,19 @@ import {
   BorderedFullSizeImage,
   ColorProps,
   ProgressBar,
+  SocialIcon,
   StyledButton,
   UnstyledLink,
 } from "./StyledComponents";
 import { Grid, useTheme } from "@mui/material";
+import XIcon from "@mui/icons-material/X";
+import { ContactMail } from "@mui/icons-material";
 
 const AsideContainer = styled.div`
   max-width: 17rem;
   min-width: 17rem;
   margin-right: 50px;
+  margin-top: 50px;
 `;
 
 const AsideItemContainer = styled.div<ColorProps>`
@@ -46,6 +50,17 @@ const AsideText = styled.p`
 const AsideList = styled.ul`
   margin-top: 5px;
   padding-left: 20px;
+  list-style-type: circle;
+`;
+
+const AsideListLinkedItem = styled.li`
+  list-style-type: none;
+  margin-bottom: 20px;
+
+  a {
+    align-items: center;
+    text-decoration: none;
+  }
 `;
 
 const AsideButton = styled(StyledButton)``;
@@ -69,54 +84,89 @@ const Aside: React.FunctionComponent = (): ReactElement => {
     </a>,
   ];
 
+  const welcomePartial = (
+    <AsideItemContainer colors={theme.palette}>
+      <AsideTitle>Welcome to My Hobby Room</AsideTitle>
+      <BorderedFullSizeImage
+        src={`${process.env.REACT_APP_IMAGES_BASE_URL}/me.jpeg`}
+        alt="A pic of Hannah"
+      />
+      <AsideText>
+        Hello world! It's me, Hannah. This is where I write about what I do
+        outside of work!
+      </AsideText>
+      <UnstyledLink to="/about">
+        <AsideButton colors={theme.palette}>More About Me</AsideButton>
+      </UnstyledLink>
+    </AsideItemContainer>
+  );
+
+  const obsessionsPartial = (
+    <AsideItemContainer colors={theme.palette}>
+      <AsideTitle>Current Obsessions & Upcoming Articles:</AsideTitle>
+      <AsideText>
+        <AsideList>
+          {obsessions.map((item) => (
+            <li>{item}</li>
+          ))}
+        </AsideList>
+      </AsideText>
+    </AsideItemContainer>
+  );
+
+  const readingChallengePartial = (
+    <AsideItemContainer colors={theme.palette}>
+      <AsideTitle>2024 Reading Challenge</AsideTitle>
+      <AsideText>
+        Follow along as I reach my goal of reading 50 books this year!
+      </AsideText>
+      <Grid spacing={1} container>
+        <Grid item xs>
+          <ProgressBar variant="determinate" value={readingPercent} />
+        </Grid>
+      </Grid>
+      <AsideText>
+        {readingProgress}/{readingGoal} ({readingPercent}%)
+      </AsideText>
+      <UnstyledLink
+        to="https://www.goodreads.com/user_challenges/52076751"
+        target="_blank"
+      >
+        <AsideButton colors={theme.palette}>View on Goodreads</AsideButton>
+      </UnstyledLink>
+    </AsideItemContainer>
+  );
+
+  const connectPartial = (
+    <AsideItemContainer colors={theme.palette}>
+      <AsideTitle>Connect with me</AsideTitle>
+      <AsideList>
+        <AsideListLinkedItem>
+          <a href="https://twitter.com/HannahHobbyRoom" target="_blank">
+            <SocialIcon colors={theme.palette}>
+              <XIcon />
+            </SocialIcon>
+            <p>@HannahHobbyRoom</p>
+          </a>
+        </AsideListLinkedItem>
+        <AsideListLinkedItem>
+          <a href="mailto: support@hannahwilloughby.dev">
+            <SocialIcon colors={theme.palette}>
+              <ContactMail />
+            </SocialIcon>
+            <p>support@hannahwilloughby.dev</p>
+          </a>
+        </AsideListLinkedItem>
+      </AsideList>
+    </AsideItemContainer>
+  );
+
   return (
     <AsideContainer>
-      <AsideItemContainer colors={theme.palette}>
-        <AsideTitle>Welcome to My Hobby Room</AsideTitle>
-        <BorderedFullSizeImage
-          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/me.jpeg`}
-          alt="A pic of Hannah"
-        />
-        <AsideText>
-          Hello world! It's me, Hannah. This is where I write about what I do
-          outside of work!
-        </AsideText>
-        <UnstyledLink to="/about">
-          <AsideButton colors={theme.palette}>More About Me</AsideButton>
-        </UnstyledLink>
-      </AsideItemContainer>
-
-      <AsideItemContainer colors={theme.palette}>
-        <AsideTitle>Current Obsessions & Upcoming Articles:</AsideTitle>
-        <AsideText>
-          <AsideList>
-            {obsessions.map((item) => (
-              <li>{item}</li>
-            ))}
-          </AsideList>
-        </AsideText>
-      </AsideItemContainer>
-
-      <AsideItemContainer colors={theme.palette}>
-        <AsideTitle>2024 Reading Challenge</AsideTitle>
-        <AsideText>
-          Follow along as I reach my goal of reading 50 books this year!
-        </AsideText>
-        <Grid spacing={1} container>
-          <Grid item xs>
-            <ProgressBar variant="determinate" value={readingPercent} />
-          </Grid>
-        </Grid>
-        <AsideText>
-          {readingProgress}/{readingGoal} ({readingPercent}%)
-        </AsideText>
-        <UnstyledLink
-          to="https://www.goodreads.com/user_challenges/52076751"
-          target="_blank"
-        >
-          <AsideButton colors={theme.palette}>View on Goodreads</AsideButton>
-        </UnstyledLink>
-      </AsideItemContainer>
+      {welcomePartial}
+      {obsessionsPartial}
+      {readingChallengePartial}
+      {connectPartial}
     </AsideContainer>
   );
 };

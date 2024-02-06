@@ -8,7 +8,6 @@ import {
 } from "./StyledComponents";
 import { Switch, useTheme } from "@mui/material";
 import XIcon from "@mui/icons-material/X";
-import { mdiGoodreads } from "@mdi/js";
 
 const FooterContainer = styled.div<ColorProps>`
   display: flex;

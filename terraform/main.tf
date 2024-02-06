@@ -1,8 +1,18 @@
+data "aws_route53_zone" "poppyland_zone" {
+  name = "poppyland.dev"
+}
+
+data "aws_acm_certificate" "poppyland_cert" {
+  domain = "poppyland.dev"
+}
+
 module "images_s3_bucket" {
   source = "./modules/cloudfront_s3_bucket"
 
+  acm_certificate_arn = data.aws_acm_certificate.poppyland_cert.arn
   bucket_name = "poppyland-blog-images"
   domain      = "blog-images.poppyland.dev"
+  route53_zone_id = data.aws_route53_zone.poppyland_zone.zone_id
 }
 
 module "articles_table" {
@@ -39,14 +49,22 @@ module "articles_api" {
   table_name    = module.articles_table.table_name
 }
 
+module "dns" {
+  source = "./modules/dns"
+
+  domain = "hannahshobbyroom.com"
+}
+
 module "frontend_bucket" {
   source = "./modules/cloudfront_s3_bucket"
 
+  acm_certificate_arn = data.aws_acm_certificate.poppyland_cert.arn
   api_id         = module.articles_api.id
   api_origin_id  = module.articles_api.origin_id
   api_stage_name = module.articles_api.stage_name
   bucket_name    = "poppyland-blog-frontend"
-  domain         = "blog.poppyland.dev"
+  domain         = "hannahshobbyroom.com"
+  route53_zone_id = module.dns.route53_zone_id
 }
 
 module "articles_rds_cluster" {
