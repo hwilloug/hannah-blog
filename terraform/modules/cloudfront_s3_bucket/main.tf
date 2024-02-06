@@ -121,3 +121,7 @@ resource "aws_route53_record" "route53_record" {
     evaluate_target_health = false
   }
 }
+
+output "cloudfront_endpoint" {
+  value = aws_cloudfront_distribution.s3_distribution.domain_name
+}

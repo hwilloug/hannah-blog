@@ -61,12 +61,34 @@ output "domain" {
   value       = var.domain
 }
 
+variable "redirect_from" {
+  description = "Domain to redirect from"
+  default     = ""
+  type        = string
+}
+
+output "redirect_from" {
+  description = "Same as input variable"
+  value       = var.redirect_from
+}
+
+variable "redirect_function_arn" {
+  description = "Arn of the cloudfront function that redirects"
+  default     = ""
+  type        = string
+}
+
+output "redirect_function_arn" {
+  description = "Same as input variable"
+  value       = var.redirect_function_arn
+}
+
 variable "route53_zone_id" {
   description = "route53 zone id in which to create records"
-  type = string
+  type        = string
 }
 
 output "route53_zone_id" {
   description = "Same as input variable"
-  value = var.route53_zone_id
+  value       = var.route53_zone_id
 }

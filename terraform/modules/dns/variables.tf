@@ -1,10 +1,10 @@
 
 variable "domain" {
   description = "The domain name"
-  type = string
+  type        = string
 }
 
 output "domain" {
   description = "Same as input variable"
-  value = var.domain
+  value       = var.domain
 }
