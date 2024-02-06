@@ -5,10 +5,12 @@ import {
   SocialIcon,
   StyledButton,
   StyledIcon,
+  UnstyledLink,
 } from "./StyledComponents";
 import { Divider, Switch, useTheme } from "@mui/material";
 import XIcon from "@mui/icons-material/X";
 import { ContactMail } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 const FooterContainer = styled.div<ColorProps>`
   background-color: ${({ colors }) => colors.primary.main};
@@ -25,7 +27,34 @@ const FooterRow = styled.div`
 `;
 
 const BuyMeABookButton = styled(StyledButton)`
+  @keyframes wiggle {
+    0%,
+    7% {
+      transform: rotateZ(0);
+    }
+    15% {
+      transform: rotateZ(-10deg);
+    }
+    20% {
+      transform: rotateZ(7deg);
+    }
+    25% {
+      transform: rotateZ(-7deg);
+    }
+    30% {
+      transform: rotateZ(4deg);
+    }
+    35% {
+      transform: rotateZ(-2deg);
+    }
+    40%,
+    100% {
+      transform: rotateZ(0);
+    }
+  }
+
   margin: 0 20px;
+  animation: wiggle 2s linear infinite;
 `;
 
 const Copyright = styled.div`
@@ -67,7 +96,12 @@ const Footer: React.FunctionComponent<FooterProps> = ({
   return (
     <FooterContainer colors={colors}>
       <FooterRow>
-        <BuyMeABookButton colors={colors}>📖 Buy Me a Book</BuyMeABookButton>
+        <UnstyledLink
+          to="https://www.buymeacoffee.com/hannahjanew"
+          target="_blank"
+        >
+          <BuyMeABookButton colors={colors}>📖 Buy Me a Book</BuyMeABookButton>
+        </UnstyledLink>
         <SocialContainer colors={colors}>
           <a href="https://twitter.com/HannahHobbyRoom" target="_blank">
             <SocialIcon colors={colors}>
@@ -97,16 +131,32 @@ const Footer: React.FunctionComponent<FooterProps> = ({
         <div>
           <p>Sitemap</p>
           <ul>
-            <li>Home</li>
-            <li>About</li>
+            <Link to="/">
+              <li>Home</li>
+            </Link>
+            <Link to="/about">
+              <li>About</li>
+            </Link>
             <li>Articles</li>
             <ul>
-              <li>Food</li>
-              <li>Gardening</li>
-              <li>Crafts</li>
-              <li>Coding</li>
-              <li>Books</li>
-              <li>Languages</li>
+              <Link to="/food">
+                <li>Food</li>
+              </Link>
+              <Link to="/gardening">
+                <li>Gardening</li>
+              </Link>
+              <Link to="/crafts">
+                <li>Crafts</li>
+              </Link>
+              <Link to="/coding">
+                <li>Coding</li>
+              </Link>
+              <Link to="/books">
+                <li>Books</li>
+              </Link>
+              <Link to="/languages">
+                <li>Languages</li>
+              </Link>
             </ul>
           </ul>
         </div>

@@ -16,16 +16,16 @@ import Loading from "./Loading";
 import { Article, mapRespToArticle } from "..";
 
 const FeaturedContentContainer = styled.div<CssProps>`
-  padding: 20px;
   margin: 20px 0;
+  max-width: ${(props) => (props.break ? "90vw" : "100%")};
 `;
 
 const FeaturedArticleContainer = styled.div<CssProps>`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-
-  gap: 20px;
+  align-content: center;
+  flex-wrap: wrap;
   padding: 10px;
 `;
 
@@ -34,8 +34,9 @@ const FeaturedArticle = styled(UnstyledLink)<CssProps>`
   flex-direction: column;
   text-align: center;
 
-  width: ${(props) => (props.break ? "100%" : "13rem")};
+  width: ${(props) => (props.break ? "100%" : "29%")};
   padding: 10px;
+  margin-bottom: 10px;
 
   border: 1px solid black;
   border-radius: 5px;
@@ -57,7 +58,7 @@ const FeaturedArticleSubtitle = styled.h3`
 `;
 
 const FeaturedArticleImage = styled.img<BreakPointProps>`
-  width: ${(props) => (props.break ? "100%" : "13rem")};
+  width: 100%
   object-fit: cover;
   border-radius: 5px;
   object-fit: cover;

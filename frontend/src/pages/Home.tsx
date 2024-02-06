@@ -15,9 +15,9 @@ import FeaturedContent from "../components/FeaturedContent";
 const WelcomeContainer = styled.div<CssProps>`
   border: 1px solid black;
   border-radius: 5px;
-  padding: 20px;
-  margin: 20px 0 50px 0;
-  max-width: ${(props) => (props.break ? "90vw" : "100%")};
+  padding: 20px 0;
+  margin: 20px 0 20px 0;
+  max-width: ${(props) => (props.break ? "90vw" : "90%")};
 
   display: flex;
   flex-direction: column;
@@ -73,7 +73,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
     "lightblue",
     "thistle",
   ];
-  const welcomeWords = "Welcome to Hannah's Hobby Room".split(" ");
+  const welcomeWords = "Welcome to Hannah's Hobby Room🌸".split(" ");
 
   return (
     <BodyContainer>
@@ -81,7 +81,6 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
       <WelcomeContainer break={sm} colors={colors}>
         <WordColorAlternator colors={wordColors} words={welcomeWords} />
         <WelcomeText>
-          <WelcomeP> Welcome to Hannah's Hobby Room! 🌸</WelcomeP>
           <WelcomeP>
             Hi! I'm Hannah, and I'm thrilled to welcome you to my hobby blog.
             Here, I share my passions and delve into the diverse world of

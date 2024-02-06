@@ -38,6 +38,8 @@ export const ArticleContainer = styled.div<ColorProps>`
   background-color: ${({ colors }) =>
     colors.mode === "dark" ? colors.primary.dark : "white"};
   padding: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
 `;
 
 const ArticleTitle = styled.h2<ColorProps>`

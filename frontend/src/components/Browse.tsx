@@ -57,7 +57,6 @@ const Browse: React.FunctionComponent = (): ReactElement => {
 
   const handlePageChange = (e: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
-    window.scrollTo(0, 0);
   };
 
   return (
@@ -79,6 +78,11 @@ const Browse: React.FunctionComponent = (): ReactElement => {
 
           return articles.length ? (
             <>
+              <Pagination
+                count={numPages}
+                page={page}
+                onChange={handlePageChange}
+              />
               {articles
                 .sort(
                   (a: Article, b: Article) =>

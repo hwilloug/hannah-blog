@@ -24,6 +24,7 @@ export const BodyContainer = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 80vh;
+  align-items: center;
 `;
 
 export const SectionTitle = styled.h2<CssProps>`
