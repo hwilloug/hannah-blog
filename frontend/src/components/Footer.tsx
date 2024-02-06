@@ -79,6 +79,14 @@ const SocialContainer = styled.div<ColorProps>`
   }
 `;
 
+const SitemapContainer = styled.div<ColorProps>`
+  display: flex;
+
+  a {
+    color: ${({ colors }) => colors.secondary.main};
+  }
+`;
+
 interface FooterProps {
   darkMode: boolean;
   handleDarkModeChange: (
@@ -128,7 +136,7 @@ const Footer: React.FunctionComponent<FooterProps> = ({
       </FooterRow>
       <Divider />
       <FooterRow>
-        <div>
+        <SitemapContainer colors={colors}>
           <p>Sitemap</p>
           <ul>
             <Link to="/">
@@ -137,29 +145,26 @@ const Footer: React.FunctionComponent<FooterProps> = ({
             <Link to="/about">
               <li>About</li>
             </Link>
-            <li>Articles</li>
-            <ul>
-              <Link to="/food">
-                <li>Food</li>
-              </Link>
-              <Link to="/gardening">
-                <li>Gardening</li>
-              </Link>
-              <Link to="/crafts">
-                <li>Crafts</li>
-              </Link>
-              <Link to="/coding">
-                <li>Coding</li>
-              </Link>
-              <Link to="/books">
-                <li>Books</li>
-              </Link>
-              <Link to="/languages">
-                <li>Languages</li>
-              </Link>
-            </ul>
+            <Link to="/food">
+              <li>Food</li>
+            </Link>
+            <Link to="/gardening">
+              <li>Gardening</li>
+            </Link>
+            <Link to="/crafts">
+              <li>Crafts</li>
+            </Link>
+            <Link to="/coding">
+              <li>Coding</li>
+            </Link>
+            <Link to="/books">
+              <li>Books</li>
+            </Link>
+            <Link to="/languages">
+              <li>Languages</li>
+            </Link>
           </ul>
-        </div>
+        </SitemapContainer>
       </FooterRow>
     </FooterContainer>
   );

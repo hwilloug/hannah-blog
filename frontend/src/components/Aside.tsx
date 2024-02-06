@@ -2,29 +2,37 @@ import styled from "@emotion/styled";
 import { ReactElement } from "react";
 import {
   BorderedFullSizeImage,
+  BreakPointProps,
   ColorProps,
+  CssProps,
   ProgressBar,
   SocialIcon,
   StyledButton,
   UnstyledLink,
 } from "./StyledComponents";
-import { Grid, useTheme } from "@mui/material";
+import { Grid, useMediaQuery, useTheme } from "@mui/material";
 import XIcon from "@mui/icons-material/X";
 import { ContactMail } from "@mui/icons-material";
 
-const AsideContainer = styled.div`
-  max-width: 17rem;
-  min-width: 17rem;
-  margin-right: 50px;
-  margin-top: 50px;
+const AsideContainer = styled.div<BreakPointProps>`
+  max-width: ${(props) => (props.break ? "17rem" : "100%")};
+  min-width: ${(props) => (props.break ? "17rem" : "100%")};
+  margin: 50px 50px 0 20px;
+
+  display: ${(props) => (props.break ? "block" : "flex")};
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 `;
 
-const AsideItemContainer = styled.div<ColorProps>`
+const AsideItemContainer = styled.div<CssProps>`
   background-color: ${({ colors }) =>
     colors.mode === "dark" ? colors.primary.dark : "white"};
   color: ${({ colors }) => (colors.mode === "dark" ? "white" : "black")};
   border: 1px solid black;
   border-radius: 25px 5px;
+  max-width: ${(props) => (props.break ? "17rem" : "100%")};
+  width: ${(props) => (props.break ? "100%" : "17rem")};
 
   padding: 20px;
   margin-bottom: 20px;
@@ -32,6 +40,10 @@ const AsideItemContainer = styled.div<ColorProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  a {
+    color: ${({ colors }) => colors.secondary.main};
+  }
 `;
 
 const AsideTitle = styled.span`
@@ -73,6 +85,7 @@ const AsideButton = styled(StyledButton)``;
 
 const Aside: React.FunctionComponent = (): ReactElement => {
   const theme = useTheme();
+  const md = useMediaQuery(theme.breakpoints.up("md"));
 
   const readingGoal = parseInt(process.env.REACT_APP_READING_GOAL || "0");
   const readingProgress = parseInt(
@@ -91,7 +104,7 @@ const Aside: React.FunctionComponent = (): ReactElement => {
   ];
 
   const welcomePartial = (
-    <AsideItemContainer colors={theme.palette}>
+    <AsideItemContainer colors={theme.palette} break={md}>
       <AsideTitle>Welcome to My Hobby Room</AsideTitle>
       <BorderedFullSizeImage
         src={`${process.env.REACT_APP_IMAGES_BASE_URL}/me.jpeg`}
@@ -108,7 +121,7 @@ const Aside: React.FunctionComponent = (): ReactElement => {
   );
 
   const obsessionsPartial = (
-    <AsideItemContainer colors={theme.palette}>
+    <AsideItemContainer colors={theme.palette} break={md}>
       <AsideTitle>Current Obsessions & Upcoming Articles:</AsideTitle>
       <AsideText>
         <AsideList>
@@ -121,7 +134,7 @@ const Aside: React.FunctionComponent = (): ReactElement => {
   );
 
   const readingChallengePartial = (
-    <AsideItemContainer colors={theme.palette}>
+    <AsideItemContainer colors={theme.palette} break={md}>
       <AsideTitle>2024 Reading Challenge</AsideTitle>
       <AsideText>
         Follow along as I reach my goal of reading 50 books this year!
@@ -144,7 +157,7 @@ const Aside: React.FunctionComponent = (): ReactElement => {
   );
 
   const connectPartial = (
-    <AsideItemContainer colors={theme.palette}>
+    <AsideItemContainer colors={theme.palette} break={md}>
       <AsideTitle>Connect with me</AsideTitle>
       <AsideList>
         <AsideListLinkedItem>
@@ -168,7 +181,7 @@ const Aside: React.FunctionComponent = (): ReactElement => {
   );
 
   const bookclubPartial = (
-    <AsideItemContainer colors={theme.palette}>
+    <AsideItemContainer colors={theme.palette} break={md}>
       <AsideTitle>Join my bookclub!</AsideTitle>
       <AsideText>
         <a
@@ -183,7 +196,7 @@ const Aside: React.FunctionComponent = (): ReactElement => {
   );
 
   return (
-    <AsideContainer>
+    <AsideContainer break={md}>
       {welcomePartial}
       {obsessionsPartial}
       {readingChallengePartial}

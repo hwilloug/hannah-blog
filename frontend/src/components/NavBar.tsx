@@ -1,15 +1,16 @@
 import styled from "@emotion/styled";
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import Navigation from "./Navigation";
 import { mdiHelpCircleOutline } from "@mdi/js";
 import { Link } from "react-router-dom";
-import { useMediaQuery, useTheme } from "@mui/material";
+import { Button, Menu, MenuItem, useMediaQuery, useTheme } from "@mui/material";
 import {
   CssProps,
   StyledIcon,
   NavigationItem,
   NavigationLink,
 } from "./StyledComponents";
+import { MoreVertOutlined } from "@mui/icons-material";
 
 const NavBarContainer = styled.div<CssProps>`
   display: flex;
@@ -17,7 +18,13 @@ const NavBarContainer = styled.div<CssProps>`
   background-color: ${(props) => props.colors.primary.main};
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
+  box-shadow: 0 0 5px 0 black;
+`;
+
+const SmallContainer = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 const RightIconContainer = styled.div`
@@ -41,7 +48,6 @@ const PoppyIcon = styled.img`
 
 const HomeLink = styled(Link)`
   text-decoration: none;
-  margin-top: 20px;
 `;
 
 const NavBar: React.FunctionComponent = (): ReactElement => {
@@ -49,36 +55,47 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
   const sm = useMediaQuery(theme.breakpoints.down("sm"));
   const colors = theme.palette;
 
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   const smallPartial = (
-    <>
-      <NavBarContainer break={false} colors={colors}>
-        <HomeLink to="">
-          <PoppyIcon
-            src={`${process.env.REACT_APP_IMAGES_BASE_URL}/poppy.png`}
-          />
-        </HomeLink>
-        <HomeLink to="/">
-          <Title>Hannah's Hobby Room</Title>
-        </HomeLink>
-        <RightIconContainer>
-          {/*<NavigationItem colors={colors}>
-            <StyledIcon path={mdiMagnify} size={1} colors={colors} />
-          </NavigationItem>*/}
-          <NavigationLink to="/about">
-            {({ isActive }) => (
-              <NavigationItem colors={colors} isActive={isActive}>
-                <StyledIcon
-                  path={mdiHelpCircleOutline}
-                  size={1}
-                  colors={colors}
-                />
-              </NavigationItem>
-            )}
-          </NavigationLink>
-        </RightIconContainer>
-      </NavBarContainer>
-      <Navigation />
-    </>
+    <SmallContainer>
+      <HomeLink to="">
+        <PoppyIcon src={`${process.env.REACT_APP_IMAGES_BASE_URL}/poppy.png`} />
+      </HomeLink>
+      <HomeLink to="/">
+        <Title>Hannah's Hobby Room</Title>
+      </HomeLink>
+      <RightIconContainer>
+        <Button variant="contained" disableElevation onClick={handleClick}>
+          <MoreVertOutlined />
+        </Button>
+        <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+          <MenuItem onClick={handleClose} disableRipple>
+            <NavigationLink to="/about">
+              {({ isActive }) => (
+                <NavigationItem colors={colors} isActive={isActive}>
+                  <StyledIcon
+                    path={mdiHelpCircleOutline}
+                    size={1}
+                    colors={colors}
+                  />
+                </NavigationItem>
+              )}
+            </NavigationLink>
+          </MenuItem>
+          <MenuItem>
+            <Navigation showText />
+          </MenuItem>
+        </Menu>
+      </RightIconContainer>
+    </SmallContainer>
   );
 
   const defaultPartial = (

@@ -10,7 +10,11 @@ const Title = styled.span`
   font-size: 2.75rem;
 
   font-family: Montserrat, Arial, Helvetica, sans-serif;
-  text-shadow: 1px 1px 0 black;
+  text-shadow:
+    -1px 0 black,
+    0 1px black,
+    1px 0 black,
+    0 -1px black;
 `;
 
 interface WordColorAlternatorProps {
