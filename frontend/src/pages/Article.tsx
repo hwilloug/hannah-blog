@@ -37,6 +37,7 @@ const BackButton = styled(StyledButton)`
 export const ArticleContainer = styled.div<ColorProps>`
   background-color: ${({ colors }) =>
     colors.mode === "dark" ? colors.primary.dark : "white"};
+  color: ${({ colors }) => colors.mode === "dark" ? "white" : "black"};
   padding: 20px;
   border: 1px solid black;
   border-radius: 5px;
@@ -47,7 +48,6 @@ const ArticleTitle = styled.h2<ColorProps>`
   font-size: 2.5rem;
   margin-bottom: 10px;
   font-weight: normal;
-  color: ${({ colors }) => (colors.mode === "dark" ? "white" : "black")};
 `;
 
 const ArticleSubtitle = styled.h3<ColorProps>`

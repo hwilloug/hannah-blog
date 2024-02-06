@@ -57,7 +57,7 @@ export const StyledButton = styled.button<ColorProps>`
 
 export const ArticleContentContainer = styled.div<ColorProps>`
   line-height: 1.75;
-  color: ${({ colors }) => (colors.mode === "dark" ? "white" : "black")};
+  color: ${({ colors }) => colors.mode === "dark" ? "white" : "black"};
 
   a {
     color: ${({ colors }) => colors.secondary.main};

@@ -107,6 +107,7 @@ const FeaturedContent: React.FunctionComponent = () => {
                     to={`/articles/${article.slug}`}
                     break={sm}
                     colors={theme.palette}
+                    key={article.slug}
                   >
                     <FeaturedArticleImage
                       src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}

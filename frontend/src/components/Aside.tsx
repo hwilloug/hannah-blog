@@ -135,7 +135,7 @@ const Aside: React.FunctionComponent = (): ReactElement => {
       <AsideText>
         <AsideList>
           {obsessions.map((item) => (
-            <li>{item}</li>
+            <li key={obsessions.indexOf(item)}>{item}</li>
           ))}
         </AsideList>
       </AsideText>
