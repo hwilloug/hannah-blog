@@ -101,7 +101,7 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
   const defaultPartial = (
     <>
       <HomeLink to="">
-        <PoppyIcon src="poppy.png" />
+        <PoppyIcon src="/poppy.png" />
       </HomeLink>
       <HomeLink to="/">
         <Title>Hannah's Hobby Room</Title>
