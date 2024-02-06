@@ -104,7 +104,11 @@ export const BorderedFullSizeImage = styled(FullSizeImage)`
 
 export const StyledIcon = styled(Icon)<ColorProps>``;
 
-export const SocialIcon = styled(MuiIcon)<ColorProps>``;
+export const SocialIcon = styled(MuiIcon)<ColorProps>`
+  :hover {
+    color: ${({ colors }) => colors.secondary.main};
+  }
+`;
 
 export const NavigationItem = styled.button<NavProps>`
   display: flex;

@@ -62,7 +62,13 @@ const HomeIsWhereTheCakeIs: React.FunctionComponent = (): ReactElement => {
         </p>
       </Section>
       <Section>
-        <p>MORE TO COME!</p>
+        <FullSizeImage
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/home_cake_5.jpeg`}
+        />
+        <p>
+          Now for giving it to my boyfriend, I paired the cross stitch with his
+          favorite cake and a house key! He loved it!!
+        </p>
       </Section>
     </ArticleContentContainer>
   );
