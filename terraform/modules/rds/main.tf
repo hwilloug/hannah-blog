@@ -54,20 +54,20 @@ resource "aws_security_group" "default" {
     from_port   = 5432
     to_port     = 5432
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]  # Adjust as needed for your security requirements
+    cidr_blocks = ["0.0.0.0/0"] # Adjust as needed for your security requirements
   }
 
   egress {
-    from_port = "0"
-    to_port   = "0"
-    protocol  = "-1"
+    from_port   = "0"
+    to_port     = "0"
+    protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
 
 resource "aws_db_subnet_group" "subnet_group" {
-  name = "${var.database_name}_subnet_group"
-  subnet_ids = [ for subnet in aws_subnet.public_subnet : subnet.id ]
+  name       = "${var.database_name}_subnet_group"
+  subnet_ids = [for subnet in aws_subnet.public_subnet : subnet.id]
 }
 
 resource "aws_kms_key" "postgres_kms_key" {
@@ -78,7 +78,7 @@ data "aws_ssm_parameter" "postgres_password" {
   name = "/hannahshobbyroom/postgresql/password"
 }
 
-resource "aws_rds_cluster" "postgresql" {
+resource "aws_rds_cluster" "cluster" {
   cluster_identifier      = var.cluster_name
   availability_zones      = local.availability_zones
   engine                  = "aurora-postgresql"
@@ -90,13 +90,23 @@ resource "aws_rds_cluster" "postgresql" {
   skip_final_snapshot     = true
   db_subnet_group_name    = aws_db_subnet_group.subnet_group.id
   vpc_security_group_ids  = [aws_security_group.default.id]
+  apply_immediately       = true
+  enable_http_endpoint    = true
+  engine_mode             = "provisioned"
 
-  engine_mode = "serverless"
-  scaling_configuration {
-    auto_pause               = true
-    min_capacity             = 2
-    max_capacity             = 32
+  serverlessv2_scaling_configuration {
+    max_capacity = 1.0
+    min_capacity = 0.5
   }
 
-  depends_on = [ aws_vpc.vpc, aws_internet_gateway.ig ]
+  depends_on = [aws_vpc.vpc, aws_internet_gateway.ig]
+}
+
+resource "aws_rds_cluster_instance" "db" {
+  identifier          = var.database_name
+  instance_class      = "db.serverless"
+  cluster_identifier  = aws_rds_cluster.cluster.id
+  engine              = aws_rds_cluster.cluster.engine
+  engine_version      = aws_rds_cluster.cluster.engine_version
+  publicly_accessible = true
 }

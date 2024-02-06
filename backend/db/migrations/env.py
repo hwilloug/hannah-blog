@@ -2,7 +2,7 @@ from logging.config import fileConfig
 
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
-from sqlalchemy.ext.declarative import declarative_base
+from models import Base
 
 from alembic import context
 
@@ -19,7 +19,6 @@ if config.config_file_name is not None:
 
 # add your model's MetaData object here
 # for 'autogenerate' support
-Base = declarative_base()
 target_metadata = Base.metadata
 
 # other values from the config, defined by the needs of env.py,
