@@ -65,6 +65,7 @@ export const Section = styled.div`
 
 export const FullSizeImage = styled.img`
   width: 100%;
+  border-radius: 5px;
 `;
 
 export const SectionHeader = styled.h2`

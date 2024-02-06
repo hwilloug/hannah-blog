@@ -55,11 +55,17 @@ const AsideList = styled.ul`
 
 const AsideListLinkedItem = styled.li`
   list-style-type: none;
-  margin-bottom: 20px;
+  margin: 20px 0;
 
   a {
-    align-items: center;
     text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+      margin-top: 5px;
+    }
   }
 `;
 
@@ -161,11 +167,27 @@ const Aside: React.FunctionComponent = (): ReactElement => {
     </AsideItemContainer>
   );
 
+  const bookclubPartial = (
+    <AsideItemContainer colors={theme.palette}>
+      <AsideTitle>Join my bookclub!</AsideTitle>
+      <AsideText>
+        <a
+          href="https://fable.co/club/hannahs-bookclub-with-hannah-willoughby-183460376024?club_type=free"
+          target="_blank"
+        >
+          <BorderedFullSizeImage src="https://img.fablecdn.net/images/cdn.fable.co/group_covers/D7CE5584-21F6-41A6-A854-5418B5FEFCCF.jpg?w=416" />
+          Hannah's Book Club
+        </a>
+      </AsideText>
+    </AsideItemContainer>
+  );
+
   return (
     <AsideContainer>
       {welcomePartial}
       {obsessionsPartial}
       {readingChallengePartial}
+      {bookclubPartial}
       {connectPartial}
     </AsideContainer>
   );
