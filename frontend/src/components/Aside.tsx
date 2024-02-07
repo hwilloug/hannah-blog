@@ -110,6 +110,14 @@ const Aside: React.FunctionComponent = (): ReactElement => {
     >
       <i>A Canticle for Leibowitz</i> by Walter M. Miller Jr.
     </a>,
+    <a
+      href="https://www.goodreads.com/book/show/126918788-the-women"
+      target="_blank"
+    >
+      <i>The Women</i> by Kristin Hannah
+    </a>,
+    "Finishing up drip irrigation",
+    "Finishing up garden arbor & fence",
   ];
 
   const welcomePartial = (
