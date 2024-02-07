@@ -208,6 +208,15 @@ const Aside: React.FunctionComponent = (): ReactElement => {
           <BorderedFullSizeImage src="https://img.fablecdn.net/images/cdn.fable.co/group_covers/D7CE5584-21F6-41A6-A854-5418B5FEFCCF.jpg?w=416" />
           Hannah's Book Club
         </a>
+        <p>
+          February's book:{" "}
+          <a
+            href="https://www.goodreads.com/book/show/126918788-the-women"
+            target="_blank"
+          >
+            <i>The Women</i> by Kristin Hannah
+          </a>
+        </p>
       </AsideText>
     </AsideItemContainer>
   );
