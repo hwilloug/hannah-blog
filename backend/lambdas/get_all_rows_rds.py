@@ -17,6 +17,7 @@ except DatabaseError as e:
     exit(1)
 
 def lambda_handler(event, context):
+    table_name = environ.get("TABLE_NAME")
     query_params = event.get("queryStringParameters", {})
     if query_params is None:
         query_params = {}
@@ -24,7 +25,7 @@ def lambda_handler(event, context):
 
     cursor = conn.cursor(cursor_factory=RealDictCursor)
 
-    sql = """SELECT * FROM articles"""
+    sql = f"SELECT * FROM {table_name}"
     if query:
         sql = f"{sql} WHERE category = '{query}'"
     cursor.execute(sql)

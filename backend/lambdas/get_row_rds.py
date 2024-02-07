@@ -17,12 +17,13 @@ except DatabaseError as e:
     exit(1)
 
 def lambda_handler(event, context):
+    table_name = environ.get("TABLE_NAME")
     path_params = event.get("pathParameters", {})
     slug = path_params.get('slug')
 
     cursor = conn.cursor(cursor_factory=RealDictCursor)
 
-    sql = f"SELECT * FROM articles WHERE SLUG = '{slug}'"
+    sql = f"SELECT * FROM {table_name} WHERE SLUG = '{slug}'"
     cursor.execute(sql)
 
     results = cursor.fetchall()

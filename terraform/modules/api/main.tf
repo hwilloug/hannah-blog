@@ -26,7 +26,6 @@ module "articles_get_row_lambda" {
   lambda_layer_arns = var.lambda_layer_arns
 }
 
-
 resource "aws_apigatewayv2_api" "api" {
   name          = "${var.table_name}API"
   protocol_type = "HTTP"
@@ -62,7 +61,7 @@ resource "aws_apigatewayv2_route" "get_all_route" {
 
 resource "aws_apigatewayv2_route" "get_item_route" {
   api_id    = aws_apigatewayv2_api.api.id
-  route_key = "GET /articles/{${lower(var.partition_key)}}"
+  route_key = "GET /articles/{slug}"
 
   target = "integrations/${aws_apigatewayv2_integration.get_item_lambda_integration.id}"
 }

@@ -15,30 +15,6 @@ module "images_s3_bucket" {
   route53_zone_id     = data.aws_route53_zone.poppyland_zone.zone_id
 }
 
-module "articles_table" {
-  source = "./modules/dynamo_db_table"
-
-  gsi_hash_key      = "Category"
-  gsi_hash_key_type = "S"
-  hash_key          = "Slug"
-  hash_key_type     = "S"
-  range_key         = "CreatedAt"
-  range_key_type    = "S"
-  table_name        = "PoppylandBlogArticles"
-}
-
-module "newsletter_list_table" {
-  source = "./modules/dynamo_db_table"
-
-  gsi_hash_key      = "CreatedAt"
-  gsi_hash_key_type = "S"
-  hash_key          = "Email"
-  hash_key_type     = "S"
-  range_key         = "Subscribed"
-  range_key_type    = "S"
-  table_name        = "PoppylandBlogNewsletterList"
-}
-
 resource "aws_s3_bucket" "lambda_layers_bucket" {
   bucket = "hannahshobbyroom-lambda-layers"
 
@@ -59,17 +35,21 @@ resource "aws_lambda_layer_version" "psycopg2_layer" {
   compatible_runtimes = ["python3.9"]
 }
 
+module "articles_rds_cluster" {
+  source = "./modules/rds"
+
+  cluster_name  = "hannahshobbyroom"
+  database_name = "hannahshobbyroom"
+}
+
 module "articles_api" {
   source = "./modules/api"
 
   domain        = "blog-api.poppyland.dev"
-  partition_key = module.articles_table.hash_key
-  search_key    = module.articles_table.gsi_hash_key
-  sort_key      = module.articles_table.range_key
-  table_name    = module.articles_table.table_name
 
   lambda_layer_arns = [aws_lambda_layer_version.psycopg2_layer.arn]
 
+  table_name        = "articles"
   database_host     = module.articles_rds_cluster.host
   database_port     = module.articles_rds_cluster.port
   database_username = module.articles_rds_cluster.username
@@ -105,11 +85,4 @@ module "redirect_bucket" {
   bucket_name         = "poppyland-blog-redirect-frontend"
   domain              = "blog.poppyland.dev"
   route53_zone_id     = data.aws_route53_zone.poppyland_zone.zone_id
-}
-
-module "articles_rds_cluster" {
-  source = "./modules/rds"
-
-  cluster_name  = "hannahshobbyroom"
-  database_name = "hannahshobbyroom"
 }
