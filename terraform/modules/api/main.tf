@@ -1,39 +1,3 @@
-module "get_all_rows_lambda" {
-  source = "../lambda"
-
-  function_name = "get_all_rows_dynamodb"
-  partition_key = var.partition_key
-  search_key    = var.search_key
-  sort_key      = var.sort_key
-  table_name    = var.table_name
-
-  lambda_layer_arns = []
-
-  database_host     = "none"
-  database_port     = "none"
-  database_username = "none"
-  database_password = "none"
-  database_name     = "none"
-}
-
-module "get_item_lambda" {
-  source = "../lambda"
-
-  function_name = "get_item_dynamodb"
-  partition_key = var.partition_key
-  search_key    = var.search_key
-  sort_key      = var.sort_key
-  table_name    = var.table_name
-
-  lambda_layer_arns = []
-
-  database_host     = "none"
-  database_port     = "none"
-  database_username = "none"
-  database_password = "none"
-  database_name     = "none"
-}
-
 module "articles_get_all_rows_lambda" {
   source = "../lambda"
 
@@ -46,11 +10,22 @@ module "articles_get_all_rows_lambda" {
   table_name        = "articles"
 
   lambda_layer_arns = var.lambda_layer_arns
-
-  sort_key      = "None"
-  partition_key = "None"
-  search_key    = "None"
 }
+
+module "articles_get_row_lambda" {
+  source = "../lambda"
+
+  database_host     = var.database_host
+  database_port     = var.database_port
+  database_username = var.database_username
+  database_password = var.database_password
+  database_name     = var.database_name
+  function_name     = "get_row_rds"
+  table_name        = "articles"
+
+  lambda_layer_arns = var.lambda_layer_arns
+}
+
 
 resource "aws_apigatewayv2_api" "api" {
   name          = "${var.table_name}API"
@@ -74,7 +49,7 @@ resource "aws_apigatewayv2_integration" "get_item_lambda_integration" {
 
   connection_type      = "INTERNET"
   integration_method   = "POST"
-  integration_uri      = module.get_item_lambda.invoke_arn
+  integration_uri      = module.articles_get_row_lambda.invoke_arn
   passthrough_behavior = "WHEN_NO_MATCH"
 }
 
@@ -108,15 +83,6 @@ resource "aws_apigatewayv2_stage" "stage" {
   }
 }
 
-resource "aws_lambda_permission" "get_all_lambda_permission" {
-  statement_id  = "AllowAPIGatewayInvoke"
-  action        = "lambda:InvokeFunction"
-  function_name = module.get_all_rows_lambda.function_name
-  principal     = "apigateway.amazonaws.com"
-
-  source_arn = "${aws_apigatewayv2_api.api.execution_arn}/*"
-}
-
 resource "aws_lambda_permission" "get_all_rds_lambda_permission" {
   statement_id  = "AllowAPIGatewayInvoke"
   action        = "lambda:InvokeFunction"
@@ -130,7 +96,7 @@ resource "aws_lambda_permission" "get_all_rds_lambda_permission" {
 resource "aws_lambda_permission" "get_item_lambda_permission" {
   statement_id  = "AllowAPIGatewayInvoke"
   action        = "lambda:InvokeFunction"
-  function_name = module.get_item_lambda.function_name
+  function_name = module.articles_get_row_lambda.function_name
   principal     = "apigateway.amazonaws.com"
 
   source_arn = "${aws_apigatewayv2_api.api.execution_arn}/*"

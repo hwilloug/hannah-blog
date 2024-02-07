@@ -116,9 +116,6 @@ resource "aws_lambda_function" "function" {
   environment {
     variables = {
       TABLE_NAME        = var.table_name
-      SEARCH_KEY        = var.search_key
-      PARTITION_KEY     = var.partition_key
-      SORT_KEY          = var.sort_key
       POSTGRES_USERNAME = var.database_username
       POSTGRES_PASSWORD = var.database_password
       POSTGRES_HOST     = var.database_host
