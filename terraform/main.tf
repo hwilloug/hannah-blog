@@ -39,6 +39,26 @@ module "newsletter_list_table" {
   table_name        = "PoppylandBlogNewsletterList"
 }
 
+resource "aws_s3_bucket" "lambda_layers_bucket" {
+  bucket = "hannahshobbyroom-lambda-layers"
+
+}
+
+data "archive_file" "psycopg2_zip" {
+  type             = "zip"
+  source_dir       = "${path.module}/../backend/lambdas/layers"
+  output_path      = "${path.module}/../backend/lambdas/lambda_deployment_packages/psycopg2.zip"
+  output_file_mode = "0666"
+}
+
+resource "aws_lambda_layer_version" "psycopg2_layer" {
+  layer_name = "psycopg2"
+  s3_bucket  = aws_s3_bucket.lambda_layers_bucket.bucket
+  s3_key     = "psycopg2.zip"
+
+  compatible_runtimes = ["python3.9"]
+}
+
 module "articles_api" {
   source = "./modules/api"
 
@@ -47,6 +67,14 @@ module "articles_api" {
   search_key    = module.articles_table.gsi_hash_key
   sort_key      = module.articles_table.range_key
   table_name    = module.articles_table.table_name
+
+  lambda_layer_arns = [aws_lambda_layer_version.psycopg2_layer.arn]
+
+  database_host     = module.articles_rds_cluster.host
+  database_port     = module.articles_rds_cluster.port
+  database_username = module.articles_rds_cluster.username
+  database_password = module.articles_rds_cluster.password
+  database_name     = module.articles_rds_cluster.database_name
 }
 
 module "dns" {

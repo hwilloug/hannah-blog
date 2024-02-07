@@ -6,6 +6,14 @@ module "get_all_rows_lambda" {
   search_key    = var.search_key
   sort_key      = var.sort_key
   table_name    = var.table_name
+
+  lambda_layer_arns = []
+
+  database_host     = "none"
+  database_port     = "none"
+  database_username = "none"
+  database_password = "none"
+  database_name     = "none"
 }
 
 module "get_item_lambda" {
@@ -16,6 +24,32 @@ module "get_item_lambda" {
   search_key    = var.search_key
   sort_key      = var.sort_key
   table_name    = var.table_name
+
+  lambda_layer_arns = []
+
+  database_host     = "none"
+  database_port     = "none"
+  database_username = "none"
+  database_password = "none"
+  database_name     = "none"
+}
+
+module "articles_get_all_rows_lambda" {
+  source = "../lambda"
+
+  database_host     = var.database_host
+  database_port     = var.database_port
+  database_username = var.database_username
+  database_password = var.database_password
+  database_name     = var.database_name
+  function_name     = "get_all_rows_rds"
+  table_name        = "articles"
+
+  lambda_layer_arns = var.lambda_layer_arns
+
+  sort_key      = "None"
+  partition_key = "None"
+  search_key    = "None"
 }
 
 resource "aws_apigatewayv2_api" "api" {
@@ -30,7 +64,7 @@ resource "aws_apigatewayv2_integration" "get_all_lambda_integration" {
 
   connection_type      = "INTERNET"
   integration_method   = "POST"
-  integration_uri      = module.get_all_rows_lambda.invoke_arn
+  integration_uri      = module.articles_get_all_rows_lambda.invoke_arn
   passthrough_behavior = "WHEN_NO_MATCH"
 }
 
@@ -82,6 +116,16 @@ resource "aws_lambda_permission" "get_all_lambda_permission" {
 
   source_arn = "${aws_apigatewayv2_api.api.execution_arn}/*"
 }
+
+resource "aws_lambda_permission" "get_all_rds_lambda_permission" {
+  statement_id  = "AllowAPIGatewayInvoke"
+  action        = "lambda:InvokeFunction"
+  function_name = module.articles_get_all_rows_lambda.function_name
+  principal     = "apigateway.amazonaws.com"
+
+  source_arn = "${aws_apigatewayv2_api.api.execution_arn}/*"
+}
+
 
 resource "aws_lambda_permission" "get_item_lambda_permission" {
   statement_id  = "AllowAPIGatewayInvoke"

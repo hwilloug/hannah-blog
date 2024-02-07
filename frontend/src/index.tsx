@@ -16,15 +16,15 @@ import About from "./pages/About";
 import axios from "axios";
 
 export interface ArticleApiResponse {
-  Slug: string;
-  Title: string;
-  Subtitle: string;
-  Img: string;
-  ImgAlt: string;
-  Category: string;
-  Subcategory: string[];
-  CreatedAt: string;
-  UpdatedAt: string;
+  slug: string;
+  title: string;
+  subtitle: string;
+  img: string;
+  img_alt: string;
+  category: string;
+  subcategory: string[];
+  created_at: string;
+  updated_at: string;
 }
 
 export interface Article {
@@ -72,15 +72,15 @@ const articleLoader: LoaderFunction = ({ params }) => {
 
 export const mapRespToArticle = (resp: ArticleApiResponse) => {
   return {
-    title: resp.Title,
-    slug: resp.Slug,
-    subtitle: resp.Subtitle,
-    img: resp.Img,
-    imgAlt: resp.ImgAlt,
-    category: resp.Category,
-    subcategory: resp.Subcategory,
-    createdAt: resp.CreatedAt,
-    updatedAt: resp.UpdatedAt,
+    title: resp.title,
+    slug: resp.slug,
+    subtitle: resp.subtitle,
+    img: resp.img,
+    imgAlt: resp.img_alt,
+    category: resp.category,
+    subcategory: resp.subcategory,
+    createdAt: resp.created_at,
+    updatedAt: resp.updated_at,
   } as Article;
 };
 

@@ -36,7 +36,7 @@ export const SectionTitle = styled.h2<CssProps>`
   margin: 10px auto;
   padding: 5px 0;
   border-radius: 5px;
-  width: ${(props) => (props.break ? "100%" : "40rem")};
+  width: ${(props) => (props.break ? "25rem" : "40rem")};
   font-family: Montserrat, Arial, Helvetica, sans-serif;
 `;
 
@@ -57,7 +57,7 @@ export const StyledButton = styled.button<ColorProps>`
 
 export const ArticleContentContainer = styled.div<ColorProps>`
   line-height: 1.75;
-  color: ${({ colors }) => colors.mode === "dark" ? "white" : "black"};
+  color: ${({ colors }) => (colors.mode === "dark" ? "white" : "black")};
 
   a {
     color: ${({ colors }) => colors.secondary.main};

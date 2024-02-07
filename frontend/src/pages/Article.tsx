@@ -37,7 +37,7 @@ const BackButton = styled(StyledButton)`
 export const ArticleContainer = styled.div<ColorProps>`
   background-color: ${({ colors }) =>
     colors.mode === "dark" ? colors.primary.dark : "white"};
-  color: ${({ colors }) => colors.mode === "dark" ? "white" : "black"};
+  color: ${({ colors }) => (colors.mode === "dark" ? "white" : "black")};
   padding: 20px;
   border: 1px solid black;
   border-radius: 5px;

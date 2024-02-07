@@ -8,7 +8,6 @@ import { useParams } from "react-router-dom";
 const LatestArticlesContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
   align-items: center;
 `;
 
