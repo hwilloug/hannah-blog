@@ -138,7 +138,7 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
                 </ArticleTitle>
                 <ArticleSubtitle colors={theme.palette}>
                   <p>{article.subtitle}</p>
-                  <p>{article.createdAt}</p>
+                  <p>{new Date(article.createdAt).toDateString()}</p>
                 </ArticleSubtitle>
                 <Categories
                   category={article.category || ""}
@@ -148,9 +148,13 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
                 {loadedArticle}
                 <SignatureContainer>
                   <Signature>Written by Hannah Willoughby</Signature>
-                  <Signature>Created: {article.createdAt}</Signature>
+                  <Signature>
+                    Created: {new Date(article.createdAt).toDateString()}
+                  </Signature>
                   {article.createdAt !== article.updatedAt && (
-                    <Signature>Updated: {article.updatedAt}</Signature>
+                    <Signature>
+                      Updated: {new Date(article.updatedAt).toDateString()}
+                    </Signature>
                   )}
                 </SignatureContainer>
               </ArticleContainer>

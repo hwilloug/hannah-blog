@@ -3,7 +3,6 @@ import { ReactElement } from "react";
 import {
   BorderedFullSizeImage,
   BreakPointProps,
-  ColorProps,
   CssProps,
   ProgressBar,
   SocialIcon,
@@ -29,7 +28,7 @@ const AsideItemContainer = styled.div<CssProps>`
   background-color: ${({ colors }) =>
     colors.mode === "dark" ? colors.primary.dark : "white"};
   color: ${({ colors }) => (colors.mode === "dark" ? "white" : "black")};
-  border: 1px solid black;
+  border: 1px solid ${({ colors }) => colors.primary.light};
   border-radius: 25px 5px;
   max-width: ${(props) => (props.break ? "17rem" : "100%")};
   width: ${(props) => (props.break ? "100%" : "17rem")};
@@ -175,25 +174,16 @@ const Aside: React.FunctionComponent = (): ReactElement => {
 
   const connectPartial = (
     <AsideItemContainer colors={theme.palette} break={md}>
-      <AsideTitle>Connect with me</AsideTitle>
-      <AsideList>
-        <AsideListLinkedItem>
-          <a href="https://twitter.com/HannahHobbyRoom" target="_blank">
-            <SocialIcon colors={theme.palette}>
-              <XIcon />
-            </SocialIcon>
-            <p>@HannahHobbyRoom</p>
-          </a>
-        </AsideListLinkedItem>
-        <AsideListLinkedItem>
-          <a href="mailto: support@hannahwilloughby.dev">
-            <SocialIcon colors={theme.palette}>
-              <ContactMail />
-            </SocialIcon>
-            <p>support@hannahwilloughby.dev</p>
-          </a>
-        </AsideListLinkedItem>
-      </AsideList>
+      <a
+        className="twitter-timeline"
+        data-lang="en"
+        data-width="300"
+        data-height="500"
+        data-theme={theme.palette.mode}
+        href="https://twitter.com/HannahHobbyRoom?ref_src=twsrc%5Etfw"
+      >
+        Tweets by @HannahHobbyRoom
+      </a>
     </AsideItemContainer>
   );
 

@@ -119,7 +119,7 @@ const Browse: React.FunctionComponent = (): ReactElement => {
                         <ArticleTitle>{article.title}</ArticleTitle>
                         <ArticleSubtitle>{article.subtitle}</ArticleSubtitle>
                         <ArticleSubtitle>
-                          <i>{article.updatedAt}</i>
+                          <i>{new Date(article.updatedAt).toDateString()}</i>
                         </ArticleSubtitle>
                         <Categories
                           category={article.category}
