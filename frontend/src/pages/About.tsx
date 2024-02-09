@@ -112,8 +112,8 @@ const About: React.FunctionComponent = (): ReactElement => {
         <ul>
           <li>
             Email me at{" "}
-            <a href="mailto: support@hannahwilloughby.dev">
-              support@hannahwilloughby.dev
+            <a href="mailto: support@hannahshobbyroom.com">
+              support@hannahshobbyroom.com
             </a>
           </li>
           <li>

@@ -1,12 +1,24 @@
 #!/bin/bash
 
-JSON_FILE=$1
-TABLE_NAME="PoppylandBlogArticles"
+DATABASE_ARN=arn:aws:rds:us-east-1:132507767948:cluster:hannahshobbyroom
+DATABASE_NAME=hannahshobbyroom
+SECRET_ARN=arn:aws:secretsmanager:us-east-1:132507767948:secret:rds-db-credentials/cluster-WPJMRROQNXJXENTUP3ANBSR2SE/postgres/1707251215355-9m89E0
+DATABASE_NAME=hannahshobbyroom
 
-echo '{"'$TABLE_NAME'":' > batch-write-input.json
-cat $JSON_FILE | jq '.[] | {PutRequest: {Item: (to_entries | reduce .[] as $item ({};
-  .[($item.key | capture("(?<first>.)").first | ascii_upcase + $item.key[1:]) ] = if ($item.value | type) == "array" then {"L": ($item.value | map({"S": .}))}
-                             else {("S"): $item.value} end))}}' | jq -cs '.' >> batch-write-input.json
-echo '}' >> batch-write-input.json
+# Get input for article
+read -p 'Title: ' title 
+read -p 'Subtitle: ' subtitle
+read -p 'Image: ' img
+read -p 'Image Alt: ' img_alt
+read -p 'Category: ' category
+read -p 'Subcategories: ' subcategory
 
-aws dynamodb batch-write-item --request-items file://batch-write-input.json
+# Publish article to RDS
+res=$(python3 backend/db/main.py "$title" "$subtitle" "$img" "$img_alt" "$category" "$subcategory")
+
+echo =======================================
+echo Inserting into RDS DB 
+echo "$res"
+aws rds-data execute-statement --resource-arn $DATABASE_ARN --database $DATABASE_NAME --secret-arn $SECRET_ARN --sql "$res"
+
+# Send SES email about new article

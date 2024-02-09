@@ -77,7 +77,7 @@ const FeaturedContent: React.FunctionComponent = () => {
   };
 
   const featured = [
-    "2024-spring-summer-garden-plan",
+    "hannahs-hobby-room-refactor",
     "home-is-where-the-cake-is",
     "thoughts-on-anne-of-green-gables",
   ];

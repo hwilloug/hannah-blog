@@ -59,7 +59,7 @@ const ArticleSubtitle = styled.h3<ColorProps>`
 const ArticleImage = styled.img`
   display: block;
   max-height: 30rem;
-  min-width: 100%;
+  max-width: 100%;
   object-fit: cover;
 `;
 

@@ -123,7 +123,7 @@ const Footer: React.FunctionComponent<FooterProps> = ({
               <XIcon />
             </SocialIcon>
           </a>
-          <a href="mailto: support@hannahwilloughby.dev">
+          <a href="mailto: support@hannahshobbyroom.com">
             <SocialIcon colors={theme.palette}>
               <ContactMail />
             </SocialIcon>

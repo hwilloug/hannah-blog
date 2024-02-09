@@ -17,37 +17,6 @@ resource "aws_iam_role" "lambda_role" {
 EOF
 }
 
-resource "aws_iam_policy" "lambda_iam_policy" {
-  name   = "${var.function_name}_lambda_dynamodb_logs_iam_policy"
-  path   = "/"
-  policy = <<EOF
-{
- "Version": "2012-10-17",
- "Statement": [
-   {
-     "Action": [
-       "logs:CreateLogGroup",
-       "logs:CreateLogStream",
-       "logs:PutLogEvents"
-     ],
-     "Resource": "arn:aws:logs:*:*:*",
-     "Effect": "Allow"
-   },
-   {
-    "Action": [
-        "dynamodb:BatchGetItem",
-        "dynamodb:GetItem",
-        "dynamodb:Query",
-        "dynamodb:Scan"
-    ],
-    "Resource": "arn:aws:dynamodb:us-east-1:132507767948:table/${var.table_name}",
-    "Effect": "Allow"
-   }
- ]
-}
-EOF
-}
-
 resource "aws_iam_policy" "lambda_rds_iam_policy" {
   name   = "${var.function_name}_lambda_rds_iam_policy"
   path   = "/"
@@ -88,11 +57,6 @@ resource "aws_iam_policy" "lambda_logs_iam_policy" {
 EOF
 }
 
-resource "aws_iam_role_policy_attachment" "lambda_attach_policy_to_role" {
-  role       = aws_iam_role.lambda_role.name
-  policy_arn = aws_iam_policy.lambda_iam_policy.arn
-}
-
 resource "aws_iam_role_policy_attachment" "lambda_attach_rds_policy_to_role" {
   role       = aws_iam_role.lambda_role.name
   policy_arn = aws_iam_policy.lambda_rds_iam_policy.arn
@@ -123,5 +87,4 @@ resource "aws_lambda_function" "function" {
       POSTGRES_DB_NAME  = var.database_name
     }
   }
-  depends_on = [aws_iam_role_policy_attachment.lambda_attach_policy_to_role]
 }

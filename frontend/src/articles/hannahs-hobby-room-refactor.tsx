@@ -172,6 +172,15 @@ const Refactor: React.FunctionComponent = (): ReactElement => {
           order to provide cacheing. Now the page and the images load much, much
           faster!
         </p>
+        <p>
+          <a
+            href="https://wpengine.com/resources/optimize-images-for-web/"
+            target="_blank"
+          >
+            Here
+          </a>{" "}
+          is the article I referenced for how to optimize images for the web.
+        </p>
       </Section>
       <Section>
         <SectionHeader>Conclusion</SectionHeader>
