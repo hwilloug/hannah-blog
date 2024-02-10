@@ -18,28 +18,26 @@ except DatabaseError as e:
 
 def lambda_handler(event, context):
     table_name = environ.get("TABLE_NAME")
-    path_params = event.get("pathParameters", {})
-    slug = path_params.get('slug')
+    email = event.get("queryStringParameters", {}).get("email")
 
-    cursor = conn.cursor(cursor_factory=RealDictCursor)
-
-    sql = f"SELECT * FROM {table_name} WHERE SLUG = %s"
-    cursor.execute(sql, (slug,))
-
-    results = cursor.fetchall()
-    
-    if len(results) == 0:
+    if email is None: 
         return {
-            "statusCode": 404,
-            "body": "Not found",
+            "statusCode": 400,
+            "body": "'email' required in path",
             'headers' : {
                 'Access-Control-Allow-Origin' : '*'
             }
         }
 
+    cursor = conn.cursor(cursor_factory=RealDictCursor)
+
+    sql = f"DELETE FROM {table_name} WHERE email = %s"
+    cursor.execute(sql, (email,))
+    conn.commit()
+
     return {
         "statusCode": 200,
-        "body": dumps(results[0], default=str),
+        "body": dumps({"message": "successufully unsubscribed"}),
         'headers' : {
             'Access-Control-Allow-Origin' : '*'
         }

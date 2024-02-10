@@ -26,6 +26,34 @@ module "articles_get_row_lambda" {
   lambda_layer_arns = var.lambda_layer_arns
 }
 
+module "post_email_lambda" {
+  source = "../lambda"
+
+  database_host     = var.database_host
+  database_port     = var.database_port
+  database_username = var.database_username
+  database_password = var.database_password
+  database_name     = var.database_name
+  function_name     = "post_email"
+  table_name        = "newsletter"
+
+  lambda_layer_arns = var.lambda_layer_arns
+}
+
+module "delete_email_lambda" {
+  source = "../lambda"
+
+  database_host     = var.database_host
+  database_port     = var.database_port
+  database_username = var.database_username
+  database_password = var.database_password
+  database_name     = var.database_name
+  function_name     = "unsubscribe_email"
+  table_name        = "newsletter"
+
+  lambda_layer_arns = var.lambda_layer_arns
+}
+
 resource "aws_apigatewayv2_api" "api" {
   name          = "${var.table_name}API"
   protocol_type = "HTTP"
@@ -52,6 +80,26 @@ resource "aws_apigatewayv2_integration" "get_item_lambda_integration" {
   passthrough_behavior = "WHEN_NO_MATCH"
 }
 
+resource "aws_apigatewayv2_integration" "post_email_lambda_integration" {
+  api_id           = aws_apigatewayv2_api.api.id
+  integration_type = "AWS_PROXY"
+
+  connection_type      = "INTERNET"
+  integration_method   = "POST"
+  integration_uri      = module.post_email_lambda.invoke_arn
+  passthrough_behavior = "WHEN_NO_MATCH"
+}
+
+resource "aws_apigatewayv2_integration" "delete_email_lambda_integration" {
+  api_id           = aws_apigatewayv2_api.api.id
+  integration_type = "AWS_PROXY"
+
+  connection_type      = "INTERNET"
+  integration_method   = "POST"
+  integration_uri      = module.delete_email_lambda.invoke_arn
+  passthrough_behavior = "WHEN_NO_MATCH"
+}
+
 resource "aws_apigatewayv2_route" "get_all_route" {
   api_id    = aws_apigatewayv2_api.api.id
   route_key = "GET /articles"
@@ -64,6 +112,20 @@ resource "aws_apigatewayv2_route" "get_item_route" {
   route_key = "GET /articles/{slug}"
 
   target = "integrations/${aws_apigatewayv2_integration.get_item_lambda_integration.id}"
+}
+
+resource "aws_apigatewayv2_route" "post_email_route" {
+  api_id    = aws_apigatewayv2_api.api.id
+  route_key = "POST /newsletter"
+
+  target = "integrations/${aws_apigatewayv2_integration.post_email_lambda_integration.id}"
+}
+
+resource "aws_apigatewayv2_route" "delete_email_route" {
+  api_id    = aws_apigatewayv2_api.api.id
+  route_key = "GET /newsletter/unsubscribe"
+
+  target = "integrations/${aws_apigatewayv2_integration.delete_email_lambda_integration.id}"
 }
 
 resource "aws_cloudwatch_log_group" "api_log_group" {
@@ -96,6 +158,24 @@ resource "aws_lambda_permission" "get_item_lambda_permission" {
   statement_id  = "AllowAPIGatewayInvoke"
   action        = "lambda:InvokeFunction"
   function_name = module.articles_get_row_lambda.function_name
+  principal     = "apigateway.amazonaws.com"
+
+  source_arn = "${aws_apigatewayv2_api.api.execution_arn}/*"
+}
+
+resource "aws_lambda_permission" "post_email_lambda_permission" {
+  statement_id  = "AllowAPIGatewayInvoke"
+  action        = "lambda:InvokeFunction"
+  function_name = module.post_email_lambda.function_name
+  principal     = "apigateway.amazonaws.com"
+
+  source_arn = "${aws_apigatewayv2_api.api.execution_arn}/*"
+}
+
+resource "aws_lambda_permission" "delete_email_lambda_permission" {
+  statement_id  = "AllowAPIGatewayInvoke"
+  action        = "lambda:InvokeFunction"
+  function_name = module.delete_email_lambda.function_name
   principal     = "apigateway.amazonaws.com"
 
   source_arn = "${aws_apigatewayv2_api.api.execution_arn}/*"
