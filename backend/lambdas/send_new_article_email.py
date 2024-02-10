@@ -28,7 +28,7 @@ def lambda_handler(event, context):
 
     with conn.cursor(cursor_factory=RealDictCursor) as cursor:
         slug = event.get("slug")
-        sql = f"SELECT img, img_alt, title, subtitle FROM articles WHERE slug = %s;"
+        sql = "SELECT img, img_alt, title, subtitle FROM articles WHERE slug = %s;"
         cursor.execute(sql, (slug, ))
         article_result = cursor.fetchone()
 
@@ -51,7 +51,7 @@ def lambda_handler(event, context):
                             "Charset": "UTF-8",
                             "Data": f"""
                             <div style="background-color: #DECFD3; width: 100%; height: 100%; padding: 20px; margin: 0;">
-                                <div style="background-color: white; border: 1px solid black; border-radius: 5px; padding: 20px; display: flex; flex-direction: row; align-items: center;">
+                                <div style="background-color: #9B6F7C; color: white; border: 1px solid black; border-radius: 5px; padding: 20px; display: flex; flex-direction: row; align-items: center;">
                                     <img src="https://hannahshobbyroom.com/poppy.png" />
                                     <h1>There's a new article at <a href="https://hannahshobbyroom.com">Hannah's Hobby Room</a>!</h1>
                                 </div>

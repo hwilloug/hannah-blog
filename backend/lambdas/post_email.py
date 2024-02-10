@@ -35,7 +35,7 @@ def lambda_handler(event, context):
 
     cursor = conn.cursor(cursor_factory=RealDictCursor)
 
-    sql = f"INSERT INTO {table_name} VALUES (%s)"
+    sql = "INSERT INTO newsletter VALUES (%s)"
     try:
       cursor.execute(sql, (email,))
       conn.commit()

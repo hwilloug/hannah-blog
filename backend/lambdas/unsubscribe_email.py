@@ -31,7 +31,7 @@ def lambda_handler(event, context):
 
     cursor = conn.cursor(cursor_factory=RealDictCursor)
 
-    sql = f"DELETE FROM {table_name} WHERE email = %s"
+    sql = "DELETE FROM newsletter WHERE email = %s"
     cursor.execute(sql, (email,))
     conn.commit()
 

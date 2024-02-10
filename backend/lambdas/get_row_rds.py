@@ -23,7 +23,7 @@ def lambda_handler(event, context):
 
     cursor = conn.cursor(cursor_factory=RealDictCursor)
 
-    sql = f"SELECT * FROM {table_name} WHERE SLUG = %s"
+    sql = "SELECT * FROM articles WHERE SLUG = %s"
     cursor.execute(sql, (slug,))
 
     results = cursor.fetchall()
