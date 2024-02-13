@@ -89,7 +89,9 @@ const AsideListLinkedItem = styled.li`
   }
 `;
 
-const AsideButton = styled(StyledButton)``;
+const AsideButton = styled(StyledButton)`
+  margin-top: 10px;
+`;
 
 const Aside: React.FunctionComponent = (): ReactElement => {
   const theme = useTheme();
@@ -169,6 +171,18 @@ const Aside: React.FunctionComponent = (): ReactElement => {
         target="_blank"
       >
         <AsideButton colors={theme.palette}>View on Goodreads</AsideButton>
+      </UnstyledLink>
+      <UnstyledLink
+        to="https://hardcover.app/@hannahwilloughby/goals/6990#sortBy%5B0%5D%5BlastReadDate%5D=desc_nulls_last"
+        target="_blank"
+      >
+        <AsideButton colors={theme.palette}>View on Hardcover</AsideButton>
+      </UnstyledLink>
+      <UnstyledLink
+        to="https://fable.co/hannah-willoughby-114282952258"
+        target="_blank"
+      >
+        <AsideButton colors={theme.palette}>View on Fable</AsideButton>
       </UnstyledLink>
     </AsideItemContainer>
   );

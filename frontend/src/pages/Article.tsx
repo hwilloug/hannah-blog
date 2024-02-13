@@ -149,7 +149,7 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
                 <SignatureContainer>
                   <Signature>Written by Hannah Willoughby</Signature>
                   <Signature>
-                    Created: {new Date(article.createdAt).toDateString()}
+                    Published: {new Date(article.createdAt).toDateString()}
                   </Signature>
                   {article.createdAt !== article.updatedAt && (
                     <Signature>
