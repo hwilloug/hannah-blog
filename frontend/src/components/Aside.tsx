@@ -102,7 +102,6 @@ const Aside: React.FunctionComponent = (): ReactElement => {
   const readingPercent = (readingProgress / readingGoal) * 100;
 
   const obsessions = [
-    "Hannah's Hobby Room refactor and rebranding",
     <a
       href="https://www.goodreads.com/book/show/164154.A_Canticle_for_Leibowitz"
       target="_blank"
@@ -117,6 +116,8 @@ const Aside: React.FunctionComponent = (): ReactElement => {
     </a>,
     "Finishing up drip irrigation",
     "Finishing up garden arbor & fence",
+    "Crochet turtle coasters",
+    "Adding a newsletter",
   ];
 
   const welcomePartial = (
