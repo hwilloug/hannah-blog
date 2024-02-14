@@ -61,6 +61,13 @@ const AsideText = styled.p`
   line-height: 1.75;
   color: inherit;
   margin-top: 10px;
+
+  .center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
 `;
 
 const AsideList = styled.ul`
@@ -209,9 +216,10 @@ const Aside: React.FunctionComponent = (): ReactElement => {
         <a
           href="https://fable.co/club/hannahs-bookclub-with-hannah-willoughby-183460376024?club_type=free"
           target="_blank"
+          className="center"
         >
           <BorderedFullSizeImage src="https://img.fablecdn.net/images/cdn.fable.co/group_covers/D7CE5584-21F6-41A6-A854-5418B5FEFCCF.jpg?w=416" />
-          Hannah's Book Club
+          <StyledButton colors={theme.palette}>Hannah's Book Club</StyledButton>
         </a>
         <p>
           February's book:{" "}
