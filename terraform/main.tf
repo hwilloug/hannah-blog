@@ -86,3 +86,19 @@ module "redirect_bucket" {
   domain              = "blog.poppyland.dev"
   route53_zone_id     = data.aws_route53_zone.poppyland_zone.zone_id
 }
+
+module "bounce_handler" {
+  source = "./modules/sqs_sns"
+
+  queue_name = "hannahshobbyroom_bounce_handler"
+  notification_type = "Bounce"
+  ses_domain_identity = aws_ses_email_identity.identity.email
+}
+
+module "complaint_handler" {
+  source = "./modules/sqs_sns"
+
+  queue_name = "hannahshobbyroom_complaint_handler"
+  notification_type = "Complaint"
+  ses_domain_identity = aws_ses_email_identity.identity.email
+}
