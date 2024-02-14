@@ -58,6 +58,12 @@ resource "aws_apigatewayv2_api" "api" {
   name          = "${var.table_name}API"
   protocol_type = "HTTP"
   description   = "API for table: ${var.table_name}"
+  
+  cors_configuration {
+    allow_methods = [ "GET", "POST", "OPTIONS", "HEAD"]
+    allow_origins = [ "http://localhost:3000", "https://hannahshobbyroom.com"]
+    allow_headers = [ "Content-Type", "Origin"]
+  }
 }
 
 resource "aws_apigatewayv2_integration" "get_all_lambda_integration" {

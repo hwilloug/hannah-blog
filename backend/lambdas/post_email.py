@@ -12,17 +12,16 @@ host = environ.get("POSTGRES_HOST")
 port = environ.get("POSTGRES_PORT")
 db_name = environ.get("POSTGRES_DB_NAME")
 
-try:
-    conn = connect(host=host, database=db_name, user=username, password=password, port=port)
-except DatabaseError as e:
-    print("Could not connect to db", e)
-    exit(1)
-
 def lambda_handler(event, context):
+    try:
+        conn = connect(host=host, database=db_name, user=username, password=password, port=port)
+    except DatabaseError as e:
+        print("Could not connect to db", e)
+        exit(1)
+
     table_name = environ.get("TABLE_NAME")
-    body = event.get("body", {})
-    decoded_body = loads(b64decode(body).decode('utf-8'))
-    email = decoded_body.get("email")
+    body = loads(event.get("body", {}))
+    email = body.get("email")
 
     if email is None: 
         return {

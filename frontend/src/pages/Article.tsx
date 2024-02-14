@@ -119,7 +119,15 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
       <Suspense fallback={<Loading />}>
         <Await
           resolve={data.article}
-          errorElement={<p>Error loading article!</p>}
+          errorElement={
+            process.env.NODE_ENV === "development" ? (
+              <ArticleContainer colors={theme.palette}>
+                {loadedArticle}
+              </ArticleContainer>
+            ) : (
+              <p>Error loading article!</p>
+            )
+          }
         >
           {(resp) => {
             if (resp === undefined) {

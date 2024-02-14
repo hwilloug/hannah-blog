@@ -62,6 +62,11 @@ resource "aws_iam_role_policy_attachment" "lambda_attach_rds_policy_to_role" {
   policy_arn = aws_iam_policy.lambda_rds_iam_policy.arn
 }
 
+resource "aws_iam_role_policy_attachment" "lambda_attach_logs_policy_to_role" {
+  role       = aws_iam_role.lambda_role.name
+  policy_arn = aws_iam_policy.lambda_logs_iam_policy.arn
+}
+
 data "archive_file" "function_code_zip" {
   type             = "zip"
   source_file      = "${path.module}/../../../backend/lambdas/${var.function_name}.py"

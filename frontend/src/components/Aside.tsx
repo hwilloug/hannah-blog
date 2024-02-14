@@ -1,17 +1,22 @@
 import styled from "@emotion/styled";
-import { ReactElement } from "react";
+import { ReactElement, useEffect, useRef, useState } from "react";
 import {
   BorderedFullSizeImage,
   BreakPointProps,
   CssProps,
   ProgressBar,
-  SocialIcon,
   StyledButton,
   UnstyledLink,
 } from "./StyledComponents";
-import { Grid, useMediaQuery, useTheme } from "@mui/material";
-import XIcon from "@mui/icons-material/X";
-import { ContactMail } from "@mui/icons-material";
+import {
+  Button,
+  Grid,
+  Input,
+  Snackbar,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
+import axios from "axios";
 
 const AsideContainer = styled.div<BreakPointProps>`
   max-width: ${(props) => (props.break ? "17rem" : "100%")};
@@ -100,6 +105,14 @@ const AsideButton = styled(StyledButton)`
   margin-top: 10px;
 `;
 
+const SnackbarContent = styled.div<{ status: string }>`
+  background-color: ${({ status }) => (status === "success" ? "green" : "red")};
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 20px;
+  color: white;
+`;
+
 const Aside: React.FunctionComponent = (): ReactElement => {
   const theme = useTheme();
   const md = useMediaQuery(theme.breakpoints.up("md"));
@@ -125,7 +138,6 @@ const Aside: React.FunctionComponent = (): ReactElement => {
     </a>,
     "Finishing up drip irrigation",
     "Finishing up garden arbor & fence",
-    "Crochet turtle coasters",
     "Adding a newsletter",
   ];
 
@@ -234,13 +246,84 @@ const Aside: React.FunctionComponent = (): ReactElement => {
     </AsideItemContainer>
   );
 
+  const [email, setEmail] = useState<string>("");
+  const [emailValid, setEmailValid] = useState(false);
+  const [successSnackbarOpen, setSuccessSnackbarOpen] = useState(false);
+  const [failureSnackbarOpen, setFailureSnackbarOpen] = useState(false);
+
+  useEffect(() => {
+    if (email?.includes("@") && email?.includes(".")) {
+      setEmailValid(true);
+    } else {
+      setEmailValid(false);
+    }
+  }, [email]);
+
+  const handleEmailSignup = async () => {
+    try {
+      const resp = await axios.post(
+        `${process.env.REACT_APP_API_URL}/newsletter`,
+        { email },
+      );
+      if (resp.status === 201) {
+        setSuccessSnackbarOpen(true);
+      } else if (resp.status === 409) {
+        setFailureSnackbarOpen(true);
+      }
+    } catch (e) {
+      console.log(e);
+      setFailureSnackbarOpen(true);
+    }
+  };
+
+  const handleSnackbarClose = () => {
+    setSuccessSnackbarOpen(false);
+    setFailureSnackbarOpen(false);
+  };
+
+  const newsletterPartial = (
+    <AsideItemContainer colors={theme.palette} break={md}>
+      <AsideTitle>Newsletter Signup</AsideTitle>
+      <AsideText>Want to be notified of new articles? Sign up here!</AsideText>
+      <Input
+        fullWidth
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <Button disabled={!emailValid} onClick={handleEmailSignup}>
+        Sign up
+      </Button>
+    </AsideItemContainer>
+  );
+
+  const SNACKBAR_DURATION = 5000;
+
   return (
     <AsideContainer break={md}>
       {welcomePartial}
+      {newsletterPartial}
       {obsessionsPartial}
       {readingChallengePartial}
       {bookclubPartial}
       {connectPartial}
+      <Snackbar
+        autoHideDuration={SNACKBAR_DURATION}
+        open={successSnackbarOpen}
+        onClose={handleSnackbarClose}
+      >
+        <SnackbarContent status="success">
+          You are now signed up for the newsletter!
+        </SnackbarContent>
+      </Snackbar>
+      <Snackbar
+        autoHideDuration={SNACKBAR_DURATION}
+        open={failureSnackbarOpen}
+        onClose={handleSnackbarClose}
+      >
+        <SnackbarContent status="failure">
+          You are already subscribed!
+        </SnackbarContent>
+      </Snackbar>
     </AsideContainer>
   );
 };
