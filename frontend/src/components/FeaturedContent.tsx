@@ -71,7 +71,7 @@ const FeaturedArticleImage = styled.img<BreakPointProps>`
 
 const FeaturedContent: React.FunctionComponent = () => {
   const theme = useTheme();
-  const sm = useMediaQuery(theme.breakpoints.down("sm"));
+  const sm = useMediaQuery(theme.breakpoints.down("xs"));
   const data = useLoaderData() as {
     articles: Promise<AxiosResponse<any, any>>;
   };
