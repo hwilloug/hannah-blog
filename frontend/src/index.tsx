@@ -39,21 +39,29 @@ export interface Article {
   updatedAt: string;
 }
 
-const articlesLoader: LoaderFunction = ({ params }) => {
+const articlesLoader: LoaderFunction = ({ params, request }) => {
   const category = params.category
     ? params.category.split("")[0].toUpperCase() +
       params.category.split("").splice(1).join("")
     : undefined;
 
+  const subcategory = new URL(request.url).searchParams.get("subcategory");
+
+  let url = `${process.env.REACT_APP_API_URL}/articles`;
+  if (category && subcategory) {
+    url += `?category=${category}&subcategory=${subcategory}`;
+  } else if (category) {
+    url += `?category=${category}`;
+  } else if (subcategory) {
+    url += `?subcategory=${subcategory}`;
+  }
+
   return defer({
-    articles: axios.get(
-      `${process.env.REACT_APP_API_URL}/articles${category ? "?category=" + category : ""}`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
+    articles: axios.get(url, {
+      headers: {
+        "Content-Type": "application/json",
       },
-    ),
+    }),
   });
 };
 
@@ -102,6 +110,11 @@ const router = createBrowserRouter([
         path: "articles/:articleSlug",
         element: <ArticlePage />,
         loader: articleLoader,
+      },
+      {
+        path: "articles",
+        element: <CategoryBrowse />,
+        loader: articlesLoader,
       },
       {
         path: ":category",

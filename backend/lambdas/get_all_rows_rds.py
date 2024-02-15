@@ -10,24 +10,29 @@ host = environ.get("POSTGRES_HOST")
 port = environ.get("POSTGRES_PORT")
 db_name = environ.get("POSTGRES_DB_NAME")
 
-try:
-    conn = connect(host=host, database=db_name, user=username, password=password, port=port)
-except DatabaseError as e:
-    print("Could not connect to db", e)
-    exit(1)
-
 def lambda_handler(event, context):
+    try:
+        conn = connect(host=host, database=db_name, user=username, password=password, port=port)
+    except DatabaseError as e:
+        print("Could not connect to db", e)
+        exit(1)
+
     table_name = environ.get("TABLE_NAME")
     query_params = event.get("queryStringParameters", {})
     if query_params is None:
         query_params = {}
-    query = query_params.get("category")
+    category = query_params.get("category")
+    subcategory = query_params.get("subcategory")
 
     cursor = conn.cursor(cursor_factory=RealDictCursor)
 
     sql = f"SELECT * FROM {table_name}"
-    if query:
-        sql = f"{sql} WHERE category = '{query}'"
+    if category and subcategory:
+        sql = f"{sql} WHERE category = '{category}' AND '{subcategory}' = ANY(subcategory)"
+    elif category:
+        sql = f"{sql} WHERE category = '{category}'"
+    elif subcategory:
+        sql = f"{sql} WHERE '{subcategory}' = ANY(subcategory)"
     cursor.execute(sql)
 
     results = cursor.fetchall()

@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { useTheme } from "@mui/material";
 import { ReactElement } from "react";
-import { ColorProps } from "./StyledComponents";
+import { ColorProps, UnstyledLink } from "./StyledComponents";
 
 const CategoryContainer = styled.div`
   margin-top: 10px;
@@ -38,11 +38,15 @@ const Categories: React.FunctionComponent<CategoriesProps> = ({
 
   return (
     <CategoryContainer>
-      <Category colors={colors}>{category}</Category>
+      <UnstyledLink to={`/${category.toLowerCase()}`}>
+        <Category colors={colors}>{category}</Category>
+      </UnstyledLink>
       {subcategories.map((subcategory) => (
-        <Subcategory key={subcategory} colors={colors}>
-          {subcategory}
-        </Subcategory>
+        <UnstyledLink to={`/articles?subcategory=${subcategory}`}>
+          <Subcategory key={subcategory} colors={colors}>
+            {subcategory}
+          </Subcategory>
+        </UnstyledLink>
       ))}
     </CategoryContainer>
   );

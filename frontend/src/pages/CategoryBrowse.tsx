@@ -3,7 +3,7 @@ import { ReactElement } from "react";
 import { BodyContainer, SectionTitle } from "../components/StyledComponents";
 import Browse from "../components/Browse";
 import { useMediaQuery, useTheme } from "@mui/material";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 
 const LatestArticlesContainer = styled.div`
   display: flex;
@@ -15,16 +15,22 @@ const CategoryBrowse: React.FunctionComponent = (): ReactElement => {
   const theme = useTheme();
   const sm = useMediaQuery(theme.breakpoints.down("sm"));
   const params = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const category = params.category
     ? params.category.split("")[0].toUpperCase() +
       params.category.split("").splice(1).join("")
-    : undefined;
+    : null;
+  const subcategoryRaw = searchParams.get("subcategory");
+  const subcategory =
+    subcategoryRaw &&
+    subcategoryRaw.split("")[0].toUpperCase() +
+      subcategoryRaw.split("").splice(1).join("");
 
   return (
     <BodyContainer>
       <LatestArticlesContainer>
         <SectionTitle break={sm} colors={theme.palette}>
-          {category} Articles:
+          {category || subcategory} Articles:
         </SectionTitle>
         <Browse />
       </LatestArticlesContainer>
