@@ -14,6 +14,7 @@ import { Article, mapRespToArticle } from "..";
 import { useMediaQuery, useTheme } from "@mui/material";
 import { AxiosResponse } from "axios";
 import Loading from "../components/Loading";
+import RelatedArticles from "../components/RelatedArticles";
 
 const ArticlePageContainer = styled(BodyContainer)<BreakPointProps>`
   display: flex;
@@ -136,36 +137,42 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
 
             const article: Article = mapRespToArticle(resp.data);
             return (
-              <ArticleContainer colors={theme.palette}>
-                <ArticleImage
-                  src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
-                  alt={article.imgAlt}
-                />
-                <ArticleTitle colors={theme.palette}>
-                  {article.title}
-                </ArticleTitle>
-                <ArticleSubtitle colors={theme.palette}>
-                  <p>{article.subtitle}</p>
-                  <p>{new Date(article.createdAt).toDateString()}</p>
-                </ArticleSubtitle>
-                <Categories
-                  category={article.category || ""}
-                  subcategories={article.subcategory || []}
-                />
-                <Divider />
-                {loadedArticle}
-                <SignatureContainer>
-                  <Signature>Written by Hannah Willoughby</Signature>
-                  <Signature>
-                    Published: {new Date(article.createdAt).toDateString()}
-                  </Signature>
-                  {article.createdAt !== article.updatedAt && (
+              <>
+                <ArticleContainer colors={theme.palette}>
+                  <ArticleImage
+                    src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
+                    alt={article.imgAlt}
+                  />
+                  <ArticleTitle colors={theme.palette}>
+                    {article.title}
+                  </ArticleTitle>
+                  <ArticleSubtitle colors={theme.palette}>
+                    <p>{article.subtitle}</p>
+                    <p>{new Date(article.createdAt).toDateString()}</p>
+                  </ArticleSubtitle>
+                  <Categories
+                    category={article.category || ""}
+                    subcategories={article.subcategory || []}
+                  />
+                  <Divider />
+                  {loadedArticle}
+                  <SignatureContainer>
+                    <Signature>Written by Hannah Willoughby</Signature>
                     <Signature>
-                      Updated: {new Date(article.updatedAt).toDateString()}
+                      Published: {new Date(article.createdAt).toDateString()}
                     </Signature>
-                  )}
-                </SignatureContainer>
-              </ArticleContainer>
+                    {article.createdAt !== article.updatedAt && (
+                      <Signature>
+                        Updated: {new Date(article.updatedAt).toDateString()}
+                      </Signature>
+                    )}
+                  </SignatureContainer>
+                </ArticleContainer>
+                <RelatedArticles
+                  category={article.category}
+                  subcategory={article.subcategory[0]}
+                />
+              </>
             );
           }}
         </Await>

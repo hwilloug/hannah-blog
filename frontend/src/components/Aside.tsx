@@ -21,7 +21,7 @@ import axios from "axios";
 const AsideContainer = styled.div<BreakPointProps>`
   max-width: ${(props) => (props.break ? "17rem" : "100%")};
   min-width: ${(props) => (props.break ? "17rem" : "100%")};
-  margin: 50px 100px 0 0;
+  margin: ${(props) => (props.break ? "50px 100px 0 0" : "50px 0")};
 
   display: ${(props) => (props.break ? "block" : "flex")};
   flex-wrap: wrap;
