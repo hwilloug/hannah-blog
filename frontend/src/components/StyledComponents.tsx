@@ -17,6 +17,7 @@ export type CssProps = BreakPointProps & ColorProps;
 
 export type NavProps = ColorProps & {
   isActive: boolean;
+  isFilled?: boolean;
 };
 
 export const BodyContainer = styled.div`
@@ -116,17 +117,24 @@ export const NavigationItem = styled.button<NavProps>`
   align-items: center;
 
   color: white;
-  background-color: ${({ colors, isActive }) =>
-    isActive ? colors.secondary.main : colors.primary.dark};
+  background-color: ${({ colors, isActive, isFilled }) =>
+    isActive && isFilled
+      ? colors.secondary.main
+      : isFilled
+        ? colors.primary.dark
+        : isActive
+          ? colors.secondary.main
+          : "inherit"};
 
   padding: 10px;
   margin-top: 20px;
 
   border-radius: 5px;
-  border: 1px solid white;
+  border: ${({ isFilled }) => (isFilled ? "1px solid white" : "none")};
 
   :hover {
     background-color: ${({ colors }) => colors.primary.main};
+    cursor: pointer;
   }
 `;
 

@@ -47,8 +47,20 @@ const TurtleCoasters: React.FunctionComponent = (): ReactElement => {
         />
         <p>
           It felt good to get back into crochet. I never really make anything
-          big with crochet, mostly because my tension is very uneven, but these
-          coasters turned out great, and they didn't take long to make!
+          big with crochet, mostly because I have tension issues and thus cannot
+          size things correctly, but these coasters turned out great, and they
+          didn't take long to make!
+        </p>
+      </Section>
+      <Section>
+        <FullSizeImage
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/big_turtle_coaster.jpeg`}
+          alt="big turtle coaster"
+        />
+        <p>
+          Danny had an idea to make some bigger ones for larger cups or candles,
+          so I built on the design from tutorial and created a large version!
+          Below is the design I created:
         </p>
       </Section>
       <Section>

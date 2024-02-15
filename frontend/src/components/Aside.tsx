@@ -73,6 +73,11 @@ const AsideText = styled.p`
     align-items: center;
     gap: 20px;
   }
+
+  .small {
+    font-size: 12px;
+    font-color: grey;
+  }
 `;
 
 const AsideList = styled.ul`
@@ -293,6 +298,12 @@ const Aside: React.FunctionComponent = (): ReactElement => {
       <Button disabled={!emailValid} onClick={handleEmailSignup}>
         Sign up
       </Button>
+      <AsideText>
+        <p className="small">
+          Your data is encrypted and will never be sold, and you can unsubscribe
+          at any time.
+        </p>
+      </AsideText>
     </AsideItemContainer>
   );
 

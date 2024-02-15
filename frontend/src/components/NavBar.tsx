@@ -22,6 +22,21 @@ const NavBarContainer = styled.div<CssProps>`
   box-shadow: 0 0 5px 0 black;
 `;
 
+const MediumContainer = styled.div`
+  min-width: 100%;
+`;
+
+const MediumContainerOne = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const MediumContainerTwo = styled.div`
+  text-align: center;
+`;
+
 const SmallContainer = styled.div`
   display: flex;
   align-items: center;
@@ -53,6 +68,7 @@ const HomeLink = styled(Link)`
 const NavBar: React.FunctionComponent = (): ReactElement => {
   const theme = useTheme();
   const sm = useMediaQuery(theme.breakpoints.down("sm"));
+  const md = useMediaQuery(theme.breakpoints.up("md"));
   const colors = theme.palette;
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -80,7 +96,7 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
           <MenuItem onClick={handleClose} disableRipple>
             <NavigationLink to="/about">
               {({ isActive }) => (
-                <NavigationItem colors={colors} isActive={isActive}>
+                <NavigationItem colors={colors} isActive={isActive} isFilled>
                   <StyledIcon
                     path={mdiHelpCircleOutline}
                     size={1}
@@ -89,9 +105,7 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
                 </NavigationItem>
               )}
             </NavigationLink>
-          </MenuItem>
-          <MenuItem>
-            <Navigation showText />
+            <Navigation showText filled />
           </MenuItem>
         </Menu>
       </RightIconContainer>
@@ -99,6 +113,35 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
   );
 
   const defaultPartial = (
+    <MediumContainer>
+      <MediumContainerOne>
+        <MediumContainerOne>
+          <HomeLink to="">
+            <PoppyIcon src="/poppy.png" />
+          </HomeLink>
+          <HomeLink to="/">
+            <Title>Hannah's Hobby Room</Title>
+          </HomeLink>
+        </MediumContainerOne>
+        <NavigationLink to="/about">
+          {({ isActive }) => (
+            <NavigationItem colors={colors} isActive={isActive}>
+              <StyledIcon
+                path={mdiHelpCircleOutline}
+                size={1}
+                colors={colors}
+              />
+            </NavigationItem>
+          )}
+        </NavigationLink>
+      </MediumContainerOne>
+      <MediumContainerTwo>
+        <Navigation showText />
+      </MediumContainerTwo>
+    </MediumContainer>
+  );
+
+  const largePartial = (
     <>
       <HomeLink to="">
         <PoppyIcon src="/poppy.png" />
@@ -106,10 +149,7 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
       <HomeLink to="/">
         <Title>Hannah's Hobby Room</Title>
       </HomeLink>
-      <Navigation />
-      {/* <NavigationItem colors={colors}>
-        <StyledIcon path={mdiMagnify} size={1} colors={colors} />
-      </NavigationItem>*/}
+      <Navigation showText />
       <NavigationLink to="/about">
         {({ isActive }) => (
           <NavigationItem colors={colors} isActive={isActive}>
@@ -122,7 +162,7 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
 
   return (
     <NavBarContainer break={sm} colors={colors}>
-      {sm ? smallPartial : defaultPartial}
+      {sm ? smallPartial : md ? largePartial : defaultPartial}
     </NavBarContainer>
   );
 };

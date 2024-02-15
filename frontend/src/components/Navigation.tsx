@@ -27,10 +27,12 @@ const NavigationItemText = styled.span`
 
 interface NavigationProps {
   showText?: boolean;
+  filled?: boolean;
 }
 
 const Navigation: React.FunctionComponent<NavigationProps> = ({
   showText,
+  filled,
 }): ReactElement => {
   const theme = useTheme();
 
@@ -74,7 +76,11 @@ const Navigation: React.FunctionComponent<NavigationProps> = ({
       {navItems.map((navItem) => (
         <NavigationLink to={navItem.path} key={navItem.name}>
           {({ isActive }) => (
-            <NavigationItem colors={theme.palette} isActive={isActive}>
+            <NavigationItem
+              colors={theme.palette}
+              isActive={isActive}
+              isFilled={filled}
+            >
               <StyledIcon
                 path={navItem.icon}
                 size={navItemSize}

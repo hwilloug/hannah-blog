@@ -134,7 +134,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
             />
           </WelcomeP>
         </WelcomeText>
-        <Navigation showText={true} />
+        <Navigation showText filled />
         <WelcomeText>
           <WelcomeP>
             Select a category above, or browse latest articles below.
