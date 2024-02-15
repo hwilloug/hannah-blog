@@ -37,7 +37,7 @@ export const SectionTitle = styled.h2<CssProps>`
   margin: 10px auto;
   padding: 5px 0;
   border-radius: 5px;
-  width: ${(props) => (props.break ? "100%" : "40rem")};
+  width: ${(props) => (props.break ? "100%" : "36rem")};
   font-family: Montserrat, Arial, Helvetica, sans-serif;
 `;
 

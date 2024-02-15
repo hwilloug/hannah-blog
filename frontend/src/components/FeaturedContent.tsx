@@ -14,6 +14,7 @@ import { AxiosResponse } from "axios";
 import { Suspense, useEffect, useState } from "react";
 import Loading from "./Loading";
 import { Article, mapRespToArticle } from "..";
+import ArticleCard from "./ArticleCard";
 
 const FeaturedContentContainer = styled.div<CssProps>`
   margin: 20px 0;
@@ -27,46 +28,6 @@ const FeaturedArticleContainer = styled.div<CssProps>`
   align-content: center;
   flex-wrap: wrap;
   padding: 10px;
-`;
-
-const FeaturedArticle = styled(UnstyledLink)<CssProps>`
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-
-  width: ${(props) => (props.break ? "100%" : "29%")};
-  padding: 10px;
-  margin-bottom: 10px;
-
-  border: 1px solid black;
-  border-radius: 5px;
-  background-color: ${({ colors }) =>
-    colors.mode === "dark" ? colors.primary.dark : "white"};
-
-  :hover {
-    border: 5px solid ${({ colors }) => colors.secondary.main};
-  }
-`;
-
-const FeaturedArticleTitle = styled.h2<ColorProps>`
-  font-size: 1.25rem;
-
-  color: ${({ colors }) => (colors.mode === "dark" ? "white" : "black")};
-`;
-
-const FeaturedArticleSubtitle = styled.h3`
-  font-size: 18px;
-  margin: 3px 0;
-  font-weight: lighter;
-  color: grey;
-`;
-
-const FeaturedArticleImage = styled.img<BreakPointProps>`
-  width: 100%
-  object-fit: cover;
-  border-radius: 5px;
-  object-fit: cover;
-  height: 13rem;
 `;
 
 const FeaturedContent: React.FunctionComponent = () => {
@@ -103,23 +64,7 @@ const FeaturedContent: React.FunctionComponent = () => {
             return (
               <FeaturedArticleContainer break={sm} colors={theme.palette}>
                 {featuredArticles.map((article) => (
-                  <FeaturedArticle
-                    to={`/articles/${article.slug}`}
-                    break={sm}
-                    colors={theme.palette}
-                    key={article.slug}
-                  >
-                    <FeaturedArticleImage
-                      src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
-                      break={sm}
-                    />
-                    <FeaturedArticleTitle colors={theme.palette}>
-                      {article.title}
-                    </FeaturedArticleTitle>
-                    <FeaturedArticleSubtitle>
-                      {article.subtitle}
-                    </FeaturedArticleSubtitle>
-                  </FeaturedArticle>
+                  <ArticleCard article={article} orientation="portrait" />
                 ))}
               </FeaturedArticleContainer>
             );

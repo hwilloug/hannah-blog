@@ -171,6 +171,7 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
                 <RelatedArticles
                   category={article.category}
                   subcategory={article.subcategory[0]}
+                  slug={article.slug}
                 />
               </>
             );
