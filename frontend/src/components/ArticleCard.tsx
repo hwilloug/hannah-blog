@@ -27,7 +27,7 @@ const ArticleContainer = styled.div<CssProps>`
 
   :hover {
     border: 5px solid ${({ colors }) => colors.secondary.main};
-    margin: 16px;
+    margin: 16px -4px;
   }
 `;
 
@@ -71,6 +71,7 @@ const PortraitArticle = styled(UnstyledLink)<CssProps>`
 
   :hover {
     border: 5px solid ${({ colors }) => colors.secondary.main};
+    margin-bottom: 6px;
   }
 `;
 
