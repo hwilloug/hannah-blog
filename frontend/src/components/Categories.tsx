@@ -12,8 +12,12 @@ const CategoryContainer = styled("div")({
 });
 
 const Category = styled("div")(({ theme }) => ({
-  color: "white",
-  backgroundColor: "15px",
+  color: theme.palette.mode === "dark" ? "black" : "white",
+  backgroundColor:
+    theme.palette.mode === "dark"
+      ? theme.palette.secondary.main
+      : theme.palette.primary.dark,
+  borderRadius: "15px",
   padding: "5px 10px",
 }));
 
