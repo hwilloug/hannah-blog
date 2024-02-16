@@ -7,6 +7,7 @@ import Loading from "./Loading";
 import ArticleCard from "./ArticleCard";
 
 const Browse: React.FunctionComponent = (): ReactElement => {
+  const theme = useTheme();
   const data = useLoaderData() as {
     articles: Promise<AxiosResponse<any, any>>;
   };
@@ -15,6 +16,13 @@ const Browse: React.FunctionComponent = (): ReactElement => {
 
   const handlePageChange = (e: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
+  };
+
+  const paginationProps = {
+    alignSelf: "center",
+    backgroundColor: theme.palette.primary.light,
+    padding: "10px",
+    borderRadius: "5px",
   };
 
   return (
@@ -41,7 +49,8 @@ const Browse: React.FunctionComponent = (): ReactElement => {
                 page={page}
                 onChange={handlePageChange}
                 color="secondary"
-                variant="outlined"
+                shape="rounded"
+                sx={paginationProps}
               />
               {articles
                 .sort(
@@ -63,6 +72,8 @@ const Browse: React.FunctionComponent = (): ReactElement => {
                 page={page}
                 onChange={handlePageChange}
                 color="secondary"
+                shape="rounded"
+                sx={paginationProps}
               />
             </>
           ) : (

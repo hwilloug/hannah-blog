@@ -114,7 +114,11 @@ const About: React.FunctionComponent = (): ReactElement => {
             ))}
           </LinksContainer>
           <BorderedFullSizeImage
-            src={`${process.env.REACT_APP_IMAGES_BASE_URL}/family_photo.jpeg`}
+            src={`${process.env.REACT_APP_IMAGES_BASE_URL}/me_and_danny.jpeg`}
+            alt="A photo of me and danny"
+          />
+          <BorderedFullSizeImage
+            src={`${process.env.REACT_APP_IMAGES_BASE_URL}/family_photo_2.jpeg`}
             alt="A family photo of my cats"
           />
         </AboutContainer>
