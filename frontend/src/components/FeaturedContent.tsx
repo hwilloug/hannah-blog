@@ -19,6 +19,9 @@ import ArticleCard from "./ArticleCard";
 const FeaturedContentContainer = styled.div<CssProps>`
   margin: 20px 0;
   max-width: ${(props) => (props.break ? "90vw" : "100%")};
+
+  background-color: ${({ colors }) => colors.primary.main};
+  border-radius: 5px;
 `;
 
 const FeaturedArticleContainer = styled.div<CssProps>`

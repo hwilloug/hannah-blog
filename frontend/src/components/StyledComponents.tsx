@@ -28,16 +28,21 @@ export const BodyContainer = styled.div`
   align-items: center;
 `;
 
+export const ContainerContainer = styled.div<ColorProps>`
+  background-color: ${({ colors }) => colors.primary.main};
+  border-radius: 20px 5px;
+  padding: 10px;
+`;
+
 export const SectionTitle = styled.h2<CssProps>`
   background-color: ${({ colors }) => colors.primary.dark};
   color: white;
   font-size: 24px;
   font-weight: normal;
   text-align: center;
-  margin: 10px auto;
+  margin: 10px;
   padding: 5px 0;
   border-radius: 5px;
-  width: ${(props) => (props.break ? "100%" : "36rem")};
   font-family: Montserrat, Arial, Helvetica, sans-serif;
 `;
 

@@ -5,6 +5,7 @@ import {
   BodyContainer,
   BreakPointProps,
   ColorProps,
+  ContainerContainer,
   StyledButton,
 } from "../components/StyledComponents";
 import { mdiArrowLeftThick } from "@mdi/js";
@@ -23,6 +24,10 @@ const ArticlePageContainer = styled(BodyContainer)<BreakPointProps>`
   max-width: ${(props) => (props.break ? "90%" : "35rem")};
   min-width: ${(props) => (props.break ? "90%" : "35rem")};
   align-items: stretch;
+`;
+
+const ArticleContainerContainer = styled(ContainerContainer)`
+  margin-bottom: 50px;
 `;
 
 const BackButtonContainer = styled.div`
@@ -138,36 +143,38 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
             const article: Article = mapRespToArticle(resp.data);
             return (
               <>
-                <ArticleContainer colors={theme.palette}>
-                  <ArticleImage
-                    src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
-                    alt={article.imgAlt}
-                  />
-                  <ArticleTitle colors={theme.palette}>
-                    {article.title}
-                  </ArticleTitle>
-                  <ArticleSubtitle colors={theme.palette}>
-                    <p>{article.subtitle}</p>
-                    <p>{new Date(article.createdAt).toDateString()}</p>
-                  </ArticleSubtitle>
-                  <Categories
-                    category={article.category || ""}
-                    subcategories={article.subcategory || []}
-                  />
-                  <Divider />
-                  {loadedArticle}
-                  <SignatureContainer>
-                    <Signature>Written by Hannah Willoughby</Signature>
-                    <Signature>
-                      Published: {new Date(article.createdAt).toDateString()}
-                    </Signature>
-                    {article.createdAt !== article.updatedAt && (
+                <ArticleContainerContainer colors={theme.palette}>
+                  <ArticleContainer colors={theme.palette}>
+                    <ArticleImage
+                      src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
+                      alt={article.imgAlt}
+                    />
+                    <ArticleTitle colors={theme.palette}>
+                      {article.title}
+                    </ArticleTitle>
+                    <ArticleSubtitle colors={theme.palette}>
+                      <p>{article.subtitle}</p>
+                      <p>{new Date(article.createdAt).toDateString()}</p>
+                    </ArticleSubtitle>
+                    <Categories
+                      category={article.category || ""}
+                      subcategories={article.subcategory || []}
+                    />
+                    <Divider />
+                    {loadedArticle}
+                    <SignatureContainer>
+                      <Signature>Written by Hannah Willoughby</Signature>
                       <Signature>
-                        Updated: {new Date(article.updatedAt).toDateString()}
+                        Published: {new Date(article.createdAt).toDateString()}
                       </Signature>
-                    )}
-                  </SignatureContainer>
-                </ArticleContainer>
+                      {article.createdAt !== article.updatedAt && (
+                        <Signature>
+                          Updated: {new Date(article.updatedAt).toDateString()}
+                        </Signature>
+                      )}
+                    </SignatureContainer>
+                  </ArticleContainer>
+                </ArticleContainerContainer>
                 <RelatedArticles
                   category={article.category}
                   subcategory={article.subcategory[0]}

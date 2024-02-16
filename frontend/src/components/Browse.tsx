@@ -1,9 +1,6 @@
-import styled from "@emotion/styled";
 import { ReactElement, Suspense, useState } from "react";
-import { BreakPointProps, CssProps, UnstyledLink } from "./StyledComponents";
-import { Pagination, useMediaQuery, useTheme } from "@mui/material";
-import Categories from "./Categories";
-import { Await, Link, useLoaderData } from "react-router-dom";
+import { Pagination, useTheme } from "@mui/material";
+import { Await, useLoaderData } from "react-router-dom";
 import { Article, mapRespToArticle } from "..";
 import { AxiosResponse } from "axios";
 import Loading from "./Loading";
@@ -44,6 +41,7 @@ const Browse: React.FunctionComponent = (): ReactElement => {
                 page={page}
                 onChange={handlePageChange}
                 color="secondary"
+                variant="outlined"
               />
               {articles
                 .sort(

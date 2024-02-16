@@ -19,6 +19,10 @@ const LayoutContainer = styled.div<ColorProps>`
   gap: 20px;
   align-items: stretch;
   background-color: ${(props) => props.colors.primary.light};
+  background-image: ${({ colors }) =>
+    colors.mode === "dark" ? "url('bg.png')" : "url('bg_light.png')"};
+  background-repeat: repeat;
+  background-attachment: fixed;
 `;
 
 const ContentContainer = styled.div<BreakPointProps>`

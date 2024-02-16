@@ -1,11 +1,18 @@
 import styled from "@emotion/styled";
 import { ReactElement } from "react";
-import { BodyContainer, SectionTitle } from "../components/StyledComponents";
+import {
+  BodyContainer,
+  ColorProps,
+  SectionTitle,
+} from "../components/StyledComponents";
 import Browse from "../components/Browse";
 import { useMediaQuery, useTheme } from "@mui/material";
 import { useParams, useSearchParams } from "react-router-dom";
 
-const LatestArticlesContainer = styled.div`
+const LatestArticlesContainer = styled.div<ColorProps>`
+  background-color: ${({ colors }) => colors.primary.main};
+  border-radius: 20px 5px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,7 +35,7 @@ const CategoryBrowse: React.FunctionComponent = (): ReactElement => {
 
   return (
     <BodyContainer>
-      <LatestArticlesContainer>
+      <LatestArticlesContainer colors={theme.palette}>
         <SectionTitle break={sm} colors={theme.palette}>
           {category || subcategory} Articles:
         </SectionTitle>

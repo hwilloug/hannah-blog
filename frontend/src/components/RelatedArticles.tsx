@@ -1,7 +1,7 @@
 import { styled, useMediaQuery, useTheme } from "@mui/material";
 import axios, { AxiosResponse } from "axios";
 import { useLoaderData } from "react-router-dom";
-import { SectionTitle } from "./StyledComponents";
+import { ContainerContainer, SectionTitle } from "./StyledComponents";
 import { useMemo, useState } from "react";
 import { Article } from "..";
 import ArticleCard from "./ArticleCard";
@@ -52,14 +52,16 @@ const RelatedArticles: React.FunctionComponent<RelatedArticlesProps> = ({
   }
 
   return (
-    <RelatedArticlesContainer>
-      <SectionTitle break={sm} colors={theme.palette}>
-        Related Articles:
-      </SectionTitle>
-      {relatedArticles.map((article) => (
-        <ArticleCard article={article} orientation="landscape" />
-      ))}
-    </RelatedArticlesContainer>
+    <ContainerContainer colors={theme.palette}>
+      <RelatedArticlesContainer>
+        <SectionTitle break={sm} colors={theme.palette}>
+          Related Articles:
+        </SectionTitle>
+        {relatedArticles.map((article) => (
+          <ArticleCard article={article} orientation="landscape" />
+        ))}
+      </RelatedArticlesContainer>
+    </ContainerContainer>
   );
 };
 

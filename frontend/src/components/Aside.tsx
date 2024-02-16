@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { ReactElement, useEffect, useRef, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import {
   BorderedFullSizeImage,
   BreakPointProps,
@@ -29,17 +29,25 @@ const AsideContainer = styled.div<BreakPointProps>`
   justify-content: center;
 `;
 
+const AsideItemContainerContainer = styled.div<CssProps>`
+  background-color: ${({ colors }) => colors.primary.main};
+  border-radius: 20px 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+  max-width: 17rem;
+  height: 100%;
+`;
+
 const AsideItemContainer = styled.div<CssProps>`
   background-color: ${({ colors }) =>
     colors.mode === "dark" ? colors.primary.dark : "white"};
   color: ${({ colors }) => (colors.mode === "dark" ? "white" : "black")};
-  border: 1px solid ${({ colors }) => colors.primary.light};
+  border: 1px solid ${({ colors }) => colors.primary.dark};
   border-radius: 25px 5px;
-  max-width: ${(props) => (props.break ? "17rem" : "100%")};
-  width: ${(props) => (props.break ? "100%" : "17rem")};
+  max-width: 17rem;
+  height: 100%;
 
   padding: 20px;
-  margin-bottom: 20px;
 
   display: flex;
   flex-direction: column;
@@ -147,108 +155,120 @@ const Aside: React.FunctionComponent = (): ReactElement => {
   ];
 
   const welcomePartial = (
-    <AsideItemContainer colors={theme.palette} break={md}>
-      <AsideTitle>Welcome to My Hobby Room</AsideTitle>
-      <BorderedFullSizeImage
-        src={`${process.env.REACT_APP_IMAGES_BASE_URL}/me.jpeg`}
-        alt="A pic of Hannah"
-      />
-      <AsideText>
-        Hello world! It's me, Hannah. This is where I write about what I do
-        outside of work!
-      </AsideText>
-      <UnstyledLink to="/about">
-        <AsideButton colors={theme.palette}>More About Me</AsideButton>
-      </UnstyledLink>
-    </AsideItemContainer>
+    <AsideItemContainerContainer colors={theme.palette} break={md}>
+      <AsideItemContainer colors={theme.palette} break={md}>
+        <AsideTitle>Welcome to My Hobby Room</AsideTitle>
+        <BorderedFullSizeImage
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/me.jpeg`}
+          alt="A pic of Hannah"
+        />
+        <AsideText>
+          Hello world! It's me, Hannah. This is where I write about what I do
+          outside of work!
+        </AsideText>
+        <UnstyledLink to="/about">
+          <AsideButton colors={theme.palette}>More About Me</AsideButton>
+        </UnstyledLink>
+      </AsideItemContainer>
+    </AsideItemContainerContainer>
   );
 
   const obsessionsPartial = (
-    <AsideItemContainer colors={theme.palette} break={md}>
-      <AsideTitle>Current Obsessions & Upcoming Articles:</AsideTitle>
-      <AsideText>
-        <AsideList>
-          {obsessions.map((item) => (
-            <li key={obsessions.indexOf(item)}>{item}</li>
-          ))}
-        </AsideList>
-      </AsideText>
-    </AsideItemContainer>
+    <AsideItemContainerContainer colors={theme.palette} break={md}>
+      <AsideItemContainer colors={theme.palette} break={md}>
+        <AsideTitle>Current Obsessions & Upcoming Articles:</AsideTitle>
+        <AsideText>
+          <AsideList>
+            {obsessions.map((item) => (
+              <li key={obsessions.indexOf(item)}>{item}</li>
+            ))}
+          </AsideList>
+        </AsideText>
+      </AsideItemContainer>
+    </AsideItemContainerContainer>
   );
 
   const readingChallengePartial = (
-    <AsideItemContainer colors={theme.palette} break={md}>
-      <AsideTitle>2024 Reading Challenge</AsideTitle>
-      <AsideText>
-        Follow along as I reach my goal of reading 50 books this year!
-      </AsideText>
-      <Grid spacing={1} container>
-        <Grid item xs>
-          <ProgressBar variant="determinate" value={readingPercent} />
+    <AsideItemContainerContainer colors={theme.palette} break={md}>
+      <AsideItemContainer colors={theme.palette} break={md}>
+        <AsideTitle>2024 Reading Challenge</AsideTitle>
+        <AsideText>
+          Follow along as I reach my goal of reading 50 books this year!
+        </AsideText>
+        <Grid spacing={1} container>
+          <Grid item xs>
+            <ProgressBar variant="determinate" value={readingPercent} />
+          </Grid>
         </Grid>
-      </Grid>
-      <AsideText>
-        {readingProgress}/{readingGoal} ({readingPercent}%)
-      </AsideText>
-      <UnstyledLink
-        to="https://www.goodreads.com/user_challenges/52076751"
-        target="_blank"
-      >
-        <AsideButton colors={theme.palette}>View on Goodreads</AsideButton>
-      </UnstyledLink>
-      <UnstyledLink
-        to="https://hardcover.app/@hannahwilloughby/goals/6990#sortBy%5B0%5D%5BlastReadDate%5D=desc_nulls_last"
-        target="_blank"
-      >
-        <AsideButton colors={theme.palette}>View on Hardcover</AsideButton>
-      </UnstyledLink>
-      <UnstyledLink
-        to="https://fable.co/hannah-willoughby-114282952258"
-        target="_blank"
-      >
-        <AsideButton colors={theme.palette}>View on Fable</AsideButton>
-      </UnstyledLink>
-    </AsideItemContainer>
+        <AsideText>
+          {readingProgress}/{readingGoal} ({readingPercent}%)
+        </AsideText>
+        <UnstyledLink
+          to="https://www.goodreads.com/user_challenges/52076751"
+          target="_blank"
+        >
+          <AsideButton colors={theme.palette}>View on Goodreads</AsideButton>
+        </UnstyledLink>
+        <UnstyledLink
+          to="https://hardcover.app/@hannahwilloughby/goals/6990#sortBy%5B0%5D%5BlastReadDate%5D=desc_nulls_last"
+          target="_blank"
+        >
+          <AsideButton colors={theme.palette}>View on Hardcover</AsideButton>
+        </UnstyledLink>
+        <UnstyledLink
+          to="https://fable.co/hannah-willoughby-114282952258"
+          target="_blank"
+        >
+          <AsideButton colors={theme.palette}>View on Fable</AsideButton>
+        </UnstyledLink>
+      </AsideItemContainer>
+    </AsideItemContainerContainer>
   );
 
   const connectPartial = (
-    <AsideItemContainer colors={theme.palette} break={md}>
-      <a
-        className="twitter-timeline"
-        data-lang="en"
-        data-width="300"
-        data-height="500"
-        data-theme={theme.palette.mode}
-        href="https://twitter.com/HannahHobbyRoom?ref_src=twsrc%5Etfw"
-      >
-        Tweets by @HannahHobbyRoom
-      </a>
-    </AsideItemContainer>
+    <AsideItemContainerContainer colors={theme.palette} break={md}>
+      <AsideItemContainer colors={theme.palette} break={md}>
+        <a
+          className="twitter-timeline"
+          data-lang="en"
+          data-width="300"
+          data-height="500"
+          data-theme={theme.palette.mode}
+          href="https://twitter.com/HannahHobbyRoom?ref_src=twsrc%5Etfw"
+        >
+          Tweets by @HannahHobbyRoom
+        </a>
+      </AsideItemContainer>
+    </AsideItemContainerContainer>
   );
 
   const bookclubPartial = (
-    <AsideItemContainer colors={theme.palette} break={md}>
-      <AsideTitle>Join my bookclub!</AsideTitle>
-      <AsideText>
-        <a
-          href="https://fable.co/club/hannahs-bookclub-with-hannah-willoughby-183460376024?club_type=free"
-          target="_blank"
-          className="center"
-        >
-          <BorderedFullSizeImage src="https://img.fablecdn.net/images/cdn.fable.co/group_covers/D7CE5584-21F6-41A6-A854-5418B5FEFCCF.jpg?w=416" />
-          <StyledButton colors={theme.palette}>Hannah's Book Club</StyledButton>
-        </a>
-        <p>
-          February's book:{" "}
+    <AsideItemContainerContainer colors={theme.palette} break={md}>
+      <AsideItemContainer colors={theme.palette} break={md}>
+        <AsideTitle>Join my bookclub!</AsideTitle>
+        <AsideText>
           <a
-            href="https://www.goodreads.com/book/show/126918788-the-women"
+            href="https://fable.co/club/hannahs-bookclub-with-hannah-willoughby-183460376024?club_type=free"
             target="_blank"
+            className="center"
           >
-            <i>The Women</i> by Kristin Hannah
+            <BorderedFullSizeImage src="https://img.fablecdn.net/images/cdn.fable.co/group_covers/D7CE5584-21F6-41A6-A854-5418B5FEFCCF.jpg?w=416" />
+            <StyledButton colors={theme.palette}>
+              Hannah's Book Club
+            </StyledButton>
           </a>
-        </p>
-      </AsideText>
-    </AsideItemContainer>
+          <p>
+            February's book:{" "}
+            <a
+              href="https://www.goodreads.com/book/show/126918788-the-women"
+              target="_blank"
+            >
+              <i>The Women</i> by Kristin Hannah
+            </a>
+          </p>
+        </AsideText>
+      </AsideItemContainer>
+    </AsideItemContainerContainer>
   );
 
   const [email, setEmail] = useState<string>("");
@@ -287,24 +307,28 @@ const Aside: React.FunctionComponent = (): ReactElement => {
   };
 
   const newsletterPartial = (
-    <AsideItemContainer colors={theme.palette} break={md}>
-      <AsideTitle>Newsletter Signup</AsideTitle>
-      <AsideText>Want to be notified of new articles? Sign up here!</AsideText>
-      <Input
-        fullWidth
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <Button disabled={!emailValid} onClick={handleEmailSignup}>
-        Sign up
-      </Button>
-      <AsideText>
-        <p className="small">
-          Your data is encrypted and will never be sold, and you can unsubscribe
-          at any time.
-        </p>
-      </AsideText>
-    </AsideItemContainer>
+    <AsideItemContainerContainer colors={theme.palette} break={md}>
+      <AsideItemContainer colors={theme.palette} break={md}>
+        <AsideTitle>Newsletter Signup</AsideTitle>
+        <AsideText>
+          Want to be notified of new articles? Sign up here!
+        </AsideText>
+        <Input
+          fullWidth
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <Button disabled={!emailValid} onClick={handleEmailSignup}>
+          Sign up
+        </Button>
+        <AsideText>
+          <p className="small">
+            Your data is encrypted and will never be sold, and you can
+            unsubscribe at any time.
+          </p>
+        </AsideText>
+      </AsideItemContainer>
+    </AsideItemContainerContainer>
   );
 
   const SNACKBAR_DURATION = 5000;

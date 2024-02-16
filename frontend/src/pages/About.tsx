@@ -15,6 +15,13 @@ import {
 import { mdiGithub, mdiGoodreads, mdiLinkedin, mdiWeb } from "@mdi/js";
 import Icon from "@mdi/react";
 
+const AboutContainerContainer = styled.div<ColorProps>`
+  background-color: ${({ colors }) => colors.primary.main};
+  border-radius: 20px 5px;
+  padding: 10px;
+  margin-bottom: 50px;
+`;
+
 const AboutContainer = styled.div<CssProps>`
   background-color: ${({ colors }) =>
     colors.mode === "dark" ? colors.primary.dark : "white"};
@@ -22,7 +29,6 @@ const AboutContainer = styled.div<CssProps>`
   border: 1px solid black;
   border-radius: 5px;
   padding: 20px;
-  margin-bottom: 20px;
   width: ${(props) => (props.break ? "100%" : "35rem")};
   line-height: 1.75;
 `;
@@ -80,49 +86,57 @@ const About: React.FunctionComponent = (): ReactElement => {
 
   return (
     <BodyContainer>
-      <AboutContainer break={sm} colors={theme.palette}>
-        <SectionHeader>About Me</SectionHeader>
-        <p>
-          Hello world, and welcome to my blog! I'm Hannah, and this is where I
-          write about the stuff I do for fun. Currently, I live in Fort Mill, SC
-          with my boyfriend, Danny, and our four cats. As my day job, I am a
-          software engineer, but I like to keep myself busy outside of work by
-          keeping up with a multitude of hobbies, which include cooking,
-          gardening, needle arts, coding, reading, woodworking, and learning
-          Japanese.
-        </p>
-        <p>Find me on:</p>
-        <LinksContainer>
-          {links.map((link) => (
-            <LinkItem colors={theme.palette} key={link.name}>
-              <LinkItemLink to={link.link}>
-                <StyledIcon path={link.icon} size={1} colors={theme.palette} />
-                <p>{link.name}</p>
-              </LinkItemLink>
-            </LinkItem>
-          ))}
-        </LinksContainer>
-        <BorderedFullSizeImage
-          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/family_photo.jpeg`}
-          alt="A family photo of my cats"
-        />
-      </AboutContainer>
-      <AboutContainer break={sm} colors={theme.palette}>
-        <SectionHeader>Contact Me</SectionHeader>
-        <p>Questions, comments, or feedback?</p>
-        <ul>
-          <li>
-            Email me at{" "}
-            <a href="mailto: support@hannahshobbyroom.com">
-              support@hannahshobbyroom.com
-            </a>
-          </li>
-          <li>
-            Connect with me on X!{" "}
-            <a href="https://twitter.com/HannahHobbyRoom">@HannahHobbyRoom</a>
-          </li>
-        </ul>
-      </AboutContainer>
+      <AboutContainerContainer colors={theme.palette}>
+        <AboutContainer break={sm} colors={theme.palette}>
+          <SectionHeader>About Me</SectionHeader>
+          <p>
+            Hello world, and welcome to my blog! I'm Hannah, and this is where I
+            write about the stuff I do for fun. Currently, I live in Fort Mill,
+            SC with my boyfriend, Danny, and our four cats. As my day job, I am
+            a software engineer, but I like to keep myself busy outside of work
+            by keeping up with a multitude of hobbies, which include cooking,
+            gardening, needle arts, coding, reading, woodworking, and learning
+            Japanese.
+          </p>
+          <p>Find me on:</p>
+          <LinksContainer>
+            {links.map((link) => (
+              <LinkItem colors={theme.palette} key={link.name}>
+                <LinkItemLink to={link.link}>
+                  <StyledIcon
+                    path={link.icon}
+                    size={1}
+                    colors={theme.palette}
+                  />
+                  <p>{link.name}</p>
+                </LinkItemLink>
+              </LinkItem>
+            ))}
+          </LinksContainer>
+          <BorderedFullSizeImage
+            src={`${process.env.REACT_APP_IMAGES_BASE_URL}/family_photo.jpeg`}
+            alt="A family photo of my cats"
+          />
+        </AboutContainer>
+      </AboutContainerContainer>
+      <AboutContainerContainer colors={theme.palette}>
+        <AboutContainer break={sm} colors={theme.palette}>
+          <SectionHeader>Contact Me</SectionHeader>
+          <p>Questions, comments, or feedback?</p>
+          <ul>
+            <li>
+              Email me at{" "}
+              <a href="mailto: support@hannahshobbyroom.com">
+                support@hannahshobbyroom.com
+              </a>
+            </li>
+            <li>
+              Connect with me on X!{" "}
+              <a href="https://twitter.com/HannahHobbyRoom">@HannahHobbyRoom</a>
+            </li>
+          </ul>
+        </AboutContainer>
+      </AboutContainerContainer>
     </BodyContainer>
   );
 };

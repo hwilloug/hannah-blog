@@ -17,7 +17,6 @@ const ArticleContainer = styled.div<CssProps>`
   border: 1px solid ${(props) => props.colors.primary.dark};
   border-radius: 25px 5px;
 
-  width: ${(props) => (props.break ? "90vw" : "35rem")};
   padding: 10px;
   margin: 20px 0;
 
@@ -64,7 +63,7 @@ const PortraitArticle = styled(UnstyledLink)<CssProps>`
   padding: 10px;
   margin-bottom: 10px;
 
-  border: 1px solid black;
+  border: 1px solid ${({ colors }) => colors.primary.dark};
   border-radius: 5px;
   background-color: ${({ colors }) =>
     colors.mode === "dark" ? colors.primary.dark : "white"};
