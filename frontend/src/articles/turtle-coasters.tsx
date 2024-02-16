@@ -2,6 +2,7 @@ import { ReactElement } from "react";
 import {
   ArticleContentContainer,
   FullSizeImage,
+  RecipeContainer,
   Section,
   SectionHeader,
 } from "../components/StyledComponents";
@@ -59,6 +60,64 @@ const TurtleCoasters: React.FunctionComponent = (): ReactElement => {
           so I built on the design from tutorial and created a large version!
           Below is the design I created:
         </p>
+        <FullSizeImage
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/large_turtle_pattern.jpeg`}
+          alt="big coaster pattern"
+        />
+      </Section>
+      <Section>
+        <RecipeContainer>
+          <SectionHeader>
+            Large Turtle Coaster Pattern Instructions
+          </SectionHeader>
+          <ol>
+            <li>
+              Color 1: Chain 4, and slip stitch in first stitch to create a
+              loop, or do a magic circle
+            </li>
+            <li>Chain 2</li>
+            <li>Double crochet 15x in the circle (for a total of 16)</li>
+            <li>Slip stitch to move to the next round</li>
+            <li>Chain 2</li>
+            <li>
+              Double crochet in same stitch, then double crochet 2x in each
+              stitch all the way around (for a total of 32)
+            </li>
+            <li>Slip stitch to move to the next round</li>
+            <li>Chain 2</li>
+            <li>
+              Double crochet in the same stitch, then double crochet 2x in each
+              stitch all the way around (for a total of 64)
+            </li>
+            <li>Switch to color 2</li>
+            <li>
+              Leg 1: Single crochet 1, chain 2, double crochet in same stitch,
+              treble crochet in same stitch, treble crochet in next stitch,
+              double crochet in same stitch, chain 2, single crochet in same
+              stitch to latch.
+            </li>
+            <li>Single crochet 1x in each stitch 6x </li>
+            <li>
+              Head: Single crochet 1, Chain 3, treble crochet in same stitch,
+              quadruple crochet in same stitch, quadruple crochet in next
+              stitch, treble crochet in same stitch, chain 3, single crochet in
+              same stitch to latch.
+            </li>
+            <li>Single crochet 1x in each stitch 6x</li>
+            <li>Leg 2: repeat leg 1</li>
+            <li>Single crochet 1x in each stitch 14x</li>
+            <li>Leg 3: repeat leg 1</li>
+            <li>Single crochet 1x in each stitch 6x</li>
+            <li>
+              Tail: Chain 5, single crochet in second chain from end, double
+              crochet x2 in each chain, single crochet to latch
+            </li>
+            <li>Single crochet 1x in each stitch 6x</li>
+            <li>Leg 4: repeat leg 1</li>
+            <li>Single crochet 1x in each stitch 14x</li>
+            <li>Slip stitch to finish!</li>
+          </ol>
+        </RecipeContainer>
       </Section>
       <Section>
         <SectionHeader>Resources</SectionHeader>
