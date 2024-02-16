@@ -1,19 +1,19 @@
+import axios from "axios";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
-import reportWebVitals from "./reportWebVitals";
 import {
-  LoaderFunction,
-  RouterProvider,
   createBrowserRouter,
   defer,
+  LoaderFunction,
+  RouterProvider,
 } from "react-router-dom";
-import HomePage from "./pages/Home";
+import "./index.css";
 import Layout from "./Layout";
+import About from "./pages/About";
 import ArticlePage from "./pages/Article";
 import CategoryBrowse from "./pages/CategoryBrowse";
-import About from "./pages/About";
-import axios from "axios";
+import HomePage from "./pages/Home";
+import reportWebVitals from "./reportWebVitals";
 
 export interface ArticleApiResponse {
   slug: string;

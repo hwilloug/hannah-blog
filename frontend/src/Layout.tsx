@@ -1,36 +1,36 @@
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import NavBar from "./components/NavBar";
+import {
+  createTheme,
+  styled,
+  ThemeProvider,
+  useMediaQuery,
+} from "@mui/material";
+import { ChangeEvent, ReactElement, useEffect, useState } from "react";
+import { Outlet, useLocation } from "react-router-dom";
 import Aside from "./components/Aside";
 import Footer from "./components/Footer";
-import styled from "@emotion/styled";
-import { ChangeEvent, ReactElement, useEffect, useState } from "react";
-import {
-  ThemeProvider,
-  createTheme,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
-import { BreakPointProps, ColorProps } from "./components/StyledComponents";
+import NavBar from "./components/NavBar";
 import { getDesignTokens } from "./theme";
 
-const LayoutContainer = styled.div<ColorProps>`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: stretch;
-  background-color: ${(props) => props.colors.primary.light};
-  background-image: ${({ colors }) =>
-    colors.mode === "dark" ? "url('bg.png')" : "url('bg_light.png')"};
-  background-repeat: repeat;
-  background-attachment: fixed;
-`;
+const LayoutContainer = styled("div")(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: "20px",
+  alignItems: "stretch",
+  backgroundColor: theme.palette.primary.light,
+  backgroundImage:
+    theme.palette.mode === "dark" ? "url('bg.png')" : "url('bg_light.png')",
+  backgroundRepeat: "repeat",
+  backgroundAttachment: "fixed",
+}));
 
-const ContentContainer = styled.div<BreakPointProps>`
-  display: flex;
-  flex-direction: ${(props) => (props.break ? "row" : "column")};
-  justify-content: center;
-  align-items: ${(props) => (props.break ? "flex-start" : "center")};
-`;
+const ContentContainer = styled("div")(({ theme }) => ({
+  display: "flex",
+  flexDirection: useMediaQuery(theme.breakpoints.up("md")) ? "row" : "column",
+  justifyContent: "center",
+  alignItems: useMediaQuery(theme.breakpoints.up("md"))
+    ? "flex-start"
+    : "center",
+}));
 
 function ScrollToTopOnNavigate() {
   const location = useLocation();
@@ -58,10 +58,10 @@ const Layout: React.FunctionComponent = (): ReactElement => {
 
   return (
     <ThemeProvider theme={theme}>
-      <LayoutContainer colors={colors}>
+      <LayoutContainer>
         <ScrollToTopOnNavigate />
         <NavBar />
-        <ContentContainer break={md}>
+        <ContentContainer>
           <Outlet />
           <Aside />
         </ContentContainer>

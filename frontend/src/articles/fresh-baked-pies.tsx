@@ -1,16 +1,16 @@
+import { useTheme } from "@mui/material";
 import { ReactElement } from "react";
 import {
   ArticleContentContainer,
   FullSizeImage,
   Section,
 } from "../components/StyledComponents";
-import { useTheme } from "@mui/material";
 
 const Pies: React.FunctionComponent = (): ReactElement => {
   const theme = useTheme();
 
   return (
-    <ArticleContentContainer colors={theme.palette}>
+    <ArticleContentContainer>
       <Section>
         <p>
           After I saw some 3D pie embroideries on Pinterest, I knew I wanted to

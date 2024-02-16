@@ -1,10 +1,10 @@
 import { styled, useMediaQuery, useTheme } from "@mui/material";
 import axios, { AxiosResponse } from "axios";
-import { useLoaderData } from "react-router-dom";
-import { ContainerContainer, SectionTitle } from "./StyledComponents";
 import { useMemo, useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import { Article } from "..";
 import ArticleCard from "./ArticleCard";
+import { ContainerContainer, SectionTitle } from "./StyledComponents";
 
 const RelatedArticlesContainer = styled("div")({
   display: "flex",
@@ -52,11 +52,9 @@ const RelatedArticles: React.FunctionComponent<RelatedArticlesProps> = ({
   }
 
   return (
-    <ContainerContainer colors={theme.palette}>
+    <ContainerContainer>
       <RelatedArticlesContainer>
-        <SectionTitle break={sm} colors={theme.palette}>
-          Related Articles:
-        </SectionTitle>
+        <SectionTitle>Related Articles:</SectionTitle>
         {relatedArticles.map((article) => (
           <ArticleCard article={article} orientation="landscape" />
         ))}

@@ -1,14 +1,14 @@
-import styled from "@emotion/styled";
+import { styled } from "@mui/material";
 import { ReactElement } from "react";
 
-const Quote = styled.blockquote`
-  border-left: 2px solid grey;
-  padding-left: 5px;
-`;
+const Quote = styled("blockquote")({
+  borderLeft: "2px solid grey",
+  paddingLeft: "5px",
+});
 
-const Citation = styled.p`
-  text-align: right;
-`;
+const Citation = styled("p")({
+  textAlign: "right",
+});
 
 interface BlockQuoteProps {
   quote: string;

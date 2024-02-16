@@ -1,41 +1,29 @@
-import styled from "@emotion/styled";
-import {
-  BodyContainer,
-  BreakPointProps,
-  ColorProps,
-  CssProps,
-  SectionHeader,
-  SectionTitle,
-  UnstyledLink,
-} from "./StyledComponents";
-import { Grow, useMediaQuery, useTheme } from "@mui/material";
-import { Await, useLoaderData } from "react-router-dom";
+import { styled, useMediaQuery } from "@mui/material";
 import { AxiosResponse } from "axios";
-import { Suspense, useEffect, useState } from "react";
-import Loading from "./Loading";
+import { Suspense } from "react";
+import { Await, useLoaderData } from "react-router-dom";
 import { Article, mapRespToArticle } from "..";
 import ArticleCard from "./ArticleCard";
+import Loading from "./Loading";
+import { SectionTitle } from "./StyledComponents";
 
-const FeaturedContentContainer = styled.div<CssProps>`
-  margin: 20px 0;
-  max-width: ${(props) => (props.break ? "90vw" : "100%")};
+const FeaturedContentContainer = styled("div")(({ theme }) => ({
+  margin: "20px 0",
+  maxWidth: useMediaQuery(theme.breakpoints.down("xs")) ? "90vw" : "100%",
 
-  background-color: ${({ colors }) => colors.primary.main};
-  border-radius: 5px;
-`;
+  backgroundColor: theme.palette.primary.main,
+  borderRadius: "5px",
+}));
 
-const FeaturedArticleContainer = styled.div<CssProps>`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-content: center;
-  flex-wrap: wrap;
-  padding: 10px;
-`;
+const FeaturedArticleContainer = styled("div")(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-evenly",
+  flexWrap: "wrap",
+  padding: "10px",
+}));
 
 const FeaturedContent: React.FunctionComponent = () => {
-  const theme = useTheme();
-  const sm = useMediaQuery(theme.breakpoints.down("xs"));
   const data = useLoaderData() as {
     articles: Promise<AxiosResponse<any, any>>;
   };
@@ -47,10 +35,8 @@ const FeaturedContent: React.FunctionComponent = () => {
   ];
 
   return (
-    <FeaturedContentContainer colors={theme.palette} break={sm}>
-      <SectionTitle break={sm} colors={theme.palette}>
-        Featured Articles:
-      </SectionTitle>
+    <FeaturedContentContainer>
+      <SectionTitle>Featured Articles:</SectionTitle>
       <Suspense fallback={<Loading />}>
         <Await
           resolve={data.articles}
@@ -65,7 +51,7 @@ const FeaturedContent: React.FunctionComponent = () => {
               .map((a: any) => mapRespToArticle(a))
               .filter((article: Article) => featured.includes(article.slug));
             return (
-              <FeaturedArticleContainer break={sm} colors={theme.palette}>
+              <FeaturedArticleContainer>
                 {featuredArticles.map((article) => (
                   <ArticleCard article={article} orientation="portrait" />
                 ))}

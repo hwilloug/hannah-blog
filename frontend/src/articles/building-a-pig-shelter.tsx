@@ -1,17 +1,16 @@
+import { useTheme } from "@mui/material";
 import { ReactElement } from "react";
 import {
   ArticleContentContainer,
   FullSizeImage,
   Section,
-  SectionHeader,
 } from "../components/StyledComponents";
-import { useTheme } from "@mui/material";
 
 const Garden2023Plan: React.FunctionComponent = (): ReactElement => {
   const theme = useTheme();
 
   return (
-    <ArticleContentContainer colors={theme.palette}>
+    <ArticleContentContainer>
       <Section>
         <p>
           My dad and I built a pig shelter! This was my first time building a

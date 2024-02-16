@@ -1,17 +1,14 @@
 import { ReactElement } from "react";
+import BlockQuote from "../components/BlockQuote";
 import {
   ArticleContentContainer,
   Section,
 } from "../components/StyledComponents";
-import BlockQuote from "../components/BlockQuote";
 import YoutubePlayer from "../components/YoutubePlayer";
-import { useTheme } from "@mui/material";
 
 const AnneOfGreenGables: React.FunctionComponent = (): ReactElement => {
-  const theme = useTheme();
-
   return (
-    <ArticleContentContainer colors={theme.palette}>
+    <ArticleContentContainer>
       <Section>
         <p>
           L.M. Montgomery's <i>Anne of Green Gables</i> is a classic

@@ -1,10 +1,16 @@
+import { Pagination, styled, useTheme } from "@mui/material";
+import { AxiosResponse } from "axios";
 import { ReactElement, Suspense, useState } from "react";
-import { Pagination, useTheme } from "@mui/material";
 import { Await, useLoaderData } from "react-router-dom";
 import { Article, mapRespToArticle } from "..";
-import { AxiosResponse } from "axios";
-import Loading from "./Loading";
 import ArticleCard from "./ArticleCard";
+import Loading from "./Loading";
+
+const StyledPagination = styled(Pagination)({
+  alignSelf: "center",
+  padding: "10px",
+  borderRadius: "5px",
+});
 
 const Browse: React.FunctionComponent = (): ReactElement => {
   const theme = useTheme();
@@ -16,13 +22,6 @@ const Browse: React.FunctionComponent = (): ReactElement => {
 
   const handlePageChange = (e: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
-  };
-
-  const paginationProps = {
-    alignSelf: "center",
-    backgroundColor: theme.palette.primary.light,
-    padding: "10px",
-    borderRadius: "5px",
   };
 
   return (
@@ -44,13 +43,12 @@ const Browse: React.FunctionComponent = (): ReactElement => {
 
           return articles.length ? (
             <>
-              <Pagination
+              <StyledPagination
                 count={numPages}
                 page={page}
                 onChange={handlePageChange}
                 color="secondary"
                 shape="rounded"
-                sx={paginationProps}
               />
               {articles
                 .sort(
@@ -67,13 +65,12 @@ const Browse: React.FunctionComponent = (): ReactElement => {
                 .map((article: Article) => (
                   <ArticleCard article={article} orientation="landscape" />
                 ))}
-              <Pagination
+              <StyledPagination
                 count={numPages}
                 page={page}
                 onChange={handlePageChange}
                 color="secondary"
                 shape="rounded"
-                sx={paginationProps}
               />
             </>
           ) : (

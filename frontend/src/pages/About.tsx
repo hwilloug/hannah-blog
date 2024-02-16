@@ -1,61 +1,56 @@
-import styled from "@emotion/styled";
+import { mdiGithub, mdiGoodreads, mdiLinkedin, mdiWeb } from "@mdi/js";
+import { styled, useMediaQuery, useTheme } from "@mui/material";
 import { ReactElement } from "react";
-import { useMediaQuery, useTheme } from "@mui/material";
 import {
   BodyContainer,
   BorderedFullSizeImage,
-  BreakPointProps,
-  ColorProps,
-  CssProps,
-  FullSizeImage,
   SectionHeader,
   StyledIcon,
   UnstyledLink,
 } from "../components/StyledComponents";
-import { mdiGithub, mdiGoodreads, mdiLinkedin, mdiWeb } from "@mdi/js";
-import Icon from "@mdi/react";
 
-const AboutContainerContainer = styled.div<ColorProps>`
-  background-color: ${({ colors }) => colors.primary.main};
-  border-radius: 20px 5px;
-  padding: 10px;
-  margin-bottom: 50px;
-`;
+const AboutContainerContainer = styled("div")(({ theme }) => ({
+  backgroundColor: theme.palette.primary.main,
+  borderRadius: "20px 5px",
+  padding: "10px",
+  marginBottom: "50px",
+}));
 
-const AboutContainer = styled.div<CssProps>`
-  background-color: ${({ colors }) =>
-    colors.mode === "dark" ? colors.primary.dark : "white"};
-  color: ${({ colors }) => (colors.mode === "dark" ? "white" : "black")};
-  border: 1px solid black;
-  border-radius: 5px;
-  padding: 20px;
-  width: ${(props) => (props.break ? "100%" : "35rem")};
-  line-height: 1.75;
-`;
+const AboutContainer = styled("div")(({ theme }) => ({
+  backgroundColor:
+    theme.palette.mode === "dark" ? theme.palette.primary.dark : "white",
+  color: theme.palette.mode === "dark" ? "white" : "black",
+  border: "1px solid black",
+  borderRadius: "5px",
+  padding: "20px",
+  width: useMediaQuery(theme.breakpoints.down("sm")) ? "100%" : "35rem",
+  lineHeight: 1.75,
+}));
 
-const LinksContainer = styled.ul`
-  list-style-type: none;
-  margin: 0 10px;
-  padding: 0;
-`;
+const LinksContainer = styled("ul")({
+  listStyleType: "none",
+  margin: "0 10px",
+  padding: 0,
+});
 
-const LinkItem = styled.li<ColorProps>`
-  background-color: ${({ colors }) =>
-    colors.mode === "dark" ? colors.secondary.dark : colors.secondary.main};
-  margin: 20px 0;
-  align: center;
-  border-radius: 5px;
-`;
+const LinkItem = styled("li")(({ theme }) => ({
+  backgroundColor:
+    theme.palette.mode === "dark"
+      ? theme.palette.secondary.dark
+      : theme.palette.secondary.main,
+  margin: "20px 0",
+  align: "center",
+  borderRadius: "5px",
+}));
 
-const LinkItemLink = styled(UnstyledLink)`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: stretch;
-  gap: 10px;
-  color: white;
-  justify-content: center;
-`;
+const LinkItemLink = styled(UnstyledLink)({
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "10px",
+  color: "white",
+});
 
 const About: React.FunctionComponent = (): ReactElement => {
   const theme = useTheme();
@@ -86,8 +81,8 @@ const About: React.FunctionComponent = (): ReactElement => {
 
   return (
     <BodyContainer>
-      <AboutContainerContainer colors={theme.palette}>
-        <AboutContainer break={sm} colors={theme.palette}>
+      <AboutContainerContainer>
+        <AboutContainer>
           <SectionHeader>About Me</SectionHeader>
           <p>
             Hello world, and welcome to my blog! I'm Hannah, and this is where I
@@ -101,13 +96,9 @@ const About: React.FunctionComponent = (): ReactElement => {
           <p>Find me on:</p>
           <LinksContainer>
             {links.map((link) => (
-              <LinkItem colors={theme.palette} key={link.name}>
+              <LinkItem>
                 <LinkItemLink to={link.link}>
-                  <StyledIcon
-                    path={link.icon}
-                    size={1}
-                    colors={theme.palette}
-                  />
+                  <StyledIcon path={link.icon} size={1} />
                   <p>{link.name}</p>
                 </LinkItemLink>
               </LinkItem>
@@ -123,8 +114,8 @@ const About: React.FunctionComponent = (): ReactElement => {
           />
         </AboutContainer>
       </AboutContainerContainer>
-      <AboutContainerContainer colors={theme.palette}>
-        <AboutContainer break={sm} colors={theme.palette}>
+      <AboutContainerContainer>
+        <AboutContainer>
           <SectionHeader>Contact Me</SectionHeader>
           <p>Questions, comments, or feedback?</p>
           <ul>

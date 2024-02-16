@@ -1,17 +1,16 @@
+import { useTheme } from "@mui/material";
 import { ReactElement } from "react";
 import {
   ArticleContentContainer,
   FullSizeImage,
   Section,
-  SectionHeader,
 } from "../components/StyledComponents";
-import { useTheme } from "@mui/material";
 
 const HomeIsWhereTheCakeIs: React.FunctionComponent = (): ReactElement => {
   const theme = useTheme();
 
   return (
-    <ArticleContentContainer colors={theme.palette}>
+    <ArticleContentContainer>
       <Section>
         <p>
           When I came across{" "}

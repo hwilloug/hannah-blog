@@ -1,29 +1,28 @@
-import styled from "@emotion/styled";
+import {
+  mdiBookOpenVariant,
+  mdiChefHat,
+  mdiCodeBlockTags,
+  mdiContentCut,
+  mdiFlower,
+  mdiSyllabaryHiragana,
+} from "@mdi/js";
+import { styled, useTheme } from "@mui/material";
 import { ReactElement } from "react";
-import Icon from "@mdi/react";
-import { mdiChefHat } from "@mdi/js";
-import { Link, NavLink } from "react-router-dom";
-import { mdiFlower } from "@mdi/js";
-import { mdiContentCut } from "@mdi/js";
-import { mdiCodeBlockTags } from "@mdi/js";
-import { mdiBookOpenVariant } from "@mdi/js";
-import { mdiSyllabaryHiragana } from "@mdi/js";
 import { NavigationItem, NavigationLink, StyledIcon } from "./StyledComponents";
-import { useTheme } from "@mui/material";
 
-const NavigationContainer = styled.div`
-  flex-grow: 4;
+const NavigationContainer = styled("div")({
+  flexGrow: 4,
 
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  justify-content: center;
-  flex-wrap: wrap;
-`;
+  display: "flex",
+  flexDirection: "row",
+  gap: "10px",
+  justifyContent: "center",
+  flexWrap: "wrap",
+});
 
-const NavigationItemText = styled.span`
-  text-transform: uppercase;
-`;
+const NavigationItemText = styled("span")({
+  textTransform: "uppercase",
+});
 
 interface NavigationProps {
   showText?: boolean;
@@ -76,16 +75,8 @@ const Navigation: React.FunctionComponent<NavigationProps> = ({
       {navItems.map((navItem) => (
         <NavigationLink to={navItem.path} key={navItem.name}>
           {({ isActive }) => (
-            <NavigationItem
-              colors={theme.palette}
-              isActive={isActive}
-              isFilled={filled}
-            >
-              <StyledIcon
-                path={navItem.icon}
-                size={navItemSize}
-                colors={theme.palette}
-              />
+            <NavigationItem isActive={isActive} isFilled={filled}>
+              <StyledIcon path={navItem.icon} size={navItemSize} />
               {showText && (
                 <NavigationItemText>{navItem.name}</NavigationItemText>
               )}

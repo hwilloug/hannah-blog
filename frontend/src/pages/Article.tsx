@@ -1,90 +1,87 @@
-import styled from "@emotion/styled";
+import { mdiArrowLeftThick } from "@mdi/js";
+import Icon from "@mdi/react";
+import { styled, useMediaQuery, useTheme } from "@mui/material";
+import { AxiosResponse } from "axios";
 import { ReactElement, Suspense, useMemo, useState } from "react";
 import { Await, useLoaderData, useNavigate, useParams } from "react-router-dom";
+import { Article, mapRespToArticle } from "..";
+import Categories from "../components/Categories";
+import Loading from "../components/Loading";
+import RelatedArticles from "../components/RelatedArticles";
 import {
   BodyContainer,
-  BreakPointProps,
-  ColorProps,
   ContainerContainer,
   StyledButton,
 } from "../components/StyledComponents";
-import { mdiArrowLeftThick } from "@mdi/js";
-import Icon from "@mdi/react";
-import Categories from "../components/Categories";
-import { Article, mapRespToArticle } from "..";
-import { useMediaQuery, useTheme } from "@mui/material";
-import { AxiosResponse } from "axios";
-import Loading from "../components/Loading";
-import RelatedArticles from "../components/RelatedArticles";
 
-const ArticlePageContainer = styled(BodyContainer)<BreakPointProps>`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  max-width: ${(props) => (props.break ? "90%" : "35rem")};
-  min-width: ${(props) => (props.break ? "90%" : "35rem")};
-  align-items: stretch;
-`;
+const ArticlePageContainer = styled(BodyContainer)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: "20px",
+  alignItems: "stretch",
+  maxWidth: useMediaQuery(theme.breakpoints.down("xs")) ? "90%" : "35rem",
+  minWidth: useMediaQuery(theme.breakpoints.down("xs")) ? "90%" : "35rem",
+}));
 
-const ArticleContainerContainer = styled(ContainerContainer)`
-  margin-bottom: 50px;
-`;
+const ArticleContainerContainer = styled(ContainerContainer)({
+  marginBottom: "50px",
+});
 
-const BackButtonContainer = styled.div`
-  padding: 10px;
-`;
+const BackButtonContainer = styled("div")({
+  padding: "10px",
+});
 
-const BackButton = styled(StyledButton)`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`;
+const BackButton = styled(StyledButton)({
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+});
 
-export const ArticleContainer = styled.div<ColorProps>`
-  background-color: ${({ colors }) =>
-    colors.mode === "dark" ? colors.primary.dark : "white"};
-  color: ${({ colors }) => (colors.mode === "dark" ? "white" : "black")};
-  padding: 20px;
-  border: 1px solid black;
-  border-radius: 5px;
-`;
+export const ArticleContainer = styled("div")(({ theme }) => ({
+  backgroundColor:
+    theme.palette.mode === "dark" ? theme.palette.primary.dark : "white",
+  color: theme.palette.mode === "dark" ? "white" : "black",
+  padding: "20px",
+  border: "1px solid black",
+  borderRadius: "5px",
+}));
 
-const ArticleTitle = styled.h2<ColorProps>`
-  font-family: Montserrat, Arial, Helvetica, sans-serif;
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-  font-weight: normal;
-`;
+const ArticleTitle = styled("h2")({
+  fontFamily: "Montserrat, Arial, Helvetica, sans-serif",
+  fontSize: "2.5rem",
+  marginBottom: "10px",
+  fontWeight: "normal",
+});
 
-const ArticleSubtitle = styled.h3<ColorProps>`
-  color: grey;
-  font-weight: lighter;
-  font-size: 1.2rem;
-`;
+const ArticleSubtitle = styled("h3")({
+  color: "grey",
+  fontWeight: "lighter",
+  fontSize: "1.2rem",
+});
 
-const ArticleImage = styled.img`
-  display: block;
-  max-height: 30rem;
-  max-width: 100%;
-  object-fit: cover;
-`;
+const ArticleImage = styled("img")({
+  display: "block",
+  maxHeight: "30rem",
+  maxWidth: "100%",
+  objectFit: "cover",
+});
 
-const Divider = styled.hr`
-  margin: 20px 0;
-`;
+const Divider = styled("hr")({
+  margin: "20px 0",
+});
 
-const SignatureContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-`;
+const SignatureContainer = styled("div")({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "flex-end",
+});
 
-const Signature = styled.p`
-  font-style: italic;
-  font-weight: lighter;
-  margin: 5px;
-  color: grey;
-`;
+const Signature = styled("p")({
+  fontStyle: "italic",
+  fontWeight: "lighter",
+  margin: "5px",
+  color: "grey",
+});
 
 const ArticlePage: React.FunctionComponent = (): ReactElement => {
   let { articleSlug } = useParams();
@@ -115,9 +112,9 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
   }, [articleSlug]);
 
   return (
-    <ArticlePageContainer break={sm}>
+    <ArticlePageContainer>
       <BackButtonContainer>
-        <BackButton onClick={goBack} colors={theme.palette}>
+        <BackButton onClick={goBack}>
           <Icon path={mdiArrowLeftThick} size={1} />
           Back
         </BackButton>
@@ -127,9 +124,7 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
           resolve={data.article}
           errorElement={
             process.env.NODE_ENV === "development" ? (
-              <ArticleContainer colors={theme.palette}>
-                {loadedArticle}
-              </ArticleContainer>
+              <ArticleContainer>{loadedArticle}</ArticleContainer>
             ) : (
               <p>Error loading article!</p>
             )
@@ -143,16 +138,14 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
             const article: Article = mapRespToArticle(resp.data);
             return (
               <>
-                <ArticleContainerContainer colors={theme.palette}>
-                  <ArticleContainer colors={theme.palette}>
+                <ArticleContainerContainer>
+                  <ArticleContainer>
                     <ArticleImage
                       src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
                       alt={article.imgAlt}
                     />
-                    <ArticleTitle colors={theme.palette}>
-                      {article.title}
-                    </ArticleTitle>
-                    <ArticleSubtitle colors={theme.palette}>
+                    <ArticleTitle>{article.title}</ArticleTitle>
+                    <ArticleSubtitle>
                       <p>{article.subtitle}</p>
                       <p>{new Date(article.createdAt).toDateString()}</p>
                     </ArticleSubtitle>

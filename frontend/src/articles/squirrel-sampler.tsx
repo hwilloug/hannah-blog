@@ -5,13 +5,10 @@ import {
   Section,
   SectionHeader,
 } from "../components/StyledComponents";
-import { useTheme } from "@mui/material";
 
 const SquirrelSampler: React.FunctionComponent = (): ReactElement => {
-  const theme = useTheme();
-
   return (
-    <ArticleContentContainer colors={theme.palette}>
+    <ArticleContentContainer>
       <Section>
         It took me forever to decide what to make my mom for Christmas last
         month. I was scouring Pinterest and the internet for cross stitch ideas

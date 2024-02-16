@@ -1,15 +1,10 @@
+import { useTheme } from "@mui/material";
 import { ReactElement } from "react";
+import SyntaxHighlighter from "react-syntax-highlighter";
 import {
   ArticleContentContainer,
-  FullSizeImage,
-  RecipeContainer,
   Section,
-  SectionHeader,
-  StyledListItem,
 } from "../components/StyledComponents";
-import styled from "@emotion/styled";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { useTheme } from "@mui/material";
 
 const TcahDotCom: React.FunctionComponent = (): ReactElement => {
   const theme = useTheme();
@@ -163,7 +158,7 @@ const TcahDotCom: React.FunctionComponent = (): ReactElement => {
   ];
 
   return (
-    <ArticleContentContainer colors={theme.palette}>
+    <ArticleContentContainer>
       <Section>
         <p>
           Using a combination of{" "}

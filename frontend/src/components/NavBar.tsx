@@ -1,69 +1,69 @@
-import styled from "@emotion/styled";
-import { ReactElement, useState } from "react";
-import Navigation from "./Navigation";
 import { mdiHelpCircleOutline } from "@mdi/js";
-import { Link } from "react-router-dom";
-import { Button, Menu, MenuItem, useMediaQuery, useTheme } from "@mui/material";
-import {
-  CssProps,
-  StyledIcon,
-  NavigationItem,
-  NavigationLink,
-} from "./StyledComponents";
 import { MoreVertOutlined } from "@mui/icons-material";
+import {
+  Button,
+  Menu,
+  MenuItem,
+  styled,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
+import { ReactElement, useState } from "react";
+import { Link } from "react-router-dom";
+import Navigation from "./Navigation";
+import { NavigationItem, NavigationLink, StyledIcon } from "./StyledComponents";
 
-const NavBarContainer = styled.div<CssProps>`
-  display: flex;
-  flex-direction: ${(props) => (props.break ? "column" : "row")};
-  background-color: ${(props) => props.colors.primary.main};
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  box-shadow: 0 0 5px 0 black;
-`;
+const NavBarContainer = styled("div")(({ theme }) => ({
+  display: "flex",
+  flexDirection: useMediaQuery(theme.breakpoints.down("sm")) ? "column" : "row",
+  backgroundColor: theme.palette.primary.main,
+  justifyContent: "space-between",
+  alignItems: "center",
+  padding: "10px",
+  boxShadow: "0 0 5px 0 black",
+}));
 
-const MediumContainer = styled.div`
-  min-width: 100%;
-`;
+const MediumContainer = styled("div")({
+  minWidth: "100%",
+});
 
-const MediumContainerOne = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-`;
+const MediumContainerOne = styled("div")({
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "space-between",
+});
 
-const MediumContainerTwo = styled.div`
-  text-align: center;
-`;
+const MediumContainerTwo = styled("div")({
+  textAlign: "center",
+});
 
-const SmallContainer = styled.div`
-  display: flex;
-  align-items: center;
-`;
+const SmallContainer = styled("div")({
+  display: "flex",
+  flexDirection: "column",
+});
 
-const RightIconContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  margin: 0 20px;
-`;
+const RightIconContainer = styled("div")({
+  display: "flex",
+  flexDirection: "row",
+  gap: "20px",
+  margin: "0 20px",
+});
 
-const Title = styled.h1`
-  font-size: 24px;
-  color: white;
-  margin: 0 20px;
+const Title = styled("h1")({
+  fontSize: "24px",
+  color: "white",
+  margin: "0 20px",
+  fontFamily: "Montserrat, Arial, Helvetica, sans-serif",
+});
 
-  font-family: Montserrat, Arial, Helvetica, sans-serif;
-`;
+const PoppyIcon = styled("img")({
+  height: "75px",
+});
 
-const PoppyIcon = styled.img`
-  height: 75px;
-`;
-
-const HomeLink = styled(Link)`
-  text-decoration: none;
-`;
+const HomeLink = styled(Link)({
+  textDecoration: "none",
+});
 
 const NavBar: React.FunctionComponent = (): ReactElement => {
   const theme = useTheme();
@@ -96,12 +96,8 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
           <MenuItem onClick={handleClose} disableRipple>
             <NavigationLink to="/about">
               {({ isActive }) => (
-                <NavigationItem colors={colors} isActive={isActive} isFilled>
-                  <StyledIcon
-                    path={mdiHelpCircleOutline}
-                    size={1}
-                    colors={colors}
-                  />
+                <NavigationItem isActive={isActive} isFilled>
+                  <StyledIcon path={mdiHelpCircleOutline} size={1} />
                 </NavigationItem>
               )}
             </NavigationLink>
@@ -125,12 +121,8 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
         </MediumContainerOne>
         <NavigationLink to="/about">
           {({ isActive }) => (
-            <NavigationItem colors={colors} isActive={isActive}>
-              <StyledIcon
-                path={mdiHelpCircleOutline}
-                size={1}
-                colors={colors}
-              />
+            <NavigationItem isActive={isActive}>
+              <StyledIcon path={mdiHelpCircleOutline} size={1} />
             </NavigationItem>
           )}
         </NavigationLink>
@@ -152,8 +144,8 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
       <Navigation showText />
       <NavigationLink to="/about">
         {({ isActive }) => (
-          <NavigationItem colors={colors} isActive={isActive}>
-            <StyledIcon path={mdiHelpCircleOutline} size={1} colors={colors} />
+          <NavigationItem isActive={isActive}>
+            <StyledIcon path={mdiHelpCircleOutline} size={1} />
           </NavigationItem>
         )}
       </NavigationLink>
@@ -161,7 +153,7 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
   );
 
   return (
-    <NavBarContainer break={sm} colors={colors}>
+    <NavBarContainer>
       {sm ? smallPartial : md ? largePartial : defaultPartial}
     </NavBarContainer>
   );

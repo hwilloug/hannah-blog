@@ -1,150 +1,158 @@
-import styled from "@emotion/styled";
-import { styled as muiStyled } from "@mui/material/styles";
 import Icon from "@mdi/react";
-import { LinearProgress, Palette, linearProgressClasses } from "@mui/material";
+import {
+  Icon as MuiIcon,
+  LinearProgress,
+  linearProgressClasses,
+} from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { Link, NavLink } from "react-router-dom";
-import { Icon as MuiIcon } from "@mui/material";
 
-export interface BreakPointProps {
-  break: boolean;
-}
-
-export interface ColorProps {
-  colors: Palette;
-}
-
-export type CssProps = BreakPointProps & ColorProps;
-
-export type NavProps = ColorProps & {
+export type NavProps = {
   isActive: boolean;
   isFilled?: boolean;
 };
 
-export const BodyContainer = styled.div`
-  margin: 0px 50px;
-  display: flex;
-  flex-direction: column;
-  min-height: 80vh;
-  align-items: center;
-`;
+export const StyledP = styled("p")({
+  lineHeight: 1.75,
+});
 
-export const ContainerContainer = styled.div<ColorProps>`
-  background-color: ${({ colors }) => colors.primary.main};
-  border-radius: 20px 5px;
-  padding: 10px;
-`;
+export const BrowseContainer = styled("div")(({ theme }) => ({
+  backgroundColor: theme.palette.primary.main,
+  borderRadius: "20px 5px",
+  padding: "10px",
 
-export const SectionTitle = styled.h2<CssProps>`
-  background-color: ${({ colors }) => colors.primary.dark};
-  color: white;
-  font-size: 24px;
-  font-weight: normal;
-  text-align: center;
-  margin: 10px;
-  padding: 5px 0;
-  border-radius: 5px;
-  font-family: Montserrat, Arial, Helvetica, sans-serif;
-`;
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+}));
 
-export const StyledButton = styled.button<ColorProps>`
-  all: unset;
-  background-color: ${({ colors }) => (colors.mode === "dark" ? colors.secondary.main : colors.primary.dark)};
-  color: ${({ colors }) => (colors.mode === "dark" ? "black" : "white")};
-  border-radius: 10px;
-  border: 1px solid ${({ colors }) => colors.primary.dark}
-  border-style: none;
-  text-transform: uppercase;
-  padding: 5px 10px;
+export const BodyContainer = styled("div")({
+  margin: "0 50px",
+  display: "flex",
+  flexDirection: "column",
+  minHeight: "80vh",
+  alignItems: "center",
+});
 
-  :hover {
-    background-color: ${({ colors }) => (colors.mode === "dark" ? colors.secondary.dark : colors.secondary.main)};
-  }
-`;
+export const ContainerContainer = styled("div")(({ theme }) => ({
+  backgroundColor: theme.palette.primary.main,
+  borderRadius: "20px 5px",
+  padding: "10px",
+}));
 
-export const ArticleContentContainer = styled.div<ColorProps>`
-  line-height: 1.75;
-  padding: 20px;
-  color: ${({ colors }) => (colors.mode === "dark" ? "white" : "black")};
+export const SectionTitle = styled("h2")(({ theme }) => ({
+  backgroundColor: theme.palette.primary.dark,
+  color: "white",
+  fontSize: "24px",
+  fontWeight: "normal",
+  textAlign: "center",
+  margin: "10px",
+  padding: "5px 0",
+  borderRadius: "5px",
+  fontFamily: "Montserrat, Arial, Helvetica, sans-serif",
+}));
 
-  a {
-    color: ${({ colors }) => colors.secondary.main};
-  }
-`;
+export const StyledButton = styled("button")(({ theme }) => ({
+  all: "unset",
+  backgroundColor:
+    theme.palette.mode === "dark"
+      ? theme.palette.secondary.main
+      : theme.palette.primary.dark,
+  color: theme.palette.mode === "dark" ? "black" : "white",
+  borderRadius: "10px",
+  border: `1px solid ${theme.palette.primary.dark}`,
+  borderStyle: "none",
+  textTransform: "uppercase",
+  padding: "5px 10px",
+  ":hover": {
+    backgroundColor:
+      theme.palette.mode === "dark"
+        ? theme.palette.secondary.dark
+        : theme.palette.secondary.main,
+  },
+}));
 
-export const Section = styled.div`
-  margin-bottom: 50px;
-`;
+export const ArticleContentContainer = styled("div")(({ theme }) => ({
+  lineHeight: 1.75,
+  padding: "20px",
+  color: theme.palette.mode === "dark" ? "white" : "black",
+  a: {
+    color: theme.palette.secondary.main,
+  },
+}));
 
-export const FullSizeImage = styled.img`
-  width: 100%;
-  border-radius: 5px;
-`;
+export const Section = styled("div")({
+  marginBottom: "50px",
+});
 
-export const SectionHeader = styled.h2`
-  margin-bottom: 20px;
-`;
+export const FullSizeImage = styled("img")({
+  width: "100%",
+  borderRadius: "5px",
+});
 
-export const RecipeContainer = styled.div`
-  background-color: rgb(244, 244, 244);
-  padding: 20px;
-  border-radius: 5px;
-  border: 1px solid lightgrey;
-`;
+export const SectionHeader = styled("h2")({
+  marginBottom: "20px",
+});
 
-export const StyledListItem = styled.li`
-  margin: 20px 0;
-`;
+export const RecipeContainer = styled("div")({
+  backgroundColor: "rgb(244, 244, 244)",
+  padding: "20px",
+  borderRadius: "5px",
+  border: "1px solid lightgrey",
+});
 
-export const UnstyledLink = styled(Link)`
-  text-decoration: none;
-  color: black;
-`;
+export const StyledListItem = styled("li")({
+  margin: "20px 0",
+});
 
-export const NavigationLink = styled(NavLink)`
-  text-decoration: none;
-  color: black;
-`;
+export const UnstyledLink = styled(Link)({
+  textDecoration: "none",
+  color: "black",
+});
 
-export const BorderedFullSizeImage = styled(FullSizeImage)`
-  border: 5px solid black;
-`;
+export const NavigationLink = styled(NavLink)({
+  textDecoration: "none",
+  color: "black",
+});
 
-export const StyledIcon = styled(Icon)<ColorProps>``;
+export const BorderedFullSizeImage = styled(FullSizeImage)(({ theme }) => ({
+  border: `5px solid ${theme.palette.secondary.main}`,
+}));
 
-export const SocialIcon = styled(MuiIcon)<ColorProps>`
-  :hover {
-    color: ${({ colors }) => colors.secondary.main};
-  }
-`;
+export const StyledIcon = styled(Icon)({});
 
-export const NavigationItem = styled.button<NavProps>`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+export const SocialIcon = styled(MuiIcon)(({ theme }) => ({
+  ":hover": {
+    color: theme.palette.secondary.main,
+  },
+}));
 
-  color: white;
-  background-color: ${({ colors, isActive, isFilled }) =>
-    isActive && isFilled
-      ? colors.secondary.main
-      : isFilled
-        ? colors.primary.dark
-        : isActive
-          ? colors.secondary.main
-          : "inherit"};
+export const NavigationItem = styled("button")<NavProps>(
+  ({ theme, isActive, isFilled }) => ({
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    color: "white",
+    backgroundColor:
+      isActive && isFilled
+        ? theme.palette.secondary.main
+        : isFilled
+          ? theme.palette.primary.dark
+          : isActive
+            ? theme.palette.secondary.main
+            : "inherit",
+    padding: "10px",
+    marginTop: "20px",
+    borderRadius: "5px",
+    border: isFilled ? "1px solid white" : "none",
+    ":hover": {
+      backgroundColor: theme.palette.primary.main,
+      cursor: "pointer",
+    },
+  }),
+);
 
-  padding: 10px;
-  margin-top: 20px;
-
-  border-radius: 5px;
-  border: ${({ isFilled }) => (isFilled ? "1px solid white" : "none")};
-
-  :hover {
-    background-color: ${({ colors }) => colors.primary.main};
-    cursor: pointer;
-  }
-`;
-
-export const ProgressBar = muiStyled(LinearProgress)(({ theme }) => ({
+export const ProgressBar = styled(LinearProgress)(({ theme }) => ({
   height: 30,
   borderRadius: 5,
   [`&.${linearProgressClasses.colorPrimary}`]: {

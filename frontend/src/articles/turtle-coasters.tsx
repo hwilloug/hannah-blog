@@ -5,13 +5,10 @@ import {
   Section,
   SectionHeader,
 } from "../components/StyledComponents";
-import { useTheme } from "@mui/material";
 
 const TurtleCoasters: React.FunctionComponent = (): ReactElement => {
-  const theme = useTheme();
-
   return (
-    <ArticleContentContainer colors={theme.palette}>
+    <ArticleContentContainer>
       <Section>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/turtle_coasters_on_table.jpeg`}

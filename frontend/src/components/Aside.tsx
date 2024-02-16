@@ -1,130 +1,105 @@
-import styled from "@emotion/styled";
-import { ReactElement, useEffect, useState } from "react";
-import {
-  BorderedFullSizeImage,
-  BreakPointProps,
-  CssProps,
-  ProgressBar,
-  StyledButton,
-  UnstyledLink,
-} from "./StyledComponents";
 import {
   Button,
   Grid,
   Input,
   Snackbar,
+  styled,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
 import axios from "axios";
+import { ReactElement, useEffect, useState } from "react";
+import {
+  BorderedFullSizeImage,
+  ProgressBar,
+  StyledButton,
+  UnstyledLink,
+} from "./StyledComponents";
 
-const AsideContainer = styled.div<BreakPointProps>`
-  max-width: ${(props) => (props.break ? "17rem" : "100%")};
-  min-width: ${(props) => (props.break ? "17rem" : "100%")};
-  margin: ${(props) => (props.break ? "50px 100px 0 0" : "50px 0")};
+const AsideContainer = styled("div")(({ theme }) => ({
+  maxWidth: useMediaQuery(theme.breakpoints.up("md")) ? "17rem" : "100%",
+  minWidth: useMediaQuery(theme.breakpoints.up("md")) ? "17rem" : "100%",
+  margin: useMediaQuery(theme.breakpoints.up("md"))
+    ? "50px 100px 0 0"
+    : "50px 0",
 
-  display: ${(props) => (props.break ? "block" : "flex")};
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-`;
+  display: useMediaQuery(theme.breakpoints.up("md")) ? "block" : "flex",
+  flexWrap: "wrap",
+  gap: "20px",
+  justifyContent: "center",
+}));
 
-const AsideItemContainerContainer = styled.div<CssProps>`
-  background-color: ${({ colors }) => colors.primary.main};
-  border-radius: 20px 5px;
-  padding: 10px;
-  margin-bottom: 20px;
-  max-width: 17rem;
-  height: 100%;
-`;
+const AsideItemContainerContainer = styled("div")(({ theme }) => ({
+  backgroundColor: theme.palette.primary.main,
+  borderRadius: "20px 5px",
+  padding: "10px",
+  marginBottom: "20px",
+  maxWidth: "17rem",
+  height: "100%",
+}));
 
-const AsideItemContainer = styled.div<CssProps>`
-  background-color: ${({ colors }) =>
-    colors.mode === "dark" ? colors.primary.dark : "white"};
-  color: ${({ colors }) => (colors.mode === "dark" ? "white" : "black")};
-  border: 1px solid ${({ colors }) => colors.primary.dark};
-  border-radius: 25px 5px;
-  max-width: 17rem;
-  height: 100%;
+const AsideItemContainer = styled("div")(({ theme }) => ({
+  backgroundColor:
+    theme.palette.mode === "dark" ? theme.palette.primary.dark : "white",
+  color: theme.palette.mode === "dark" ? "white" : "black",
+  border: `1px solid ${theme.palette.primary.dark}`,
+  borderRadius: "20px 5px",
+  maxWidth: "17rem",
+  height: "100%",
+  padding: "20px",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  a: {
+    color: theme.palette.secondary.main,
+    textDecoration: "none",
+    ":hover": {
+      textDecoration: "underline",
+    },
+  },
+}));
 
-  padding: 20px;
+const AsideTitle = styled("span")({
+  fontSize: "1.5rem",
+  color: "inherit",
+  marginBottom: "10px",
+});
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+const AsideText = styled("p")({
+  fontSize: "18px",
+  lineHeight: 1.75,
+  color: "inherit",
+  marginTop: "10px",
+  ".center": {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "20px",
+  },
+  ".small": {
+    fontSize: "12px",
+    fontColor: "grey",
+  },
+});
 
-  a {
-    color: ${({ colors }) => colors.secondary.main};
-    text-decoration: none;
+const AsideList = styled("ul")({
+  marginTop: "5px",
+  paddingLeft: "20px",
+  listStyleType: "circle",
+});
 
-    :hover {
-      text-decoration: underline;
-    }
-  }
-`;
+const AsideButton = styled(StyledButton)({
+  marginTop: "10px",
+});
 
-const AsideTitle = styled.span`
-  font-size: 1.5rem;
-  color: inherit;
-  margin-bottom: 10px;
-`;
-
-const AsideText = styled.p`
-  font-size: 18px;
-  line-height: 1.75;
-  color: inherit;
-  margin-top: 10px;
-
-  .center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .small {
-    font-size: 12px;
-    font-color: grey;
-  }
-`;
-
-const AsideList = styled.ul`
-  margin-top: 5px;
-  padding-left: 20px;
-  list-style-type: circle;
-`;
-
-const AsideListLinkedItem = styled.li`
-  list-style-type: none;
-  margin: 20px 0;
-
-  a {
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    p {
-      margin-top: 5px;
-    }
-
-    :hover {
-      text-decoration: underline;
-    }
-  }
-`;
-
-const AsideButton = styled(StyledButton)`
-  margin-top: 10px;
-`;
-
-const SnackbarContent = styled.div<{ status: string }>`
-  background-color: ${({ status }) => (status === "success" ? "green" : "red")};
-  border: 1px solid black;
-  border-radius: 5px;
-  padding: 20px;
-  color: white;
-`;
+const SnackbarContent = styled("div", {
+  shouldForwardProp: (prop) => prop !== "status",
+})<{ status: string }>(({ status }) => ({
+  backgroundColor: status === "success" ? "green" : "red",
+  border: "1px solid black",
+  padding: "20px",
+  color: "white",
+}));
 
 const Aside: React.FunctionComponent = (): ReactElement => {
   const theme = useTheme();
@@ -156,8 +131,8 @@ const Aside: React.FunctionComponent = (): ReactElement => {
   ];
 
   const welcomePartial = (
-    <AsideItemContainerContainer colors={theme.palette} break={md}>
-      <AsideItemContainer colors={theme.palette} break={md}>
+    <AsideItemContainerContainer>
+      <AsideItemContainer>
         <AsideTitle>Welcome to My Hobby Room</AsideTitle>
         <BorderedFullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/me.jpeg`}
@@ -168,15 +143,15 @@ const Aside: React.FunctionComponent = (): ReactElement => {
           outside of work!
         </AsideText>
         <UnstyledLink to="/about">
-          <AsideButton colors={theme.palette}>More About Me</AsideButton>
+          <AsideButton>More About Me</AsideButton>
         </UnstyledLink>
       </AsideItemContainer>
     </AsideItemContainerContainer>
   );
 
   const obsessionsPartial = (
-    <AsideItemContainerContainer colors={theme.palette} break={md}>
-      <AsideItemContainer colors={theme.palette} break={md}>
+    <AsideItemContainerContainer>
+      <AsideItemContainer>
         <AsideTitle>Current Obsessions & Upcoming Articles:</AsideTitle>
         <AsideText>
           <AsideList>
@@ -190,8 +165,8 @@ const Aside: React.FunctionComponent = (): ReactElement => {
   );
 
   const readingChallengePartial = (
-    <AsideItemContainerContainer colors={theme.palette} break={md}>
-      <AsideItemContainer colors={theme.palette} break={md}>
+    <AsideItemContainerContainer>
+      <AsideItemContainer>
         <AsideTitle>2024 Reading Challenge</AsideTitle>
         <AsideText>
           Follow along as I reach my goal of reading 50 books this year!
@@ -208,27 +183,27 @@ const Aside: React.FunctionComponent = (): ReactElement => {
           to="https://www.goodreads.com/user_challenges/52076751"
           target="_blank"
         >
-          <AsideButton colors={theme.palette}>View on Goodreads</AsideButton>
+          <AsideButton>View on Goodreads</AsideButton>
         </UnstyledLink>
         <UnstyledLink
           to="https://hardcover.app/@hannahwilloughby/goals/6990#sortBy%5B0%5D%5BlastReadDate%5D=desc_nulls_last"
           target="_blank"
         >
-          <AsideButton colors={theme.palette}>View on Hardcover</AsideButton>
+          <AsideButton>View on Hardcover</AsideButton>
         </UnstyledLink>
         <UnstyledLink
           to="https://fable.co/hannah-willoughby-114282952258"
           target="_blank"
         >
-          <AsideButton colors={theme.palette}>View on Fable</AsideButton>
+          <AsideButton>View on Fable</AsideButton>
         </UnstyledLink>
       </AsideItemContainer>
     </AsideItemContainerContainer>
   );
 
   const connectPartial = (
-    <AsideItemContainerContainer colors={theme.palette} break={md}>
-      <AsideItemContainer colors={theme.palette} break={md}>
+    <AsideItemContainerContainer>
+      <AsideItemContainer>
         <a
           className="twitter-timeline"
           data-lang="en"
@@ -244,8 +219,8 @@ const Aside: React.FunctionComponent = (): ReactElement => {
   );
 
   const bookclubPartial = (
-    <AsideItemContainerContainer colors={theme.palette} break={md}>
-      <AsideItemContainer colors={theme.palette} break={md}>
+    <AsideItemContainerContainer>
+      <AsideItemContainer>
         <AsideTitle>Join my bookclub!</AsideTitle>
         <AsideText>
           <a
@@ -254,9 +229,7 @@ const Aside: React.FunctionComponent = (): ReactElement => {
             className="center"
           >
             <BorderedFullSizeImage src="https://img.fablecdn.net/images/cdn.fable.co/group_covers/D7CE5584-21F6-41A6-A854-5418B5FEFCCF.jpg?w=416" />
-            <StyledButton colors={theme.palette}>
-              Hannah's Book Club
-            </StyledButton>
+            <StyledButton>Hannah's Book Club</StyledButton>
           </a>
           <p>
             February's book:{" "}
@@ -308,8 +281,8 @@ const Aside: React.FunctionComponent = (): ReactElement => {
   };
 
   const newsletterPartial = (
-    <AsideItemContainerContainer colors={theme.palette} break={md}>
-      <AsideItemContainer colors={theme.palette} break={md}>
+    <AsideItemContainerContainer>
+      <AsideItemContainer>
         <AsideTitle>Newsletter Signup</AsideTitle>
         <AsideText>
           Want to be notified of new articles? Sign up here!
@@ -335,7 +308,7 @@ const Aside: React.FunctionComponent = (): ReactElement => {
   const SNACKBAR_DURATION = 5000;
 
   return (
-    <AsideContainer break={md}>
+    <AsideContainer>
       {welcomePartial}
       {newsletterPartial}
       {obsessionsPartial}

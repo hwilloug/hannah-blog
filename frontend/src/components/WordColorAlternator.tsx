@@ -1,21 +1,16 @@
-import styled from "@emotion/styled";
+import { styled } from "@mui/material";
 import { useEffect, useState } from "react";
 
-const WordColorAlternatorContainer = styled.div`
-  text-align: center;
-  text-wrap: balance;
-`;
+const WordColorAlternatorContainer = styled("div")({
+  textAlign: "center",
+  textWrap: "balance",
+});
 
-const Title = styled.span`
-  font-size: 2.75rem;
-
-  font-family: Montserrat, Arial, Helvetica, sans-serif;
-  text-shadow:
-    -1px 0 black,
-    0 1px black,
-    1px 0 black,
-    0 -1px black;
-`;
+const Title = styled("span")({
+  fontSize: "2.75rem",
+  fontFamily: "Montserrat, Arial, Helvetica, sans-serif",
+  textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black",
+});
 
 interface WordColorAlternatorProps {
   colors: string[];

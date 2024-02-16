@@ -1,99 +1,89 @@
-import styled from "@emotion/styled";
-import {
-  BreakPointProps,
-  ColorProps,
-  CssProps,
-  UnstyledLink,
-} from "./StyledComponents";
-import { useMediaQuery, useTheme } from "@mui/material";
-import Categories from "./Categories";
+import { styled, useMediaQuery, useTheme } from "@mui/material";
 import { Article } from "..";
+import Categories from "./Categories";
+import { UnstyledLink } from "./StyledComponents";
 
-const ArticleContainer = styled.div<CssProps>`
-  display: flex;
-  flex-direction: ${(props) => (props.break ? "column" : "row")};
-  gap: 20px;
+const ArticleContainer = styled("div")(({ theme }) => ({
+  display: "flex",
+  flexDirection: useMediaQuery(theme.breakpoints.down("xs")) ? "column" : "row",
+  gap: "20px",
 
-  border: 1px solid ${(props) => props.colors.primary.dark};
-  border-radius: 25px 5px;
+  border: `1px solid ${theme.palette.primary.dark}`,
+  borderRadius: "25px 5px",
 
-  padding: 10px;
-  margin: 20px 0;
+  padding: "10px",
+  margin: "15px 0",
 
-  background-color: ${({ colors }) =>
-    colors.mode === "dark" ? colors.primary.dark : "white"};
-  color: ${({ colors }) => (colors.mode === "dark" ? "white" : "black")};
+  backgroundColor:
+    theme.palette.mode === "dark" ? theme.palette.primary.dark : "white",
+  color: theme.palette.mode === "dark" ? "white" : "black",
+  ":hover": {
+    border: `5px solid ${theme.palette.secondary.main}`,
+    margin: "11px -4px",
+  },
+}));
 
-  :hover {
-    border: 5px solid ${({ colors }) => colors.secondary.main};
-    margin: 16px -4px;
-  }
-`;
+const ArticleDetailContainer = styled("div")({
+  display: "flex",
+  flexDirection: "column",
+  gap: "10px",
+  padding: "10px",
+});
 
-const ArticleDetailContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 10px;
-`;
+const ArticleTitle = styled("h2")({
+  fontSize: "1.5rem",
+});
 
-const ArticleTitle = styled.h2`
-  font-size: 1.5rem;
-`;
+const ArticleSubtitle = styled("h3")({
+  fontSize: "18px",
+  margin: "3px 0",
+  fontWeight: "lighter",
+  color: "grey",
+});
 
-const ArticleSubtitle = styled.h3`
-  font-size: 18px;
-  margin: 3px 0;
-  font-weight: lighter;
-  color: grey;
-`;
+const ArticleImage = styled("img")(({ theme }) => ({
+  width: useMediaQuery(theme.breakpoints.down("xs")) ? "100%" : "13rem",
+  objectFit: "cover",
+  borderRadius: "5px",
+}));
 
-const ArticleImage = styled.img<BreakPointProps>`
-  width: ${(props) => (props.break ? "100%" : "13rem")};
-  object-fit: cover;
-  border-radius: 5px;
-`;
+const PortraitArticle = styled(UnstyledLink)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  textAlign: "center",
 
-const PortraitArticle = styled(UnstyledLink)<CssProps>`
-  display: flex;
-  flex-direction: column;
-  text-align: center;
+  width: useMediaQuery(theme.breakpoints.down("xs")) ? "100%" : "29%",
+  padding: "10px",
+  marginBottom: "10px",
 
-  width: ${(props) => (props.break ? "100%" : "29%")};
-  padding: 10px;
-  margin-bottom: 10px;
+  border: `1px solid ${theme.palette.primary.dark}`,
+  borderRadius: "5px",
+  backgroundColor:
+    theme.palette.mode === "dark" ? theme.palette.primary.dark : "white",
+  ":hover": {
+    border: `5px solid ${theme.palette.secondary.main}`,
+    marginBottom: "6px",
+  },
+}));
 
-  border: 1px solid ${({ colors }) => colors.primary.dark};
-  border-radius: 5px;
-  background-color: ${({ colors }) =>
-    colors.mode === "dark" ? colors.primary.dark : "white"};
+const PortraitArticleTitle = styled("h2")(({ theme }) => ({
+  fontSize: "1.25rem",
+  color: theme.palette.mode === "dark" ? "white" : "black",
+}));
 
-  :hover {
-    border: 5px solid ${({ colors }) => colors.secondary.main};
-    margin-bottom: 6px;
-  }
-`;
+const PortraitArticleSubtitle = styled("h3")({
+  fontSize: "18px",
+  margin: "3px 0",
+  fontWeight: "lighter",
+  color: "grey",
+});
 
-const PortraitArticleTitle = styled.h2<ColorProps>`
-  font-size: 1.25rem;
-
-  color: ${({ colors }) => (colors.mode === "dark" ? "white" : "black")};
-`;
-
-const PortraitArticleSubtitle = styled.h3`
-  font-size: 18px;
-  margin: 3px 0;
-  font-weight: lighter;
-  color: grey;
-`;
-
-const PortraitArticleImage = styled.img<BreakPointProps>`
-  width: 100%
-  object-fit: cover;
-  border-radius: 5px;
-  object-fit: cover;
-  height: 13rem;
-`;
+const PortraitArticleImage = styled("img")({
+  width: "100%",
+  objectFit: "cover",
+  borderRadius: "5px",
+  height: "13rem",
+});
 
 interface ArticleCardProps {
   article: Article;
@@ -109,10 +99,9 @@ const ArticleCard: React.FunctionComponent<ArticleCardProps> = ({
 
   return orientation === "landscape" ? (
     <UnstyledLink to={`/articles/${article.slug}`} key={article.slug}>
-      <ArticleContainer break={sm} colors={theme.palette}>
+      <ArticleContainer>
         <ArticleImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
-          break={sm}
           alt={article.imgAlt}
         />
         <ArticleDetailContainer>
@@ -129,19 +118,11 @@ const ArticleCard: React.FunctionComponent<ArticleCardProps> = ({
       </ArticleContainer>
     </UnstyledLink>
   ) : (
-    <PortraitArticle
-      to={`/articles/${article.slug}`}
-      break={sm}
-      colors={theme.palette}
-      key={article.slug}
-    >
+    <PortraitArticle to={`/articles/${article.slug}`} key={article.slug}>
       <PortraitArticleImage
         src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
-        break={sm}
       />
-      <PortraitArticleTitle colors={theme.palette}>
-        {article.title}
-      </PortraitArticleTitle>
+      <PortraitArticleTitle>{article.title}</PortraitArticleTitle>
       <PortraitArticleSubtitle>{article.subtitle}</PortraitArticleSubtitle>
     </PortraitArticle>
   );

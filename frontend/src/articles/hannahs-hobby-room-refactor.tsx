@@ -1,3 +1,4 @@
+import { useTheme } from "@mui/material";
 import { ReactElement } from "react";
 import {
   ArticleContentContainer,
@@ -5,13 +6,12 @@ import {
   Section,
   SectionHeader,
 } from "../components/StyledComponents";
-import { useTheme } from "@mui/material";
 
 const Refactor: React.FunctionComponent = (): ReactElement => {
   const theme = useTheme();
 
   return (
-    <ArticleContentContainer colors={theme.palette}>
+    <ArticleContentContainer>
       <Section>
         <p>I've completely refactored Hannah's Hobby Room! Now the site has:</p>
         <ul>

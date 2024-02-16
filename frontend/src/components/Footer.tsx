@@ -1,98 +1,86 @@
-import styled from "@emotion/styled";
-import { ChangeEvent, ReactElement } from "react";
-import {
-  ColorProps,
-  SocialIcon,
-  StyledButton,
-  StyledIcon,
-  UnstyledLink,
-} from "./StyledComponents";
-import { Divider, Switch, useTheme } from "@mui/material";
-import XIcon from "@mui/icons-material/X";
 import { ContactMail } from "@mui/icons-material";
+import XIcon from "@mui/icons-material/X";
+import { Divider, styled, Switch, useTheme } from "@mui/material";
+import { ChangeEvent, ReactElement } from "react";
 import { Link } from "react-router-dom";
+import { SocialIcon, StyledButton, UnstyledLink } from "./StyledComponents";
 
-const FooterContainer = styled.div<ColorProps>`
-  background-color: ${({ colors }) => colors.primary.main};
-  padding: 20px;
-  color: white;
-`;
+const FooterContainer = styled("div")(({ theme }) => ({
+  backgroundColor: theme.palette.primary.main,
+  padding: "20px",
+  color: "white",
+}));
 
-const FooterRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+const FooterRow = styled("div")({
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-between",
+  alignItems: "center",
+  flexWrap: "wrap",
+  margin: "10px 0",
+});
 
-  margin: 10px 0;
-`;
+const BuyMeABookButton = styled(StyledButton)({
+  "@keyframes wiggle": {
+    "0%": {},
+    "7%": {
+      transform: "rotateZ(0)",
+    },
+    "15%": {
+      transform: "rotateZ(-10deg)",
+    },
+    "20%": {
+      transform: "rotateZ(7deg)",
+    },
+    "25%": {
+      transform: "rotateZ(-7deg)",
+    },
+    "30%": {
+      transform: "rotateZ(4deg)",
+    },
+    "35%": {
+      transform: "rotateZ(-2deg)",
+    },
+    "40%": {},
+    "100%": {
+      transform: "rotateZ(0)",
+    },
+  },
+  margin: "0 20px",
+  animation: "wiggle 2s linear infinite",
+});
 
-const BuyMeABookButton = styled(StyledButton)`
-  @keyframes wiggle {
-    0%,
-    7% {
-      transform: rotateZ(0);
-    }
-    15% {
-      transform: rotateZ(-10deg);
-    }
-    20% {
-      transform: rotateZ(7deg);
-    }
-    25% {
-      transform: rotateZ(-7deg);
-    }
-    30% {
-      transform: rotateZ(4deg);
-    }
-    35% {
-      transform: rotateZ(-2deg);
-    }
-    40%,
-    100% {
-      transform: rotateZ(0);
-    }
-  }
+const Copyright = styled("div")({
+  flexGrow: 4,
+  textAlign: "center",
+});
 
-  margin: 0 20px;
-  animation: wiggle 2s linear infinite;
-`;
+const DarkModeToggleContainer = styled("div")({
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+});
 
-const Copyright = styled.div`
-  flex-grow: 4;
-  text-align: center;
-`;
+const SocialContainer = styled("div")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  gap: "10px",
+  marginLeft: "10px",
+  a: {
+    color: "white",
+  },
+}));
 
-const DarkModeToggleContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`;
+const SitemapContainer = styled("div")(({ theme }) => ({
+  display: "flex",
+  a: {
+    color: theme.palette.secondary.main,
 
-const SocialContainer = styled.div<ColorProps>`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-left: 10px;
-
-  a {
-    color: white;
-  }
-`;
-
-const SitemapContainer = styled.div<ColorProps>`
-  display: flex;
-
-  a {
-    color: ${({ colors }) => colors.secondary.main};
-    text-decoration: none;
-
-    :hover {
-      text-decoration: underline;
-    }
-  }
-`;
+    ":hover": {
+      textDecoration: "underline",
+    },
+  },
+}));
 
 interface FooterProps {
   darkMode: boolean;
@@ -109,22 +97,22 @@ const Footer: React.FunctionComponent<FooterProps> = ({
   const theme = useTheme();
   const colors = theme.palette;
   return (
-    <FooterContainer colors={colors}>
+    <FooterContainer>
       <FooterRow>
         <UnstyledLink
           to="https://www.buymeacoffee.com/hannahjanew"
           target="_blank"
         >
-          <BuyMeABookButton colors={colors}>📖 Buy Me a Book</BuyMeABookButton>
+          <BuyMeABookButton>📖 Buy Me a Book</BuyMeABookButton>
         </UnstyledLink>
-        <SocialContainer colors={colors}>
+        <SocialContainer>
           <a href="https://twitter.com/HannahHobbyRoom" target="_blank">
-            <SocialIcon colors={colors}>
+            <SocialIcon>
               <XIcon />
             </SocialIcon>
           </a>
           <a href="mailto: support@hannahshobbyroom.com">
-            <SocialIcon colors={theme.palette}>
+            <SocialIcon>
               <ContactMail />
             </SocialIcon>
           </a>
@@ -143,7 +131,7 @@ const Footer: React.FunctionComponent<FooterProps> = ({
       </FooterRow>
       <Divider />
       <FooterRow>
-        <SitemapContainer colors={colors}>
+        <SitemapContainer>
           <p>Sitemap</p>
           <ul>
             <Link to="/">

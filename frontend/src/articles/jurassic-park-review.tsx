@@ -1,16 +1,16 @@
+import { useTheme } from "@mui/material";
 import { ReactElement } from "react";
+import BlockQuote from "../components/BlockQuote";
 import {
   ArticleContentContainer,
   Section,
 } from "../components/StyledComponents";
-import BlockQuote from "../components/BlockQuote";
-import { useTheme } from "@mui/material";
 
 const JurassicParkReview: React.FunctionComponent = (): ReactElement => {
   const theme = useTheme();
 
   return (
-    <ArticleContentContainer colors={theme.palette}>
+    <ArticleContentContainer>
       <Section>
         <p>
           <i>CONTAINS SPOILERS</i>

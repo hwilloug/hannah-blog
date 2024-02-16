@@ -1,22 +1,12 @@
-import styled from "@emotion/styled";
+import { useMediaQuery, useTheme } from "@mui/material";
 import { ReactElement } from "react";
+import { useParams, useSearchParams } from "react-router-dom";
+import Browse from "../components/Browse";
 import {
   BodyContainer,
-  ColorProps,
+  BrowseContainer,
   SectionTitle,
 } from "../components/StyledComponents";
-import Browse from "../components/Browse";
-import { useMediaQuery, useTheme } from "@mui/material";
-import { useParams, useSearchParams } from "react-router-dom";
-
-const LatestArticlesContainer = styled.div<ColorProps>`
-  background-color: ${({ colors }) => colors.primary.main};
-  border-radius: 20px 5px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
 
 const CategoryBrowse: React.FunctionComponent = (): ReactElement => {
   const theme = useTheme();
@@ -35,12 +25,10 @@ const CategoryBrowse: React.FunctionComponent = (): ReactElement => {
 
   return (
     <BodyContainer>
-      <LatestArticlesContainer colors={theme.palette}>
-        <SectionTitle break={sm} colors={theme.palette}>
-          {category || subcategory} Articles:
-        </SectionTitle>
+      <BrowseContainer>
+        <SectionTitle>{category || subcategory} Articles:</SectionTitle>
         <Browse />
-      </LatestArticlesContainer>
+      </BrowseContainer>
     </BodyContainer>
   );
 };
