@@ -15,7 +15,7 @@ read -p 'Subcategories: ' subcategory
 
 # Publish article to RDS
 slug=$(python3 backend/db/generate-slug.py "$title")
-res=$(python3 backend/db/main.py "$title" "$subtitle" "$img" "$img_alt" "$category" "$subcategory" "$slug")
+res=$(python3 backend/db/generate-insert-sql.py "$title" "$subtitle" "$img" "$img_alt" "$category" "$subcategory" "$slug")
 
 echo =======================================
 echo Inserting into RDS DB 

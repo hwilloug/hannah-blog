@@ -1,6 +1,7 @@
 import datetime
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
-from sqlalchemy import ARRAY, DateTime, String
+import uuid
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
+from sqlalchemy import ARRAY, DateTime, ForeignKey, String
 from sqlalchemy.sql import func
 
 class Base(DeclarativeBase):
@@ -19,9 +20,20 @@ class Article(Base):
     subcategory: Mapped[list[str]] = mapped_column(ARRAY(String))
     created_at: Mapped[datetime.datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
     updated_at:  Mapped[datetime.datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    comments: Mapped[list["Comments"]] = relationship()
 
 
 class Newsletter(Base):
     __tablename__ = "newsletter"
 
     email: Mapped[str] = mapped_column(primary_key=True)
+
+
+class Comments(Base):
+    __tablename__ = "comments"
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4())
+    timestamp: Mapped[datetime.datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    body: Mapped[str]
+    user_id: Mapped[str]
+    article_slug: Mapped["Article"] = mapped_column(ForeignKey("articles.slug"))
