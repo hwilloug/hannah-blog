@@ -74,7 +74,10 @@ const SocialContainer = styled("div")(({ theme }) => ({
 const SitemapContainer = styled("div")(({ theme }) => ({
   display: "flex",
   a: {
-    color: theme.palette.secondary.main,
+    color:
+      theme.palette.mode === "dark"
+        ? theme.palette.secondary.main
+        : theme.palette.secondary.dark,
 
     ":hover": {
       textDecoration: "underline",

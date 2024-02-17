@@ -36,11 +36,13 @@ const MediumContainerOne = styled("div")({
 
 const MediumContainerTwo = styled("div")({
   textAlign: "center",
+  marginTop: "-20px",
 });
 
 const SmallContainer = styled("div")({
   display: "flex",
-  flexDirection: "column",
+  flexDirection: "row",
+  alignItems: "center",
 });
 
 const RightIconContainer = styled("div")({
@@ -69,7 +71,6 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
   const theme = useTheme();
   const sm = useMediaQuery(theme.breakpoints.down("sm"));
   const md = useMediaQuery(theme.breakpoints.up("md"));
-  const colors = theme.palette;
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
