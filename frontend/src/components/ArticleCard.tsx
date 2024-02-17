@@ -1,4 +1,4 @@
-import { styled, useMediaQuery, useTheme } from "@mui/material";
+import { styled, useMediaQuery } from "@mui/material";
 import { Article } from "..";
 import Categories from "./Categories";
 import { UnstyledLink } from "./StyledComponents";
@@ -62,7 +62,7 @@ const PortraitArticle = styled(UnstyledLink)(({ theme }) => ({
     theme.palette.mode === "dark" ? theme.palette.primary.dark : "white",
   ":hover": {
     border: `5px solid ${theme.palette.secondary.main}`,
-    marginBottom: "6px",
+    margin: "0 -4px -2px -4px",
   },
 }));
 
@@ -94,9 +94,6 @@ const ArticleCard: React.FunctionComponent<ArticleCardProps> = ({
   article,
   orientation,
 }) => {
-  const theme = useTheme();
-  const sm = useMediaQuery(theme.breakpoints.down("xs"));
-
   return orientation === "landscape" ? (
     <UnstyledLink to={`/articles/${article.slug}`} key={article.slug}>
       <ArticleContainer>

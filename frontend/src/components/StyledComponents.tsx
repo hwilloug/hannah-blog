@@ -3,6 +3,7 @@ import {
   Icon as MuiIcon,
   LinearProgress,
   linearProgressClasses,
+  useMediaQuery,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Link, NavLink } from "react-router-dom";
@@ -26,13 +27,13 @@ export const BrowseContainer = styled("div")(({ theme }) => ({
   alignItems: "center",
 }));
 
-export const BodyContainer = styled("div")({
-  margin: "0 50px",
+export const BodyContainer = styled("div")(({ theme }) => ({
+  margin: useMediaQuery(theme.breakpoints.down("xs")) ? 0 : "0 50px",
   display: "flex",
   flexDirection: "column",
   minHeight: "80vh",
   alignItems: "center",
-});
+}));
 
 export const ContainerContainer = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
@@ -83,6 +84,7 @@ export const ArticleContentContainer = styled("div")(({ theme }) => ({
 
 export const Section = styled("div")({
   marginBottom: "50px",
+  lineHeight: 1.75,
 });
 
 export const FullSizeImage = styled("img")({
@@ -156,7 +158,8 @@ export const ProgressBar = styled(LinearProgress)(({ theme }) => ({
   height: 30,
   borderRadius: 5,
   [`&.${linearProgressClasses.colorPrimary}`]: {
-    backgroundColor: "lightgrey",
+    backgroundColor:
+      theme.palette.grey[theme.palette.mode === "light" ? 200 : 800],
   },
   [`& .${linearProgressClasses.bar}`]: {
     borderRadius: 5,

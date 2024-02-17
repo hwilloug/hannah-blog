@@ -4,4 +4,4 @@
 
 ## Architecture
 
-![architecture diagram](images/architecture_diagram.jpeg "Architecture Diagram")
+![architecture diagram](images/architecture_diagram_2.jpeg "Architecture Diagram")

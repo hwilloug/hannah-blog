@@ -14,7 +14,8 @@ read -p 'Category: ' category
 read -p 'Subcategories: ' subcategory
 
 # Publish article to RDS
-res=$(python3 backend/db/main.py "$title" "$subtitle" "$img" "$img_alt" "$category" "$subcategory")
+slug=$(python3 backend/db/generate-slug.py "$title")
+res=$(python3 backend/db/main.py "$title" "$subtitle" "$img" "$img_alt" "$category" "$subcategory" "$slug")
 
 echo =======================================
 echo Inserting into RDS DB 
@@ -22,3 +23,4 @@ echo "$res"
 aws rds-data execute-statement --resource-arn $DATABASE_ARN --database $DATABASE_NAME --secret-arn $SECRET_ARN --sql "$res"
 
 # Send SES email about new article
+aws lambda invoke --function-name newsletter_send_new_article_email --invocation-type DryRun --payload "{ 'slug': '$slug' }"

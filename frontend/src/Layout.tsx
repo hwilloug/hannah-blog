@@ -18,7 +18,7 @@ const LayoutContainer = styled("div")(({ theme }) => ({
   alignItems: "stretch",
   backgroundColor: theme.palette.primary.light,
   backgroundImage:
-    theme.palette.mode === "dark" ? "url('bg.png')" : "url('bg_light.png')",
+    theme.palette.mode === "dark" ? "url('/bg.png')" : "url('/bg_light.png')",
   backgroundRepeat: "repeat",
   backgroundAttachment: "fixed",
 }));
