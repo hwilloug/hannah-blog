@@ -207,7 +207,7 @@ const Aside: React.FunctionComponent = (): ReactElement => {
         <a
           className="twitter-timeline"
           data-lang="en"
-          data-width="300"
+          data-width="250"
           data-height="500"
           data-theme={theme.palette.mode}
           href="https://twitter.com/HannahHobbyRoom?ref_src=twsrc%5Etfw"

@@ -121,3 +121,5 @@ articles_db
 
 __pycache__
 script.py.mako
+
+test.json

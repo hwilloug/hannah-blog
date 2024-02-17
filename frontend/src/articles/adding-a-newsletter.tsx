@@ -1,16 +1,17 @@
 import {
+  ArticleContentContainer,
   FullSizeImage,
   Section,
   SectionHeader,
 } from "../components/StyledComponents";
-import { ArticleContainer } from "../pages/Article";
 
 const AddingANewsletter: React.FunctionComponent = () => {
   return (
-    <ArticleContainer>
+    <ArticleContentContainer>
       <Section>
         <p>
-          I've added newsletter signups to the site! Sign up now to the right ➡
+          I've added newsletter signups to the site! Sign up now below or to the
+          right.
         </p>
       </Section>
       <Section>
@@ -20,21 +21,21 @@ const AddingANewsletter: React.FunctionComponent = () => {
         />
         <p>
           I decided to stick with AWS for the newsletter infrastructure. I added
-          a new table to the RDS database that backs this site for storing
-          emails, as well as adding lambdas that post new emails, unsubscribe,
-          and triggering a new email. The emails are sent using AWS's Simple
-          Email Service (SES). Any bounces or complaints are caught with a
-          Simple Notification Service (SNS) topic, and pushed to an SQS queue
-          respectively for triage.
+          a new table for storing emails to the Relational Database Service
+          (RDS) database that backs this site, as well as adding lambdas that
+          post new emails, unsubscribe, and triggering a new email. The emails
+          are sent using AWS's Simple Email Service (SES). Any bounces or
+          complaints are caught with a Simple Notification Service (SNS) topic,
+          and pushed to an SQS queue respectively for triage.
         </p>
       </Section>
       <Section>
         <p>
           Implementing the newsletter was simple enough, and I did a lot of
           trial and error to get it right. Currently, I have the template
-          hard-coded into the lambda, but in the future, I'll look into saving
-          an SES template for (hopefully) easier formatting and design of the
-          emails.
+          hard-coded into the lambda, but I need to find a better way to store
+          and use the template. In addition, I need to figure out a way to
+          automatically process bounces and complaints.
         </p>
       </Section>
       <Section>
@@ -45,7 +46,14 @@ const AddingANewsletter: React.FunctionComponent = () => {
           >
             Click here
           </a>{" "}
-          for the source code for the send email lambda!
+          for the source code for the send email lambda, and{" "}
+          <a
+            href="https://github.com/hwilloug/hannah-blog/blob/main/terraform/modules/sqs_sns/main.tf"
+            target="_blank"
+          >
+            click here
+          </a>{" "}
+          for the infrastructure in terraform.
         </p>
       </Section>
       <Section>
@@ -61,7 +69,7 @@ const AddingANewsletter: React.FunctionComponent = () => {
           </li>
         </ul>
       </Section>
-    </ArticleContainer>
+    </ArticleContentContainer>
   );
 };
 

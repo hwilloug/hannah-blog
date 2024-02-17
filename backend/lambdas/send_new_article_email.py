@@ -81,7 +81,7 @@ def lambda_handler(event, context):
                         "Data": "🌸 New Article Alert 🌸"
                     }
                 },
-                Source="hannah@hannahshobbyroom.com",
+                Source="Hannah @ Hannah's Hobby Room <hannah@hannahshobbyroom.com>",
                 ReplyToAddresses=["support@hannahshobbyroom.com"]
             )
 
