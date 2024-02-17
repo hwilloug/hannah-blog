@@ -24,7 +24,7 @@ export const BrowseContainer = styled("div")(({ theme }) => ({
 
   display: "flex",
   flexDirection: "column",
-  alignItems: "center",
+  alignItems: "stretch",
 }));
 
 export const BodyContainer = styled("div")(({ theme }) => ({

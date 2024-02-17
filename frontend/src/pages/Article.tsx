@@ -135,7 +135,7 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
               return <p>404 not found??</p>;
             }
 
-            const article: Article = mapRespToArticle(resp.data);
+            const article: Article = mapRespToArticle(resp.data.article);
             return (
               <>
                 <ArticleContainerContainer>
