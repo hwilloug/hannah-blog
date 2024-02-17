@@ -2,7 +2,7 @@ import { styled, useMediaQuery } from "@mui/material";
 import { AxiosResponse } from "axios";
 import { Suspense } from "react";
 import { Await, useLoaderData } from "react-router-dom";
-import { Article, mapRespToArticle } from "..";
+import { Article, mapRespToArticles } from "..";
 import ArticleCard from "./ArticleCard";
 import Loading from "./Loading";
 import { SectionTitle } from "./StyledComponents";
@@ -47,9 +47,11 @@ const FeaturedContent: React.FunctionComponent = () => {
               return <p>404 not found??</p>;
             }
 
-            const featuredArticles: Article[] = resp.data
-              .map((a: any) => mapRespToArticle(a))
-              .filter((article: Article) => featured.includes(article.slug));
+            const articles = mapRespToArticles(resp.data);
+
+            const featuredArticles: Article[] = articles.filter(
+              (article: Article) => featured.includes(article.slug),
+            );
             return (
               <FeaturedArticleContainer>
                 {featuredArticles.map((article) => (

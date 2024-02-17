@@ -6,6 +6,7 @@ import { ReactElement, Suspense, useMemo, useState } from "react";
 import { Await, useLoaderData, useNavigate, useParams } from "react-router-dom";
 import { Article, mapRespToArticle } from "..";
 import Categories from "../components/Categories";
+import CommentsSection from "../components/CommentsSection";
 import Loading from "../components/Loading";
 import RelatedArticles from "../components/RelatedArticles";
 import {
@@ -135,7 +136,7 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
               return <p>404 not found??</p>;
             }
 
-            const article: Article = mapRespToArticle(resp.data.article);
+            const article: Article = mapRespToArticle(resp.data);
             return (
               <>
                 <ArticleContainerContainer>
@@ -168,6 +169,7 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
                     </SignatureContainer>
                   </ArticleContainer>
                 </ArticleContainerContainer>
+                <CommentsSection />
                 <RelatedArticles
                   category={article.category}
                   subcategory={article.subcategory[0]}

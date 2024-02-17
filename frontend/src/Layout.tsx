@@ -1,3 +1,4 @@
+import { Auth0Provider } from "@auth0/auth0-react";
 import {
   createTheme,
   styled,
@@ -57,20 +58,26 @@ const Layout: React.FunctionComponent = (): ReactElement => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <LayoutContainer>
-        <ScrollToTopOnNavigate />
-        <NavBar />
-        <ContentContainer>
-          <Outlet />
-          <Aside />
-        </ContentContainer>
-        <Footer
-          darkMode={darkMode}
-          handleDarkModeChange={handleDarkModeChange}
-        />
-      </LayoutContainer>
-    </ThemeProvider>
+    <Auth0Provider
+      domain={`${process.env.REACT_APP_AUTH0_DOMAIN}`}
+      clientId={`${process.env.REACT_APP_AUTH0_CLIENT_ID}`}
+      authorizationParams={{ redirect_uri: window.location.origin }}
+    >
+      <ThemeProvider theme={theme}>
+        <LayoutContainer>
+          <ScrollToTopOnNavigate />
+          <NavBar />
+          <ContentContainer>
+            <Outlet />
+            <Aside />
+          </ContentContainer>
+          <Footer
+            darkMode={darkMode}
+            handleDarkModeChange={handleDarkModeChange}
+          />
+        </LayoutContainer>
+      </ThemeProvider>
+    </Auth0Provider>
   );
 };
 

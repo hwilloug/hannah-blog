@@ -15,6 +15,14 @@ import CategoryBrowse from "./pages/CategoryBrowse";
 import HomePage from "./pages/Home";
 import reportWebVitals from "./reportWebVitals";
 
+export interface CommentsApiResponse {
+  id: string;
+  timestamp: string;
+  body: string;
+  user_id: string;
+  article_slug: string;
+}
+
 export interface ArticleApiResponse {
   slug: string;
   title: string;
@@ -25,6 +33,20 @@ export interface ArticleApiResponse {
   subcategory: string[];
   created_at: string;
   updated_at: string;
+  comments: CommentsApiResponse[];
+}
+
+export interface ApiResponse {
+  article: ArticleApiResponse;
+  comments: CommentsApiResponse[];
+}
+
+export interface Comment {
+  id: string;
+  timestamp: string;
+  body: string;
+  userId: string;
+  articleSlug: string;
 }
 
 export interface Article {
@@ -37,6 +59,7 @@ export interface Article {
   subcategory: string[];
   createdAt: string;
   updatedAt: string;
+  comments: Comment[];
 }
 
 const articlesLoader: LoaderFunction = ({ params, request }) => {
@@ -78,18 +101,32 @@ const articleLoader: LoaderFunction = ({ params }) => {
   });
 };
 
-export const mapRespToArticle = (resp: ArticleApiResponse) => {
+export const mapRespToArticle = (resp: ApiResponse) => {
   return {
-    title: resp.title,
-    slug: resp.slug,
-    subtitle: resp.subtitle,
-    img: resp.img,
-    imgAlt: resp.img_alt,
-    category: resp.category,
-    subcategory: resp.subcategory,
-    createdAt: resp.created_at,
-    updatedAt: resp.updated_at,
+    title: resp.article.title,
+    slug: resp.article.slug,
+    subtitle: resp.article.subtitle,
+    img: resp.article.img,
+    imgAlt: resp.article.img_alt,
+    category: resp.article.category,
+    subcategory: resp.article.subcategory,
+    createdAt: resp.article.created_at,
+    updatedAt: resp.article.updated_at,
+    comments: resp.comments.map(
+      (comment) =>
+        ({
+          id: comment.id,
+          timestamp: comment.timestamp,
+          body: comment.body,
+          userId: comment.user_id,
+          articleSlug: comment.article_slug,
+        }) as Comment,
+    ),
   } as Article;
+};
+
+export const mapRespToArticles = (resp: ArticleApiResponse[]) => {
+  return resp.map((r) => mapRespToArticle({ article: r, comments: [] }));
 };
 
 const router = createBrowserRouter([

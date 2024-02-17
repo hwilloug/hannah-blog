@@ -2,7 +2,7 @@ import { Pagination, styled, useTheme } from "@mui/material";
 import { AxiosResponse } from "axios";
 import { ReactElement, Suspense, useState } from "react";
 import { Await, useLoaderData } from "react-router-dom";
-import { Article, mapRespToArticle } from "..";
+import { Article, mapRespToArticles } from "..";
 import ArticleCard from "./ArticleCard";
 import Loading from "./Loading";
 
@@ -34,10 +34,7 @@ const Browse: React.FunctionComponent = (): ReactElement => {
           if (resp === undefined) {
             return <p>404 not found??</p>;
           }
-
-          const articles: Article[] = resp.data.map((a: any) =>
-            mapRespToArticle(a),
-          );
+          const articles: Article[] = mapRespToArticles(resp.data);
 
           const numPages = Math.ceil(articles.length / PAGE_SIZE);
 

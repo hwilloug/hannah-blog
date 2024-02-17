@@ -37,7 +37,7 @@ export const BodyContainer = styled("div")(({ theme }) => ({
 
 export const ContainerContainer = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
-  borderRadius: "20px 5px",
+  borderRadius: "5px",
   padding: "10px",
 }));
 

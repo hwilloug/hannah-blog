@@ -1,4 +1,9 @@
-import { mdiHelpCircleOutline } from "@mdi/js";
+import { useAuth0 } from "@auth0/auth0-react";
+import {
+  mdiHelpCircleOutline,
+  mdiLoginVariant,
+  mdiLogoutVariant,
+} from "@mdi/js";
 import { MoreVertOutlined } from "@mui/icons-material";
 import {
   Button,
@@ -71,6 +76,8 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
   const theme = useTheme();
   const sm = useMediaQuery(theme.breakpoints.down("sm"));
   const md = useMediaQuery(theme.breakpoints.up("md"));
+  const { loginWithRedirect, logout, user, isAuthenticated, isLoading } =
+    useAuth0();
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -95,6 +102,7 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
         </Button>
         <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
           <MenuItem onClick={handleClose} disableRipple>
+            <Navigation showText filled />
             <NavigationLink to="/about">
               {({ isActive }) => (
                 <NavigationItem isActive={isActive} isFilled>
@@ -102,7 +110,24 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
                 </NavigationItem>
               )}
             </NavigationLink>
-            <Navigation showText filled />
+            {!isAuthenticated && (
+              <NavigationItem
+                isFilled
+                isActive={false}
+                onClick={() => loginWithRedirect()}
+              >
+                <StyledIcon path={mdiLoginVariant} size={1} />
+              </NavigationItem>
+            )}
+            {isAuthenticated && (
+              <NavigationItem
+                isFilled
+                isActive={false}
+                onClick={() => logout()}
+              >
+                <StyledIcon path={mdiLogoutVariant} size={1} />
+              </NavigationItem>
+            )}
           </MenuItem>
         </Menu>
       </RightIconContainer>
@@ -120,13 +145,28 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
             <Title>Hannah's Hobby Room</Title>
           </HomeLink>
         </MediumContainerOne>
-        <NavigationLink to="/about">
-          {({ isActive }) => (
-            <NavigationItem isActive={isActive}>
-              <StyledIcon path={mdiHelpCircleOutline} size={1} />
+        <MediumContainerOne>
+          <NavigationLink to="/about">
+            {({ isActive }) => (
+              <NavigationItem isActive={isActive}>
+                <StyledIcon path={mdiHelpCircleOutline} size={1} />
+              </NavigationItem>
+            )}
+          </NavigationLink>
+          {!isAuthenticated && (
+            <NavigationItem
+              isActive={false}
+              onClick={() => loginWithRedirect()}
+            >
+              <StyledIcon path={mdiLoginVariant} size={1} />
             </NavigationItem>
           )}
-        </NavigationLink>
+          {isAuthenticated && (
+            <NavigationItem isActive={false} onClick={() => logout()}>
+              <StyledIcon path={mdiLogoutVariant} size={1} />
+            </NavigationItem>
+          )}
+        </MediumContainerOne>
       </MediumContainerOne>
       <MediumContainerTwo>
         <Navigation showText />
@@ -150,6 +190,16 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
           </NavigationItem>
         )}
       </NavigationLink>
+      {!isAuthenticated && (
+        <NavigationItem isActive={false} onClick={() => loginWithRedirect()}>
+          <StyledIcon path={mdiLoginVariant} size={1} />
+        </NavigationItem>
+      )}
+      {isAuthenticated && (
+        <NavigationItem isActive={false} onClick={() => logout()}>
+          <StyledIcon path={mdiLogoutVariant} size={1} />
+        </NavigationItem>
+      )}
     </>
   );
 
