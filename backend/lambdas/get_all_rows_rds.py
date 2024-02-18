@@ -23,23 +23,49 @@ def lambda_handler(event, context):
         query_params = {}
     category = query_params.get("category")
     subcategory = query_params.get("subcategory")
-
-    cursor = conn.cursor(cursor_factory=RealDictCursor)
+    slug = query_params.get("slug")
+    limit = query_params.get("limit", 5)
+    page = query_params.get("page", 1)
+    offset = (int(page) - 1) * int(limit)
 
     sql = f"SELECT * FROM {table_name}"
-    if category and subcategory:
-        sql = f"{sql} WHERE category = '{category}' AND '{subcategory}' = ANY(subcategory)"
-    elif category:
-        sql = f"{sql} WHERE category = '{category}'"
-    elif subcategory:
-        sql = f"{sql} WHERE '{subcategory}' = ANY(subcategory)"
-    cursor.execute(sql)
+    tup = ()
+    if category and subcategory and slug:
+        sql = sql + " WHERE category = %s AND %s = ANY(subcategory) AND slug = %s"
+        tup = (category, subcategory, slug)
+    elif category and subcategory and slug is None:
+        sql = sql + " WHERE category = %s AND %s = ANY(subcategory)"
+        tup = (category, subcategory)
+    elif category and subcategory is None and slug is None:
+        sql = sql + " WHERE category = %s"
+        tup = (category,)
+    elif category and subcategory is None and slug:
+        sql = sql + " WHERE category = %s AND slug = %s"
+        tup = (category, slug)
+    elif category is None and subcategory and slug:
+        sql = sql + " WHERE %s = ANY(subcategory) AND slug = %s"
+        tup = (subcategory, slug)
+    elif category is None and subcategory and slug is None:
+        sql = sql + " WHERE %s = ANY(subcategory)"
+        tup = (subcategory,)
+    elif category is None and subcategory is None and slug:
+        sql = sql + " WHERE slug = %s"
+        tup = (slug,)
 
-    results = cursor.fetchall()
+    sql = sql + " ORDER BY updated_at DESC LIMIT %s OFFSET %s"
+    tup = tup + (limit, offset)
+
+    with conn.cursor(cursor_factory=RealDictCursor) as cursor:
+        cursor.execute(sql, tup)
+        results = cursor.fetchall()
+
+    with conn.cursor(cursor_factory=RealDictCursor) as cursor:
+        cursor.execute("SELECT COUNT(*) FROM articles")
+        count = cursor.fetchone()
 
     return {
         "statusCode": 200,
-        "body": dumps(results, default=str),
+        "body": dumps({"articles": results, "count": count.get("count")}, default=str),
         'headers' : {
             'Access-Control-Allow-Origin' : '*'
         }

@@ -14,18 +14,15 @@ const StyledPagination = styled(Pagination)({
 
 interface BrowseProps {
   hidePagination?: boolean;
-  pageSize: number;
 }
 
 const Browse: React.FunctionComponent<BrowseProps> = ({
   hidePagination,
-  pageSize,
 }): ReactElement => {
   const data = useLoaderData() as {
     articles: Promise<AxiosResponse<any, any>>;
   };
   const [page, setPage] = useState<number>(1);
-  const PAGE_SIZE = pageSize;
 
   const handlePageChange = (e: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
@@ -43,7 +40,7 @@ const Browse: React.FunctionComponent<BrowseProps> = ({
           }
           const articles: Article[] = mapRespToArticles(resp.data);
 
-          const numPages = Math.ceil(articles.length / PAGE_SIZE);
+          const numPages = Math.ceil(resp.data.count / 5);
 
           const paginationPartial = (
             <StyledPagination
@@ -71,12 +68,6 @@ const Browse: React.FunctionComponent<BrowseProps> = ({
                     (new Date(b.updatedAt) as any) -
                     (new Date(a.updatedAt) as any),
                 )
-                .filter((a) => {
-                  return (
-                    articles.indexOf(a) <= page * PAGE_SIZE - 1 &&
-                    articles.indexOf(a) >= (page - 1) * PAGE_SIZE
-                  );
-                })
                 .map((article: Article) => (
                   <ArticleCard article={article} orientation="landscape" />
                 ))}

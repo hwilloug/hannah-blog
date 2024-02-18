@@ -1,10 +1,8 @@
 import { styled, useMediaQuery } from "@mui/material";
-import { AxiosResponse } from "axios";
-import { Suspense } from "react";
-import { Await, useLoaderData } from "react-router-dom";
+import axios from "axios";
+import { useMemo, useState } from "react";
 import { Article, mapRespToArticles } from "..";
 import ArticleCard from "./ArticleCard";
-import Loading from "./Loading";
 import { SectionTitle } from "./StyledComponents";
 
 const FeaturedContentContainer = styled("div")(({ theme }) => ({
@@ -23,9 +21,9 @@ const FeaturedArticleContainer = styled("div")(({ theme }) => ({
 }));
 
 const FeaturedContent: React.FunctionComponent = () => {
-  const data = useLoaderData() as {
-    articles: Promise<AxiosResponse<any, any>>;
-  };
+  const [featuredArticles, setFeaturedArticles] = useState<
+    (Article | undefined)[]
+  >([]);
 
   const featured = [
     "hannahs-hobby-room-refactor",
@@ -33,34 +31,32 @@ const FeaturedContent: React.FunctionComponent = () => {
     "thoughts-on-anne-of-green-gables",
   ];
 
+  useMemo(() => {
+    const getFeaturedArticle = async (slug: string) => {
+      try {
+        const resp = await axios.get(
+          `${process.env.REACT_APP_API_URL}/articles?slug=${slug}`,
+        );
+        console.log(mapRespToArticles(resp.data));
+        return mapRespToArticles(resp.data)[0];
+      } catch (e) {
+        console.log("error getting featured articles", e);
+      }
+    };
+    Promise.all(featured.map((f) => getFeaturedArticle(f))).then((articles) => {
+      setFeaturedArticles(articles);
+    });
+  }, []);
+
   return (
     <FeaturedContentContainer>
       <SectionTitle>Featured Articles:</SectionTitle>
-      <Suspense fallback={<Loading />}>
-        <Await
-          resolve={data.articles}
-          errorElement={<p>Error loading articles!</p>}
-        >
-          {(resp) => {
-            if (resp === undefined) {
-              return <p>404 not found??</p>;
-            }
-
-            const articles = mapRespToArticles(resp.data);
-
-            const featuredArticles: Article[] = articles.filter(
-              (article: Article) => featured.includes(article.slug),
-            );
-            return (
-              <FeaturedArticleContainer>
-                {featuredArticles.map((article) => (
-                  <ArticleCard article={article} orientation="portrait" />
-                ))}
-              </FeaturedArticleContainer>
-            );
-          }}
-        </Await>
-      </Suspense>
+      <FeaturedArticleContainer>
+        {featuredArticles.map(
+          (article) =>
+            article && <ArticleCard article={article} orientation="portrait" />,
+        )}
+      </FeaturedArticleContainer>
     </FeaturedContentContainer>
   );
 };

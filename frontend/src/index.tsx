@@ -36,6 +36,11 @@ export interface ArticleApiResponse {
   comments: CommentsApiResponse[];
 }
 
+export interface ArticlesApiResponse {
+  articles: ArticleApiResponse[];
+  count: number;
+}
+
 export interface ApiResponse {
   article: ArticleApiResponse;
   comments: CommentsApiResponse[];
@@ -68,15 +73,24 @@ const articlesLoader: LoaderFunction = ({ params, request }) => {
       params.category.split("").splice(1).join("")
     : undefined;
 
-  const subcategory = new URL(request.url).searchParams.get("subcategory");
+  const searchParams = new URL(request.url).searchParams;
+  const subcategory = searchParams.get("subcategory");
+  const page = searchParams.get("page");
 
   let url = `${process.env.REACT_APP_API_URL}/articles`;
-  if (category && subcategory) {
-    url += `?category=${category}&subcategory=${subcategory}`;
-  } else if (category) {
-    url += `?category=${category}`;
-  } else if (subcategory) {
-    url += `?subcategory=${subcategory}`;
+  let query: string[] = [];
+  if (category) {
+    query.push(`category=${category}`);
+  }
+  if (subcategory) {
+    query.push(`subcategory=${subcategory}`);
+  }
+  if (page) {
+    query.push(`page=${page}`);
+  }
+
+  if (query.length) {
+    url += "?" + query.join("&");
   }
 
   return defer({
@@ -125,8 +139,10 @@ export const mapRespToArticle = (resp: ApiResponse) => {
   } as Article;
 };
 
-export const mapRespToArticles = (resp: ArticleApiResponse[]) => {
-  return resp.map((r) => mapRespToArticle({ article: r, comments: [] }));
+export const mapRespToArticles = (resp: ArticlesApiResponse) => {
+  return resp.articles.map((r) =>
+    mapRespToArticle({ article: r, comments: [] }),
+  );
 };
 
 const router = createBrowserRouter([

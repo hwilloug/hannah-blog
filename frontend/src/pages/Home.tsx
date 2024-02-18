@@ -139,7 +139,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
       </ContainerContainer>
       <LatestArticlesContainer>
         <SectionTitle>Latest Articles:</SectionTitle>
-        <Browse hidePagination pageSize={5} />
+        <Browse hidePagination />
         <StyledButton
           onClick={() => navigate("/articles")}
           sx={{ textAlign: "center" }}
