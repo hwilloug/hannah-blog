@@ -24,7 +24,7 @@ const CategoryBrowse: React.FunctionComponent = (): ReactElement => {
     <BodyContainer>
       <BrowseContainer>
         <SectionTitle>{category || subcategory} Articles:</SectionTitle>
-        <Browse />
+        <Browse pageSize={10} />
       </BrowseContainer>
     </BodyContainer>
   );

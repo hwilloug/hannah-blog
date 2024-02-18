@@ -1,7 +1,7 @@
-import { Pagination, styled, useTheme } from "@mui/material";
+import { Pagination, PaginationItem, styled } from "@mui/material";
 import { AxiosResponse } from "axios";
 import { ReactElement, Suspense, useState } from "react";
-import { Await, useLoaderData } from "react-router-dom";
+import { Await, Link, useLoaderData } from "react-router-dom";
 import { Article, mapRespToArticles } from "..";
 import ArticleCard from "./ArticleCard";
 import Loading from "./Loading";
@@ -12,13 +12,20 @@ const StyledPagination = styled(Pagination)({
   borderRadius: "5px",
 });
 
-const Browse: React.FunctionComponent = (): ReactElement => {
-  const theme = useTheme();
+interface BrowseProps {
+  hidePagination?: boolean;
+  pageSize: number;
+}
+
+const Browse: React.FunctionComponent<BrowseProps> = ({
+  hidePagination,
+  pageSize,
+}): ReactElement => {
   const data = useLoaderData() as {
     articles: Promise<AxiosResponse<any, any>>;
   };
   const [page, setPage] = useState<number>(1);
-  const PAGE_SIZE = 5;
+  const PAGE_SIZE = pageSize;
 
   const handlePageChange = (e: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
@@ -38,15 +45,26 @@ const Browse: React.FunctionComponent = (): ReactElement => {
 
           const numPages = Math.ceil(articles.length / PAGE_SIZE);
 
+          const paginationPartial = (
+            <StyledPagination
+              count={numPages}
+              page={page}
+              onChange={handlePageChange}
+              color="secondary"
+              shape="rounded"
+              renderItem={(item) => (
+                <PaginationItem
+                  component={Link}
+                  to={`${window.location.origin + window.location.pathname}?page=${item.page}`}
+                  {...item}
+                />
+              )}
+            />
+          );
+
           return articles.length ? (
             <>
-              <StyledPagination
-                count={numPages}
-                page={page}
-                onChange={handlePageChange}
-                color="secondary"
-                shape="rounded"
-              />
+              {!hidePagination && paginationPartial}
               {articles
                 .sort(
                   (a: Article, b: Article) =>
@@ -62,13 +80,7 @@ const Browse: React.FunctionComponent = (): ReactElement => {
                 .map((article: Article) => (
                   <ArticleCard article={article} orientation="landscape" />
                 ))}
-              <StyledPagination
-                count={numPages}
-                page={page}
-                onChange={handlePageChange}
-                color="secondary"
-                shape="rounded"
-              />
+              {!hidePagination && paginationPartial}
             </>
           ) : (
             <p>No articles Found</p>

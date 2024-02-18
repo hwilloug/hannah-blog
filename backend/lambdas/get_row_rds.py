@@ -21,12 +21,10 @@ def lambda_handler(event, context):
     path_params = event.get("pathParameters", {})
     slug = path_params.get('slug')
 
-    cursor = conn.cursor(cursor_factory=RealDictCursor)
-
-    sql = "SELECT * FROM articles WHERE SLUG = %s"
-    cursor.execute(sql, (slug,))
-
-    results = cursor.fetchall()
+    with conn.cursor(cursor_factory=RealDictCursor) as cursor:
+        sql = "SELECT * FROM articles WHERE slug = %s"
+        cursor.execute(sql, (slug,))
+        results = cursor.fetchall()
     
     if len(results) == 0:
         return {
@@ -36,10 +34,20 @@ def lambda_handler(event, context):
                 'Access-Control-Allow-Origin' : '*'
             }
         }
+    
+    with conn.cursor(cursor_factory=RealDictCursor) as cursor:
+        sql = "SELECT * FROM comments WHERE article_slug = %s"
+        cursor.execute(sql, (slug,))
+        comments = cursor.fetchall()
+
+    result = {
+        "article": results[0],
+        "comments": comments
+    }
 
     return {
         "statusCode": 200,
-        "body": dumps(results[0], default=str),
+        "body": dumps(result, default=str),
         'headers' : {
             'Access-Control-Allow-Origin' : '*'
         }

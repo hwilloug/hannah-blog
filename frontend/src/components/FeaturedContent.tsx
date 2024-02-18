@@ -20,7 +20,6 @@ const FeaturedArticleContainer = styled("div")(({ theme }) => ({
   flexDirection: "row",
   justifyContent: "space-evenly",
   flexWrap: "wrap",
-  padding: "10px",
 }));
 
 const FeaturedContent: React.FunctionComponent = () => {

@@ -1,5 +1,6 @@
 import { styled } from "@mui/material";
 import { ReactElement } from "react";
+import { useNavigate } from "react-router-dom";
 import Browse from "../components/Browse";
 import FeaturedContent from "../components/FeaturedContent";
 import Navigation from "../components/Navigation";
@@ -7,6 +8,7 @@ import {
   BodyContainer,
   ContainerContainer,
   SectionTitle,
+  StyledButton,
   StyledP,
 } from "../components/StyledComponents";
 import WordColorAlternator from "../components/WordColorAlternator";
@@ -33,7 +35,7 @@ const LatestArticlesContainer = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
   borderRadius: "5px",
   marginTop: "50px",
-  padding: "20px",
+  padding: "10px",
 }));
 
 const WelcomeP = styled(StyledP)({
@@ -55,6 +57,8 @@ const Signature = styled("img")({
 });
 
 const HomePage: React.FunctionComponent = (): ReactElement => {
+  const navigate = useNavigate();
+
   const wordColors = [
     "salmon",
     "#D0F0C0",
@@ -135,7 +139,13 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
       </ContainerContainer>
       <LatestArticlesContainer>
         <SectionTitle>Latest Articles:</SectionTitle>
-        <Browse />
+        <Browse hidePagination pageSize={5} />
+        <StyledButton
+          onClick={() => navigate("/articles")}
+          sx={{ textAlign: "center" }}
+        >
+          View All Articles
+        </StyledButton>
       </LatestArticlesContainer>
     </BodyContainer>
   );
