@@ -42,7 +42,7 @@ const AddingANewsletter: React.FunctionComponent = () => {
       <Section>
         <p>
           <a
-            href="https://github.com/hwilloug/hannah-blog/blob/main/backend/lambdas/send_new_article_email.py"
+            href="https://github.com/hwilloug/hannah-blog/blob/main/backend/lambdas/send_new_article_email/send_new_article_email.py"
             target="_blank"
           >
             Click here
