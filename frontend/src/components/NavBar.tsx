@@ -13,7 +13,7 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { ReactElement, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Navigation from "./Navigation";
 import { NavigationItem, NavigationLink, StyledIcon } from "./StyledComponents";
@@ -55,6 +55,7 @@ const RightIconContainer = styled("div")({
   flexDirection: "row",
   gap: "20px",
   margin: "0 20px",
+  alignItems: "center",
 });
 
 const Title = styled("h1")({
@@ -72,12 +73,19 @@ const HomeLink = styled(Link)({
   textDecoration: "none",
 });
 
+const Username = styled("span")({
+  marginTop: "15px",
+  color: "white",
+});
+
 const NavBar: React.FunctionComponent = (): ReactElement => {
   const theme = useTheme();
   const sm = useMediaQuery(theme.breakpoints.down("sm"));
-  const md = useMediaQuery(theme.breakpoints.up("md"));
-  const { loginWithRedirect, logout, user, isAuthenticated, isLoading } =
+  const lg = useMediaQuery(theme.breakpoints.up("lg"));
+  const { loginWithRedirect, logout, user, isAuthenticated, getIdTokenClaims } =
     useAuth0();
+
+  const [username, setUsername] = useState("");
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -87,6 +95,18 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  useEffect(() => {
+    const getUsername = async () => {
+      if (isAuthenticated && user) {
+        const claims = await getIdTokenClaims();
+        if (claims) {
+          setUsername(claims["hannahshobbyroom.com/username"]);
+        }
+      }
+    };
+    getUsername();
+  }, [isAuthenticated, user]);
 
   const smallPartial = (
     <SmallContainer>
@@ -120,13 +140,16 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
               </NavigationItem>
             )}
             {isAuthenticated && (
-              <NavigationItem
-                isFilled
-                isActive={false}
-                onClick={() => logout()}
-              >
-                <StyledIcon path={mdiLogoutVariant} size={1} />
-              </NavigationItem>
+              <>
+                <Username>{username}</Username>
+                <NavigationItem
+                  isFilled
+                  isActive={false}
+                  onClick={() => logout()}
+                >
+                  <StyledIcon path={mdiLogoutVariant} size={1} />
+                </NavigationItem>
+              </>
             )}
           </MenuItem>
         </Menu>
@@ -162,9 +185,12 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
             </NavigationItem>
           )}
           {isAuthenticated && (
-            <NavigationItem isActive={false} onClick={() => logout()}>
-              <StyledIcon path={mdiLogoutVariant} size={1} />
-            </NavigationItem>
+            <>
+              <Username>{username}</Username>
+              <NavigationItem isActive={false} onClick={() => logout()}>
+                <StyledIcon path={mdiLogoutVariant} size={1} />
+              </NavigationItem>
+            </>
           )}
         </MediumContainerOne>
       </MediumContainerOne>
@@ -196,16 +222,19 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
         </NavigationItem>
       )}
       {isAuthenticated && (
-        <NavigationItem isActive={false} onClick={() => logout()}>
-          <StyledIcon path={mdiLogoutVariant} size={1} />
-        </NavigationItem>
+        <>
+          <Username>{username}</Username>
+          <NavigationItem isActive={false} onClick={() => logout()}>
+            <StyledIcon path={mdiLogoutVariant} size={1} />
+          </NavigationItem>
+        </>
       )}
     </>
   );
 
   return (
     <NavBarContainer>
-      {sm ? smallPartial : md ? largePartial : defaultPartial}
+      {sm ? smallPartial : lg ? largePartial : defaultPartial}
     </NavBarContainer>
   );
 };

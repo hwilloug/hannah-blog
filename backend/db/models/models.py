@@ -35,5 +35,5 @@ class Comments(Base):
     id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4())
     timestamp: Mapped[datetime.datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
     body: Mapped[str]
-    user_id: Mapped[str]
+    username: Mapped[str]
     article_slug: Mapped["Article"] = mapped_column(ForeignKey("articles.slug"))

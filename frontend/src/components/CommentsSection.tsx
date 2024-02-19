@@ -1,7 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { styled, TextareaAutosize } from "@mui/material";
 import axios, { AxiosResponse } from "axios";
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Await, useLoaderData } from "react-router-dom";
 import { mapRespToArticle } from "..";
 import Loading from "./Loading";
@@ -33,9 +33,23 @@ const TextArea = styled(TextareaAutosize)(({ theme }) => ({
 
 const CommentsSection: React.FunctionComponent = () => {
   const data = useLoaderData() as { article: Promise<AxiosResponse<any, any>> };
-  const { isAuthenticated, loginWithPopup, user } = useAuth0();
+  const { isAuthenticated, loginWithPopup, user, getIdTokenClaims } =
+    useAuth0();
 
   const [commentBody, setCommentBody] = useState("");
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    const getUsername = async () => {
+      if (isAuthenticated && user) {
+        const claims = await getIdTokenClaims();
+        if (claims) {
+          setUsername(claims["hannahshobbyroom.com/username"]);
+        }
+      }
+    };
+    getUsername();
+  }, [isAuthenticated, user]);
 
   const loginPartial = (
     <>
@@ -68,7 +82,7 @@ const CommentsSection: React.FunctionComponent = () => {
                       `${process.env.REACT_APP_API_URL}/comments`,
                       {
                         article_slug: slug,
-                        user_id: user?.sub,
+                        username: username,
                         comment_body: commentBody,
                       },
                     );
@@ -98,7 +112,7 @@ const CommentsSection: React.FunctionComponent = () => {
                   <>
                     {article.comments.map((comment) => (
                       <CommentContainer>
-                        <h4>User Id: {comment.userId}</h4>
+                        <h4>User Id: {comment.username}</h4>
                         <h5>{new Date(comment.timestamp).toLocaleString()}</h5>
                         <hr />
                         <p>{comment.body}</p>

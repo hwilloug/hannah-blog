@@ -19,7 +19,7 @@ export interface CommentsApiResponse {
   id: string;
   timestamp: string;
   body: string;
-  user_id: string;
+  username: string;
   article_slug: string;
 }
 
@@ -50,7 +50,7 @@ export interface Comment {
   id: string;
   timestamp: string;
   body: string;
-  userId: string;
+  username: string;
   articleSlug: string;
 }
 
@@ -132,7 +132,7 @@ export const mapRespToArticle = (resp: ApiResponse) => {
           id: comment.id,
           timestamp: comment.timestamp,
           body: comment.body,
-          userId: comment.user_id,
+          username: comment.username,
           articleSlug: comment.article_slug,
         }) as Comment,
     ),

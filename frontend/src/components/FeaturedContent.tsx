@@ -37,7 +37,6 @@ const FeaturedContent: React.FunctionComponent = () => {
         const resp = await axios.get(
           `${process.env.REACT_APP_API_URL}/articles?slug=${slug}`,
         );
-        console.log(mapRespToArticles(resp.data));
         return mapRespToArticles(resp.data)[0];
       } catch (e) {
         console.log("error getting featured articles", e);
