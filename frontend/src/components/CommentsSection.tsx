@@ -3,7 +3,7 @@ import { styled, TextareaAutosize } from "@mui/material";
 import axios, { AxiosResponse } from "axios";
 import { Suspense, useEffect, useState } from "react";
 import { Await, useLoaderData } from "react-router-dom";
-import { mapRespToArticle } from "..";
+import { Comment, mapRespToArticle } from "..";
 import Loading from "./Loading";
 import { ContainerContainer, StyledButton } from "./StyledComponents";
 
@@ -38,6 +38,7 @@ const CommentsSection: React.FunctionComponent = () => {
 
   const [commentBody, setCommentBody] = useState("");
   const [username, setUsername] = useState("");
+  const [newComment, setNewComment] = useState<Comment>();
 
   useEffect(() => {
     const getUsername = async () => {
@@ -86,6 +87,13 @@ const CommentsSection: React.FunctionComponent = () => {
                         comment_body: commentBody,
                       },
                     );
+                    setNewComment({
+                      id: "new_comment",
+                      timestamp: new Date().toString(),
+                      body: commentBody,
+                      username: username,
+                      articleSlug: article.slug,
+                    });
                     setCommentBody("");
                   } catch (e) {
                     console.log("error posting comment", e);
@@ -112,12 +120,22 @@ const CommentsSection: React.FunctionComponent = () => {
                   <>
                     {article.comments.map((comment) => (
                       <CommentContainer>
-                        <h4>User Id: {comment.username}</h4>
+                        <h4>{comment.username}</h4>
                         <h5>{new Date(comment.timestamp).toLocaleString()}</h5>
                         <hr />
                         <p>{comment.body}</p>
                       </CommentContainer>
                     ))}
+                    {newComment && (
+                      <CommentContainer>
+                        <h4>{newComment.username}</h4>
+                        <h5>
+                          {new Date(newComment.timestamp).toLocaleString()}
+                        </h5>
+                        <hr />
+                        <p>{newComment.body}</p>
+                      </CommentContainer>
+                    )}
                     {isAuthenticated ? makeCommentPartial : loginPartial}
                   </>
                 );

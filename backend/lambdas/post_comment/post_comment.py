@@ -6,7 +6,7 @@ from sys import exit
 from json import dumps, loads
 from uuid import uuid4
 
-username = environ.get("POSTGRES_USERNAME")
+pg_username = environ.get("POSTGRES_USERNAME")
 password = environ.get("POSTGRES_PASSWORD")
 host = environ.get("POSTGRES_HOST")
 port = environ.get("POSTGRES_PORT")
@@ -14,7 +14,7 @@ db_name = environ.get("POSTGRES_DB_NAME")
 
 def lambda_handler(event, context):
     try:
-        conn = connect(host=host, database=db_name, user=username, password=password, port=port)
+        conn = connect(host=host, database=db_name, user=pg_username, password=password, port=port)
     except DatabaseError as e:
         print("Could not connect to db", e)
         exit(1)
@@ -22,7 +22,7 @@ def lambda_handler(event, context):
     body = loads(event.get("body", {}))
     comment = body.get("comment_body")
     article_slug = body.get("article_slug")
-    user_id = body.get("user_id")
+    username = body.get("username")
     comment_id = uuid4()
     register_uuid()
 
@@ -42,10 +42,10 @@ def lambda_handler(event, context):
               'Access-Control-Allow-Origin' : '*'
           }
       }
-    if user_id is None: 
+    if username is None: 
       return {
           "statusCode": 400,
-          "body": "'user_id' required in body",
+          "body": "'username' required in body",
           'headers' : {
               'Access-Control-Allow-Origin' : '*'
           }
@@ -53,9 +53,9 @@ def lambda_handler(event, context):
 
     cursor = conn.cursor(cursor_factory=RealDictCursor)
 
-    sql = "INSERT INTO comments (id, body, user_id, article_slug) VALUES (%s, %s, %s, %s)"
+    sql = "INSERT INTO comments (id, body, username, article_slug) VALUES (%s, %s, %s, %s)"
     try:
-      cursor.execute(sql, (comment_id, comment, user_id, article_slug))
+      cursor.execute(sql, (comment_id, comment, username, article_slug))
       conn.commit()
     except IntegrityError as e:
         print("Error inserting comment", e)

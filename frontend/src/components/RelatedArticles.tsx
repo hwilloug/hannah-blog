@@ -37,7 +37,7 @@ const RelatedArticles: React.FunctionComponent<RelatedArticlesProps> = ({
           `${process.env.REACT_APP_API_URL}/articles?subcategory=${subcategory}`,
         );
         setRelatedArticles(
-          response.data.filter((d: Article) => d.slug !== slug),
+          response.data.articles.filter((d: Article) => d.slug !== slug),
         );
       } catch (e) {
         console.log("couldnt load related articles:", e);
