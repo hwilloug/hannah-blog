@@ -53,7 +53,13 @@ const FeaturedContent: React.FunctionComponent = () => {
       <FeaturedArticleContainer>
         {featuredArticles.map(
           (article) =>
-            article && <ArticleCard article={article} orientation="portrait" />,
+            article && (
+              <ArticleCard
+                key={article.slug}
+                article={article}
+                orientation="portrait"
+              />
+            ),
         )}
       </FeaturedArticleContainer>
     </FeaturedContentContainer>

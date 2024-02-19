@@ -108,10 +108,9 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
               latest reads, and explore the magic of storytelling.
             </WelcomeP>
             <WelcomeP>
-              🎌 <CategoryB>Languages:</CategoryB> Embark on a linguistic
-              adventure with me as I navigate the intricacies of learning
-              Japanese. Share in the challenges and triumphs of mastering a new
-              language.
+              🕰️ <CategoryB>Antiquing:</CategoryB> Step into the enthralling
+              world of antiquing with me as your guide. Together, we'll explore
+              the hidden treasures and timeless wonders of the past.
             </WelcomeP>
             <WelcomeP>
               I hope you find inspiration, joy, and perhaps a few new hobbies to

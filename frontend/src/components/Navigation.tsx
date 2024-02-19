@@ -4,7 +4,7 @@ import {
   mdiCodeBlockTags,
   mdiContentCut,
   mdiFlower,
-  mdiSyllabaryHiragana,
+  mdiLamp,
 } from "@mdi/js";
 import { styled, useTheme } from "@mui/material";
 import { ReactElement } from "react";
@@ -62,9 +62,9 @@ const Navigation: React.FunctionComponent<NavigationProps> = ({
       icon: mdiBookOpenVariant,
     },
     {
-      name: "Languages",
-      path: "/languages",
-      icon: mdiSyllabaryHiragana,
+      name: "Antiquing",
+      path: "/antiquing",
+      icon: mdiLamp,
     },
   ];
 

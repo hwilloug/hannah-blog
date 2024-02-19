@@ -158,8 +158,8 @@ const Footer: React.FunctionComponent<FooterProps> = ({
             <Link to="/books">
               <li>Books</li>
             </Link>
-            <Link to="/languages">
-              <li>Languages</li>
+            <Link to="/antiquing">
+              <li>Antiquing</li>
             </Link>
           </ul>
         </SitemapContainer>
