@@ -2,6 +2,21 @@ resource "aws_ses_email_identity" "identity" {
   email = "hannah@hannahshobbyroom.com"
 }
 
+data "archive_file" "jinja2_zip" {
+  type             = "zip"
+  source_dir       = "${path.module}/../backend/lambdas/layers/jinja2"
+  output_path      = "${path.module}/../backend/lambdas/lambda_deployment_packages/jinja2.zip"
+  output_file_mode = "0666"
+}
+
+resource "aws_lambda_layer_version" "jinja2_layer" {
+  layer_name = "jinja2"
+  s3_bucket  = aws_s3_bucket.lambda_layers_bucket.bucket
+  s3_key     = "jinja2.zip"
+
+  compatible_runtimes = ["python3.9"]
+}
+
 module "send_email_lambda" {
   source = "./modules/lambda"
 
@@ -14,7 +29,7 @@ module "send_email_lambda" {
   database_password = module.articles_rds_cluster.password
   database_name     = module.articles_rds_cluster.database_name
 
-  lambda_layer_arns = [aws_lambda_layer_version.psycopg2_layer.arn]
+  lambda_layer_arns = [aws_lambda_layer_version.psycopg2_layer.arn, aws_lambda_layer_version.jinja2_layer.arn]
 }
 
 resource "aws_iam_policy" "lambda_email_iam_policy" {

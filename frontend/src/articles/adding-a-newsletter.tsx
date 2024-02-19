@@ -32,10 +32,11 @@ const AddingANewsletter: React.FunctionComponent = () => {
       <Section>
         <p>
           Implementing the newsletter was simple enough, and I did a lot of
-          trial and error to get it right. Currently, I have the template
-          hard-coded into the lambda, but I need to find a better way to store
-          and use the template. In addition, I need to figure out a way to
-          automatically process bounces and complaints.
+          trial and error to get it right. I initally hard-coded the template
+          into the lambda function, but I just refactored to read from an HTML
+          file instead. This will allow easier development. Finally, I still
+          need to figure out a way to automatically process bounces and
+          complaints.
         </p>
       </Section>
       <Section>

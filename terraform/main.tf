@@ -22,7 +22,7 @@ resource "aws_s3_bucket" "lambda_layers_bucket" {
 
 data "archive_file" "psycopg2_zip" {
   type             = "zip"
-  source_dir       = "${path.module}/../backend/lambdas/layers"
+  source_dir       = "${path.module}/../backend/lambdas/layers/psycopg2"
   output_path      = "${path.module}/../backend/lambdas/lambda_deployment_packages/psycopg2.zip"
   output_file_mode = "0666"
 }
