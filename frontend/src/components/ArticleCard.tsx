@@ -12,14 +12,14 @@ const ArticleContainer = styled("div")(({ theme }) => ({
   borderRadius: "25px 5px",
 
   padding: "10px",
-  margin: "15px 0",
+  margin: "10px",
 
   backgroundColor:
     theme.palette.mode === "dark" ? theme.palette.primary.dark : "white",
   color: theme.palette.mode === "dark" ? "white" : "black",
   ":hover": {
     border: `5px solid ${theme.palette.secondary.main}`,
-    margin: "11px -4px",
+    margin: "6px",
   },
 }));
 
