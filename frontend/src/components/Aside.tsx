@@ -126,8 +126,6 @@ const Aside: React.FunctionComponent = (): ReactElement => {
     </a>,
     "Finishing up drip irrigation",
     "Finishing up garden arbor & fence",
-    "React styling & colors overhaul",
-    "Adding comments sections",
   ];
 
   const welcomePartial = (

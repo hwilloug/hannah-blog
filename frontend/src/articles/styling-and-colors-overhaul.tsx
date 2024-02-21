@@ -54,7 +54,15 @@ const Layout: React.FunctionComponent = (): ReactElement => {
   return (
     <ArticleContentContainer>
       <Section>
-        <p>I've redone the colors and styling for the site!</p>
+        <p>
+          I've redone the colors and styling for the site! I realized that green
+          is more my favorite color than purple, so I decided to make the
+          switch. I added little hearts to the background, and now I feel like
+          the blog is even more "me."
+        </p>
+      </Section>
+      <Section>
+        <SectionHeader>Code Refactor</SectionHeader>
         <p>
           Initially I was using emotion/styled for each styled component,
           however I was using Material UI's (MUI) themeing. This caused some
@@ -74,8 +82,8 @@ const Layout: React.FunctionComponent = (): ReactElement => {
         </SyntaxHighlighter>
         <p>
           You can probably imagine how big a difference this refactor makes on a
-          larger scale. Now, the code is much more maintainable and easier to
-          add new features!
+          larger scale. Now, the code is much more maintainable, and it's easier
+          to add new features!
         </p>
       </Section>
       <Section>
