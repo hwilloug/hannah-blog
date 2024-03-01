@@ -1,6 +1,7 @@
 import SyntaxHighlighter from "react-syntax-highlighter";
 import {
   ArticleContentContainer,
+  FullSizeImage,
   Section,
   SectionHeader,
 } from "../components/StyledComponents";
@@ -60,6 +61,14 @@ const Layout: React.FunctionComponent = (): ReactElement => {
           switch. I added little hearts to the background, and now I feel like
           the blog is even more "me."
         </p>
+        <p>Before:</p>
+        <FullSizeImage
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/poppylandblog.jpeg`}
+        />
+        <p>After:</p>
+        <FullSizeImage
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/colors-overhaul.jpeg`}
+        />
       </Section>
       <Section>
         <SectionHeader>Code Refactor</SectionHeader>
