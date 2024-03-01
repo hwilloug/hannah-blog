@@ -227,12 +227,12 @@ const Aside: React.FunctionComponent = (): ReactElement => {
             <StyledButton>Hannah's Book Club</StyledButton>
           </a>
           <p>
-            February's book:{" "}
+            March's book:{" "}
             <a
-              href="https://www.goodreads.com/book/show/126918788-the-women"
+              href="https://www.goodreads.com/en/book/show/164154"
               target="_blank"
             >
-              <i>The Women</i> by Kristin Hannah
+              <i>A Canticle for Leibowitz</i> by Walter M. Miller Jr.
             </a>
           </p>
         </AsideText>
