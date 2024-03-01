@@ -121,7 +121,6 @@ const Aside: React.FunctionComponent = (): ReactElement => {
     "Finishing up drip irrigation",
     "Finishing up garden arbor & fence",
     "Scrapbooking",
-    "Antiquing in Mississippi",
     "House Tour",
   ];
 
