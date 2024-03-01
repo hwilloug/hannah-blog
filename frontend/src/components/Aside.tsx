@@ -17,8 +17,8 @@ import {
 } from "./StyledComponents";
 
 const AsideContainer = styled("div")(({ theme }) => ({
-  maxWidth: useMediaQuery(theme.breakpoints.up("md")) ? "17rem" : "100%",
-  minWidth: useMediaQuery(theme.breakpoints.up("md")) ? "17rem" : "100%",
+  maxWidth: useMediaQuery(theme.breakpoints.up("md")) ? "20rem" : "100%",
+  minWidth: useMediaQuery(theme.breakpoints.up("md")) ? "20rem" : "100%",
   margin: useMediaQuery(theme.breakpoints.up("md"))
     ? "50px 100px 0 0"
     : "50px 0",
@@ -34,7 +34,7 @@ const AsideItemContainerContainer = styled("div")(({ theme }) => ({
   borderRadius: "20px 5px",
   padding: "10px",
   marginBottom: "20px",
-  maxWidth: "17rem",
+  maxWidth: "20rem",
   height: "100%",
 }));
 
@@ -118,14 +118,11 @@ const Aside: React.FunctionComponent = (): ReactElement => {
     >
       <i>A Canticle for Leibowitz</i> by Walter M. Miller Jr.
     </a>,
-    <a
-      href="https://www.goodreads.com/book/show/126918788-the-women"
-      target="_blank"
-    >
-      <i>The Women</i> by Kristin Hannah
-    </a>,
     "Finishing up drip irrigation",
     "Finishing up garden arbor & fence",
+    "Scrapbooking",
+    "Antiquing in Mississippi",
+    "House Tour",
   ];
 
   const welcomePartial = (

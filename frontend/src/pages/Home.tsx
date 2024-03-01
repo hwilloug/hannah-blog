@@ -17,6 +17,7 @@ const WelcomeContainer = styled("div")(({ theme }) => ({
   border: "1px solid black",
   borderRadius: "5px",
   padding: "20px 0",
+  maxWidth: "55rem",
 
   display: "flex",
   flexDirection: "column",

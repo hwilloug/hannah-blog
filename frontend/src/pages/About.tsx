@@ -1,5 +1,5 @@
 import { mdiGithub, mdiGoodreads, mdiLinkedin, mdiWeb } from "@mdi/js";
-import { styled, useMediaQuery, useTheme } from "@mui/material";
+import { styled, useMediaQuery } from "@mui/material";
 import { ReactElement } from "react";
 import {
   BodyContainer,
@@ -53,9 +53,6 @@ const LinkItemLink = styled(UnstyledLink)({
 });
 
 const About: React.FunctionComponent = (): ReactElement => {
-  const theme = useTheme();
-  const sm = useMediaQuery(theme.breakpoints.down("sm"));
-
   const links = [
     {
       name: "GitHub",
@@ -96,7 +93,7 @@ const About: React.FunctionComponent = (): ReactElement => {
           <p>Find me on:</p>
           <LinksContainer>
             {links.map((link) => (
-              <LinkItem>
+              <LinkItem key={link.name}>
                 <LinkItemLink to={link.link}>
                   <StyledIcon path={link.icon} size={1} />
                   <p>{link.name}</p>

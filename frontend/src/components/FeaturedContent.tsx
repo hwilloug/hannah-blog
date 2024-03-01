@@ -8,7 +8,7 @@ import { SectionTitle } from "./StyledComponents";
 const FeaturedContentContainer = styled("div")(({ theme }) => ({
   margin: "20px 0",
   padding: "10px",
-  maxWidth: useMediaQuery(theme.breakpoints.down("xs")) ? "90vw" : "100%",
+  maxWidth: useMediaQuery(theme.breakpoints.down("xs")) ? "90vw" : "55rem",
 
   backgroundColor: theme.palette.primary.main,
   borderRadius: "5px",
@@ -27,9 +27,9 @@ const FeaturedContent: React.FunctionComponent = () => {
   >([]);
 
   const featured = [
-    "hannahs-hobby-room-refactor",
-    "home-is-where-the-cake-is",
-    "thoughts-on-anne-of-green-gables",
+    "new-antiques-category-and-my-collections",
+    "adding-a-newsletter",
+    "squirrel-sampler",
   ];
 
   useMemo(() => {
