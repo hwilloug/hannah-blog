@@ -13,7 +13,7 @@ const Scrapbooking: React.FunctionComponent = () => {
           back into printing photos for my photo albums. Scrapbooking was always
           something I have wanted to do, so instead of buying a new photo album
           when I ran out of space for my new photos, I decided to start
-          scrapbooking instead!
+          scrapbooking!
         </p>
       </Section>
       <Section>

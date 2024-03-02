@@ -23,4 +23,4 @@ echo "$res"
 aws rds-data execute-statement --resource-arn $DATABASE_ARN --database $DATABASE_NAME --secret-arn $SECRET_ARN --sql "$res"
 
 # Send SES email about new article
-aws lambda invoke --function-name newsletter_send_new_article_email --payload "$(echo -n "{ 'slug': '$slug' }" | base64)" test.json
+aws lambda invoke --function-name newsletter_send_new_article_email --payload "$(echo -n '{ "slug": "'$slug'" }' | base64)" test.json
