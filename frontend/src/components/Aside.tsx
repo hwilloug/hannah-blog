@@ -119,9 +119,10 @@ const Aside: React.FunctionComponent = (): ReactElement => {
       <i>A Canticle for Leibowitz</i> by Walter M. Miller Jr.
     </a>,
     "Finishing up drip irrigation",
+    "Spring/Summer 2024 Garden",
     "Finishing up garden arbor & fence",
-    "Scrapbooking",
     "House Tour",
+    "Cross Stitch Sampler",
   ];
 
   const welcomePartial = (

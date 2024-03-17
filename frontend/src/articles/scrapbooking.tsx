@@ -19,16 +19,19 @@ const Scrapbooking: React.FunctionComponent = () => {
       <Section>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/poppy_scrapbooking.jpeg`}
+          alt="my cat poppy on the scrapbooking stuff"
         />
         <p>Poppy helping me scrapbook</p>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/scrapbooks_1.jpeg`}
+          alt="scrapbooking about cats"
         />
         <p>
           There are pages and pages of cat photos. They truly are my babies ❤️🌸
         </p>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/scrapbooks.jpeg`}
+          alt="full scrapbooks"
         />
         <p>
           And of course I can't help myself but to go overboard. My two binders

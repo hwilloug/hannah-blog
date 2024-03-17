@@ -25,6 +25,7 @@ const Refactor: React.FunctionComponent = (): ReactElement => {
         <SectionHeader>Architecture</SectionHeader>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/architecture_diagram.jpeg`}
+          alt="AWS architecture diagram. S3 React App with Lambda API"
         />
         <p>
           The architecture for the site is simple and serverless. The frontend

@@ -11,6 +11,7 @@ const Curtains: React.FunctionComponent = (): ReactElement => {
       <Section>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/lemon_curd.gif`}
+          alt="whisking the lemon curd"
         />
         <ul>
           <li>Meringue: Use those egg whites</li>

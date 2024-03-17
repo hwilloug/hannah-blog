@@ -91,6 +91,9 @@ const SOTGMarch2024: React.FunctionComponent = () => {
           I really love it. I'm hoping it will spread over the entire path.
         </p>
       </Section>
+      <Section>
+        <p>Any questions? Post in the comments below!</p>
+      </Section>
     </ArticleContentContainer>
   );
 };

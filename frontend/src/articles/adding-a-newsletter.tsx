@@ -18,6 +18,7 @@ const AddingANewsletter: React.FunctionComponent = () => {
         <SectionHeader>Technical Details</SectionHeader>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/architecture_diagram_2.jpeg`}
+          alt="AWS Architecture Diagram"
         />
         <p>
           I decided to stick with AWS for the newsletter infrastructure. I added

@@ -64,10 +64,12 @@ const Layout: React.FunctionComponent = (): ReactElement => {
         <p>Before:</p>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/poppylandblog.jpeg`}
+          alt="hannah's hobby room original design"
         />
         <p>After:</p>
         <FullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/colors-overhaul.jpeg`}
+          alt="redone hannah's hobby room"
         />
       </Section>
       <Section>

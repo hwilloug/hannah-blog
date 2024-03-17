@@ -73,6 +73,7 @@ const CommentsSection: React.FunctionComponent = () => {
           Below is the updated architecture diagram for the site:
           <FullSizeImage
             src={`${process.env.REACT_APP_IMAGES_BASE_URL}/architecture_diagram_3.jpeg`}
+            alt="AWS Architecture diagram with email newsletter"
           />
         </p>
       </Section>
