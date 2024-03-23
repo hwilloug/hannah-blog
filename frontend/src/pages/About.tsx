@@ -87,8 +87,8 @@ const About: React.FunctionComponent = (): ReactElement => {
             SC with my boyfriend, Danny, and our four cats. As my day job, I am
             a software engineer, but I like to keep myself busy outside of work
             by keeping up with a multitude of hobbies, which include cooking,
-            gardening, needle arts, coding, reading, woodworking, and learning
-            Japanese.
+            gardening, needle arts, coding, reading, woodworking, antiquing, and
+            learning langages.
           </p>
           <p>Find me on:</p>
           <LinksContainer>
