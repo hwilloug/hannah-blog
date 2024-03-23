@@ -121,8 +121,8 @@ const Aside: React.FunctionComponent = (): ReactElement => {
     "Finishing up drip irrigation",
     "Spring/Summer 2024 Garden",
     "Finishing up garden arbor & fence",
-    "House Tour",
-    "Cross Stitch Sampler",
+    "Cross stitch Sampler frame",
+    "Coffee cross stitch",
   ];
 
   const welcomePartial = (
