@@ -84,9 +84,9 @@ const About: React.FunctionComponent = (): ReactElement => {
           <p>
             Hello world, and welcome to my blog! I'm Hannah, and this is where I
             write about the stuff I do for fun. Currently, I live in Fort Mill,
-            SC with my boyfriend, Danny, and our four cats. As my day job, I am
-            a software engineer, but I like to keep myself busy outside of work
-            by keeping up with a multitude of hobbies, which include cooking,
+            SC with my partner, Danny, and our four cats. As my day job, I am a
+            software engineer, but I like to keep myself busy outside of work by
+            keeping up with a multitude of hobbies, which include cooking,
             gardening, needle arts, coding, reading, woodworking, antiquing, and
             learning langages.
           </p>

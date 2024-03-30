@@ -131,7 +131,7 @@ const HouseTour2024: React.FunctionComponent = () => {
       </Section>
       <Section>
         <p>
-          So what'd you think? I tried to make my house as cosy as possible.
+          So what'd you think? I tried to make my house as cozy as possible.
           Comment below!{" "}
         </p>
       </Section>

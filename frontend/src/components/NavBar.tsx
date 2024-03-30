@@ -1,6 +1,12 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import {
+  mdiBookOpenVariant,
+  mdiChefHat,
+  mdiCodeBlockTags,
+  mdiContentCut,
+  mdiFlower,
   mdiHelpCircleOutline,
+  mdiLamp,
   mdiLoginVariant,
   mdiLogoutVariant,
 } from "@mdi/js";
@@ -17,6 +23,39 @@ import { ReactElement, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Navigation from "./Navigation";
 import { NavigationItem, NavigationLink, StyledIcon } from "./StyledComponents";
+
+export const NAV_ITEMS = [
+  {
+    name: "Food",
+    path: "/food",
+    icon: mdiChefHat,
+  },
+  {
+    name: "Gardening",
+    path: "/gardening",
+    icon: mdiFlower,
+  },
+  {
+    name: "Crafts",
+    path: "/crafts",
+    icon: mdiContentCut,
+  },
+  {
+    name: "Coding",
+    path: "/coding",
+    icon: mdiCodeBlockTags,
+  },
+  {
+    name: "Books",
+    path: "/books",
+    icon: mdiBookOpenVariant,
+  },
+  {
+    name: "Antiquing",
+    path: "/antiquing",
+    icon: mdiLamp,
+  },
+];
 
 const NavBarContainer = styled("div")(({ theme }) => ({
   display: "flex",
@@ -73,7 +112,13 @@ const HomeLink = styled(Link)({
   textDecoration: "none",
 });
 
-const Username = styled("span")({
+const UsernameBlack = styled("span")({
+  marginTop: "15px",
+  color: "black",
+  marginLeft: "10px",
+});
+
+const UsernameWhite = styled(UsernameBlack)({
   marginTop: "15px",
   color: "white",
 });
@@ -121,37 +166,43 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
           <MoreVertOutlined />
         </Button>
         <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+          {NAV_ITEMS.map((item) => (
+            <MenuItem key={item.name} onClick={handleClose} disableRipple>
+              <NavigationLink to={item.path}>
+                <StyledIcon path={item.icon} size={1} sx={{ mr: 1 }} />
+                <span>{item.name}</span>
+              </NavigationLink>
+            </MenuItem>
+          ))}
           <MenuItem onClick={handleClose} disableRipple>
-            <Navigation showText filled />
             <NavigationLink to="/about">
-              {({ isActive }) => (
-                <NavigationItem isActive={isActive} isFilled>
-                  <StyledIcon path={mdiHelpCircleOutline} size={1} />
-                </NavigationItem>
-              )}
+              <StyledIcon path={mdiHelpCircleOutline} size={1} sx={{ mr: 1 }} />
+              <span>About</span>
             </NavigationLink>
-            {!isAuthenticated && (
+          </MenuItem>
+          {!isAuthenticated && (
+            <MenuItem onClick={handleClose} disableRipple>
               <NavigationItem
-                isFilled
                 isActive={false}
+                isFilled
                 onClick={() => loginWithRedirect()}
               >
                 <StyledIcon path={mdiLoginVariant} size={1} />
               </NavigationItem>
-            )}
-            {isAuthenticated && (
-              <>
-                <Username>{username}</Username>
-                <NavigationItem
-                  isFilled
-                  isActive={false}
-                  onClick={() => logout()}
-                >
-                  <StyledIcon path={mdiLogoutVariant} size={1} />
-                </NavigationItem>
-              </>
-            )}
-          </MenuItem>
+            </MenuItem>
+          )}
+          {isAuthenticated && (
+            <MenuItem onClick={handleClose} disableRipple>
+              <UsernameBlack>{username}</UsernameBlack>
+              <NavigationItem
+                isFilled
+                isActive={false}
+                onClick={() => logout()}
+              >
+                <StyledIcon path={mdiLogoutVariant} size={1} />
+              </NavigationItem>
+            </MenuItem>
+          )}
         </Menu>
       </RightIconContainer>
     </SmallContainer>
@@ -186,7 +237,7 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
           )}
           {isAuthenticated && (
             <>
-              <Username>{username}</Username>
+              <UsernameWhite>{username}</UsernameWhite>
               <NavigationItem isActive={false} onClick={() => logout()}>
                 <StyledIcon path={mdiLogoutVariant} size={1} />
               </NavigationItem>
@@ -223,7 +274,7 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
       )}
       {isAuthenticated && (
         <>
-          <Username>{username}</Username>
+          <UsernameWhite>{username}</UsernameWhite>
           <NavigationItem isActive={false} onClick={() => logout()}>
             <StyledIcon path={mdiLogoutVariant} size={1} />
           </NavigationItem>
