@@ -7,11 +7,13 @@ import {
   LoaderFunction,
   RouterProvider,
 } from "react-router-dom";
+import PoppysPlayground from "./games/PoppysPlayground";
 import "./index.css";
 import Layout from "./Layout";
 import About from "./pages/About";
 import ArticlePage from "./pages/Article";
 import CategoryBrowse from "./pages/CategoryBrowse";
+import Games from "./pages/Games";
 import HomePage from "./pages/Home";
 import reportWebVitals from "./reportWebVitals";
 
@@ -173,6 +175,14 @@ const router = createBrowserRouter([
         path: ":category",
         element: <CategoryBrowse />,
         loader: articlesLoader,
+      },
+      {
+        path: "games/",
+        element: <Games />,
+      },
+      {
+        path: "games/poppys-playground",
+        element: <PoppysPlayground />,
       },
     ],
   },
