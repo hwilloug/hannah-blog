@@ -7,7 +7,7 @@ import {
   LoaderFunction,
   RouterProvider,
 } from "react-router-dom";
-import PoppysPlayground from "./games/PoppysPlayground";
+import Pong from "./games/Pong";
 import "./index.css";
 import Layout from "./Layout";
 import About from "./pages/About";
@@ -181,8 +181,8 @@ const router = createBrowserRouter([
         element: <Games />,
       },
       {
-        path: "games/poppys-playground",
-        element: <PoppysPlayground />,
+        path: "games/pong",
+        element: <Pong />,
       },
     ],
   },

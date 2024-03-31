@@ -16,7 +16,7 @@ const Games: React.FC = () => {
         <h2>Games</h2>
         <ul>
           <li>
-            <Link to="/games/poppys-playground">Poppy's Playground</Link>
+            <Link to="/games/pong">Pong</Link>
           </li>
         </ul>
       </GamesContainer>

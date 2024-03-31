@@ -8,7 +8,7 @@ const GameContainer = styled("div")(({ theme }) => ({
   padding: "20px",
 }));
 
-const PoppysPlayground: React.FC = () => {
+const Pong: React.FC = () => {
   window.addEventListener(
     "keydown",
     function (e) {
@@ -33,4 +33,4 @@ const PoppysPlayground: React.FC = () => {
   );
 };
 
-export default PoppysPlayground;
+export default Pong;
