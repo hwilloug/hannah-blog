@@ -35,7 +35,7 @@ def lambda_handler(event, context):
 
     if (article_result is None):
         return {
-            "statusCode": 400,
+            "statusCode": 404,
             "body": f"Could not find article with slug: {slug}"
         }
 
