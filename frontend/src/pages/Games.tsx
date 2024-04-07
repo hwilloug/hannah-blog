@@ -18,6 +18,9 @@ const Games: React.FC = () => {
           <li>
             <Link to="/games/pong">Pong</Link>
           </li>
+          <li>
+            <Link to="/games/poppys-playground">Poppy's Playground</Link>
+          </li>
         </ul>
       </GamesContainer>
     </ContainerContainer>

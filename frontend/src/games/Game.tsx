@@ -1,5 +1,6 @@
 import { styled } from "@mui/material";
 import { ContainerContainer } from "../components/StyledComponents";
+import { useParams } from "react-router-dom";
 
 const GameContainer = styled("div")(({ theme }) => ({
   backgroundColor:
@@ -8,7 +9,7 @@ const GameContainer = styled("div")(({ theme }) => ({
   padding: "20px",
 }));
 
-const Pong: React.FC = () => {
+const Game: React.FC = () => {
   window.addEventListener(
     "keydown",
     function (e) {
@@ -23,14 +24,16 @@ const Pong: React.FC = () => {
     false,
   );
 
+  const params = useParams()
+
   return (
     <ContainerContainer>
       <GameContainer>
-        <h2>Pong</h2>
-        <iframe src="http://localhost:8000" height={400} width={500} />
+        <h2>{params.game}</h2>
+        <iframe src={`http://localhost:8000/${params.game}`} height={400} width={500} />
       </GameContainer>
     </ContainerContainer>
   );
 };
 
-export default Pong;
+export default Game;

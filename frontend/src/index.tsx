@@ -7,7 +7,7 @@ import {
   LoaderFunction,
   RouterProvider,
 } from "react-router-dom";
-import Pong from "./games/Pong";
+import Game from "./games/Game";
 import "./index.css";
 import Layout from "./Layout";
 import About from "./pages/About";
@@ -181,8 +181,8 @@ const router = createBrowserRouter([
         element: <Games />,
       },
       {
-        path: "games/pong",
-        element: <Pong />,
+        path: "games/:game",
+        element: <Game />,
       },
     ],
   },
