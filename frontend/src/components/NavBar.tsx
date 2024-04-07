@@ -167,19 +167,19 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
         </Button>
         <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
           {NAV_ITEMS.map((item) => (
-            <MenuItem key={item.name} onClick={handleClose} disableRipple>
-              <NavigationLink to={item.path}>
+            <NavigationLink to={item.path}>
+              <MenuItem key={item.name} onClick={handleClose} disableRipple>
                 <StyledIcon path={item.icon} size={1} sx={{ mr: 1 }} />
                 <span>{item.name}</span>
-              </NavigationLink>
-            </MenuItem>
+              </MenuItem>
+            </NavigationLink>
           ))}
-          <MenuItem onClick={handleClose} disableRipple>
-            <NavigationLink to="/about">
+          <NavigationLink to="/about">
+            <MenuItem onClick={handleClose} disableRipple>
               <StyledIcon path={mdiHelpCircleOutline} size={1} sx={{ mr: 1 }} />
               <span>About</span>
-            </NavigationLink>
-          </MenuItem>
+            </MenuItem>
+          </NavigationLink>
           {!isAuthenticated && (
             <MenuItem onClick={handleClose} disableRipple>
               <NavigationItem
