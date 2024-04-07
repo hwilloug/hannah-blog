@@ -217,6 +217,18 @@ const LikingArticles: React.FC = () => {
   return (
     <ArticleContentContainer>
       <Section>
+        <SectionHeader>Liking Articles</SectionHeader>
+        <p>
+          You can now like my articles! Just click the thumbs up below the
+          article information or at the bottom of the article to give the it a
+          like 😉 You don't need to be logged in or anything, it just saves that
+          you liked the article as a cookie.
+        </p>
+        <FullSizeImage
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/like_button.gif`}
+        />
+      </Section>
+      <Section>
         <SectionHeader>Technical Considerations</SectionHeader>
         <p>
           Here are some things I either needed to figure out a good solution for
@@ -378,8 +390,8 @@ const LikingArticles: React.FC = () => {
         <p>
           All I did for the UI was use a package called{" "}
           <Code>react-cookie</Code> that updates the cookie that stores the
-          likes. This fires off a POST request to the new api endpoint that
-          increases or decreases the likes on a article.
+          likes. This is wired up to a hook that fires off a POST request to the
+          new api endpoint that increases or decreases the likes on a article.
         </p>
         <SyntaxHighlighter language="typescript">
           {reactCode1}
