@@ -99,6 +99,8 @@ export const SectionHeader = styled("h2")({
   marginBottom: "20px",
 });
 
+export const SubsectionHeader = styled("h3")({});
+
 export const RecipeContainer = styled("div")({
   backgroundColor: "rgb(244, 244, 244)",
   padding: "20px",
@@ -168,4 +170,10 @@ export const ProgressBar = styled(LinearProgress)(({ theme }) => ({
     borderRadius: 5,
     backgroundColor: theme.palette.secondary.main,
   },
+}));
+
+export const Code = styled("code")(({ theme }) => ({
+  backgroundColor:
+    theme.palette.mode === "dark" ? theme.palette.primary.light : "lightgrey",
+  padding: "5px",
 }));

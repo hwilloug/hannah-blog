@@ -18,6 +18,7 @@ class Article(Base):
     img_alt: Mapped[str]
     category: Mapped[str]
     subcategory: Mapped[list[str]] = mapped_column(ARRAY(String))
+    likes: Mapped[int] = mapped_column(server_default="0")
     created_at: Mapped[datetime.datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
     updated_at:  Mapped[datetime.datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
     comments: Mapped[list["Comments"]] = relationship()
