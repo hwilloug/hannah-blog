@@ -1,8 +1,10 @@
 import { mdiArrowLeftThick } from "@mdi/js";
 import Icon from "@mdi/react";
+import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import { styled, useMediaQuery, useTheme } from "@mui/material";
-import { AxiosResponse } from "axios";
+import axios, { AxiosResponse } from "axios";
 import { ReactElement, Suspense, useMemo, useState } from "react";
+import { useCookies } from "react-cookie";
 import { Await, useLoaderData, useNavigate, useParams } from "react-router-dom";
 import { Article, mapRespToArticle } from "..";
 import Categories from "../components/Categories";
@@ -84,6 +86,62 @@ const Signature = styled("p")({
   color: "grey",
 });
 
+const LikesContainer = styled("div")({
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  gap: "5px",
+  margin: "10px",
+});
+
+interface LikesProps {
+  slug: string;
+  likes: number;
+}
+
+const Likes: React.FC<LikesProps> = ({ slug, likes }) => {
+  const cookieName = "hannahshobbyroom-likes";
+  const [cookies, setCookie] = useCookies([cookieName]);
+  const theme = useTheme();
+
+  const [liked, setLiked] = useState(false);
+  const [numLikes, setNumLikes] = useState(likes);
+
+  useMemo(() => {
+    if (cookies[cookieName] && cookies[cookieName][slug]) {
+      setLiked(true);
+    }
+  }, [cookies]);
+
+  const toggleLike = () => {
+    const newValue = !liked;
+    try {
+      axios.post(`${process.env.REACT_APP_API_URL}/articles/${slug}/like`, {
+        decrease: !newValue,
+      });
+      if (newValue) {
+        setCookie(cookieName, { ...cookies[cookieName], [slug]: true });
+        setNumLikes(numLikes + 1);
+      } else {
+        let newCookies = { ...cookies[cookieName] };
+        delete newCookies[slug];
+        setCookie(cookieName, newCookies);
+        setNumLikes(numLikes - 1);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+
+    setLiked(newValue);
+  };
+
+  return (
+    <LikesContainer onClick={toggleLike}>
+      <ThumbUpAltIcon color={liked ? "secondary" : "primary"} /> {numLikes}
+    </LikesContainer>
+  );
+};
+
 const ArticlePage: React.FunctionComponent = (): ReactElement => {
   let { articleSlug } = useParams();
   const navigate = useNavigate();
@@ -154,6 +212,7 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
                       category={article.category || ""}
                       subcategories={article.subcategory || []}
                     />
+                    <Likes slug={article.slug} likes={article.likes} />
                     <Divider />
                     {loadedArticle}
                     <SignatureContainer>
@@ -166,6 +225,7 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
                           Updated: {new Date(article.updatedAt).toDateString()}
                         </Signature>
                       )}
+                      <Likes slug={article.slug} likes={article.likes} />
                     </SignatureContainer>
                   </ArticleContainer>
                 </ArticleContainerContainer>

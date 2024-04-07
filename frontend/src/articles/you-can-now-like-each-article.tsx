@@ -154,6 +154,65 @@ resource "aws_lambda_permission" "like_article_lambda_permission" {
 }
 `;
 
+const reactCode1 = `const LikesContainer = styled("div")({
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  gap: "5px",
+  margin: "10px"
+})
+
+interface LikesProps {
+  slug: string
+  likes: number
+}
+
+const Likes: React.FC<LikesProps> = ({ slug, likes }) => {
+  const cookieName = 'hannahshobbyroom-likes'
+  const [cookies, setCookie] = useCookies([cookieName])
+  const theme = useTheme()
+
+  const [liked, setLiked] = useState(false)
+  const [numLikes, setNumLikes] = useState(likes)
+
+  useMemo(() => {
+    if (cookies[cookieName] && cookies[cookieName][slug]) {
+      setLiked(true)
+    }
+  }, [cookies])
+
+  const toggleLike = () => {
+    const newValue = !liked
+    try {
+      axios.post(
+        \`\${process.env.REACT_APP_API_URL}/articles/\${slug}/like\`,
+        {
+          "decrease": !newValue
+        }
+      )
+      if (newValue) {
+        setCookie(cookieName, {...cookies[cookieName], [slug]: true})
+        setNumLikes(numLikes + 1)
+      } else {
+        let newCookies = {...cookies[cookieName]}
+        delete newCookies[slug]
+        setCookie(cookieName, newCookies)
+        setNumLikes(numLikes - 1)
+      }
+    } catch (e) {
+      console.log(e)
+    }
+    
+    setLiked(newValue)
+  }
+
+  return (
+    <LikesContainer onClick={toggleLike}>
+      <ThumbUpAltIcon color={liked ? "secondary" : "primary" } /> {numLikes}
+    </LikesContainer>
+  )
+}`;
+
 const LikingArticles: React.FC = () => {
   return (
     <ArticleContentContainer>
@@ -316,7 +375,15 @@ const LikingArticles: React.FC = () => {
       </Section>
       <Section>
         <SubsectionHeader>UI</SubsectionHeader>
-        <p></p>
+        <p>
+          All I did for the UI was use a package called{" "}
+          <Code>react-cookie</Code> that updates the cookie that stores the
+          likes. This fires off a POST request to the new api endpoint that
+          increases or decreases the likes on a article.
+        </p>
+        <SyntaxHighlighter language="typescript">
+          {reactCode1}
+        </SyntaxHighlighter>
       </Section>
     </ArticleContentContainer>
   );

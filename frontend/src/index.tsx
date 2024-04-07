@@ -33,6 +33,7 @@ export interface ArticleApiResponse {
   img_alt: string;
   category: string;
   subcategory: string[];
+  likes: string;
   created_at: string;
   updated_at: string;
   comments: CommentsApiResponse[];
@@ -64,6 +65,7 @@ export interface Article {
   imgAlt: string;
   category: string;
   subcategory: string[];
+  likes: number;
   createdAt: string;
   updatedAt: string;
   comments: Comment[];
@@ -126,6 +128,7 @@ export const mapRespToArticle = (resp: ApiResponse) => {
     imgAlt: resp.article.img_alt,
     category: resp.article.category,
     subcategory: resp.article.subcategory,
+    likes: parseInt(resp.article.likes),
     createdAt: resp.article.created_at,
     updatedAt: resp.article.updated_at,
     comments: resp.comments.map(

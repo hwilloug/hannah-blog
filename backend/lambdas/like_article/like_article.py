@@ -12,7 +12,7 @@ db_name = environ.get("POSTGRES_DB_NAME")
 
 def lambda_handler(event, context):
     
-    body = event.get("body", {})
+    body = loads(event.get("body", {}))
     path_parmas = event.get("pathParameters", {})
     slug = path_parmas.get("slug")
     decrease = body.get("decrease", False)
