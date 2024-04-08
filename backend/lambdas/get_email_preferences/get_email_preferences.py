@@ -24,7 +24,7 @@ def lambda_handler(event, context):
     if email is None: 
         return {
             "statusCode": 400,
-            "body": "'email' required in query",
+            "body": "'email' required in path",
             'headers' : {
                 'Access-Control-Allow-Origin' : '*'
             }
