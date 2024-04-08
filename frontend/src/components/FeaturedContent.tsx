@@ -27,9 +27,9 @@ const FeaturedContent: React.FunctionComponent = () => {
   >([]);
 
   const featured = [
-    "new-antiques-category-and-my-collections",
-    "adding-a-newsletter",
-    "squirrel-sampler",
+    "house-tour-2024",
+    "you-can-now-like-each-article",
+    "a-spring-sampler",
   ];
 
   useMemo(() => {
