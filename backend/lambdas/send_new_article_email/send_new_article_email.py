@@ -23,9 +23,9 @@ def lambda_handler(event, context):
     table_name = environ.get("TABLE_NAME")
 
     with conn.cursor(cursor_factory=RealDictCursor) as cursor:
-        sql = f"SELECT email FROM {table_name}"
+        sql = f"SELECT * FROM {table_name}"
         cursor.execute(sql)
-        emails = cursor.fetchall()
+        newsletter_results = cursor.fetchall()
 
     with conn.cursor(cursor_factory=RealDictCursor) as cursor:
         slug = event.get("slug")
@@ -40,7 +40,10 @@ def lambda_handler(event, context):
         }
 
     message_ids: list[str] = []
-    for email in emails:
+    for result in newsletter_results:
+        if result.get(article_result.get("category").lower()) is False:
+            continue
+
         try:
             with open("new_article.html") as HTMLFile:
                 email_html = Template(HTMLFile.read()).render(
@@ -49,12 +52,12 @@ def lambda_handler(event, context):
                     title = article_result.get("title"),
                     subtitle = article_result.get("subtitle"),
                     slug = slug,
-                    email = email.get("email")
+                    email = result.get("email")
                 )
 
             response = client.send_email(
                 Destination={
-                    "ToAddresses": [email.get("email")]
+                    "ToAddresses": [result.get("email")]
                 },
                 Message={
                     "Body": {
@@ -74,7 +77,7 @@ def lambda_handler(event, context):
 
             message_ids.append(response.get("MessageId"))
         except Exception as e:
-            print(f"Could not send email to {email.get('email')}: {e}")
+            print(f"Could not send email to {result.get('email')}: {e}")
         
     return {
         "statusCode": 200,

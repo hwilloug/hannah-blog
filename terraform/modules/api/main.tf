@@ -116,7 +116,7 @@ resource "aws_apigatewayv2_api" "api" {
   description   = "API for table: ${var.table_name}"
   
   cors_configuration {
-    allow_methods = [ "GET", "POST", "OPTIONS", "HEAD"]
+    allow_methods = [ "GET", "POST", "PUT", "OPTIONS", "HEAD"]
     allow_origins = [ "http://localhost:3000", "https://hannahshobbyroom.com"]
     allow_headers = [ "Content-Type", "Origin"]
   }
@@ -183,6 +183,26 @@ resource "aws_apigatewayv2_integration" "post_comment_lambda_integration" {
   passthrough_behavior = "WHEN_NO_MATCH"
 }
 
+resource "aws_apigatewayv2_integration" "get_email_preferences_lambda_integration" {
+  api_id           = aws_apigatewayv2_api.api.id
+  integration_type = "AWS_PROXY"
+
+  connection_type      = "INTERNET"
+  integration_method   = "POST"
+  integration_uri      = module.get_email_preferences_lambda.invoke_arn
+  passthrough_behavior = "WHEN_NO_MATCH"
+}
+
+resource "aws_apigatewayv2_integration" "update_email_preferences_lambda_integration" {
+  api_id           = aws_apigatewayv2_api.api.id
+  integration_type = "AWS_PROXY"
+
+  connection_type      = "INTERNET"
+  integration_method   = "POST"
+  integration_uri      = module.update_email_preferences_lambda.invoke_arn
+  passthrough_behavior = "WHEN_NO_MATCH"
+}
+
 resource "aws_apigatewayv2_route" "get_all_route" {
   api_id    = aws_apigatewayv2_api.api.id
   route_key = "GET /articles"
@@ -223,6 +243,20 @@ resource "aws_apigatewayv2_route" "like_article_route" {
   route_key = "POST /articles/{slug}/like"
 
   target = "integrations/${aws_apigatewayv2_integration.like_article_lambda_integration.id}"
+}
+
+resource "aws_apigatewayv2_route" "get_email_preferences_route" {
+  api_id    = aws_apigatewayv2_api.api.id
+  route_key = "GET /newsletter/{email}/preferences"
+
+  target = "integrations/${aws_apigatewayv2_integration.get_email_preferences_lambda_integration.id}"
+}
+
+resource "aws_apigatewayv2_route" "update_email_preferences_route" {
+  api_id    = aws_apigatewayv2_api.api.id
+  route_key = "PUT /newsletter/{email}/preferences"
+
+  target = "integrations/${aws_apigatewayv2_integration.update_email_preferences_lambda_integration.id}"
 }
 
 resource "aws_cloudwatch_log_group" "api_log_group" {
@@ -291,6 +325,24 @@ resource "aws_lambda_permission" "post_comment_lambda_permission" {
   statement_id  = "AllowAPIGatewayInvoke"
   action        = "lambda:InvokeFunction"
   function_name = module.post_comment_lambda.function_name
+  principal     = "apigateway.amazonaws.com"
+
+  source_arn = "${aws_apigatewayv2_api.api.execution_arn}/*"
+}
+
+resource "aws_lambda_permission" "get_email_preferences_lambda_permission" {
+  statement_id  = "AllowAPIGatewayInvoke"
+  action        = "lambda:InvokeFunction"
+  function_name = module.get_email_preferences_lambda.function_name
+  principal     = "apigateway.amazonaws.com"
+
+  source_arn = "${aws_apigatewayv2_api.api.execution_arn}/*"
+}
+
+resource "aws_lambda_permission" "update_email_preferences_lambda_permission" {
+  statement_id  = "AllowAPIGatewayInvoke"
+  action        = "lambda:InvokeFunction"
+  function_name = module.update_email_preferences_lambda.function_name
   principal     = "apigateway.amazonaws.com"
 
   source_arn = "${aws_apigatewayv2_api.api.execution_arn}/*"

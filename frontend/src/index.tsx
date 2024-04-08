@@ -15,6 +15,7 @@ import ArticlePage from "./pages/Article";
 import CategoryBrowse from "./pages/CategoryBrowse";
 import Games from "./pages/Games";
 import HomePage from "./pages/Home";
+import Preferences from "./pages/Preferences";
 import reportWebVitals from "./reportWebVitals";
 
 export interface CommentsApiResponse {
@@ -188,6 +189,10 @@ const router = createBrowserRouter([
         element: <Game />,
       },
     ],
+  },
+  {
+    path: "/preferences",
+    element: <Preferences />,
   },
 ]);
 
