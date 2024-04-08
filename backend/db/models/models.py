@@ -28,6 +28,12 @@ class Newsletter(Base):
     __tablename__ = "newsletter"
 
     email: Mapped[str] = mapped_column(primary_key=True)
+    food: Mapped[bool] = mapped_column(server_default=str(True))
+    gardening: Mapped[bool] = mapped_column(server_default=str(True))
+    crafts: Mapped[bool] = mapped_column(server_default=str(True))
+    coding: Mapped[bool] = mapped_column(server_default=str(True))
+    books: Mapped[bool] = mapped_column(server_default=str(True))
+    antiquing: Mapped[bool] = mapped_column(server_default=str(True))
 
 
 class Comments(Base):
