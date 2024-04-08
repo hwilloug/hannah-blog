@@ -82,6 +82,34 @@ module "post_comment_lambda" {
   lambda_layer_arns = var.lambda_layer_arns
 }
 
+module "get_email_preferences_lambda" {
+  source = "../lambda"
+
+  database_host     = var.database_host
+  database_port     = var.database_port
+  database_username = var.database_username
+  database_password = var.database_password
+  database_name     = var.database_name
+  function_name     = "get_email_preferences"
+  table_name        = "newsletter"
+
+  lambda_layer_arns = var.lambda_layer_arns
+}
+
+module "update_email_preferences_lambda" {
+  source = "../lambda"
+
+  database_host     = var.database_host
+  database_port     = var.database_port
+  database_username = var.database_username
+  database_password = var.database_password
+  database_name     = var.database_name
+  function_name     = "update_email_preferences"
+  table_name        = "newsletter"
+
+  lambda_layer_arns = var.lambda_layer_arns
+}
+
 resource "aws_apigatewayv2_api" "api" {
   name          = "${var.table_name}API"
   protocol_type = "HTTP"
