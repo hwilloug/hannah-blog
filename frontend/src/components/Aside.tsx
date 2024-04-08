@@ -1,14 +1,6 @@
-import {
-  Button,
-  Grid,
-  Input,
-  Snackbar,
-  styled,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
-import axios from "axios";
-import { ReactElement, useEffect, useState } from "react";
+import { Grid, styled, useMediaQuery, useTheme } from "@mui/material";
+import { ReactElement } from "react";
+import EmailSignup from "./EmailSignup";
 import {
   BorderedFullSizeImage,
   ProgressBar,
@@ -240,41 +232,6 @@ const Aside: React.FunctionComponent = (): ReactElement => {
     </AsideItemContainerContainer>
   );
 
-  const [email, setEmail] = useState<string>("");
-  const [emailValid, setEmailValid] = useState(false);
-  const [successSnackbarOpen, setSuccessSnackbarOpen] = useState(false);
-  const [failureSnackbarOpen, setFailureSnackbarOpen] = useState(false);
-
-  useEffect(() => {
-    if (email?.includes("@") && email?.includes(".")) {
-      setEmailValid(true);
-    } else {
-      setEmailValid(false);
-    }
-  }, [email]);
-
-  const handleEmailSignup = async () => {
-    try {
-      const resp = await axios.post(
-        `${process.env.REACT_APP_API_URL}/newsletter`,
-        { email },
-      );
-      if (resp.status === 201) {
-        setSuccessSnackbarOpen(true);
-      } else if (resp.status === 409) {
-        setFailureSnackbarOpen(true);
-      }
-    } catch (e) {
-      console.log(e);
-      setFailureSnackbarOpen(true);
-    }
-  };
-
-  const handleSnackbarClose = () => {
-    setSuccessSnackbarOpen(false);
-    setFailureSnackbarOpen(false);
-  };
-
   const newsletterPartial = (
     <AsideItemContainerContainer>
       <AsideItemContainer>
@@ -282,14 +239,7 @@ const Aside: React.FunctionComponent = (): ReactElement => {
         <AsideText>
           Want to be notified of new articles? Sign up here!
         </AsideText>
-        <Input
-          fullWidth
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <Button disabled={!emailValid} onClick={handleEmailSignup}>
-          Sign up
-        </Button>
+        <EmailSignup />
         <AsideText>
           <p className="small">
             Your data is encrypted and will never be sold, and you can
@@ -300,8 +250,6 @@ const Aside: React.FunctionComponent = (): ReactElement => {
     </AsideItemContainerContainer>
   );
 
-  const SNACKBAR_DURATION = 5000;
-
   return (
     <AsideContainer>
       {welcomePartial}
@@ -310,24 +258,6 @@ const Aside: React.FunctionComponent = (): ReactElement => {
       {readingChallengePartial}
       {bookclubPartial}
       {connectPartial}
-      <Snackbar
-        autoHideDuration={SNACKBAR_DURATION}
-        open={successSnackbarOpen}
-        onClose={handleSnackbarClose}
-      >
-        <SnackbarContent status="success">
-          You are now signed up for the newsletter!
-        </SnackbarContent>
-      </Snackbar>
-      <Snackbar
-        autoHideDuration={SNACKBAR_DURATION}
-        open={failureSnackbarOpen}
-        onClose={handleSnackbarClose}
-      >
-        <SnackbarContent status="failure">
-          You are already subscribed!
-        </SnackbarContent>
-      </Snackbar>
     </AsideContainer>
   );
 };
