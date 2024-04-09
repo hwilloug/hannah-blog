@@ -182,7 +182,7 @@ export const CategoryB = styled("b")(({ theme }) => ({
   color:
     theme.palette.mode === "dark"
       ? theme.palette.secondary.main
-      : theme.palette.primary.main,
+      : theme.palette.secondary.main,
   textDecoration: `underline ${theme.palette.secondary.main} wavy`,
   padding: "10px 0",
   textDecorationThickness: "1.15px",

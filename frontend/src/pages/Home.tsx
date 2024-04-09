@@ -150,7 +150,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
       <LatestArticlesContainer>
         <MiniNavContainer>
           <Navigation showText filled />
-          <StyledP>
+          <StyledP style={{ textAlign: "center" }}>
             Select a category above, or browse latest articles below.
           </StyledP>
         </MiniNavContainer>

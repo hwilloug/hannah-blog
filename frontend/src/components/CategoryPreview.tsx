@@ -3,7 +3,7 @@ import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
 import { Article, ArticlesApiResponse, mapRespToArticles } from "..";
 import ArticleCard from "./ArticleCard";
-import { CategoryB, StyledButton, StyledP } from "./StyledComponents";
+import { StyledButton } from "./StyledComponents";
 
 const CategoryPreviewContainer = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.secondary.light,
@@ -18,20 +18,20 @@ const CategoryPreviewArticleContainer = styled("div")(({ theme }) => ({
   display: useMediaQuery(theme.breakpoints.down("xs")) ? "block" : "flex",
   flexDirection: "row",
   gap: "10px",
-}));
-
-const Header = styled("div")(({ theme }) => ({
-  padding: "20px 50px",
-  margin: "20px",
-  backgroundColor:
-    theme.palette.mode === "dark" ? theme.palette.primary.dark : "white",
-  borderRadius: "5px",
-  border: `1px solid ${theme.palette.secondary.main}`,
+  justifyContent: "center",
 }));
 
 const MoreButton = styled(StyledButton)(({ theme }) => ({
   width: "97%",
   textAlign: "center",
+}));
+
+const CategoryHeader = styled("h2")(({ theme }) => ({
+  fontSize: "2.75rem",
+  margin: "10px",
+  color: theme.palette.secondary.dark,
+  textAlign: "center",
+  fontFamily: "Gluten, Ubuntu",
 }));
 
 interface CategoryPreviewProps {
@@ -63,12 +63,7 @@ const CategoryPreview: React.FC<CategoryPreviewProps> = ({
   }, []);
   return (
     <CategoryPreviewContainer>
-      <Header>
-        <StyledP>
-          {emoji} <CategoryB>{category}</CategoryB>
-        </StyledP>
-        <StyledP>{message}</StyledP>
-      </Header>
+      <CategoryHeader>{category}</CategoryHeader>
       <CategoryPreviewArticleContainer>
         {articles.map((article) => (
           <ArticleCard

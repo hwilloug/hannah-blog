@@ -8,6 +8,11 @@
   src: url("./fonts/Ubuntu.ttf");
 }
 
+@font-face {
+  font-family: "Gluten";
+  src: url("./fonts/Gluten-ExtraBold.ttf");
+}
+
 body {
   all: unset;
 

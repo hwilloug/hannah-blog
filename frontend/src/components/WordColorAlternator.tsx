@@ -8,7 +8,7 @@ const WordColorAlternatorContainer = styled("div")({
 
 const Title = styled("span")({
   fontSize: "2.75rem",
-  fontFamily: "Montserrat, Arial, Helvetica, sans-serif",
+  fontFamily: "Gluten, Montserrat, Arial, Helvetica, sans-serif",
   textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black",
 });
 
