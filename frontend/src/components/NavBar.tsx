@@ -98,10 +98,10 @@ const RightIconContainer = styled("div")({
 });
 
 const Title = styled("h1")({
-  fontSize: "24px",
+  fontSize: "2rem",
   color: "white",
   margin: "0 20px",
-  fontFamily: "Montserrat, Arial, Helvetica, sans-serif",
+  fontFamily: "Gluten, Montserrat, Arial, Helvetica, sans-serif",
 });
 
 const PoppyIcon = styled("img")({
