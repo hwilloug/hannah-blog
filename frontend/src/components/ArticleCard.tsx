@@ -52,7 +52,7 @@ const PortraitArticle = styled(UnstyledLink)(({ theme }) => ({
   flexDirection: "column",
   textAlign: "center",
 
-  width: useMediaQuery(theme.breakpoints.down("xs")) ? "100%" : "29%",
+  width: useMediaQuery(theme.breakpoints.down("xs")) ? "95%" : "29%",
   padding: "10px",
   marginBottom: "10px",
 

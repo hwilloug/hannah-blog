@@ -1,7 +1,8 @@
-import { styled } from "@mui/material";
+import { styled, useMediaQuery } from "@mui/material";
 import { ReactElement } from "react";
 import { useNavigate } from "react-router-dom";
 import Browse from "../components/Browse";
+import CategoryPreview from "../components/CategoryPreview";
 import FeaturedContent from "../components/FeaturedContent";
 import Navigation from "../components/Navigation";
 import {
@@ -39,9 +40,9 @@ const LatestArticlesContainer = styled("div")(({ theme }) => ({
   padding: "10px",
 }));
 
-const WelcomeP = styled(StyledP)({
-  margin: "20px 50px",
-});
+const WelcomeP = styled(StyledP)(({ theme }) => ({
+  margin: useMediaQuery(theme.breakpoints.down("xs")) ? "20px" : "20px 50px",
+}));
 
 const CategoryB = styled("b")(({ theme }) => ({
   color:
@@ -79,44 +80,51 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
           <StyledP>
             <WelcomeP>
               Hi! I'm Hannah, and I'm thrilled to welcome you to my hobby blog.
-              Here, I share my passions and delve into the diverse world of
-              activities that bring me joy.
+              Here, I share what I've been working on and how I did it! There
+              are six categories to choose from <CategoryB>gardening</CategoryB>
+              , <CategoryB>crafts</CategoryB>, <CategoryB>coding</CategoryB>,{" "}
+              <CategoryB>books</CategoryB>, <CategoryB>antiquing</CategoryB>,
+              and <CategoryB>food</CategoryB>.
             </WelcomeP>
             <WelcomeP>
-              🍳 <CategoryB>Food:</CategoryB> Explore the art of culinary
-              creativity with me as I try out delicious recipes and share the
-              stories behind each dish.
+              🌿 <CategoryB>Gardening:</CategoryB> Join me while I grow a
+              vegetable garden, take care of houseplants, and consistently do
+              too much for me to handle.
+              <CategoryPreview category="Gardening" />
             </WelcomeP>
             <WelcomeP>
-              🌿 <CategoryB>Gardening:</CategoryB> Join me in the garden as I
-              cultivate a vibrant green space, sharing tips on plant care,
-              landscaping, and the pure joy of watching seeds blossom into
-              blooms.
+              ✂️ <CategoryB>Crafts:</CategoryB> Check out what crafts I've been
+              doing lately. From cross-stitch to woodworking, let's have some
+              creative fun!
+              <CategoryPreview category="Crafts" />
             </WelcomeP>
             <WelcomeP>
-              ✂️ <CategoryB>Crafts:</CategoryB> Embark on a journey through the
-              delicate art of needlework and woodworking and discover the beauty
-              of crafting through knitting, embroidery, woodworking, and more.
+              💻 <CategoryB>Coding:</CategoryB> Follow along as I make updates
+              to the site, develop other random web apps and video games, and
+              play around on my Raspberry Pi.
+              <CategoryPreview category="Coding" />
             </WelcomeP>
             <WelcomeP>
-              💻 <CategoryB>Coding:</CategoryB> Dive into the world of coding
-              and technology. I share my insights, experiences, and projects as
-              I navigate the exciting realm of programming.
+              📚 <CategoryB>Books:</CategoryB> Sometimes I'll read a book and
+              post my thoughts and feelings about it
+              <CategoryPreview category="Books" />
             </WelcomeP>
             <WelcomeP>
-              📚 <CategoryB>Books:</CategoryB> Immerse yourself in the
-              captivating world of literature. I'll recommend books, discuss my
-              latest reads, and explore the magic of storytelling.
+              🕰️ <CategoryB>Antiquing:</CategoryB> Come shopping with me and
+              check out my antiquing hauls. I can always find something for one
+              of my collections!
+              <CategoryPreview category="Antiquing" />
             </WelcomeP>
             <WelcomeP>
-              🕰️ <CategoryB>Antiquing:</CategoryB> Step into the enthralling
-              world of antiquing with me as your guide. Together, we'll explore
-              the hidden treasures and timeless wonders of the past.
+              🍳 <CategoryB>Food:</CategoryB> I'm still not entirely sure what
+              this category is, but it's a category about food! I used to be
+              really into cooking and trying new recipes, but I've fallen off
+              the wagon on that. But this category is here for whenever I'm in
+              the mood for that again!
+              <CategoryPreview category="Food" />
             </WelcomeP>
             <WelcomeP>
-              I hope you find inspiration, joy, and perhaps a few new hobbies to
-              explore. Feel free to wander through the pages and join me on this
-              eclectic journey through the things that make life more vibrant.
+              I hope you learn something new or find a new hobby to explore.
             </WelcomeP>
             <WelcomeP>
               Thank you for stepping into my world, and I can't wait to share

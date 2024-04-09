@@ -26,11 +26,6 @@ import { NavigationItem, NavigationLink, StyledIcon } from "./StyledComponents";
 
 export const NAV_ITEMS = [
   {
-    name: "Food",
-    path: "/food",
-    icon: mdiChefHat,
-  },
-  {
     name: "Gardening",
     path: "/gardening",
     icon: mdiFlower,
@@ -54,6 +49,11 @@ export const NAV_ITEMS = [
     name: "Antiquing",
     path: "/antiquing",
     icon: mdiLamp,
+  },
+  {
+    name: "Food",
+    path: "/food",
+    icon: mdiChefHat,
   },
 ];
 
