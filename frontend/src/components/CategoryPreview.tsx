@@ -3,12 +3,15 @@ import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
 import { Article, ArticlesApiResponse, mapRespToArticles } from "..";
 import ArticleCard from "./ArticleCard";
-import { StyledButton, SubsectionHeader } from "./StyledComponents";
+import { CategoryB, StyledButton, StyledP } from "./StyledComponents";
 
 const CategoryPreviewContainer = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.secondary.light,
   padding: "10px",
+  marginTop: "20px",
+  border: `1px solid ${theme.palette.secondary.main}`,
   borderRadius: "5px",
+  minWidth: "100%",
 }));
 
 const CategoryPreviewArticleContainer = styled("div")(({ theme }) => ({
@@ -17,12 +20,31 @@ const CategoryPreviewArticleContainer = styled("div")(({ theme }) => ({
   gap: "10px",
 }));
 
+const Header = styled("div")(({ theme }) => ({
+  padding: "20px 50px",
+  margin: "20px",
+  backgroundColor:
+    theme.palette.mode === "dark" ? theme.palette.primary.dark : "white",
+  borderRadius: "5px",
+  border: `1px solid ${theme.palette.secondary.main}`,
+}));
+
 const MoreButton = styled(StyledButton)(({ theme }) => ({
-  width: "100%",
+  width: "97%",
   textAlign: "center",
 }));
 
-const CategoryPreview: React.FC<{ category: string }> = ({ category }) => {
+interface CategoryPreviewProps {
+  category: string;
+  message: string;
+  emoji: string;
+}
+
+const CategoryPreview: React.FC<CategoryPreviewProps> = ({
+  category,
+  message,
+  emoji,
+}) => {
   const [articles, setArticles] = useState<Article[]>([]);
 
   const getCategoryArticles = async (category: string) => {
@@ -41,7 +63,12 @@ const CategoryPreview: React.FC<{ category: string }> = ({ category }) => {
   }, []);
   return (
     <CategoryPreviewContainer>
-      <SubsectionHeader>Latest {category} Articles:</SubsectionHeader>
+      <Header>
+        <StyledP>
+          {emoji} <CategoryB>{category}</CategoryB>
+        </StyledP>
+        <StyledP>{message}</StyledP>
+      </Header>
       <CategoryPreviewArticleContainer>
         {articles.map((article) => (
           <ArticleCard

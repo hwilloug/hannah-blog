@@ -7,6 +7,7 @@ import FeaturedContent from "../components/FeaturedContent";
 import Navigation from "../components/Navigation";
 import {
   BodyContainer,
+  CategoryB,
   ContainerContainer,
   SectionTitle,
   StyledButton,
@@ -44,14 +45,11 @@ const WelcomeP = styled(StyledP)(({ theme }) => ({
   margin: useMediaQuery(theme.breakpoints.down("xs")) ? "20px" : "20px 50px",
 }));
 
-const CategoryB = styled("b")(({ theme }) => ({
-  color:
-    theme.palette.mode === "dark"
-      ? theme.palette.secondary.main
-      : theme.palette.secondary.main,
-  textDecoration: `underline ${theme.palette.secondary.main} wavy`,
-  padding: "10px 0",
-  textDecorationThickness: "1.15px",
+const MiniNavContainer = styled(StyledP)(({ theme }) => ({
+  backgroundColor:
+    theme.palette.mode === "dark" ? theme.palette.primary.dark : "white",
+  borderRadius: "5px",
+  padding: "10px",
 }));
 
 const Signature = styled("img")({
@@ -71,6 +69,45 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
   ];
   const welcomeWords = "Welcome to Hannah's Hobby Room🌸".split(" ");
 
+  const categoryPreviews = [
+    {
+      category: "Gardening",
+      message:
+        "Join me while I grow a vegetable garden, take care of houseplants, and consistently do too much for me to handle",
+      emoji: "🌿",
+    },
+    {
+      category: "Crafts",
+      message:
+        "Check out what crafts I've been doing lately. From cross-stitch to woodworking, let's have some creative fun!",
+      emoji: "✂️",
+    },
+    {
+      category: "Coding",
+      message:
+        "Follow along as I make updates to the site, develop other random web apps and video games, and play around on my Raspberry Pi.",
+      emoji: "💻",
+    },
+    {
+      category: "Books",
+      message:
+        "Sometimes I'll read a book and post my thoughts and feelings about it",
+      emoji: "📚",
+    },
+    {
+      category: "Antiquing",
+      message:
+        "Come shopping with me and check out my antiquing hauls. I can always find something for one of my collections!",
+      emoji: "🕰️",
+    },
+    {
+      category: "Food",
+      message:
+        "I'm still not entirely sure what this category is, but it's a category about food! I used to be really into cooking and trying new recipes, but I've fallen off the wagon on that. But this category is here for whenever I'm in the mood for that again!",
+      emoji: "🍳",
+    },
+  ];
+
   return (
     <BodyContainer>
       <FeaturedContent />
@@ -87,43 +124,6 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
               and <CategoryB>food</CategoryB>.
             </WelcomeP>
             <WelcomeP>
-              🌿 <CategoryB>Gardening:</CategoryB> Join me while I grow a
-              vegetable garden, take care of houseplants, and consistently do
-              too much for me to handle.
-              <CategoryPreview category="Gardening" />
-            </WelcomeP>
-            <WelcomeP>
-              ✂️ <CategoryB>Crafts:</CategoryB> Check out what crafts I've been
-              doing lately. From cross-stitch to woodworking, let's have some
-              creative fun!
-              <CategoryPreview category="Crafts" />
-            </WelcomeP>
-            <WelcomeP>
-              💻 <CategoryB>Coding:</CategoryB> Follow along as I make updates
-              to the site, develop other random web apps and video games, and
-              play around on my Raspberry Pi.
-              <CategoryPreview category="Coding" />
-            </WelcomeP>
-            <WelcomeP>
-              📚 <CategoryB>Books:</CategoryB> Sometimes I'll read a book and
-              post my thoughts and feelings about it
-              <CategoryPreview category="Books" />
-            </WelcomeP>
-            <WelcomeP>
-              🕰️ <CategoryB>Antiquing:</CategoryB> Come shopping with me and
-              check out my antiquing hauls. I can always find something for one
-              of my collections!
-              <CategoryPreview category="Antiquing" />
-            </WelcomeP>
-            <WelcomeP>
-              🍳 <CategoryB>Food:</CategoryB> I'm still not entirely sure what
-              this category is, but it's a category about food! I used to be
-              really into cooking and trying new recipes, but I've fallen off
-              the wagon on that. But this category is here for whenever I'm in
-              the mood for that again!
-              <CategoryPreview category="Food" />
-            </WelcomeP>
-            <WelcomeP>
               I hope you learn something new or find a new hobby to explore.
             </WelcomeP>
             <WelcomeP>
@@ -137,15 +137,23 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
               />
             </WelcomeP>
           </StyledP>
-          <Navigation showText filled />
-          <StyledP>
-            <WelcomeP>
-              Select a category above, or browse latest articles below.
-            </WelcomeP>
-          </StyledP>
         </WelcomeContainer>
       </ContainerContainer>
+
+      {categoryPreviews.map((preview) => (
+        <CategoryPreview
+          category={preview.category}
+          emoji={preview.emoji}
+          message={preview.message}
+        />
+      ))}
       <LatestArticlesContainer>
+        <MiniNavContainer>
+          <Navigation showText filled />
+          <StyledP>
+            Select a category above, or browse latest articles below.
+          </StyledP>
+        </MiniNavContainer>
         <SectionTitle>Latest Articles:</SectionTitle>
         <Browse hidePagination />
         <StyledButton

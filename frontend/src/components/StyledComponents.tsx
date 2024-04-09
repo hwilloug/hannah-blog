@@ -177,3 +177,13 @@ export const Code = styled("code")(({ theme }) => ({
     theme.palette.mode === "dark" ? theme.palette.primary.light : "lightgrey",
   padding: "5px",
 }));
+
+export const CategoryB = styled("b")(({ theme }) => ({
+  color:
+    theme.palette.mode === "dark"
+      ? theme.palette.secondary.main
+      : theme.palette.primary.main,
+  textDecoration: `underline ${theme.palette.secondary.main} wavy`,
+  padding: "10px 0",
+  textDecorationThickness: "1.15px",
+}));
