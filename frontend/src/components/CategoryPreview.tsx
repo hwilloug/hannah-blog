@@ -9,7 +9,7 @@ const CategoryPreviewContainer = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.secondary.light,
   padding: "10px",
   marginTop: "20px",
-  border: `1px solid ${theme.palette.secondary.main}`,
+  border: `7px solid ${theme.palette.secondary.main}`,
   borderRadius: "5px",
   minWidth: "100%",
 }));
@@ -36,15 +36,9 @@ const CategoryHeader = styled("h2")(({ theme }) => ({
 
 interface CategoryPreviewProps {
   category: string;
-  message: string;
-  emoji: string;
 }
 
-const CategoryPreview: React.FC<CategoryPreviewProps> = ({
-  category,
-  message,
-  emoji,
-}) => {
+const CategoryPreview: React.FC<CategoryPreviewProps> = ({ category }) => {
   const [articles, setArticles] = useState<Article[]>([]);
 
   const getCategoryArticles = async (category: string) => {

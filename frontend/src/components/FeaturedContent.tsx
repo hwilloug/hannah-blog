@@ -1,6 +1,8 @@
-import { styled, useMediaQuery } from "@mui/material";
+import { styled, useMediaQuery, useTheme } from "@mui/material";
 import axios from "axios";
 import { useMemo, useState } from "react";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 import { Article, mapRespToArticles } from "..";
 import ArticleCard from "./ArticleCard";
 import { SectionTitle } from "./StyledComponents";
@@ -8,20 +10,19 @@ import { SectionTitle } from "./StyledComponents";
 const FeaturedContentContainer = styled("div")(({ theme }) => ({
   margin: "20px 0",
   padding: "10px",
-  maxWidth: useMediaQuery(theme.breakpoints.down("xs")) ? "90vw" : "55rem",
+  maxWidth: useMediaQuery(theme.breakpoints.down("xs")) ? "90vw" : "45rem",
+  minWidth: useMediaQuery(theme.breakpoints.down("xs")) ? "90vw" : "1rem",
 
   backgroundColor: theme.palette.primary.main,
   borderRadius: "5px",
 }));
 
-const FeaturedArticleContainer = styled("div")(({ theme }) => ({
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "space-evenly",
-  flexWrap: "wrap",
+const FeaturedItemCarousel = styled(Carousel)(({ theme }) => ({
+  width: "100%",
 }));
 
 const FeaturedContent: React.FunctionComponent = () => {
+  const theme = useTheme();
   const [featuredArticles, setFeaturedArticles] = useState<
     (Article | undefined)[]
   >([]);
@@ -48,21 +49,29 @@ const FeaturedContent: React.FunctionComponent = () => {
     });
   }, []);
 
+  const responsive = {
+    all: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 0 },
+      items: 1,
+    },
+  };
+
   return (
     <FeaturedContentContainer>
-      <SectionTitle>Featured Articles:</SectionTitle>
-      <FeaturedArticleContainer>
+      <SectionTitle>Featured Articles</SectionTitle>
+      <FeaturedItemCarousel responsive={responsive} rewind autoPlay>
         {featuredArticles.map(
           (article) =>
             article && (
               <ArticleCard
                 key={article.slug}
                 article={article}
-                orientation="portrait"
+                orientation="portrait-large"
               />
             ),
         )}
-      </FeaturedArticleContainer>
+      </FeaturedItemCarousel>
     </FeaturedContentContainer>
   );
 };

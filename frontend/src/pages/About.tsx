@@ -6,6 +6,7 @@ import {
   BorderedFullSizeImage,
   SectionHeader,
   StyledIcon,
+  StyledP,
   UnstyledLink,
 } from "../components/StyledComponents";
 
@@ -81,7 +82,7 @@ const About: React.FunctionComponent = (): ReactElement => {
       <AboutContainerContainer>
         <AboutContainer>
           <SectionHeader>About Me</SectionHeader>
-          <p>
+          <StyledP>
             Hello world, and welcome to my blog! I'm Hannah, and this is where I
             write about the stuff I do for fun. Currently, I live in Fort Mill,
             SC with my partner, Danny, and our four cats. As my day job, I am a
@@ -89,8 +90,8 @@ const About: React.FunctionComponent = (): ReactElement => {
             keeping up with a multitude of hobbies, which include cooking,
             gardening, needle arts, coding, reading, woodworking, antiquing, and
             learning langages.
-          </p>
-          <p>Find me on:</p>
+          </StyledP>
+          <StyledP>Find me on:</StyledP>
           <LinksContainer>
             {links.map((link) => (
               <LinkItem key={link.name}>

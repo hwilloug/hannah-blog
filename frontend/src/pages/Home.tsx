@@ -72,39 +72,21 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
   const categoryPreviews = [
     {
       category: "Gardening",
-      message:
-        "Join me while I grow a vegetable garden, take care of houseplants, and consistently do too much for me to handle",
-      emoji: "🌿",
     },
     {
       category: "Crafts",
-      message:
-        "Check out what crafts I've been doing lately. From cross-stitch to woodworking, let's have some creative fun!",
-      emoji: "✂️",
     },
     {
       category: "Coding",
-      message:
-        "Follow along as I make updates to the site, develop other random web apps and video games, and play around on my Raspberry Pi.",
-      emoji: "💻",
     },
     {
       category: "Books",
-      message:
-        "Sometimes I'll read a book and post my thoughts and feelings about it",
-      emoji: "📚",
     },
     {
       category: "Antiquing",
-      message:
-        "Come shopping with me and check out my antiquing hauls. I can always find something for one of my collections!",
-      emoji: "🕰️",
     },
     {
       category: "Food",
-      message:
-        "I'm still not entirely sure what this category is, but it's a category about food! I used to be really into cooking and trying new recipes, but I've fallen off the wagon on that. But this category is here for whenever I'm in the mood for that again!",
-      emoji: "🍳",
     },
   ];
 
@@ -141,11 +123,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
       </ContainerContainer>
 
       {categoryPreviews.map((preview) => (
-        <CategoryPreview
-          category={preview.category}
-          emoji={preview.emoji}
-          message={preview.message}
-        />
+        <CategoryPreview category={preview.category} />
       ))}
       <LatestArticlesContainer>
         <MiniNavContainer>

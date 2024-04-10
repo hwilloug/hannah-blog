@@ -42,9 +42,8 @@ export const ContainerContainer = styled("div")(({ theme }) => ({
 }));
 
 export const SectionTitle = styled("h2")(({ theme }) => ({
-  backgroundColor: theme.palette.primary.dark,
   color: "white",
-  fontSize: "24px",
+  fontSize: "2.5rem",
   fontWeight: "normal",
   textAlign: "center",
   margin: "10px",

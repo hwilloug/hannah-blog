@@ -85,44 +85,81 @@ const PortraitArticleImage = styled("img")({
   height: "13rem",
 });
 
+const PortraitLargeArticleContainer = styled(UnstyledLink)({});
+
+const PortraitLargeArticleImage = styled("img")({
+  width: "100%",
+  objectFit: "cover",
+  borderRadius: "5px 5px 0 0",
+  height: "25rem",
+});
+
+const PortraitLargeArticleInfoContainer = styled("div")({
+  backgroundColor: "white",
+  padding: "20px",
+  borderRadius: "0 0 5px 5px",
+  textAlign: "center",
+});
+
 interface ArticleCardProps {
   article: Article;
-  orientation: "landscape" | "portrait";
+  orientation: "landscape" | "portrait" | "portrait-large";
 }
 
 const ArticleCard: React.FunctionComponent<ArticleCardProps> = ({
   article,
   orientation,
 }) => {
-  return orientation === "landscape" ? (
-    <UnstyledLink to={`/articles/${article.slug}`} key={article.slug}>
-      <ArticleContainer>
-        <ArticleImage
-          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
-          alt={article.imgAlt}
-        />
-        <ArticleDetailContainer>
-          <ArticleTitle>{article.title}</ArticleTitle>
-          <ArticleSubtitle>{article.subtitle}</ArticleSubtitle>
-          <ArticleSubtitle>
-            <i>{new Date(article.updatedAt).toDateString()}</i>
-          </ArticleSubtitle>
-          <Categories
-            category={article.category}
-            subcategories={article.subcategory}
+  if (orientation === "landscape") {
+    return (
+      <UnstyledLink to={`/articles/${article.slug}`} key={article.slug}>
+        <ArticleContainer>
+          <ArticleImage
+            src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
+            alt={article.imgAlt}
           />
-        </ArticleDetailContainer>
-      </ArticleContainer>
-    </UnstyledLink>
-  ) : (
-    <PortraitArticle to={`/articles/${article.slug}`} key={article.slug}>
-      <PortraitArticleImage
-        src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
-      />
-      <PortraitArticleTitle>{article.title}</PortraitArticleTitle>
-      <PortraitArticleSubtitle>{article.subtitle}</PortraitArticleSubtitle>
-    </PortraitArticle>
-  );
+          <ArticleDetailContainer>
+            <ArticleTitle>{article.title}</ArticleTitle>
+            <ArticleSubtitle>{article.subtitle}</ArticleSubtitle>
+            <ArticleSubtitle>
+              <i>{new Date(article.updatedAt).toDateString()}</i>
+            </ArticleSubtitle>
+            <Categories
+              category={article.category}
+              subcategories={article.subcategory}
+            />
+          </ArticleDetailContainer>
+        </ArticleContainer>
+      </UnstyledLink>
+    );
+  } else if (orientation === "portrait") {
+    return (
+      <PortraitArticle to={`/articles/${article.slug}`} key={article.slug}>
+        <PortraitArticleImage
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
+        />
+        <PortraitArticleTitle>{article.title}</PortraitArticleTitle>
+        <PortraitArticleSubtitle>{article.subtitle}</PortraitArticleSubtitle>
+      </PortraitArticle>
+    );
+  } else if (orientation === "portrait-large") {
+    return (
+      <PortraitLargeArticleContainer
+        to={`/articles/${article.slug}`}
+        key={article.slug}
+      >
+        <PortraitLargeArticleImage
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
+        />
+        <PortraitLargeArticleInfoContainer>
+          <PortraitArticleTitle>{article.title}</PortraitArticleTitle>
+          <PortraitArticleSubtitle>{article.subtitle}</PortraitArticleSubtitle>
+        </PortraitLargeArticleInfoContainer>
+      </PortraitLargeArticleContainer>
+    );
+  } else {
+    return <div>Error loading article card</div>;
+  }
 };
 
 export default ArticleCard;
