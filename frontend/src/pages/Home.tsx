@@ -3,6 +3,7 @@ import { ReactElement } from "react";
 import { useNavigate } from "react-router-dom";
 import Browse from "../components/Browse";
 import CategoryPreview from "../components/CategoryPreview";
+import EmailSignup from "../components/EmailSignup";
 import FeaturedContent from "../components/FeaturedContent";
 import Navigation from "../components/Navigation";
 import {
@@ -43,6 +44,15 @@ const LatestArticlesContainer = styled("div")(({ theme }) => ({
 
 const WelcomeP = styled(StyledP)(({ theme }) => ({
   margin: useMediaQuery(theme.breakpoints.down("xs")) ? "20px" : "20px 50px",
+}));
+
+const EmailContainer = styled("div")(({ theme }) => ({
+  backgroundColor: theme.palette.primary.main,
+  borderRadius: "5px",
+  marginTop: "50px",
+  padding: "10px",
+  width: "100%",
+  textAlign: "center",
 }));
 
 const MiniNavContainer = styled(StyledP)(({ theme }) => ({
@@ -125,6 +135,14 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
       {categoryPreviews.map((preview) => (
         <CategoryPreview category={preview.category} />
       ))}
+
+      <EmailContainer>
+        <MiniNavContainer>
+          <StyledP>Sign up for email notifications below!</StyledP>
+          <EmailSignup />
+        </MiniNavContainer>
+      </EmailContainer>
+
       <LatestArticlesContainer>
         <MiniNavContainer>
           <Navigation showText filled />
