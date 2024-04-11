@@ -11,6 +11,7 @@ const CategoryPreviewContainer = styled("div")(({ theme }) => ({
   marginTop: "20px",
   border: `7px solid ${theme.palette.secondary.main}`,
   borderRadius: "5px",
+  maxWidth: "55rem",
   minWidth: "100%",
 }));
 
