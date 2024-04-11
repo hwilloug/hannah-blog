@@ -32,6 +32,7 @@ const CategoryHeader = styled("h2")(({ theme }) => ({
   color: theme.palette.secondary.dark,
   textAlign: "center",
   fontFamily: "Gluten, Ubuntu",
+  textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black",
 }));
 
 interface CategoryPreviewProps {

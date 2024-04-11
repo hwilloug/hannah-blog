@@ -102,7 +102,6 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
 
   return (
     <BodyContainer>
-      <FeaturedContent />
       <ContainerContainer>
         <WelcomeContainer>
           <WordColorAlternator colors={wordColors} words={welcomeWords} />
@@ -131,6 +130,8 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
           </StyledP>
         </WelcomeContainer>
       </ContainerContainer>
+
+      <FeaturedContent />
 
       {categoryPreviews.map((preview) => (
         <CategoryPreview category={preview.category} />

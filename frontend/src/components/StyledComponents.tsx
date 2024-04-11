@@ -50,6 +50,7 @@ export const SectionTitle = styled("h2")(({ theme }) => ({
   padding: "5px 0",
   borderRadius: "5px",
   fontFamily: "Gluten, Montserrat, Arial, Helvetica, sans-serif",
+  textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black",
 }));
 
 export const StyledButton = styled("button")(({ theme }) => ({

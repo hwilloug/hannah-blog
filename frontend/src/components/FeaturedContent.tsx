@@ -10,7 +10,7 @@ import { SectionTitle } from "./StyledComponents";
 const FeaturedContentContainer = styled("div")(({ theme }) => ({
   margin: "20px 0",
   padding: "10px",
-  maxWidth: useMediaQuery(theme.breakpoints.down("xs")) ? "90vw" : "45rem",
+  maxWidth: useMediaQuery(theme.breakpoints.down("xs")) ? "90vw" : "55rem",
   minWidth: useMediaQuery(theme.breakpoints.down("xs")) ? "90vw" : "1rem",
 
   backgroundColor: theme.palette.primary.main,

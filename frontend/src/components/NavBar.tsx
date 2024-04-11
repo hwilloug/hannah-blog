@@ -102,6 +102,7 @@ const Title = styled("h1")({
   color: "white",
   margin: "0 20px",
   fontFamily: "Gluten, Montserrat, Arial, Helvetica, sans-serif",
+  textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black",
 });
 
 const PoppyIcon = styled("img")({
