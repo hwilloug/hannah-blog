@@ -87,6 +87,8 @@ const SmallContainer = styled("div")({
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
+  justifyContent: "space-between",
+  minWidth: "100%",
 });
 
 const RightIconContainer = styled("div")({
@@ -102,7 +104,7 @@ const Title = styled("h1")({
   color: "white",
   margin: "0 20px",
   fontFamily: "Gluten, Montserrat, Arial, Helvetica, sans-serif",
-  textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black",
+  textShadow: "-1px 0 black, 0 1px black, 3px 3px black, 0 -1px black",
 });
 
 const PoppyIcon = styled("img")({
@@ -111,6 +113,9 @@ const PoppyIcon = styled("img")({
 
 const HomeLink = styled(Link)({
   textDecoration: "none",
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
 });
 
 const UsernameBlack = styled("span")({
@@ -158,8 +163,6 @@ const NavBar: React.FunctionComponent = (): ReactElement => {
     <SmallContainer>
       <HomeLink to="">
         <PoppyIcon src={`${process.env.REACT_APP_IMAGES_BASE_URL}/poppy.png`} />
-      </HomeLink>
-      <HomeLink to="/">
         <Title>Hannah's Hobby Room</Title>
       </HomeLink>
       <RightIconContainer>

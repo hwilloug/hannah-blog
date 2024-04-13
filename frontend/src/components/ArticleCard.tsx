@@ -12,7 +12,7 @@ const ArticlePaper = styled(Paper)(({ theme }) => ({
     theme.palette.mode === "dark" ? theme.palette.primary.dark : "white",
   color: theme.palette.mode === "dark" ? "white" : "black",
   ":hover": {
-    border: `5px solid ${theme.palette.secondary.main}`,
+    outline: `5px solid ${theme.palette.secondary.main}`,
   },
 }));
 
@@ -69,7 +69,7 @@ const PortraitArticleContainer = styled(Container)(({ theme }) => ({
   backgroundColor:
     theme.palette.mode === "dark" ? theme.palette.primary.dark : "white",
   ":hover": {
-    border: `5px solid ${theme.palette.secondary.main}`,
+    outline: `5px solid ${theme.palette.secondary.main}`,
   },
 }));
 

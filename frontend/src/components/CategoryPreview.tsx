@@ -56,7 +56,7 @@ const CategoryPreview: React.FC<CategoryPreviewProps> = ({ category }) => {
       <CategoryHeader>{category}</CategoryHeader>
       <CategoryPreviewArticleGrid container spacing={2} justifyContent="center">
         {articles.map((article) => (
-          <Grid item xs={3.5}>
+          <Grid item xs={4}>
             <ArticleCard
               key={article.slug}
               article={article}
