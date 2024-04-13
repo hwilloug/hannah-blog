@@ -22,8 +22,6 @@ const ArticlePageContainer = styled(BodyContainer)(({ theme }) => ({
   flexDirection: "column",
   gap: "20px",
   alignItems: "stretch",
-  maxWidth: useMediaQuery(theme.breakpoints.down("xs")) ? "90%" : "35rem",
-  minWidth: useMediaQuery(theme.breakpoints.down("xs")) ? "90%" : "35rem",
 }));
 
 const ArticleContainerContainer = styled(ContainerContainer)({

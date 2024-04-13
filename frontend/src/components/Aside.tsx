@@ -2,19 +2,13 @@ import { Grid, styled, useMediaQuery, useTheme } from "@mui/material";
 import { ReactElement } from "react";
 import EmailSignup from "./EmailSignup";
 import {
-  BorderedFullSizeImage,
+  BorderedImage,
   ProgressBar,
   StyledButton,
   UnstyledLink,
 } from "./StyledComponents";
 
 const AsideContainer = styled("div")(({ theme }) => ({
-  maxWidth: useMediaQuery(theme.breakpoints.up("md")) ? "20rem" : "100%",
-  minWidth: useMediaQuery(theme.breakpoints.up("md")) ? "20rem" : "100%",
-  margin: useMediaQuery(theme.breakpoints.up("md"))
-    ? "50px 100px 0 0"
-    : "50px 0",
-
   display: useMediaQuery(theme.breakpoints.up("md")) ? "block" : "flex",
   flexWrap: "wrap",
   gap: "20px",
@@ -26,7 +20,6 @@ const AsideItemContainerContainer = styled("div")(({ theme }) => ({
   borderRadius: "20px 5px",
   padding: "10px",
   marginBottom: "20px",
-  maxWidth: "20rem",
   height: "100%",
 }));
 
@@ -36,7 +29,6 @@ const AsideItemContainer = styled("div")(({ theme }) => ({
   color: theme.palette.mode === "dark" ? "white" : "black",
   border: `1px solid ${theme.palette.primary.dark}`,
   borderRadius: "20px 5px",
-  maxWidth: "17rem",
   height: "100%",
   padding: "20px",
   display: "flex",
@@ -84,18 +76,12 @@ const AsideButton = styled(StyledButton)({
   marginTop: "10px",
 });
 
-const SnackbarContent = styled("div", {
-  shouldForwardProp: (prop) => prop !== "status",
-})<{ status: string }>(({ status }) => ({
-  backgroundColor: status === "success" ? "green" : "red",
-  border: "1px solid black",
-  padding: "20px",
-  color: "white",
-}));
+const AsideImage = styled(BorderedImage)({
+  maxWidth: "24rem",
+});
 
 const Aside: React.FunctionComponent = (): ReactElement => {
   const theme = useTheme();
-  const md = useMediaQuery(theme.breakpoints.up("md"));
 
   const readingGoal = parseInt(process.env.REACT_APP_READING_GOAL || "0");
   const readingProgress = parseInt(
@@ -121,7 +107,7 @@ const Aside: React.FunctionComponent = (): ReactElement => {
     <AsideItemContainerContainer>
       <AsideItemContainer>
         <AsideTitle>Welcome to My Hobby Room</AsideTitle>
-        <BorderedFullSizeImage
+        <AsideImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/me.jpeg`}
           alt="A pic of Hannah"
         />
@@ -194,7 +180,7 @@ const Aside: React.FunctionComponent = (): ReactElement => {
         <a
           className="twitter-timeline"
           data-lang="en"
-          data-width="250"
+          data-width="200"
           data-height="500"
           data-theme={theme.palette.mode}
           href="https://twitter.com/HannahHobbyRoom?ref_src=twsrc%5Etfw"
@@ -215,7 +201,7 @@ const Aside: React.FunctionComponent = (): ReactElement => {
             target="_blank"
             className="center"
           >
-            <BorderedFullSizeImage src="https://img.fablecdn.net/images/cdn.fable.co/group_covers/D7CE5584-21F6-41A6-A854-5418B5FEFCCF.jpg?w=416" />
+            <AsideImage src="https://img.fablecdn.net/images/cdn.fable.co/group_covers/D7CE5584-21F6-41A6-A854-5418B5FEFCCF.jpg?w=416" />
             <StyledButton>Hannah's Book Club</StyledButton>
           </a>
           <p>

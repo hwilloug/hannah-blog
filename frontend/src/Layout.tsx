@@ -1,10 +1,5 @@
 import { Auth0Provider } from "@auth0/auth0-react";
-import {
-  createTheme,
-  styled,
-  ThemeProvider,
-  useMediaQuery,
-} from "@mui/material";
+import { Box, createTheme, Grid, styled, ThemeProvider } from "@mui/material";
 import { ChangeEvent, ReactElement, useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Aside from "./components/Aside";
@@ -12,11 +7,7 @@ import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 import { getDesignTokens } from "./theme";
 
-const LayoutContainer = styled("div")(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
-  gap: "20px",
-  alignItems: "stretch",
+const LayoutContainer = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.primary.light,
   backgroundImage:
     theme.palette.mode === "dark" ? "url('/bg.png')" : "url('/bg_light.png')",
@@ -24,14 +15,7 @@ const LayoutContainer = styled("div")(({ theme }) => ({
   backgroundAttachment: "fixed",
 }));
 
-const ContentContainer = styled("div")(({ theme }) => ({
-  display: "flex",
-  flexDirection: useMediaQuery(theme.breakpoints.up("md")) ? "row" : "column",
-  justifyContent: "center",
-  alignItems: useMediaQuery(theme.breakpoints.up("md"))
-    ? "flex-start"
-    : "center",
-}));
+const ContentGrid = styled(Grid)(({ theme }) => ({}));
 
 function ScrollToTopOnNavigate() {
   const location = useLocation();
@@ -47,8 +31,6 @@ const Layout: React.FunctionComponent = (): ReactElement => {
   const [darkMode, setDarkMode] = useState<boolean>(false);
 
   const theme = createTheme(getDesignTokens(darkMode ? "dark" : "light"));
-  const md = useMediaQuery(theme.breakpoints.up("md"));
-  const colors = theme.palette;
 
   const handleDarkModeChange = (
     event: ChangeEvent<HTMLInputElement>,
@@ -67,10 +49,14 @@ const Layout: React.FunctionComponent = (): ReactElement => {
         <LayoutContainer>
           <ScrollToTopOnNavigate />
           <NavBar />
-          <ContentContainer>
-            <Outlet />
-            <Aside />
-          </ContentContainer>
+          <ContentGrid container spacing={2} p={"20px"} justifyContent="center">
+            <Grid item xs={12} sm={8} md={9}>
+              <Outlet />
+            </Grid>
+            <Grid item xs={0} sm={4} md={3} xl={2}>
+              <Aside />
+            </Grid>
+          </ContentGrid>
           <Footer
             darkMode={darkMode}
             handleDarkModeChange={handleDarkModeChange}

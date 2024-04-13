@@ -1,4 +1,4 @@
-import { styled, useMediaQuery } from "@mui/material";
+import { Box, Grid, styled, useMediaQuery } from "@mui/material";
 import { ReactElement } from "react";
 import { useNavigate } from "react-router-dom";
 import Browse from "../components/Browse";
@@ -16,30 +16,21 @@ import {
 } from "../components/StyledComponents";
 import WordColorAlternator from "../components/WordColorAlternator";
 
-const WelcomeContainer = styled("div")(({ theme }) => ({
+const WelcomeContainer = styled(Box)(({ theme }) => ({
   border: "1px solid black",
   borderRadius: "5px",
   padding: "20px 0",
-  maxWidth: "55rem",
-
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
 
   backgroundColor:
     theme.palette.mode === "dark" ? theme.palette.primary.dark : "white",
   color: theme.palette.mode === "dark" ? "white" : "black",
 }));
 
-const LatestArticlesContainer = styled("div")(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "stretch",
-
+const LatestArticlesGrid = styled(Grid)(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
   borderRadius: "5px",
-  marginTop: "50px",
-  padding: "10px",
+  marginTop: "20px",
+  padding: "20px",
 }));
 
 const WelcomeP = styled(StyledP)(({ theme }) => ({
@@ -49,9 +40,8 @@ const WelcomeP = styled(StyledP)(({ theme }) => ({
 const EmailContainer = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
   borderRadius: "5px",
-  marginTop: "50px",
+  marginTop: "20px",
   padding: "10px",
-  width: "100%",
   textAlign: "center",
 }));
 
@@ -103,6 +93,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
   return (
     <BodyContainer>
       <FeaturedContent />
+
       <ContainerContainer>
         <WelcomeContainer>
           <WordColorAlternator colors={wordColors} words={welcomeWords} />
@@ -143,22 +134,26 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
         </MiniNavContainer>
       </EmailContainer>
 
-      <LatestArticlesContainer>
-        <MiniNavContainer>
-          <Navigation showText filled />
-          <StyledP style={{ textAlign: "center" }}>
-            Select a category above, or browse latest articles below.
-          </StyledP>
-        </MiniNavContainer>
+      <LatestArticlesGrid container direction="column">
+        <Grid item>
+          <MiniNavContainer>
+            <Navigation showText filled />
+            <StyledP style={{ textAlign: "center" }}>
+              Select a category above, or browse latest articles below.
+            </StyledP>
+          </MiniNavContainer>
+        </Grid>
         <SectionTitle>Latest Articles:</SectionTitle>
-        <Browse hidePagination />
+        <Grid item container spacing={2} direction="column">
+          <Browse hidePagination />
+        </Grid>
         <StyledButton
           onClick={() => navigate("/articles")}
-          sx={{ textAlign: "center" }}
+          sx={{ textAlign: "center", mt: "20px" }}
         >
           View All Articles
         </StyledButton>
-      </LatestArticlesContainer>
+      </LatestArticlesGrid>
     </BodyContainer>
   );
 };

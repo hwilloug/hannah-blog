@@ -1,9 +1,9 @@
 import Icon from "@mdi/react";
 import {
+  Box,
   Icon as MuiIcon,
   LinearProgress,
   linearProgressClasses,
-  useMediaQuery,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Link, NavLink } from "react-router-dom";
@@ -27,18 +27,13 @@ export const BrowseContainer = styled("div")(({ theme }) => ({
   alignItems: "stretch",
 }));
 
-export const BodyContainer = styled("div")(({ theme }) => ({
-  margin: useMediaQuery(theme.breakpoints.down("xs")) ? 0 : "0 50px",
-  display: "flex",
-  flexDirection: "column",
-  minHeight: "80vh",
-  alignItems: "center",
-}));
+export const BodyContainer = styled(Box)(({ theme }) => ({}));
 
 export const ContainerContainer = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
   borderRadius: "5px",
   padding: "10px",
+  marginTop: "20px",
 }));
 
 export const SectionTitle = styled("h2")(({ theme }) => ({
@@ -122,8 +117,12 @@ export const NavigationLink = styled(NavLink)({
   color: "black",
 });
 
-export const BorderedFullSizeImage = styled(FullSizeImage)(({ theme }) => ({
+export const BorderedImage = styled(FullSizeImage)(({ theme }) => ({
   border: `5px solid ${theme.palette.secondary.main}`,
+}));
+
+export const BorderedFullSizeImage = styled(BorderedImage)(() => ({
+  width: "100%",
 }));
 
 export const StyledIcon = styled(Icon)({});

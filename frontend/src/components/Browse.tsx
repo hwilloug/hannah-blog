@@ -1,4 +1,4 @@
-import { Pagination, PaginationItem, styled } from "@mui/material";
+import { Grid, Pagination, PaginationItem, styled } from "@mui/material";
 import { AxiosResponse } from "axios";
 import { ReactElement, Suspense, useState } from "react";
 import { Await, Link, useLoaderData } from "react-router-dom";
@@ -69,7 +69,9 @@ const Browse: React.FunctionComponent<BrowseProps> = ({
                     (new Date(a.updatedAt) as any),
                 )
                 .map((article: Article) => (
-                  <ArticleCard article={article} orientation="landscape" />
+                  <Grid item>
+                    <ArticleCard article={article} orientation="landscape" />
+                  </Grid>
                 ))}
               {!hidePagination && paginationPartial}
             </>

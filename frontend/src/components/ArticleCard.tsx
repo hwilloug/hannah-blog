@@ -1,34 +1,20 @@
-import { styled, useMediaQuery } from "@mui/material";
+import { Box, Container, Grid, Paper, styled } from "@mui/material";
 import { Article } from "..";
 import Categories from "./Categories";
 import { UnstyledLink } from "./StyledComponents";
 
-const ArticleContainer = styled("div")(({ theme }) => ({
-  display: "flex",
-  flexDirection: useMediaQuery(theme.breakpoints.down("xs")) ? "column" : "row",
-  gap: "20px",
-
+const ArticlePaper = styled(Paper)(({ theme }) => ({
   border: `1px solid ${theme.palette.primary.dark}`,
   borderRadius: "25px 5px",
-
-  padding: "10px",
-  margin: "10px",
+  padding: "20px",
 
   backgroundColor:
     theme.palette.mode === "dark" ? theme.palette.primary.dark : "white",
   color: theme.palette.mode === "dark" ? "white" : "black",
   ":hover": {
     border: `5px solid ${theme.palette.secondary.main}`,
-    margin: "6px",
   },
 }));
-
-const ArticleDetailContainer = styled("div")({
-  display: "flex",
-  flexDirection: "column",
-  gap: "10px",
-  padding: "10px",
-});
 
 const ArticleTitle = styled("h2")({
   fontSize: "1.5rem",
@@ -36,25 +22,47 @@ const ArticleTitle = styled("h2")({
 
 const ArticleSubtitle = styled("h3")({
   fontSize: "18px",
-  margin: "3px 0",
   fontWeight: "lighter",
   color: "grey",
 });
 
 const ArticleImage = styled("img")(({ theme }) => ({
-  width: useMediaQuery(theme.breakpoints.down("xs")) ? "100%" : "13rem",
+  width: "100%",
+  height: "100%",
   objectFit: "cover",
   borderRadius: "5px",
 }));
 
-const PortraitArticle = styled(UnstyledLink)(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
-  textAlign: "center",
+const LandscapeArticleCard: React.FC<{ article: Article }> = ({ article }) => {
+  return (
+    <ArticlePaper key={article.slug}>
+      <Grid container spacing={2}>
+        <Grid item xs={4}>
+          <ArticleImage
+            src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
+            alt={article.imgAlt}
+          />
+        </Grid>
+        <Grid item xs={8}>
+          <ArticleTitle>{article.title}</ArticleTitle>
+          <ArticleSubtitle>{article.subtitle}</ArticleSubtitle>
+          <ArticleSubtitle>
+            <i>{new Date(article.updatedAt).toDateString()}</i>
+          </ArticleSubtitle>
+          <Categories
+            category={article.category}
+            subcategories={article.subcategory}
+          />
+        </Grid>
+      </Grid>
+    </ArticlePaper>
+  );
+};
 
-  width: useMediaQuery(theme.breakpoints.down("xs")) ? "95%" : "29%",
-  padding: "10px",
-  marginBottom: "10px",
+const PortraitArticleContainer = styled(Container)(({ theme }) => ({
+  textAlign: "center",
+  paddingTop: "16px",
+  height: "100%",
 
   border: `1px solid ${theme.palette.primary.dark}`,
   borderRadius: "5px",
@@ -62,7 +70,6 @@ const PortraitArticle = styled(UnstyledLink)(({ theme }) => ({
     theme.palette.mode === "dark" ? theme.palette.primary.dark : "white",
   ":hover": {
     border: `5px solid ${theme.palette.secondary.main}`,
-    margin: "0 -4px -2px -4px",
   },
 }));
 
@@ -82,10 +89,24 @@ const PortraitArticleImage = styled("img")({
   width: "100%",
   objectFit: "cover",
   borderRadius: "5px",
-  height: "13rem",
+  maxHeight: "200px",
 });
 
-const PortraitLargeArticleContainer = styled(UnstyledLink)({});
+const PortraitArticleCard: React.FC<{ article: Article }> = ({ article }) => {
+  return (
+    <Paper sx={{ height: "100%" }}>
+      <PortraitArticleContainer key={article.slug}>
+        <PortraitArticleImage
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
+        />
+        <PortraitArticleTitle>{article.title}</PortraitArticleTitle>
+        <PortraitArticleSubtitle>{article.subtitle}</PortraitArticleSubtitle>
+      </PortraitArticleContainer>
+    </Paper>
+  );
+};
+
+const PortraitLargeArticleContainer = styled(Box)({});
 
 const PortraitLargeArticleImage = styled("img")({
   width: "100%",
@@ -101,6 +122,22 @@ const PortraitLargeArticleInfoContainer = styled("div")({
   textAlign: "center",
 });
 
+const LargePortraitArticleCard: React.FC<{ article: Article }> = ({
+  article,
+}) => {
+  return (
+    <PortraitLargeArticleContainer key={article.slug}>
+      <PortraitLargeArticleImage
+        src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
+      />
+      <PortraitLargeArticleInfoContainer>
+        <PortraitArticleTitle>{article.title}</PortraitArticleTitle>
+        <PortraitArticleSubtitle>{article.subtitle}</PortraitArticleSubtitle>
+      </PortraitLargeArticleInfoContainer>
+    </PortraitLargeArticleContainer>
+  );
+};
+
 interface ArticleCardProps {
   article: Article;
   orientation: "landscape" | "portrait" | "portrait-large";
@@ -110,56 +147,21 @@ const ArticleCard: React.FunctionComponent<ArticleCardProps> = ({
   article,
   orientation,
 }) => {
-  if (orientation === "landscape") {
-    return (
-      <UnstyledLink to={`/articles/${article.slug}`} key={article.slug}>
-        <ArticleContainer>
-          <ArticleImage
-            src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
-            alt={article.imgAlt}
-          />
-          <ArticleDetailContainer>
-            <ArticleTitle>{article.title}</ArticleTitle>
-            <ArticleSubtitle>{article.subtitle}</ArticleSubtitle>
-            <ArticleSubtitle>
-              <i>{new Date(article.updatedAt).toDateString()}</i>
-            </ArticleSubtitle>
-            <Categories
-              category={article.category}
-              subcategories={article.subcategory}
-            />
-          </ArticleDetailContainer>
-        </ArticleContainer>
-      </UnstyledLink>
-    );
-  } else if (orientation === "portrait") {
-    return (
-      <PortraitArticle to={`/articles/${article.slug}`} key={article.slug}>
-        <PortraitArticleImage
-          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
-        />
-        <PortraitArticleTitle>{article.title}</PortraitArticleTitle>
-        <PortraitArticleSubtitle>{article.subtitle}</PortraitArticleSubtitle>
-      </PortraitArticle>
-    );
-  } else if (orientation === "portrait-large") {
-    return (
-      <PortraitLargeArticleContainer
-        to={`/articles/${article.slug}`}
-        key={article.slug}
-      >
-        <PortraitLargeArticleImage
-          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
-        />
-        <PortraitLargeArticleInfoContainer>
-          <PortraitArticleTitle>{article.title}</PortraitArticleTitle>
-          <PortraitArticleSubtitle>{article.subtitle}</PortraitArticleSubtitle>
-        </PortraitLargeArticleInfoContainer>
-      </PortraitLargeArticleContainer>
-    );
-  } else {
-    return <div>Error loading article card</div>;
-  }
+  return (
+    <UnstyledLink
+      to={`/articles/${article.slug}`}
+      key={article.slug}
+      sx={{ display: "inline-block", height: "100%", width: "100%" }}
+    >
+      {orientation === "landscape" ? (
+        <LandscapeArticleCard article={article} />
+      ) : orientation === "portrait" ? (
+        <PortraitArticleCard article={article} />
+      ) : (
+        <LargePortraitArticleCard article={article} />
+      )}
+    </UnstyledLink>
+  );
 };
 
 export default ArticleCard;

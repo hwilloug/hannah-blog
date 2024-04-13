@@ -1,35 +1,29 @@
-import { styled, useMediaQuery } from "@mui/material";
+import { Container, Grid, styled } from "@mui/material";
 import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
 import { Article, ArticlesApiResponse, mapRespToArticles } from "..";
 import ArticleCard from "./ArticleCard";
 import { StyledButton } from "./StyledComponents";
 
-const CategoryPreviewContainer = styled("div")(({ theme }) => ({
+const CategoryPreviewContainer = styled(Container)(({ theme }) => ({
   backgroundColor: theme.palette.secondary.light,
   padding: "10px",
   marginTop: "20px",
   border: `7px solid ${theme.palette.secondary.main}`,
   borderRadius: "5px",
-  maxWidth: "55rem",
-  minWidth: "100%",
 }));
 
-const CategoryPreviewArticleContainer = styled("div")(({ theme }) => ({
-  display: useMediaQuery(theme.breakpoints.down("xs")) ? "block" : "flex",
-  flexDirection: "row",
-  gap: "10px",
-  justifyContent: "center",
-}));
+const CategoryPreviewArticleGrid = styled(Grid)(({ theme }) => ({}));
 
 const MoreButton = styled(StyledButton)(({ theme }) => ({
   width: "97%",
   textAlign: "center",
+  marginTop: "20px",
 }));
 
 const CategoryHeader = styled("h2")(({ theme }) => ({
   fontSize: "2.75rem",
-  margin: "10px",
+  margin: "20px",
   color: theme.palette.secondary.dark,
   textAlign: "center",
   fontFamily: "Gluten, Ubuntu",
@@ -60,15 +54,17 @@ const CategoryPreview: React.FC<CategoryPreviewProps> = ({ category }) => {
   return (
     <CategoryPreviewContainer>
       <CategoryHeader>{category}</CategoryHeader>
-      <CategoryPreviewArticleContainer>
+      <CategoryPreviewArticleGrid container spacing={2} justifyContent="center">
         {articles.map((article) => (
-          <ArticleCard
-            key={article.slug}
-            article={article}
-            orientation="portrait"
-          />
+          <Grid item xs={3.5}>
+            <ArticleCard
+              key={article.slug}
+              article={article}
+              orientation="portrait"
+            />
+          </Grid>
         ))}
-      </CategoryPreviewArticleContainer>
+      </CategoryPreviewArticleGrid>
       <MoreButton>See more {category} articles</MoreButton>
     </CategoryPreviewContainer>
   );
