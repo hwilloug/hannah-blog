@@ -1,12 +1,11 @@
-import { Box, Container, Grid, Paper, styled } from "@mui/material";
+import { Box, Grid, Paper, styled } from "@mui/material";
 import { Article } from "..";
 import Categories from "./Categories";
 import { UnstyledLink } from "./StyledComponents";
 
 const ArticlePaper = styled(Paper)(({ theme }) => ({
   border: `1px solid ${theme.palette.primary.dark}`,
-  borderRadius: "25px 5px",
-  padding: "20px",
+  borderRadius: "5px",
 
   backgroundColor:
     theme.palette.mode === "dark" ? theme.palette.primary.dark : "white",
@@ -43,7 +42,7 @@ const LandscapeArticleCard: React.FC<{ article: Article }> = ({ article }) => {
             alt={article.imgAlt}
           />
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={8} padding="24px">
           <ArticleTitle>{article.title}</ArticleTitle>
           <ArticleSubtitle>{article.subtitle}</ArticleSubtitle>
           <ArticleSubtitle>
@@ -59,9 +58,8 @@ const LandscapeArticleCard: React.FC<{ article: Article }> = ({ article }) => {
   );
 };
 
-const PortraitArticleContainer = styled(Container)(({ theme }) => ({
+const PortraitArticleContainer = styled(Box)(({ theme }) => ({
   textAlign: "center",
-  paddingTop: "16px",
   height: "100%",
 
   border: `1px solid ${theme.palette.primary.dark}`,
@@ -88,7 +86,7 @@ const PortraitArticleSubtitle = styled("h3")({
 const PortraitArticleImage = styled("img")({
   width: "100%",
   objectFit: "cover",
-  borderRadius: "5px",
+  borderRadius: "5px 5px 0 0",
   maxHeight: "200px",
 });
 
@@ -106,36 +104,71 @@ const PortraitArticleCard: React.FC<{ article: Article }> = ({ article }) => {
   );
 };
 
-const PortraitLargeArticleContainer = styled(Box)({});
+const PortraitLargeArticleContainer = styled(Box)({
+  position: "relative",
+  "&:before": {
+    // Use a pseudo-element to overlay the gradient
+    content: '""',
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    background:
+      "linear-gradient(180deg, rgba(21, 21, 24, 0.01) 0%, #151618 100%)",
+    zIndex: 1, // Ensure the gradient is below the text
+  },
+  ":hover": {
+    div: {
+      bottom: "40%",
+    },
+  },
+});
 
 const PortraitLargeArticleImage = styled("img")({
+  position: "relative",
   width: "100%",
   objectFit: "cover",
-  borderRadius: "5px 5px 0 0",
+  borderRadius: "5px",
   height: "25rem",
+  zIndex: 0,
 });
 
 const PortraitLargeArticleInfoContainer = styled("div")(({ theme }) => ({
-  backgroundColor:
-    theme.palette.mode === "dark" ? theme.palette.primary.dark : "white",
   padding: "20px",
-  borderRadius: "0 0 5px 5px",
   textAlign: "center",
+  position: "absolute",
+  bottom: 0,
+  width: "100%",
+  zIndex: 2,
+  transition: "bottom .2s ease-in-out",
 }));
+
+const PortraitArticleLargeTitle = styled(PortraitArticleTitle)({
+  color: "white",
+});
+
+const PortraitArticleLargeSubtitle = styled(PortraitArticleSubtitle)({
+  color: "white",
+});
 
 const LargePortraitArticleCard: React.FC<{ article: Article }> = ({
   article,
 }) => {
   return (
-    <PortraitLargeArticleContainer key={article.slug}>
-      <PortraitLargeArticleImage
-        src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
-      />
-      <PortraitLargeArticleInfoContainer>
-        <PortraitArticleTitle>{article.title}</PortraitArticleTitle>
-        <PortraitArticleSubtitle>{article.subtitle}</PortraitArticleSubtitle>
-      </PortraitLargeArticleInfoContainer>
-    </PortraitLargeArticleContainer>
+    <ArticlePaper>
+      <PortraitLargeArticleContainer key={article.slug}>
+        <PortraitLargeArticleImage
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
+        />
+        <PortraitLargeArticleInfoContainer>
+          <PortraitArticleLargeTitle>{article.title}</PortraitArticleLargeTitle>
+          <PortraitArticleLargeSubtitle>
+            {article.subtitle}
+          </PortraitArticleLargeSubtitle>
+        </PortraitLargeArticleInfoContainer>
+      </PortraitLargeArticleContainer>
+    </ArticlePaper>
   );
 };
 
