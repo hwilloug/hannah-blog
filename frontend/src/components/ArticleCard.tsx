@@ -1,3 +1,4 @@
+import { ArrowCircleRightRounded } from "@mui/icons-material";
 import { Box, Grid, Paper, styled } from "@mui/material";
 import { Article } from "..";
 import Categories from "./Categories";
@@ -118,9 +119,22 @@ const PortraitLargeArticleContainer = styled(Box)({
       "linear-gradient(180deg, rgba(21, 21, 24, 0.01) 0%, #151618 100%)",
     zIndex: 1, // Ensure the gradient is below the text
   },
+  svg: {
+    marginTop: 0,
+    opacity: 0,
+    color: "white",
+    transform: "translate3d(-2rem, 0, 0) rotate(360deg)",
+    transition:
+      "opacity .2s ease-in-out .1s, transform 0.2s ease-in-out .2s, margin-top 0.2s ease-in-out",
+  },
   ":hover": {
     div: {
-      bottom: "40%",
+      bottom: "30%",
+      svg: {
+        marginTop: "20px",
+        opacity: 1,
+        transform: "translate3d(0, 0, 0) rotate(0)",
+      },
     },
   },
 });
@@ -166,6 +180,7 @@ const LargePortraitArticleCard: React.FC<{ article: Article }> = ({
           <PortraitArticleLargeSubtitle>
             {article.subtitle}
           </PortraitArticleLargeSubtitle>
+          <ArrowCircleRightRounded />
         </PortraitLargeArticleInfoContainer>
       </PortraitLargeArticleContainer>
     </ArticlePaper>
