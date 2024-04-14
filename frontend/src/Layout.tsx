@@ -15,6 +15,17 @@ const LayoutContainer = styled(Box)(({ theme }) => ({
   backgroundAttachment: "fixed",
 }));
 
+const SkipNavLink = styled("a")({
+  position: "absolute",
+  background: "black",
+  padding: "0.5rem 1.5rem",
+  color: "white",
+  transform: "translateY(-120%)",
+  ":focus": {
+    transform: "translateY(0)",
+  },
+});
+
 const ContentGrid = styled(Grid)(({ theme }) => ({}));
 
 function ScrollToTopOnNavigate() {
@@ -46,11 +57,12 @@ const Layout: React.FunctionComponent = (): ReactElement => {
       authorizationParams={{ redirect_uri: window.location.origin }}
     >
       <ThemeProvider theme={theme}>
+        <SkipNavLink href="#content">Skip to content</SkipNavLink>
         <LayoutContainer>
           <ScrollToTopOnNavigate />
           <NavBar />
           <ContentGrid container spacing={2} p={"20px"} justifyContent="center">
-            <Grid item xs={12} sm={8} md={9}>
+            <Grid item xs={12} sm={8} md={9} id="content">
               <Outlet />
             </Grid>
             <Grid item xs={0} sm={4} md={3} xl={2}>
