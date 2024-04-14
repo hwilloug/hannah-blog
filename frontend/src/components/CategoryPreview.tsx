@@ -3,7 +3,7 @@ import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
 import { Article, ArticlesApiResponse, mapRespToArticles } from "..";
 import ArticleCard from "./ArticleCard";
-import { StyledButton } from "./StyledComponents";
+import { StyledButton, UnstyledLink } from "./StyledComponents";
 
 const CategoryPreviewContainer = styled(Container)(({ theme }) => ({
   backgroundColor: theme.palette.secondary.light,
@@ -65,7 +65,9 @@ const CategoryPreview: React.FC<CategoryPreviewProps> = ({ category }) => {
           </Grid>
         ))}
       </CategoryPreviewArticleGrid>
-      <MoreButton>See more {category} articles</MoreButton>
+      <UnstyledLink to={`/${category}`}>
+        <MoreButton>See more {category} articles</MoreButton>
+      </UnstyledLink>
     </CategoryPreviewContainer>
   );
 };
