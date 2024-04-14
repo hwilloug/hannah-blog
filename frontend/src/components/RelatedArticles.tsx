@@ -1,4 +1,4 @@
-import { styled, useMediaQuery, useTheme } from "@mui/material";
+import { Grid, styled, useMediaQuery, useTheme } from "@mui/material";
 import axios, { AxiosResponse } from "axios";
 import { useMemo, useState } from "react";
 import { useLoaderData } from "react-router-dom";
@@ -6,10 +6,7 @@ import { Article } from "..";
 import ArticleCard from "./ArticleCard";
 import { ContainerContainer, SectionTitle } from "./StyledComponents";
 
-const RelatedArticlesContainer = styled("div")({
-  display: "flex",
-  flexDirection: "column",
-});
+const RelatedArticlesGrid = styled(Grid)({});
 
 interface RelatedArticlesProps {
   category: string;
@@ -53,12 +50,16 @@ const RelatedArticles: React.FunctionComponent<RelatedArticlesProps> = ({
 
   return (
     <ContainerContainer>
-      <RelatedArticlesContainer>
-        <SectionTitle>Related Articles:</SectionTitle>
+      <RelatedArticlesGrid container justifyContent="center" spacing={2}>
+        <Grid item>
+          <SectionTitle>Related Articles:</SectionTitle>
+        </Grid>
         {relatedArticles.map((article) => (
-          <ArticleCard article={article} orientation="landscape" />
+          <Grid item>
+            <ArticleCard article={article} orientation="landscape" />
+          </Grid>
         ))}
-      </RelatedArticlesContainer>
+      </RelatedArticlesGrid>
     </ContainerContainer>
   );
 };
