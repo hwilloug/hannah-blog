@@ -26,8 +26,6 @@ const Navigation: React.FunctionComponent<NavigationProps> = ({
   showText,
   filled,
 }): ReactElement => {
-  const navItemSize = 1;
-
   return (
     <NavigationContainer>
       {NAV_ITEMS.map((navItem) => (

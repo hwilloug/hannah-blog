@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import "react-multi-carousel/lib/styles.css";
 import { Article, mapRespToArticles } from "..";
 import ArticleCard from "./ArticleCard";
+import Loading from "./Loading";
 import { SectionTitle } from "./StyledComponents";
 
 const FeaturedContentContainer = styled(Box)(({ theme }) => ({
@@ -17,6 +18,7 @@ const FeaturedContent: React.FunctionComponent = () => {
   const [featuredArticles, setFeaturedArticles] = useState<
     (Article | undefined)[]
   >([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const featured = ["house-tour-2024"];
 
@@ -33,6 +35,7 @@ const FeaturedContent: React.FunctionComponent = () => {
     };
     Promise.all(featured.map((f) => getFeaturedArticle(f))).then((articles) => {
       setFeaturedArticles(articles);
+      setIsLoading(false);
     });
   }, []);
 
@@ -40,15 +43,19 @@ const FeaturedContent: React.FunctionComponent = () => {
     <FeaturedContentContainer>
       <SectionTitle>Featured Article</SectionTitle>
       <Box>
-        {featuredArticles.map(
-          (article) =>
-            article && (
-              <ArticleCard
-                key={article.slug}
-                article={article}
-                orientation="portrait-large"
-              />
-            ),
+        {isLoading ? (
+          <Loading />
+        ) : (
+          featuredArticles.map(
+            (article) =>
+              article && (
+                <ArticleCard
+                  key={article.slug}
+                  article={article}
+                  orientation="portrait-large"
+                />
+              ),
+          )
         )}
       </Box>
     </FeaturedContentContainer>

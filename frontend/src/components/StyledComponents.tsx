@@ -139,6 +139,7 @@ export const NavigationItem = styled("button")<NavProps>(
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    width: "5rem",
 
     color: "white",
     backgroundColor:
@@ -158,11 +159,11 @@ export const NavigationItem = styled("button")<NavProps>(
     svg: {
       width: "1.5rem",
       height: "1.5rem",
-      transition: "width .2s ease-in-out",
+      transition: "width .2s ease-in-out .2s",
     },
 
     span: {
-      transition: "font-size .1s ease-in-out",
+      transition: "font-size .2s ease-in-out",
     },
 
     ":hover": {

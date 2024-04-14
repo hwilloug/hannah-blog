@@ -1,4 +1,4 @@
-import { Box, Grid, styled, useMediaQuery } from "@mui/material";
+import { Box, Container, Grid, styled, useMediaQuery } from "@mui/material";
 import { ReactElement } from "react";
 import { useNavigate } from "react-router-dom";
 import Browse from "../components/Browse";
@@ -37,7 +37,7 @@ const WelcomeP = styled(StyledP)(({ theme }) => ({
   margin: useMediaQuery(theme.breakpoints.down("xs")) ? "20px" : "20px 50px",
 }));
 
-const EmailContainer = styled("div")(({ theme }) => ({
+const EmailContainer = styled(Container)(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
   borderRadius: "5px",
   marginTop: "20px",
