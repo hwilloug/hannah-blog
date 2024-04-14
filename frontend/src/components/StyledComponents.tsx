@@ -25,6 +25,7 @@ export const BrowseContainer = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "stretch",
+  gap: "20px",
 }));
 
 export const BodyContainer = styled(Box)(({ theme }) => ({}));
@@ -138,6 +139,7 @@ export const NavigationItem = styled("button")<NavProps>(
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+
     color: "white",
     backgroundColor:
       isActive && isFilled
@@ -147,13 +149,32 @@ export const NavigationItem = styled("button")<NavProps>(
           : isActive
             ? theme.palette.secondary.main
             : "inherit",
+
     padding: "10px",
-    marginTop: "20px",
+
     borderRadius: "5px",
     border: isFilled ? "1px solid white" : "none",
+
+    svg: {
+      width: "1.5rem",
+      height: "1.5rem",
+      transition: "width .2s ease-in-out",
+    },
+
+    span: {
+      transition: "font-size .1s ease-in-out",
+    },
+
     ":hover": {
       backgroundColor: theme.palette.primary.main,
       cursor: "pointer",
+      span: {
+        fontSize: 0,
+      },
+      svg: {
+        width: "2.5rem",
+        height: "2.5rem",
+      },
     },
   }),
 );

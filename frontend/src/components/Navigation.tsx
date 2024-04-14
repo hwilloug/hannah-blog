@@ -34,7 +34,7 @@ const Navigation: React.FunctionComponent<NavigationProps> = ({
         <NavigationLink to={navItem.path} key={navItem.name}>
           {({ isActive }) => (
             <NavigationItem isActive={isActive} isFilled={filled}>
-              <StyledIcon path={navItem.icon} size={navItemSize} />
+              <StyledIcon path={navItem.icon} />
               {showText && (
                 <NavigationItemText>{navItem.name}</NavigationItemText>
               )}

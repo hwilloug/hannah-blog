@@ -1,4 +1,4 @@
-import { Box, Container, styled } from "@mui/material";
+import { Box, styled } from "@mui/material";
 import axios from "axios";
 import { useMemo, useState } from "react";
 import "react-multi-carousel/lib/styles.css";
@@ -6,7 +6,7 @@ import { Article, mapRespToArticles } from "..";
 import ArticleCard from "./ArticleCard";
 import { SectionTitle } from "./StyledComponents";
 
-const FeaturedContentContainer = styled(Container)(({ theme }) => ({
+const FeaturedContentContainer = styled(Box)(({ theme }) => ({
   padding: "10px",
 
   backgroundColor: theme.palette.primary.main,

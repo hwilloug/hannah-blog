@@ -83,6 +83,11 @@ const SitemapContainer = styled("div")(({ theme }) => ({
       textDecoration: "underline",
     },
   },
+  ul: {
+    display: "flex",
+    gap: "30px",
+    flexWrap: "wrap",
+  },
 }));
 
 interface FooterProps {

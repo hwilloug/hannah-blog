@@ -119,13 +119,11 @@ const HomeLink = styled(Link)({
 });
 
 const UsernameBlack = styled("span")({
-  marginTop: "15px",
   color: "black",
   marginLeft: "10px",
 });
 
 const UsernameWhite = styled(UsernameBlack)({
-  marginTop: "15px",
   color: "white",
 });
 

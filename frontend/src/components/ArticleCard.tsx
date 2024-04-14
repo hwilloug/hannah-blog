@@ -115,12 +115,13 @@ const PortraitLargeArticleImage = styled("img")({
   height: "25rem",
 });
 
-const PortraitLargeArticleInfoContainer = styled("div")({
-  backgroundColor: "white",
+const PortraitLargeArticleInfoContainer = styled("div")(({ theme }) => ({
+  backgroundColor:
+    theme.palette.mode === "dark" ? theme.palette.primary.dark : "white",
   padding: "20px",
   borderRadius: "0 0 5px 5px",
   textAlign: "center",
-});
+}));
 
 const LargePortraitArticleCard: React.FC<{ article: Article }> = ({
   article,
