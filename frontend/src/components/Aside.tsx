@@ -90,12 +90,6 @@ const Aside: React.FunctionComponent = (): ReactElement => {
   const readingPercent = (readingProgress / readingGoal) * 100;
 
   const obsessions = [
-    <a
-      href="https://www.goodreads.com/book/show/164154.A_Canticle_for_Leibowitz"
-      target="_blank"
-    >
-      <i>A Canticle for Leibowitz</i> by Walter M. Miller Jr.
-    </a>,
     "Finishing up drip irrigation",
     "Spring/Summer 2024 Garden",
     "Finishing up garden arbor & fence",
@@ -205,12 +199,12 @@ const Aside: React.FunctionComponent = (): ReactElement => {
             <StyledButton>Hannah's Book Club</StyledButton>
           </a>
           <p>
-            March's book:{" "}
+            April's book:{" "}
             <a
-              href="https://www.goodreads.com/en/book/show/164154"
+              href="https://www.goodreads.com/book/show/38819868-my-sister-the-serial-killer"
               target="_blank"
             >
-              <i>A Canticle for Leibowitz</i> by Walter M. Miller Jr.
+              <i>My Sister, The Serial Killer</i> by Oyinkan Braithwaite
             </a>
           </p>
         </AsideText>

@@ -65,7 +65,7 @@ const CategoryPreview: React.FC<CategoryPreviewProps> = ({ category }) => {
           </Grid>
         ))}
       </CategoryPreviewArticleGrid>
-      <UnstyledLink to={`/${category}`}>
+      <UnstyledLink to={`/${category.toLowerCase()}`}>
         <MoreButton>See more {category} articles</MoreButton>
       </UnstyledLink>
     </CategoryPreviewContainer>

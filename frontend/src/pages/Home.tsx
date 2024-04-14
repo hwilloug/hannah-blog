@@ -101,10 +101,10 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
             <WelcomeP>
               Hi! I'm Hannah, and I'm thrilled to welcome you to my hobby blog.
               Here, I share what I've been working on and how I did it! There
-              are six categories to choose from <CategoryB>gardening</CategoryB>
-              , <CategoryB>crafts</CategoryB>, <CategoryB>coding</CategoryB>,{" "}
-              <CategoryB>books</CategoryB>, <CategoryB>antiquing</CategoryB>,
-              and <CategoryB>food</CategoryB>.
+              are six categories to choose from:{" "}
+              <CategoryB>gardening</CategoryB>, <CategoryB>crafts</CategoryB>,{" "}
+              <CategoryB>coding</CategoryB>, <CategoryB>books</CategoryB>,{" "}
+              <CategoryB>antiquing</CategoryB>, and <CategoryB>food</CategoryB>.
             </WelcomeP>
             <WelcomeP>
               I hope you learn something new or find a new hobby to explore.

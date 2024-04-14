@@ -19,11 +19,20 @@ const Category = styled("div")(({ theme }) => ({
       : theme.palette.primary.dark,
   borderRadius: "15px",
   padding: "5px 10px",
+  ":hover": {
+    backgroundColor:
+      theme.palette.mode === "dark"
+        ? theme.palette.secondary.light
+        : theme.palette.primary.main,
+  },
 }));
 
 const Subcategory = styled(Category)(({ theme }) => ({
   color: theme.palette.mode === "dark" ? "white" : "black",
   backgroundColor: theme.palette.primary.light,
+  ":hover": {
+    backgroundColor: theme.palette.secondary.light,
+  },
 }));
 
 interface CategoriesProps {
