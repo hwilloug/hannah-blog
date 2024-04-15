@@ -7,10 +7,10 @@ import ArticleCard from "./ArticleCard";
 import { StyledButton, UnstyledLink } from "./StyledComponents";
 
 const CategoryPreviewContainer = styled(Container)(({ theme }) => ({
-  backgroundColor: theme.palette.secondary.light,
+  backgroundColor: theme.palette.primary.main,
   padding: "10px",
   marginTop: "20px",
-  border: `7px solid ${theme.palette.secondary.main}`,
+  border: `7px solid ${theme.palette.primary.dark}`,
   borderRadius: "5px",
 }));
 
@@ -25,7 +25,7 @@ const MoreButton = styled(StyledButton)(({ theme }) => ({
 const CategoryHeader = styled("h2")(({ theme }) => ({
   fontSize: "2.75rem",
   margin: "20px",
-  color: theme.palette.secondary.dark,
+  color: "white",
   textAlign: "center",
   fontFamily: "Gluten, Ubuntu",
   textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black",
@@ -57,10 +57,10 @@ const CategoryPreview: React.FC<CategoryPreviewProps> = ({ category }) => {
 
   const [ref, springs] = useInView(() => ({
     from: {
-      paddingTop: 50,
+      transform: "translateY(25%)",
     },
     to: {
-      paddingTop: 0,
+      transform: "translateY(0)",
     },
     config: {
       precision: 0.0001,

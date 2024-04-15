@@ -5,7 +5,6 @@ import Browse from "../components/Browse";
 import CategoryPreview from "../components/CategoryPreview";
 import EmailSignup from "../components/EmailSignup";
 import FeaturedContent from "../components/FeaturedContent";
-import Navigation from "../components/Navigation";
 import {
   BodyContainer,
   CategoryB,
@@ -38,7 +37,7 @@ const WelcomeP = styled(StyledP)(({ theme }) => ({
 }));
 
 const EmailContainer = styled(Container)(({ theme }) => ({
-  backgroundColor: theme.palette.primary.main,
+  backgroundColor: theme.palette.secondary.main,
   borderRadius: "5px",
   marginTop: "20px",
   padding: "10px",
@@ -135,14 +134,6 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
       </EmailContainer>
 
       <LatestArticlesGrid container direction="column">
-        <Grid item>
-          <MiniNavContainer>
-            <Navigation showText filled />
-            <StyledP style={{ textAlign: "center" }}>
-              Select a category above, or browse latest articles below.
-            </StyledP>
-          </MiniNavContainer>
-        </Grid>
         <SectionTitle>Latest Articles:</SectionTitle>
         <Grid item container spacing={2} direction="column">
           <Browse hidePagination />

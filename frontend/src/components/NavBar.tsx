@@ -80,7 +80,6 @@ const MediumContainerOne = styled("div")({
 
 const MediumContainerTwo = styled("div")({
   textAlign: "center",
-  marginTop: "-20px",
 });
 
 const SmallContainer = styled("div")({

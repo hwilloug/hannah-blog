@@ -139,6 +139,7 @@ export const NavigationItem = styled("button")<NavProps>(
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    justifyContent: "center",
     width: "5rem",
     height: "3.5rem",
 
@@ -157,6 +158,8 @@ export const NavigationItem = styled("button")<NavProps>(
     borderRadius: "5px",
     border: isFilled ? "1px solid white" : "none",
 
+    transition: "background-color 0.2s ease-in-out, border 0.2s ease-in-out",
+
     svg: {
       width: "1.5rem",
       height: "1.5rem",
@@ -170,6 +173,7 @@ export const NavigationItem = styled("button")<NavProps>(
     ":hover": {
       backgroundColor: theme.palette.primary.main,
       cursor: "pointer",
+      border: "1px inset black",
       span: {
         fontSize: 0,
       },
