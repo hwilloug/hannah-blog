@@ -12,6 +12,8 @@ const CarouselTrack = styled("div")({
 
 const SlideContainer = styled("div")({
   flex: "0 0 100%",
+  scale: "0.75",
+  transition: "scale 0.5s ease-in-out 0.5s",
 });
 
 interface CarouselProps {
@@ -55,7 +57,10 @@ const Carousel: React.FC<CarouselProps> = ({
         style={{ transform: `translate3d(-${currentSlide * 100}%, 0, 0)` }}
       >
         {slides.map((slide, index) => (
-          <SlideContainer key={index} className="slide">
+          <SlideContainer
+            key={index}
+            style={index === currentSlide ? { scale: "1" } : {}}
+          >
             {slide}
           </SlideContainer>
         ))}
