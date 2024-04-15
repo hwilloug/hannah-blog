@@ -1,5 +1,12 @@
 import { Auth0Provider } from "@auth0/auth0-react";
-import { Box, createTheme, Grid, styled, ThemeProvider } from "@mui/material";
+import {
+  Box,
+  createTheme,
+  Grid,
+  styled,
+  ThemeProvider,
+  useMediaQuery,
+} from "@mui/material";
 import { ChangeEvent, ReactElement, useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Aside from "./components/Aside";
@@ -69,7 +76,11 @@ const Layout: React.FunctionComponent = (): ReactElement => {
               md={7}
               xl={4}
               id="content"
-              style={{ maxWidth: "100%" }}
+              style={
+                useMediaQuery(theme.breakpoints.down("xs"))
+                  ? { maxWidth: "100%" }
+                  : {}
+              }
             >
               <Outlet />
             </Grid>
