@@ -62,7 +62,7 @@ const Layout: React.FunctionComponent = (): ReactElement => {
           <ScrollToTopOnNavigate />
           <NavBar />
           <ContentGrid container spacing={2} p={"20px"} justifyContent="center">
-            <Grid item xs={12} sm={8} md={9} id="content">
+            <Grid item xs={12} sm={8} md={7} xl={4} id="content">
               <Outlet />
             </Grid>
             <Grid item xs={0} sm={4} md={3} xl={2}>
