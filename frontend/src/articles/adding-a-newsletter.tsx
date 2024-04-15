@@ -1,3 +1,4 @@
+import EmailSignup from "../components/EmailSignup";
 import {
   ArticleContentContainer,
   FullSizeImage,
@@ -13,6 +14,7 @@ const AddingANewsletter: React.FunctionComponent = () => {
           I've added newsletter signups to the site! Sign up now below or to the
           right.
         </p>
+        <EmailSignup />
       </Section>
       <Section>
         <SectionHeader>Technical Details</SectionHeader>
