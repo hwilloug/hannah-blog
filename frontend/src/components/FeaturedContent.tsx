@@ -6,6 +6,7 @@ import ArticleCard from "./ArticleCard";
 import Carousel from "./Carousel";
 import Loading from "./Loading";
 import { SectionTitle } from "./StyledComponents";
+import WindowFrame from "./WindowFrame";
 
 const FeaturedContentContainer = styled(Box)(({ theme }) => ({
   padding: "10px",
@@ -49,11 +50,13 @@ const FeaturedContent: React.FunctionComponent = () => {
           {featuredArticles.map(
             (article) =>
               article && (
-                <ArticleCard
-                  key={article.slug}
-                  article={article}
-                  orientation="portrait-large"
-                />
+                <WindowFrame>
+                  <ArticleCard
+                    key={article.slug}
+                    article={article}
+                    orientation="portrait-large"
+                  />
+                </WindowFrame>
               ),
           )}
         </Carousel>

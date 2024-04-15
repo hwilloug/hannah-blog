@@ -121,19 +121,20 @@ const PortraitLargeArticleContainer = styled(Box)({
   },
   svg: {
     marginTop: 0,
+    marginBottom: 0,
     opacity: 0,
     color: "white",
     transform: "translate3d(-2rem, 0, 0) rotate(360deg)",
     transition:
-      "opacity .2s ease-in-out .1s, transform 0.2s ease-in-out .2s, margin-top 0.2s ease-in-out",
+      "opacity .2s ease-in-out .1s, transform 0.2s ease-in-out .2s, margin-top 0.2s ease-in-out, margin-bottom 0.2s ease-in-out",
   },
   ":hover": {
     div: {
-      bottom: "30%",
       svg: {
-        marginTop: "20px",
         opacity: 1,
         transform: "translate3d(0, 0, 0) rotate(0)",
+        marginTop: "20px",
+        marginBottom: "20px",
       },
     },
   },
@@ -144,12 +145,11 @@ const PortraitLargeArticleImage = styled("img")({
   width: "100%",
   objectFit: "cover",
   borderRadius: "5px",
-  height: "25rem",
+  height: "15rem",
   zIndex: 0,
 });
 
 const PortraitLargeArticleInfoContainer = styled("div")(({ theme }) => ({
-  padding: "20px",
   textAlign: "center",
   position: "absolute",
   bottom: 0,

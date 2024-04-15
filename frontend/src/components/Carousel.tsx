@@ -1,19 +1,22 @@
-import { styled } from "@mui/material";
+import { styled, useMediaQuery } from "@mui/material";
 import { Children, ReactNode, useEffect, useState } from "react";
 
 const CarouselContainer = styled("div")({
   overflow: "hidden",
 });
 
-const CarouselTrack = styled("div")({
+const CarouselTrack = styled("div")(({ theme }) => ({
   display: "flex",
-  transition: "transform 0.5s ease-in-out",
-});
+  transition: "transform 0.3s ease-in-out",
+  paddingLeft: useMediaQuery(theme.breakpoints.down("xs")) ? "20%" : "29%",
+}));
 
 const SlideContainer = styled("div")({
-  flex: "0 0 100%",
-  scale: "0.75",
-  transition: "scale 0.5s ease-in-out 0.5s",
+  flex: "0 0 0",
+  scale: "1",
+  boxShadow: "0 0 0 black",
+  transition: "scale 0.5s ease-in-out 0.3s, box-shadow 0.5s ease-in-out 0.3s",
+  margin: "50px 5px",
 });
 
 interface CarouselProps {
@@ -54,12 +57,16 @@ const Carousel: React.FC<CarouselProps> = ({
   return (
     <CarouselContainer>
       <CarouselTrack
-        style={{ transform: `translate3d(-${currentSlide * 100}%, 0, 0)` }}
+        style={{ transform: `translate3d(-${currentSlide * 17}rem, 0, 0)` }}
       >
         {slides.map((slide, index) => (
           <SlideContainer
             key={index}
-            style={index === currentSlide ? { scale: "1" } : {}}
+            style={
+              index === currentSlide
+                ? { scale: "1.25", zIndex: 3, boxShadow: "0 0 15px black" }
+                : {}
+            }
           >
             {slide}
           </SlideContainer>

@@ -24,6 +24,7 @@ def lambda_handler(event, context):
     category = query_params.get("category")
     subcategory = query_params.get("subcategory")
     slug = query_params.get("slug")
+    featured = query_params.get("featured")
     limit = query_params.get("limit", 5)
     page = query_params.get("page", 1)
     offset = (int(page) - 1) * int(limit)
@@ -41,6 +42,9 @@ def lambda_handler(event, context):
     if slug is not None:
         query.append("slug = %s")
         tup = tup + (slug,)
+    if featured is not None:
+        query.append("featured = %s")
+        tup = tup + (featured,)
     
     if len(query):
         sql = sql + " WHERE " + " AND ".join(query)
