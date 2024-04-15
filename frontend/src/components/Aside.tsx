@@ -144,25 +144,13 @@ const Aside: React.FunctionComponent = (): ReactElement => {
           </Grid>
         </Grid>
         <AsideText>
-          {readingProgress}/{readingGoal} ({readingPercent}%)
+          {readingProgress}/{readingGoal} ({readingPercent.toFixed(1)}%)
         </AsideText>
         <UnstyledLink
           to="https://www.goodreads.com/user_challenges/52076751"
           target="_blank"
         >
           <AsideButton>View on Goodreads</AsideButton>
-        </UnstyledLink>
-        <UnstyledLink
-          to="https://hardcover.app/@hannahwilloughby/goals/6990#sortBy%5B0%5D%5BlastReadDate%5D=desc_nulls_last"
-          target="_blank"
-        >
-          <AsideButton>View on Hardcover</AsideButton>
-        </UnstyledLink>
-        <UnstyledLink
-          to="https://fable.co/hannah-willoughby-114282952258"
-          target="_blank"
-        >
-          <AsideButton>View on Fable</AsideButton>
         </UnstyledLink>
       </AsideItemContainer>
     </AsideItemContainerContainer>

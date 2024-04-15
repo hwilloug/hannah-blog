@@ -1,4 +1,5 @@
 import { Container, Grid, styled } from "@mui/material";
+import { animated, useInView } from "@react-spring/web";
 import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
 import { Article, ArticlesApiResponse, mapRespToArticles } from "..";
@@ -30,6 +31,8 @@ const CategoryHeader = styled("h2")(({ theme }) => ({
   textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black",
 }));
 
+const Parallax = styled(animated.div)({});
+
 interface CategoryPreviewProps {
   category: string;
 }
@@ -51,24 +54,43 @@ const CategoryPreview: React.FC<CategoryPreviewProps> = ({ category }) => {
 
     setAllArticles();
   }, []);
+
+  const [ref, springs] = useInView(() => ({
+    from: {
+      paddingTop: 50,
+    },
+    to: {
+      paddingTop: 0,
+    },
+    config: {
+      precision: 0.0001,
+    },
+  }));
+
   return (
-    <CategoryPreviewContainer>
-      <CategoryHeader>{category}</CategoryHeader>
-      <CategoryPreviewArticleGrid container spacing={2} justifyContent="center">
-        {articles.map((article) => (
-          <Grid item xs={4}>
-            <ArticleCard
-              key={article.slug}
-              article={article}
-              orientation="portrait"
-            />
-          </Grid>
-        ))}
-      </CategoryPreviewArticleGrid>
-      <UnstyledLink to={`/${category.toLowerCase()}`}>
-        <MoreButton>See more {category} articles</MoreButton>
-      </UnstyledLink>
-    </CategoryPreviewContainer>
+    <Parallax ref={ref} style={springs}>
+      <CategoryPreviewContainer>
+        <CategoryHeader>{category}</CategoryHeader>
+        <CategoryPreviewArticleGrid
+          container
+          spacing={2}
+          justifyContent="center"
+        >
+          {articles.map((article) => (
+            <Grid item xs={4}>
+              <ArticleCard
+                key={article.slug}
+                article={article}
+                orientation="portrait"
+              />
+            </Grid>
+          ))}
+        </CategoryPreviewArticleGrid>
+        <UnstyledLink to={`/${category.toLowerCase()}`}>
+          <MoreButton>See more {category} articles</MoreButton>
+        </UnstyledLink>
+      </CategoryPreviewContainer>
+    </Parallax>
   );
 };
 

@@ -1,7 +1,6 @@
 import { Box, styled } from "@mui/material";
 import axios from "axios";
 import { useMemo, useState } from "react";
-import "react-multi-carousel/lib/styles.css";
 import { Article, mapRespToArticles } from "..";
 import ArticleCard from "./ArticleCard";
 import Loading from "./Loading";

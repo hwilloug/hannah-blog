@@ -124,7 +124,7 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
       </ContainerContainer>
 
       {categoryPreviews.map((preview) => (
-        <CategoryPreview category={preview.category} />
+        <CategoryPreview category={preview.category} key={preview.category} />
       ))}
 
       <EmailContainer>

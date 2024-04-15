@@ -140,6 +140,7 @@ export const NavigationItem = styled("button")<NavProps>(
     flexDirection: "column",
     alignItems: "center",
     width: "5rem",
+    height: "3.5rem",
 
     color: "white",
     backgroundColor:
