@@ -8,7 +8,6 @@ import Loading from "./Loading";
 
 const StyledPagination = styled(Pagination)({
   alignSelf: "center",
-  padding: "10px",
   borderRadius: "5px",
 });
 

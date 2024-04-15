@@ -3,6 +3,7 @@ import axios from "axios";
 import { useMemo, useState } from "react";
 import { Article, mapRespToArticles } from "..";
 import ArticleCard from "./ArticleCard";
+import Carousel from "./Carousel";
 import Loading from "./Loading";
 import { SectionTitle } from "./StyledComponents";
 
@@ -19,33 +20,33 @@ const FeaturedContent: React.FunctionComponent = () => {
   >([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const featured = ["house-tour-2024"];
-
   useMemo(() => {
-    const getFeaturedArticle = async (slug: string) => {
+    const getFeaturedArticles = async () => {
       try {
         const resp = await axios.get(
-          `${process.env.REACT_APP_API_URL}/articles?slug=${slug}`,
+          `${process.env.REACT_APP_API_URL}/articles?featured=true`,
         );
-        return mapRespToArticles(resp.data)[0];
+        return mapRespToArticles(resp.data);
       } catch (e) {
         console.log("error getting featured articles", e);
       }
     };
-    Promise.all(featured.map((f) => getFeaturedArticle(f))).then((articles) => {
-      setFeaturedArticles(articles);
+    Promise.resolve(getFeaturedArticles()).then((articles) => {
+      if (articles !== undefined) {
+        setFeaturedArticles(articles);
+      }
       setIsLoading(false);
     });
   }, []);
 
   return (
     <FeaturedContentContainer>
-      <SectionTitle>Featured Article</SectionTitle>
-      <Box>
-        {isLoading ? (
-          <Loading />
-        ) : (
-          featuredArticles.map(
+      <SectionTitle>Featured Articles</SectionTitle>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <Carousel>
+          {featuredArticles.map(
             (article) =>
               article && (
                 <ArticleCard
@@ -54,9 +55,9 @@ const FeaturedContent: React.FunctionComponent = () => {
                   orientation="portrait-large"
                 />
               ),
-          )
-        )}
-      </Box>
+          )}
+        </Carousel>
+      )}
     </FeaturedContentContainer>
   );
 };
