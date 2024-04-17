@@ -28,6 +28,9 @@ export const getDesignTokens = (mode: PaletteMode) => ({
             main: "#BD9FA8",
             dark: "#706677",
           },
+          warning: {
+            main: "#FFBF00",
+          },
         }
       : {
           primary: {
@@ -36,6 +39,9 @@ export const getDesignTokens = (mode: PaletteMode) => ({
           },
           secondary: {
             main: "#A8BBA0",
+          },
+          warning: {
+            main: "#FFBF00",
           },
         }),
   },

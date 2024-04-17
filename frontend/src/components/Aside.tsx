@@ -201,7 +201,9 @@ const Aside: React.FunctionComponent = (): ReactElement => {
   );
 
   const newsletterPartial = (
-    <AsideItemContainerContainer>
+    <AsideItemContainerContainer
+      style={{ backgroundColor: theme.palette.warning.main }}
+    >
       <AsideItemContainer>
         <AsideTitle>Newsletter Signup</AsideTitle>
         <AsideText>

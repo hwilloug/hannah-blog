@@ -1,16 +1,15 @@
 import { Box, styled } from "@mui/material";
-import { ReactNode } from "react";
+import { CSSProperties, ReactNode } from "react";
 
 const Frame = styled("div")(({ theme }) => ({
   padding: "10px",
-  paddingTop: "10px",
   borderRadius: "5px",
   backgroundColor: theme.palette.secondary.light,
-  width: "15rem",
 }));
 
 const WindowButtonContainer = styled(Box)({
   display: "flex",
+  marginBottom: "5px",
 });
 
 const WindowButton = styled("span", {
@@ -24,9 +23,12 @@ const WindowButton = styled("span", {
   margin: "5px",
 }));
 
-const WindowFrame: React.FC<{ children: ReactNode }> = ({ children }) => {
+const WindowFrame: React.FC<{ children: ReactNode; style: CSSProperties }> = ({
+  children,
+  style,
+}) => {
   return (
-    <Frame>
+    <Frame style={style}>
       <WindowButtonContainer>
         <WindowButton color="red" />
         <WindowButton color="orange" />

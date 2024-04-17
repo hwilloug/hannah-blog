@@ -50,7 +50,7 @@ const FeaturedContent: React.FunctionComponent = () => {
           {featuredArticles.map(
             (article) =>
               article && (
-                <WindowFrame>
+                <WindowFrame style={{ width: "15rem" }}>
                   <ArticleCard
                     key={article.slug}
                     article={article}

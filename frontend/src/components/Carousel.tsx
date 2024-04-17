@@ -7,7 +7,7 @@ const CarouselContainer = styled("div")({
 
 const CarouselTrack = styled("div")(({ theme }) => ({
   display: "flex",
-  transition: "transform 0.3s ease-in-out",
+  transition: "transform 0.5s ease-in-out",
   paddingLeft: useMediaQuery(theme.breakpoints.down("xs")) ? "20%" : "29%",
 }));
 
@@ -15,7 +15,7 @@ const SlideContainer = styled("div")({
   flex: "0 0 0",
   scale: "1",
   boxShadow: "0 0 0 black",
-  transition: "scale 0.5s ease-in-out 0.3s, box-shadow 0.5s ease-in-out 0.3s",
+  transition: "scale 0.5s ease-in-out 0.5s, box-shadow 0.5s ease-in-out 0.5s",
   margin: "50px 5px",
 });
 
@@ -64,7 +64,7 @@ const Carousel: React.FC<CarouselProps> = ({
             key={index}
             style={
               index === currentSlide
-                ? { scale: "1.25", zIndex: 3, boxShadow: "0 0 15px black" }
+                ? { scale: "1.25", zIndex: 3, boxShadow: "0 0 10px black" }
                 : {}
             }
           >

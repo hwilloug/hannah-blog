@@ -1,8 +1,9 @@
 import { ArrowCircleRightRounded } from "@mui/icons-material";
-import { Box, Grid, Paper, styled } from "@mui/material";
+import { Box, Grid, Paper, styled, useTheme } from "@mui/material";
 import { Article } from "..";
 import Categories from "./Categories";
 import { UnstyledLink } from "./StyledComponents";
+import WindowFrame from "./WindowFrame";
 
 const ArticlePaper = styled(Paper)(({ theme }) => ({
   border: `1px solid ${theme.palette.primary.dark}`,
@@ -61,7 +62,6 @@ const LandscapeArticleCard: React.FC<{ article: Article }> = ({ article }) => {
 
 const PortraitArticleContainer = styled(Box)(({ theme }) => ({
   textAlign: "center",
-  height: "100%",
 
   border: `1px solid ${theme.palette.primary.dark}`,
   borderRadius: "5px",
@@ -92,20 +92,29 @@ const PortraitArticleImage = styled("img")({
 });
 
 const PortraitArticleCard: React.FC<{ article: Article }> = ({ article }) => {
+  const theme = useTheme();
   return (
     <Paper sx={{ height: "100%" }}>
-      <PortraitArticleContainer key={article.slug}>
-        <PortraitArticleImage
-          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
-        />
-        <PortraitArticleTitle>{article.title}</PortraitArticleTitle>
-        <PortraitArticleSubtitle>{article.subtitle}</PortraitArticleSubtitle>
-      </PortraitArticleContainer>
+      <WindowFrame
+        style={{
+          width: "90%",
+          backgroundColor: theme.palette.secondary.dark,
+          height: "95%",
+        }}
+      >
+        <PortraitArticleContainer key={article.slug} style={{ height: "94%" }}>
+          <PortraitArticleImage
+            src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
+          />
+          <PortraitArticleTitle>{article.title}</PortraitArticleTitle>
+          <PortraitArticleSubtitle>{article.subtitle}</PortraitArticleSubtitle>
+        </PortraitArticleContainer>
+      </WindowFrame>
     </Paper>
   );
 };
 
-const PortraitLargeArticleContainer = styled(Box)({
+const PortraitLargeArticleContainer = styled(Box)(({ theme }) => ({
   position: "relative",
   "&:before": {
     // Use a pseudo-element to overlay the gradient
@@ -123,7 +132,6 @@ const PortraitLargeArticleContainer = styled(Box)({
     marginTop: 0,
     marginBottom: 0,
     opacity: 0,
-    color: "white",
     transform: "translate3d(-2rem, 0, 0) rotate(360deg)",
     transition:
       "opacity .2s ease-in-out .1s, transform 0.2s ease-in-out .2s, margin-top 0.2s ease-in-out, margin-bottom 0.2s ease-in-out",
@@ -138,7 +146,7 @@ const PortraitLargeArticleContainer = styled(Box)({
       },
     },
   },
-});
+}));
 
 const PortraitLargeArticleImage = styled("img")({
   position: "relative",
@@ -180,7 +188,7 @@ const LargePortraitArticleCard: React.FC<{ article: Article }> = ({
           <PortraitArticleLargeSubtitle>
             {article.subtitle}
           </PortraitArticleLargeSubtitle>
-          <ArrowCircleRightRounded />
+          <ArrowCircleRightRounded color="warning" />
         </PortraitLargeArticleInfoContainer>
       </PortraitLargeArticleContainer>
     </ArticlePaper>

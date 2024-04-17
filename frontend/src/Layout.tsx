@@ -1,12 +1,7 @@
 import { Auth0Provider } from "@auth0/auth0-react";
-import {
-  Box,
-  createTheme,
-  Grid,
-  styled,
-  ThemeProvider,
-  useMediaQuery,
-} from "@mui/material";
+import { Box, Grid, styled, ThemeProvider, useMediaQuery } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
+
 import { ChangeEvent, ReactElement, useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Aside from "./components/Aside";
@@ -74,7 +69,8 @@ const Layout: React.FunctionComponent = (): ReactElement => {
               xs={12}
               sm={8}
               md={7}
-              xl={4}
+              lg={6}
+              xl={5}
               id="content"
               style={
                 useMediaQuery(theme.breakpoints.down("xs"))

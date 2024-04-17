@@ -37,7 +37,7 @@ const WelcomeP = styled(StyledP)(({ theme }) => ({
 }));
 
 const EmailContainer = styled(Container)(({ theme }) => ({
-  backgroundColor: theme.palette.secondary.main,
+  backgroundColor: theme.palette.warning.main,
   borderRadius: "5px",
   marginTop: "20px",
   padding: "10px",

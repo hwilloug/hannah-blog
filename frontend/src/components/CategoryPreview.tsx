@@ -7,11 +7,7 @@ import ArticleCard from "./ArticleCard";
 import { StyledButton, UnstyledLink } from "./StyledComponents";
 
 const CategoryPreviewContainer = styled(Container)(({ theme }) => ({
-  backgroundColor: theme.palette.primary.main,
-  padding: "10px",
   marginTop: "20px",
-  border: `7px solid ${theme.palette.primary.dark}`,
-  borderRadius: "5px",
 }));
 
 const CategoryPreviewArticleGrid = styled(Grid)(({ theme }) => ({}));
@@ -20,6 +16,7 @@ const MoreButton = styled(StyledButton)(({ theme }) => ({
   width: "97%",
   textAlign: "center",
   marginTop: "20px",
+  backgroundColor: theme.palette.primary.main,
 }));
 
 const CategoryHeader = styled("h2")(({ theme }) => ({
@@ -68,29 +65,23 @@ const CategoryPreview: React.FC<CategoryPreviewProps> = ({ category }) => {
   }));
 
   return (
-    <Parallax ref={ref} style={springs}>
-      <CategoryPreviewContainer>
-        <CategoryHeader>{category}</CategoryHeader>
-        <CategoryPreviewArticleGrid
-          container
-          spacing={2}
-          justifyContent="center"
-        >
-          {articles.map((article) => (
-            <Grid item xs={4}>
-              <ArticleCard
-                key={article.slug}
-                article={article}
-                orientation="portrait"
-              />
-            </Grid>
-          ))}
-        </CategoryPreviewArticleGrid>
-        <UnstyledLink to={`/${category.toLowerCase()}`}>
-          <MoreButton>See more {category} articles</MoreButton>
-        </UnstyledLink>
-      </CategoryPreviewContainer>
-    </Parallax>
+    <CategoryPreviewContainer>
+      <CategoryHeader>{category}</CategoryHeader>
+      <CategoryPreviewArticleGrid container spacing={2} justifyContent="center">
+        {articles.map((article) => (
+          <Grid item xs={4}>
+            <ArticleCard
+              key={article.slug}
+              article={article}
+              orientation="portrait"
+            />
+          </Grid>
+        ))}
+      </CategoryPreviewArticleGrid>
+      <UnstyledLink to={`/${category.toLowerCase()}`}>
+        <MoreButton>See more {category} articles</MoreButton>
+      </UnstyledLink>
+    </CategoryPreviewContainer>
   );
 };
 
