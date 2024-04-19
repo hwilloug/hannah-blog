@@ -1,5 +1,6 @@
 import { ArrowCircleRightRounded } from "@mui/icons-material";
 import { Box, Grid, Paper, styled, useTheme } from "@mui/material";
+import { CSSProperties } from "react";
 import { Article } from "..";
 import Categories from "./Categories";
 import { UnstyledLink } from "./StyledComponents";
@@ -67,9 +68,6 @@ const PortraitArticleContainer = styled(Box)(({ theme }) => ({
   borderRadius: "5px",
   backgroundColor:
     theme.palette.mode === "dark" ? theme.palette.primary.dark : "white",
-  ":hover": {
-    outline: `5px solid ${theme.palette.secondary.main}`,
-  },
 }));
 
 const PortraitArticleTitle = styled("h2")(({ theme }) => ({
@@ -94,15 +92,23 @@ const PortraitArticleImage = styled("img")({
 const PortraitArticleCard: React.FC<{ article: Article }> = ({ article }) => {
   const theme = useTheme();
   return (
-    <Paper sx={{ height: "100%" }}>
+    <Paper
+      sx={{
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        borderRadius: "5px",
+        alignItems: "stretch",
+      }}
+    >
       <WindowFrame
         style={{
-          width: "90%",
-          backgroundColor: theme.palette.secondary.dark,
-          height: "95%",
+          backgroundColor: theme.palette.secondary.main,
+          height: "100%",
         }}
+        childrenStyle={{}}
       >
-        <PortraitArticleContainer key={article.slug} style={{ height: "94%" }}>
+        <PortraitArticleContainer key={article.slug} style={{ height: "100%" }}>
           <PortraitArticleImage
             src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
           />
@@ -198,17 +204,25 @@ const LargePortraitArticleCard: React.FC<{ article: Article }> = ({
 interface ArticleCardProps {
   article: Article;
   orientation: "landscape" | "portrait" | "portrait-large";
+  style?: CSSProperties;
 }
 
 const ArticleCard: React.FunctionComponent<ArticleCardProps> = ({
   article,
   orientation,
+  style,
 }) => {
   return (
     <UnstyledLink
       to={`/articles/${article.slug}`}
       key={article.slug}
-      sx={{ display: "inline-block", height: "100%", width: "100%" }}
+      sx={{
+        display: "inline-block",
+        height: "100%",
+        width: "100%",
+        borderRadius: "5px",
+      }}
+      style={style}
     >
       {orientation === "landscape" ? (
         <LandscapeArticleCard article={article} />

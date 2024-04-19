@@ -5,11 +5,17 @@ const Frame = styled("div")(({ theme }) => ({
   padding: "10px",
   borderRadius: "5px",
   backgroundColor: theme.palette.secondary.light,
+  display: "flex",
+  flexDirection: "column",
 }));
 
 const WindowButtonContainer = styled(Box)({
   display: "flex",
   marginBottom: "5px",
+});
+
+const ChildrenContainer = styled(Box)({
+  flexGrow: "5",
 });
 
 const WindowButton = styled("span", {
@@ -23,10 +29,11 @@ const WindowButton = styled("span", {
   margin: "5px",
 }));
 
-const WindowFrame: React.FC<{ children: ReactNode; style: CSSProperties }> = ({
-  children,
-  style,
-}) => {
+const WindowFrame: React.FC<{
+  children: ReactNode;
+  style?: CSSProperties;
+  childrenStyle?: CSSProperties;
+}> = ({ children, style, childrenStyle }) => {
   return (
     <Frame style={style}>
       <WindowButtonContainer>
@@ -34,7 +41,7 @@ const WindowFrame: React.FC<{ children: ReactNode; style: CSSProperties }> = ({
         <WindowButton color="orange" />
         <WindowButton color="green" />
       </WindowButtonContainer>
-      {children}
+      <ChildrenContainer style={childrenStyle}>{children}</ChildrenContainer>
     </Frame>
   );
 };

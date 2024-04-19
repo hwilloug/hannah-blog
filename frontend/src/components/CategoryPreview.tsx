@@ -4,10 +4,24 @@ import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
 import { Article, ArticlesApiResponse, mapRespToArticles } from "..";
 import ArticleCard from "./ArticleCard";
-import { StyledButton, UnstyledLink } from "./StyledComponents";
+import {
+  ContainerContainer,
+  StyledButton,
+  UnstyledLink,
+} from "./StyledComponents";
+
+const CategoryPreviewContainerContainer = styled(ContainerContainer)(
+  ({ theme }) => ({
+    backgroundColor: theme.palette.primary.dark,
+    padding: "5px",
+  }),
+);
 
 const CategoryPreviewContainer = styled(Container)(({ theme }) => ({
-  marginTop: "20px",
+  backgroundColor: theme.palette.primary.main,
+  outline: "1px solid black",
+  borderRadius: "5px",
+  padding: "10px",
 }));
 
 const CategoryPreviewArticleGrid = styled(Grid)(({ theme }) => ({}));
@@ -16,7 +30,11 @@ const MoreButton = styled(StyledButton)(({ theme }) => ({
   width: "97%",
   textAlign: "center",
   marginTop: "20px",
-  backgroundColor: theme.palette.primary.main,
+  backgroundColor: theme.palette.primary.dark,
+  ":hover": {
+    backgroundColor: theme.palette.warning.main,
+    color: "black",
+  },
 }));
 
 const CategoryHeader = styled("h2")(({ theme }) => ({
@@ -65,23 +83,30 @@ const CategoryPreview: React.FC<CategoryPreviewProps> = ({ category }) => {
   }));
 
   return (
-    <CategoryPreviewContainer>
-      <CategoryHeader>{category}</CategoryHeader>
-      <CategoryPreviewArticleGrid container spacing={2} justifyContent="center">
-        {articles.map((article) => (
-          <Grid item xs={4}>
-            <ArticleCard
-              key={article.slug}
-              article={article}
-              orientation="portrait"
-            />
-          </Grid>
-        ))}
-      </CategoryPreviewArticleGrid>
-      <UnstyledLink to={`/${category.toLowerCase()}`}>
-        <MoreButton>See more {category} articles</MoreButton>
-      </UnstyledLink>
-    </CategoryPreviewContainer>
+    <CategoryPreviewContainerContainer>
+      <CategoryPreviewContainer>
+        <CategoryHeader>{category}</CategoryHeader>
+        <CategoryPreviewArticleGrid
+          container
+          spacing={2}
+          justifyContent="center"
+        >
+          {articles.map((article) => (
+            <Grid item xs={4}>
+              <ArticleCard
+                key={article.slug}
+                article={article}
+                orientation="portrait"
+                style={{ boxShadow: "0 0 5px black" }}
+              />
+            </Grid>
+          ))}
+        </CategoryPreviewArticleGrid>
+        <UnstyledLink to={`/${category.toLowerCase()}`}>
+          <MoreButton>See more {category} articles</MoreButton>
+        </UnstyledLink>
+      </CategoryPreviewContainer>
+    </CategoryPreviewContainerContainer>
   );
 };
 
