@@ -29,7 +29,7 @@ def lambda_handler(event, context):
 
     with conn.cursor(cursor_factory=RealDictCursor) as cursor:
         slug = event.get("slug")
-        sql = "SELECT img, img_alt, title, subtitle FROM articles WHERE slug = %s;"
+        sql = "SELECT img, img_alt, title, subtitle, category FROM articles WHERE slug = %s;"
         cursor.execute(sql, (slug, ))
         article_result = cursor.fetchone()
 
