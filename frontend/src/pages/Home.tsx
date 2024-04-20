@@ -90,7 +90,13 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
   ];
 
   return (
-    <BodyContainer>
+    <BodyContainer
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "50px",
+      }}
+    >
       <FeaturedContent />
 
       <ContainerContainer>
@@ -122,9 +128,11 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
         </WelcomeContainer>
       </ContainerContainer>
 
-      {categoryPreviews.map((preview) => (
-        <CategoryPreview category={preview.category} key={preview.category} />
-      ))}
+      <div>
+        {categoryPreviews.map((preview) => (
+          <CategoryPreview category={preview.category} key={preview.category} />
+        ))}
+      </div>
 
       <EmailContainer>
         <MiniNavContainer>

@@ -1,5 +1,6 @@
+import { ArrowRight } from "@mui/icons-material";
 import { Container, Grid, styled } from "@mui/material";
-import { animated, useInView } from "@react-spring/web";
+import { animated } from "@react-spring/web";
 import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
 import { Article, ArticlesApiResponse, mapRespToArticles } from "..";
@@ -27,13 +28,31 @@ const CategoryPreviewContainer = styled(Container)(({ theme }) => ({
 const CategoryPreviewArticleGrid = styled(Grid)(({ theme }) => ({}));
 
 const MoreButton = styled(StyledButton)(({ theme }) => ({
-  width: "97%",
+  width: "100%",
   textAlign: "center",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "20px",
+  height: "50px",
   marginTop: "20px",
-  backgroundColor: theme.palette.primary.dark,
+  backgroundColor: theme.palette.primary.main,
+  img: {
+    height: 0,
+    transition: "height 0.2s ease-in-out",
+  },
+  svg: {
+    height: 0,
+    transition: "height 0.2s ease-in-out",
+  },
   ":hover": {
-    backgroundColor: theme.palette.warning.main,
-    color: "black",
+    backgroundColor: theme.palette.primary.main,
+    img: {
+      height: "50px",
+    },
+    svg: {
+      height: "50px",
+    },
   },
 }));
 
@@ -47,6 +66,8 @@ const CategoryHeader = styled("h2")(({ theme }) => ({
 }));
 
 const Parallax = styled(animated.div)({});
+
+const StyledArticleCard = styled(ArticleCard)({});
 
 interface CategoryPreviewProps {
   category: string;
@@ -70,18 +91,6 @@ const CategoryPreview: React.FC<CategoryPreviewProps> = ({ category }) => {
     setAllArticles();
   }, []);
 
-  const [ref, springs] = useInView(() => ({
-    from: {
-      transform: "translateY(25%)",
-    },
-    to: {
-      transform: "translateY(0)",
-    },
-    config: {
-      precision: 0.0001,
-    },
-  }));
-
   return (
     <CategoryPreviewContainerContainer>
       <CategoryPreviewContainer>
@@ -92,7 +101,7 @@ const CategoryPreview: React.FC<CategoryPreviewProps> = ({ category }) => {
           justifyContent="center"
         >
           {articles.map((article) => (
-            <Grid item xs={4}>
+            <Grid item xs={4} sx={{ ":hover": { scale: "1.25" } }}>
               <ArticleCard
                 key={article.slug}
                 article={article}
@@ -103,7 +112,13 @@ const CategoryPreview: React.FC<CategoryPreviewProps> = ({ category }) => {
           ))}
         </CategoryPreviewArticleGrid>
         <UnstyledLink to={`/${category.toLowerCase()}`}>
-          <MoreButton>See more {category} articles</MoreButton>
+          <MoreButton>
+            <p>See more {category} articles</p>
+            <img
+              src={`${process.env.REACT_APP_IMAGES_BASE_URL}/poppy-walking-right.gif`}
+            />
+            <ArrowRight />
+          </MoreButton>
         </UnstyledLink>
       </CategoryPreviewContainer>
     </CategoryPreviewContainerContainer>
