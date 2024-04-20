@@ -33,25 +33,28 @@ const MoreButton = styled(StyledButton)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  gap: "20px",
   height: "50px",
   marginTop: "20px",
   backgroundColor: theme.palette.primary.main,
   img: {
-    height: 0,
-    transition: "height 0.2s ease-in-out",
+    marginLeft: "10px",
+    width: 0,
+    opacity: 0,
+    transition: "transform .5s ease",
+    transform: "translate3d(-2rem, 0, 0)",
   },
   svg: {
-    height: 0,
-    transition: "height 0.2s ease-in-out",
+    width: 0,
   },
   ":hover": {
     backgroundColor: theme.palette.primary.main,
     img: {
-      height: "50px",
+      transform: "translate3d(0,0,0)",
+      opacity: 1,
+      width: "50px",
     },
     svg: {
-      height: "50px",
+      width: "20px",
     },
   },
 }));
@@ -66,8 +69,6 @@ const CategoryHeader = styled("h2")(({ theme }) => ({
 }));
 
 const Parallax = styled(animated.div)({});
-
-const StyledArticleCard = styled(ArticleCard)({});
 
 interface CategoryPreviewProps {
   category: string;
