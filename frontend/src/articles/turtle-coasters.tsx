@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
+import ClickableFullSizeImage from "../components/ClickableFullSizeImage";
 import {
   ArticleContentContainer,
-  FullSizeImage,
   RecipeContainer,
   Section,
   SectionHeader,
@@ -11,7 +11,7 @@ const TurtleCoasters: React.FunctionComponent = (): ReactElement => {
   return (
     <ArticleContentContainer>
       <Section>
-        <FullSizeImage
+        <ClickableFullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/turtle_coasters_on_table.jpeg`}
           alt="turtle coaster stack"
         />
@@ -22,7 +22,7 @@ const TurtleCoasters: React.FunctionComponent = (): ReactElement => {
         </p>
       </Section>
       <Section>
-        <FullSizeImage
+        <ClickableFullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/turtle_coasters.gif`}
           alt="turtle coaster stack"
         />
@@ -39,7 +39,7 @@ const TurtleCoasters: React.FunctionComponent = (): ReactElement => {
         </p>
       </Section>
       <Section>
-        <FullSizeImage
+        <ClickableFullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/turtle_coasters.jpeg`}
           alt="turtle coasters"
         />
@@ -51,7 +51,7 @@ const TurtleCoasters: React.FunctionComponent = (): ReactElement => {
         </p>
       </Section>
       <Section>
-        <FullSizeImage
+        <ClickableFullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/big_turtle_coaster.jpeg`}
           alt="big turtle coaster"
         />
@@ -60,7 +60,7 @@ const TurtleCoasters: React.FunctionComponent = (): ReactElement => {
           so I built on the design from tutorial and created a large version!
           Below is the design I created:
         </p>
-        <FullSizeImage
+        <ClickableFullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/large_turtle_pattern.jpeg`}
           alt="big coaster pattern"
         />

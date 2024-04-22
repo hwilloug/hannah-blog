@@ -122,7 +122,7 @@ export const BorderedImage = styled(FullSizeImage)(({ theme }) => ({
   border: `5px solid ${theme.palette.secondary.main}`,
 }));
 
-export const BorderedFullSizeImage = styled(BorderedImage)(() => ({
+export const BorderedClickableFullSizeImage = styled(BorderedImage)(() => ({
   width: "100%",
 }));
 

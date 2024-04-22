@@ -1,8 +1,8 @@
 import { useTheme } from "@mui/material";
 import { ReactElement } from "react";
+import ClickableFullSizeImage from "../components/ClickableFullSizeImage";
 import {
   ArticleContentContainer,
-  FullSizeImage,
   RecipeContainer,
   Section,
   StyledListItem,
@@ -31,7 +31,7 @@ const FriedPorkchops: React.FunctionComponent = (): ReactElement => {
             Next, prepare your breading. I just dump some flour into a plate,
             scramble two eggs on a second plate, and dump some panko bread
             crumbs on a third plate.
-            <FullSizeImage
+            <ClickableFullSizeImage
               src={`${process.env.REACT_APP_IMAGES_BASE_URL}/fried_porkchops_1.jpeg`}
               alt="Fried pork chops in progress"
             />
@@ -64,7 +64,7 @@ const FriedPorkchops: React.FunctionComponent = (): ReactElement => {
             these are thin and your oil was hot enough, they will most likely be
             done once they are golden. Place the cooked pork chops on a cooling
             rack, and sprinkle with a bit of salt while they are still hot.
-            <FullSizeImage
+            <ClickableFullSizeImage
               src={`${process.env.REACT_APP_IMAGES_BASE_URL}/fried_porkchops_2.jpeg`}
               alt="Fried pork chop"
             />

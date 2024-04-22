@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
+import ClickableFullSizeImage from "../components/ClickableFullSizeImage";
 import {
   ArticleContentContainer,
-  FullSizeImage,
   Section,
 } from "../components/StyledComponents";
 
@@ -9,7 +9,7 @@ const Curtains: React.FunctionComponent = (): ReactElement => {
   return (
     <ArticleContentContainer>
       <Section>
-        <FullSizeImage
+        <ClickableFullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/lemon_curd.gif`}
           alt="whisking the lemon curd"
         />

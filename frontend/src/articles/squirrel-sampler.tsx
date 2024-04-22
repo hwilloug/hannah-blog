@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
+import ClickableFullSizeImage from "../components/ClickableFullSizeImage";
 import {
   ArticleContentContainer,
-  FullSizeImage,
   Section,
   SectionHeader,
 } from "../components/StyledComponents";
@@ -23,7 +23,7 @@ const SquirrelSampler: React.FunctionComponent = (): ReactElement => {
         perfect gift for my mom.
       </Section>
       <Section>
-        <FullSizeImage
+        <ClickableFullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/squirrel_sampler_3.jpeg`}
           alt="Squirrel sampler cross stitch design"
         />
@@ -36,14 +36,14 @@ const SquirrelSampler: React.FunctionComponent = (): ReactElement => {
         </p>
       </Section>
       <Section>
-        <FullSizeImage
+        <ClickableFullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/squirrel_sampler_1.jpeg`}
           alt="Squirrel sampler cross stitch in progress"
         />
         <p>In progress...</p>
       </Section>
       <Section>
-        <FullSizeImage
+        <ClickableFullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/squirrel_sampler_2.jpeg`}
           alt="Squirrel sampler cross stitch final"
         />

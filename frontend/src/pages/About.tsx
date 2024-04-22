@@ -3,7 +3,7 @@ import { Container, Grid, styled } from "@mui/material";
 import { ReactElement } from "react";
 import {
   BodyContainer,
-  BorderedFullSizeImage,
+  BorderedClickableFullSizeImage,
   SectionHeader,
   StyledIcon,
   StyledP,
@@ -106,11 +106,11 @@ const About: React.FunctionComponent = (): ReactElement => {
             </LinksContainer>
           </Grid>
           <Grid item>
-            <BorderedFullSizeImage
+            <BorderedClickableFullSizeImage
               src={`${process.env.REACT_APP_IMAGES_BASE_URL}/me_and_danny.jpeg`}
               alt="A photo of me and danny"
             />
-            <BorderedFullSizeImage
+            <BorderedClickableFullSizeImage
               src={`${process.env.REACT_APP_IMAGES_BASE_URL}/family_photo_2.jpeg`}
               alt="A family photo of my cats"
             />

@@ -1,9 +1,9 @@
 import SyntaxHighlighter from "react-syntax-highlighter";
+import ClickableFullSizeImage from "../components/ClickableFullSizeImage";
 import EmailSignup from "../components/EmailSignup";
 import {
   ArticleContentContainer,
   Code,
-  FullSizeImage,
   Section,
   SectionHeader,
   SubsectionHeader,
@@ -416,7 +416,7 @@ const EmailPreferences: React.FC = () => {
           verified the migration applied with correct values by using a simple
           select statement:
         </p>
-        <FullSizeImage
+        <ClickableFullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/migrated_newsletter_table.jpeg`}
         />
       </Section>

@@ -1,8 +1,8 @@
 import { useTheme } from "@mui/material";
 import { ReactElement } from "react";
+import ClickableFullSizeImage from "../components/ClickableFullSizeImage";
 import {
   ArticleContentContainer,
-  FullSizeImage,
   Section,
   SectionHeader,
 } from "../components/StyledComponents";
@@ -47,17 +47,17 @@ const DripIrrigation: React.FunctionComponent = (): ReactElement => {
           way that would cause the relay to be triggered. I ended up just
           ordering an N-channel, and it worked!
         </p>
-        <FullSizeImage
+        <ClickableFullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/raincloud_circuit.jpeg`}
           alt="The circuit diagram"
         />
         <p>The circuit diagram</p>
-        <FullSizeImage
+        <ClickableFullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/raincloud_circuit_pic.jpeg`}
           alt="The circuit with an LCD screen"
         />
         <p>Added an LCD screen to show the status</p>
-        <FullSizeImage
+        <ClickableFullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/poppy_and_circuit.jpeg`}
           alt="Poppy laying by the circuit"
         />
@@ -70,15 +70,15 @@ const DripIrrigation: React.FunctionComponent = (): ReactElement => {
           of the hose accessories in teflon tape to prevent leakage. We also
           tied up some string to get our trench straight.
         </p>
-        <FullSizeImage
+        <ClickableFullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/solenoid_valve.jpeg`}
           alt="The solenoid valve and box for the drip irrigation system"
         />
-        <FullSizeImage
+        <ClickableFullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/valve_and_pipes.jpeg`}
           alt="The valve and pipes for the drip irrigation system"
         />
-        <FullSizeImage
+        <ClickableFullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/raincloud_trench_1.jpeg`}
           alt="In progress pic of the trench"
         />
