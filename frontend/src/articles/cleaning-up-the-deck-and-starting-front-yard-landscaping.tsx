@@ -176,7 +176,7 @@ const CleaningUpDeck: React.FC = () => {
           I'm getting into the habit of checking on the garden and containers
           after work each day to see if they need water. I'm telling myself each
           day that it is satisfying and fufilling to nurture plants to life
-          (including watering!). It's going to ge a good growing season! 🌸
+          (including watering!). It's going to be a good growing season! 🌸
         </SectionP>
       </Section>
       <Section>
