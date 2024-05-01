@@ -11,8 +11,9 @@ const CleaningUpDeck: React.FC = () => {
   return (
     <ArticleContentContainer>
       <Section>
-        This weekend was filled with gardening! I landscaped the front of the
-        house, as well as cleaned up the front and back decks.
+        Happy May, everyone! This weekend was filled with gardening: I
+        landscaped the front of the house, as well as cleaned up the front and
+        back decks.
       </Section>
       <Section>
         <SectionHeader>
