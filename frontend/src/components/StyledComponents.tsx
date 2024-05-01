@@ -81,9 +81,10 @@ export const ArticleContentContainer = styled("div")(({ theme }) => ({
 export const Section = styled("div")({
   marginBottom: "50px",
   lineHeight: 1.75,
-  p: {
-    marginBottom: "50px",
-  },
+});
+
+export const SectionP = styled("p")({
+  marginBottom: "10px",
 });
 
 export const FullSizeImage = styled("img")({
