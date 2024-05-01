@@ -4,6 +4,7 @@ import {
   Section,
   SectionHeader,
   SectionP,
+  SubsectionHeader,
 } from "../components/StyledComponents";
 
 const CleaningUpDeck: React.FC = () => {
@@ -20,19 +21,42 @@ const CleaningUpDeck: React.FC = () => {
         <SectionP>
           I wanted to get the very front of the house planted with shrubs, so I
           went to Lowes to pick out plants. I knew I wanted Knockout Roses as
-          the flowering shrub, so after picking up those, I looked around for a
-          good non-flowering shrub to go between them. I ended up going with
-          barberry bushes because they have pink foliage in the summer and fall
-          that I thought would compliment the roses. It's also very deer
-          resistant, which is a plus! I also got some small groundcover plant
-          for the front of the beds.
+          the flowering shrub since they are very low maintenence and bloom from
+          spring to frost. Knockout roses generally come in pink, but I found a
+          few that had coral-colored blossoms! I'm curious to see how they will
+          do with the shade from the house; it was listed as needing full-sun,
+          but I figured I'd give them a shot anyway.
         </SectionP>
-        <SectionP>Before:</SectionP>
+        <ClickableFullSizeImage
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/coral_knockout_rose.jpeg`}
+          alt="a coral knockout rose"
+        />
+        <ClickableFullSizeImage
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/young_knockout_rose_bush.jpeg`}
+          alt="a young coral knockout rose bush"
+        />
+        <SectionP>
+          After picking up the Knockout Roses, I looked around for a good
+          non-flowering shrub to go between them. I ended up going with barberry
+          bushes because they have pink foliage in the summer and fall that I
+          thought would compliment the roses. It's also very deer resistant,
+          which is a plus! Although, after doing some research for this article,
+          I learned that barberry bushes are invasive in the United States. I
+          already bought and planted them, so I'll do some more research before
+          buying something else with which to replace them.
+        </SectionP>
+        <ClickableFullSizeImage
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/young_bradberry_bush.jpeg`}
+          alt="a young bradberry bush"
+        />
+        <SectionP>
+          Here's what the front of the house looked like before:
+        </SectionP>
         <ClickableFullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/front_of_house_2024.jpeg`}
           alt="before landscaping the front house"
         />
-        <SectionP>After:</SectionP>
+        <SectionP>And after:</SectionP>
         <ClickableFullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/front-garden-bed-1.jpeg`}
           alt="after landscaping the front of the house"
@@ -52,16 +76,11 @@ const CleaningUpDeck: React.FC = () => {
           alt="gnome welcome light from cracker barrel"
         />
         <SectionP>
+          <SubsectionHeader>Planting and Mulching</SubsectionHeader>
           This little section of landscaping was simple to do. I first put
           landscaping fabric down, then cut an X where each plant should go.
           Then, I dug holes, planted the shrubs, and covered the bed with a
-          couple inches of mulch.
-        </SectionP>
-        <SectionP>
-          After doing some research for this article, I learned that barberry
-          bushes are invasive in the United States. I already bought and planted
-          them, so I'll do some more research before buying something to replace
-          them.
+          couple inches of mulch. And that's it!
         </SectionP>
       </Section>
       <Section>
@@ -97,6 +116,23 @@ const CleaningUpDeck: React.FC = () => {
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/back-deck-2-labelled.jpeg`}
           alt="labelled pic of what's planted on my back deck"
         />
+        <SectionP>
+          Apparently I'm really into dahlias this year. Here's close up pics of
+          the two I picked out so far:
+        </SectionP>
+        <ClickableFullSizeImage
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/dahlia_1.jpeg`}
+          alt="a flowering dahlia"
+        />
+        <ClickableFullSizeImage
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/dahlia_2.jpeg`}
+          alt="flowering hypnotic rose bicolor dahlia"
+        />
+        <SectionP>
+          And I filled the railing planters and put petunias in them. They
+          should fill out pretty well and hang over the baskets, which is going
+          to be so beautiful!
+        </SectionP>
         <SectionP>Before:</SectionP>
         <ClickableFullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/back-deck-4.jpeg`}
@@ -107,11 +143,6 @@ const CleaningUpDeck: React.FC = () => {
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/back-deck-3.jpeg`}
           alt="after planting petunias in the railing planters and cleaning up"
         />
-        <SectionP>
-          And I filled the railing planters and put petunias in them. They
-          should fill out pretty well and hang over the baskets, which is going
-          to be so beautiful!
-        </SectionP>
       </Section>
       <Section>
         <SectionHeader>Cleaning up the Front Porch</SectionHeader>
@@ -125,6 +156,16 @@ const CleaningUpDeck: React.FC = () => {
         <ClickableFullSizeImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/front-porch.jpeg`}
           alt="impatients, begonia, creeping vine planted in containers"
+        />
+        <SectionP>Here's a close up of the begonia and creeping vine:</SectionP>
+        <ClickableFullSizeImage
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/begonia.jpeg`}
+          alt="a young flowering begonnia and a creeping vine"
+        />
+        <SectionP>And here's a close up of the impatiens:</SectionP>
+        <ClickableFullSizeImage
+          src={`${process.env.REACT_APP_IMAGES_BASE_URL}/impatiens.jpeg`}
+          alt="a young flowering begonnia and a creeping vine"
         />
       </Section>
       <Section>
