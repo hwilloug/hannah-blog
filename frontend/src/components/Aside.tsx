@@ -1,6 +1,5 @@
 import { Grid, styled, useMediaQuery, useTheme } from "@mui/material";
 import { ReactElement } from "react";
-import EmailSignup from "./EmailSignup";
 import {
   BorderedImage,
   ProgressBar,
@@ -200,30 +199,9 @@ const Aside: React.FunctionComponent = (): ReactElement => {
     </AsideItemContainerContainer>
   );
 
-  const newsletterPartial = (
-    <AsideItemContainerContainer
-      style={{ backgroundColor: theme.palette.warning.main }}
-    >
-      <AsideItemContainer>
-        <AsideTitle>Newsletter Signup</AsideTitle>
-        <AsideText>
-          Want to be notified of new articles? Sign up here!
-        </AsideText>
-        <EmailSignup />
-        <AsideText>
-          <p className="small">
-            Your data is encrypted and will never be sold, and you can
-            unsubscribe at any time.
-          </p>
-        </AsideText>
-      </AsideItemContainer>
-    </AsideItemContainerContainer>
-  );
-
   return (
     <AsideContainer>
       {welcomePartial}
-      {newsletterPartial}
       {obsessionsPartial}
       {readingChallengePartial}
       {bookclubPartial}

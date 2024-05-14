@@ -7,6 +7,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import Aside from "./components/Aside";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
+import NewsletterToast from "./components/NewsletterToast";
 import { getDesignTokens } from "./theme";
 
 const LayoutContainer = styled(Box)(({ theme }) => ({
@@ -88,6 +89,7 @@ const Layout: React.FunctionComponent = (): ReactElement => {
             darkMode={darkMode}
             handleDarkModeChange={handleDarkModeChange}
           />
+          <NewsletterToast />
         </LayoutContainer>
       </ThemeProvider>
     </Auth0Provider>

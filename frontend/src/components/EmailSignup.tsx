@@ -47,8 +47,13 @@ const EmailSignup: React.FC = () => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="email"
+        sx={{ backgroundColor: "white", padding: "10px" }}
       />
-      <Button disabled={!emailValid} onClick={handleEmailSignup}>
+      <Button
+        disabled={!emailValid}
+        onClick={handleEmailSignup}
+        sx={{ textAlign: "center" }}
+      >
         Sign up
       </Button>
       <Snackbar
