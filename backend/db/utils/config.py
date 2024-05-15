@@ -1,6 +1,7 @@
 # config.py
 # returns a dictionary based on the provided section in the provided .ini file (defaults to database.ini and postgresql)
 from configparser import ConfigParser
+import os
 
 
 def config(filename='database.ini', section='postgresql'):
@@ -17,6 +18,9 @@ def config(filename='database.ini', section='postgresql'):
     else:
         raise Exception(
             'Section {0} not found in the {1} file'.format(section, filename))
+    
+    postgres_pw = os.environ.get("POSTGRES_PASSWORD")
+    db['password'] = postgres_pw
     return db
 
 # for debug purposes
