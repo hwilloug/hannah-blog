@@ -110,6 +110,118 @@ module "update_email_preferences_lambda" {
   lambda_layer_arns = var.lambda_layer_arns
 }
 
+module "bookclub_delete_comment_lambda" {
+  source = "../lambda"
+
+  database_host     = var.database_host
+  database_port     = var.database_port
+  database_username = var.database_username
+  database_password = var.database_password
+  database_name     = var.database_name
+  function_name     = "bookclub_delete_comment"
+  table_name        = "comments"
+
+  lambda_layer_arns = var.lambda_layer_arns
+}
+
+module "bookclub_delete_reaction_lambda" {
+  source = "../lambda"
+
+  database_host     = var.database_host
+  database_port     = var.database_port
+  database_username = var.database_username
+  database_password = var.database_password
+  database_name     = var.database_name
+  function_name     = "bookclub_delete_reaction"
+  table_name        = "reactions"
+
+  lambda_layer_arns = var.lambda_layer_arns
+}
+
+module "bookclub_get_thread_lambda" {
+  source = "../lambda"
+
+  database_host     = var.database_host
+  database_port     = var.database_port
+  database_username = var.database_username
+  database_password = var.database_password
+  database_name     = var.database_name
+  function_name     = "bookclub_get_thread"
+  table_name        = "threads"
+
+  lambda_layer_arns = var.lambda_layer_arns
+}
+
+module "bookclub_get_threads_lambda" {
+  source = "../lambda"
+
+  database_host     = var.database_host
+  database_port     = var.database_port
+  database_username = var.database_username
+  database_password = var.database_password
+  database_name     = var.database_name
+  function_name     = "bookclub_get_threads"
+  table_name        = "threads"
+
+  lambda_layer_arns = var.lambda_layer_arns
+}
+
+module "bookclub_post_comment_lambda" {
+  source = "../lambda"
+
+  database_host     = var.database_host
+  database_port     = var.database_port
+  database_username = var.database_username
+  database_password = var.database_password
+  database_name     = var.database_name
+  function_name     = "bookclub_post_comment"
+  table_name        = "comments"
+
+  lambda_layer_arns = var.lambda_layer_arns
+}
+
+module "bookclub_post_reaction_lambda" {
+  source = "../lambda"
+
+  database_host     = var.database_host
+  database_port     = var.database_port
+  database_username = var.database_username
+  database_password = var.database_password
+  database_name     = var.database_name
+  function_name     = "bookclub_post_reaction"
+  table_name        = "reactions"
+
+  lambda_layer_arns = var.lambda_layer_arns
+}
+
+module "bookclub_post_review_comment_lambda" {
+  source = "../lambda"
+
+  database_host     = var.database_host
+  database_port     = var.database_port
+  database_username = var.database_username
+  database_password = var.database_password
+  database_name     = var.database_name
+  function_name     = "bookclub_post_review_comment"
+  table_name        = "reviews"
+
+  lambda_layer_arns = var.lambda_layer_arns
+}
+
+module "bookclub_put_comment_lambda" {
+  source = "../lambda"
+
+  database_host     = var.database_host
+  database_port     = var.database_port
+  database_username = var.database_username
+  database_password = var.database_password
+  database_name     = var.database_name
+  function_name     = "bookclub_put_comment"
+  table_name        = "comments"
+
+  lambda_layer_arns = var.lambda_layer_arns
+}
+
 resource "aws_apigatewayv2_api" "api" {
   name          = "${var.table_name}API"
   protocol_type = "HTTP"
@@ -203,6 +315,86 @@ resource "aws_apigatewayv2_integration" "update_email_preferences_lambda_integra
   passthrough_behavior = "WHEN_NO_MATCH"
 }
 
+resource "aws_apigatewayv2_integration" "bookclub_delete_comment_lambda_integration" {
+  api_id           = aws_apigatewayv2_api.api.id
+  integration_type = "AWS_PROXY"
+
+  connection_type      = "INTERNET"
+  integration_method   = "POST"
+  integration_uri      = module.bookclub_delete_comment_lambda.invoke_arn
+  passthrough_behavior = "WHEN_NO_MATCH"
+}
+
+resource "aws_apigatewayv2_integration" "bookclub_delete_reaction_lambda_integration" {
+  api_id           = aws_apigatewayv2_api.api.id
+  integration_type = "AWS_PROXY"
+
+  connection_type      = "INTERNET"
+  integration_method   = "POST"
+  integration_uri      = module.bookclub_delete_reaction_lambda.invoke_arn
+  passthrough_behavior = "WHEN_NO_MATCH"
+}
+
+resource "aws_apigatewayv2_integration" "bookclub_get_thread_lambda_integration" {
+  api_id           = aws_apigatewayv2_api.api.id
+  integration_type = "AWS_PROXY"
+
+  connection_type      = "INTERNET"
+  integration_method   = "POST"
+  integration_uri      = module.bookclub_get_thread_lambda.invoke_arn
+  passthrough_behavior = "WHEN_NO_MATCH"
+}
+
+resource "aws_apigatewayv2_integration" "bookclub_get_threads_lambda_integration" {
+  api_id           = aws_apigatewayv2_api.api.id
+  integration_type = "AWS_PROXY"
+
+  connection_type      = "INTERNET"
+  integration_method   = "POST"
+  integration_uri      = module.bookclub_get_threads_lambda.invoke_arn
+  passthrough_behavior = "WHEN_NO_MATCH"
+}
+
+resource "aws_apigatewayv2_integration" "bookclub_post_comment_lambda_integration" {
+  api_id           = aws_apigatewayv2_api.api.id
+  integration_type = "AWS_PROXY"
+
+  connection_type      = "INTERNET"
+  integration_method   = "POST"
+  integration_uri      = module.bookclub_post_comment_lambda.invoke_arn
+  passthrough_behavior = "WHEN_NO_MATCH"
+}
+
+resource "aws_apigatewayv2_integration" "bookclub_post_reaction_lambda_integration" {
+  api_id           = aws_apigatewayv2_api.api.id
+  integration_type = "AWS_PROXY"
+
+  connection_type      = "INTERNET"
+  integration_method   = "POST"
+  integration_uri      = module.bookclub_post_reaction_lambda.invoke_arn
+  passthrough_behavior = "WHEN_NO_MATCH"
+}
+
+resource "aws_apigatewayv2_integration" "bookclub_post_review_comment_lambda_integration" {
+  api_id           = aws_apigatewayv2_api.api.id
+  integration_type = "AWS_PROXY"
+
+  connection_type      = "INTERNET"
+  integration_method   = "POST"
+  integration_uri      = module.bookclub_post_review_comment_lambda.invoke_arn
+  passthrough_behavior = "WHEN_NO_MATCH"
+}
+
+resource "aws_apigatewayv2_integration" "bookclub_put_comment_lambda_integration" {
+  api_id           = aws_apigatewayv2_api.api.id
+  integration_type = "AWS_PROXY"
+
+  connection_type      = "INTERNET"
+  integration_method   = "POST"
+  integration_uri      = module.bookclub_put_comment_lambda.invoke_arn
+  passthrough_behavior = "WHEN_NO_MATCH"
+}
+
 resource "aws_apigatewayv2_route" "get_all_route" {
   api_id    = aws_apigatewayv2_api.api.id
   route_key = "GET /articles"
@@ -257,6 +449,62 @@ resource "aws_apigatewayv2_route" "update_email_preferences_route" {
   route_key = "PUT /newsletter/{email}/preferences"
 
   target = "integrations/${aws_apigatewayv2_integration.update_email_preferences_lambda_integration.id}"
+}
+
+resource "aws_apigatewayv2_route" "bookclub_delete_comment_route" {
+  api_id    = aws_apigatewayv2_api.api.id
+  route_key = "DELETE /bookclub/comments/{comment_id}"
+
+  target = "integrations/${aws_apigatewayv2_integration.bookclub_delete_comment_lambda_integration.id}"
+}
+
+resource "aws_apigatewayv2_route" "bookclub_delete_reaction_route" {
+  api_id    = aws_apigatewayv2_api.api.id
+  route_key = "DELETE /bookclub/reactions/{reaction_id}"
+
+  target = "integrations/${aws_apigatewayv2_integration.bookclub_delete_reaction_lambda_integration.id}"
+}
+
+resource "aws_apigatewayv2_route" "bookclub_get_thread_route" {
+  api_id    = aws_apigatewayv2_api.api.id
+  route_key = "GET /bookclub/threads/{thread_id}"
+
+  target = "integrations/${aws_apigatewayv2_integration.bookclub_get_thread_lambda_integration.id}"
+}
+
+resource "aws_apigatewayv2_route" "bookclub_get_threads_route" {
+  api_id    = aws_apigatewayv2_api.api.id
+  route_key = "DELETE /bookclub/threads"
+
+  target = "integrations/${aws_apigatewayv2_integration.bookclub_get_threads_lambda_integration.id}"
+}
+
+resource "aws_apigatewayv2_route" "bookclub_post_comment_route" {
+  api_id    = aws_apigatewayv2_api.api.id
+  route_key = "POST /bookclub/comments"
+
+  target = "integrations/${aws_apigatewayv2_integration.bookclub_post_comment_lambda_integration.id}"
+}
+
+resource "aws_apigatewayv2_route" "bookclub_post_reaction_route" {
+  api_id    = aws_apigatewayv2_api.api.id
+  route_key = "POST /bookclub/reactions"
+
+  target = "integrations/${aws_apigatewayv2_integration.bookclub_post_reaction_lambda_integration.id}"
+}
+
+resource "aws_apigatewayv2_route" "bookclub_post_review_comment_route" {
+  api_id    = aws_apigatewayv2_api.api.id
+  route_key = "POST /bookclub/reviews"
+
+  target = "integrations/${aws_apigatewayv2_integration.bookclub_post_review_comment_lambda_integration.id}"
+}
+
+resource "aws_apigatewayv2_route" "bookclub_put_comment_route" {
+  api_id    = aws_apigatewayv2_api.api.id
+  route_key = "PUT /bookclub/comments/{comment_id}"
+
+  target = "integrations/${aws_apigatewayv2_integration.bookclub_put_comment_lambda_integration.id}"
 }
 
 resource "aws_cloudwatch_log_group" "api_log_group" {
@@ -343,6 +591,78 @@ resource "aws_lambda_permission" "update_email_preferences_lambda_permission" {
   statement_id  = "AllowAPIGatewayInvoke"
   action        = "lambda:InvokeFunction"
   function_name = module.update_email_preferences_lambda.function_name
+  principal     = "apigateway.amazonaws.com"
+
+  source_arn = "${aws_apigatewayv2_api.api.execution_arn}/*"
+}
+
+resource "aws_lambda_permission" "bookclub_delete_comment_lambda_permission" {
+  statement_id  = "AllowAPIGatewayInvoke"
+  action        = "lambda:InvokeFunction"
+  function_name = module.bookclub_delete_comment_lambda.function_name
+  principal     = "apigateway.amazonaws.com"
+
+  source_arn = "${aws_apigatewayv2_api.api.execution_arn}/*"
+}
+
+resource "aws_lambda_permission" "bookclub_delete_reaction_lambda_permission" {
+  statement_id  = "AllowAPIGatewayInvoke"
+  action        = "lambda:InvokeFunction"
+  function_name = module.bookclub_delete_reaction_lambda.function_name
+  principal     = "apigateway.amazonaws.com"
+
+  source_arn = "${aws_apigatewayv2_api.api.execution_arn}/*"
+}
+
+resource "aws_lambda_permission" "bookclub_get_thread_lambda_permission" {
+  statement_id  = "AllowAPIGatewayInvoke"
+  action        = "lambda:InvokeFunction"
+  function_name = module.bookclub_get_thread_lambda.function_name
+  principal     = "apigateway.amazonaws.com"
+
+  source_arn = "${aws_apigatewayv2_api.api.execution_arn}/*"
+}
+
+resource "aws_lambda_permission" "bookclub_get_threads_lambda_permission" {
+  statement_id  = "AllowAPIGatewayInvoke"
+  action        = "lambda:InvokeFunction"
+  function_name = module.bookclub_get_threads_lambda.function_name
+  principal     = "apigateway.amazonaws.com"
+
+  source_arn = "${aws_apigatewayv2_api.api.execution_arn}/*"
+}
+
+resource "aws_lambda_permission" "bookclub_post_comment_lambda_permission" {
+  statement_id  = "AllowAPIGatewayInvoke"
+  action        = "lambda:InvokeFunction"
+  function_name = module.bookclub_post_comment_lambda.function_name
+  principal     = "apigateway.amazonaws.com"
+
+  source_arn = "${aws_apigatewayv2_api.api.execution_arn}/*"
+}
+
+resource "aws_lambda_permission" "bookclub_post_reaction_lambda_permission" {
+  statement_id  = "AllowAPIGatewayInvoke"
+  action        = "lambda:InvokeFunction"
+  function_name = module.bookclub_post_reaction_lambda.function_name
+  principal     = "apigateway.amazonaws.com"
+
+  source_arn = "${aws_apigatewayv2_api.api.execution_arn}/*"
+}
+
+resource "aws_lambda_permission" "bookclub_post_review_comment_lambda_permission" {
+  statement_id  = "AllowAPIGatewayInvoke"
+  action        = "lambda:InvokeFunction"
+  function_name = module.bookclub_post_review_comment_lambda.function_name
+  principal     = "apigateway.amazonaws.com"
+
+  source_arn = "${aws_apigatewayv2_api.api.execution_arn}/*"
+}
+
+resource "aws_lambda_permission" "bookclub_put_comment_lambda_permission" {
+  statement_id  = "AllowAPIGatewayInvoke"
+  action        = "lambda:InvokeFunction"
+  function_name = module.bookclub_put_comment_lambda.function_name
   principal     = "apigateway.amazonaws.com"
 
   source_arn = "${aws_apigatewayv2_api.api.execution_arn}/*"

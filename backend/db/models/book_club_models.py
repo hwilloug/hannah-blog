@@ -40,7 +40,7 @@ class Thread(BookClubBase):
     description: Mapped[str]
     start_date: Mapped[datetime.datetime] = mapped_column(DateTime(timezone=True))
     end_date: Mapped[datetime.datetime] = mapped_column(DateTime(timezone=True))
-    last_comment_id: Mapped[str] = mapped_column(ForeignKey("comments.comment_id"), nullable=True)
+    last_comment_id: Mapped[str] = mapped_column(nullable=True)
     comments: Mapped[list[Comment]] = relationship("Comment", back_populates="thread")
 
 class ThreadParticipant(BookClubBase):
@@ -56,20 +56,14 @@ class CommentReadState(BookClubBase):
     username: Mapped[str]
     read_date: Mapped[datetime.datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
-class Reaction(BookClubBase):
-    __tablename__ = "reactions"
-
-    reaction_id: Mapped[str] = mapped_column(primary_key=True)
-    image: Mapped[str]
-
 class CommentReaction(BookClubBase):
     __tablename__ = "comment_reactions"
 
     comment_id: Mapped[str] = mapped_column(ForeignKey("comments.comment_id"), primary_key=True)
-    reaction_id: Mapped[str] = mapped_column(ForeignKey("reactions.reaction_id"), primary_key=True)
+    reaction_id: Mapped[str]
+    reaction: Mapped[int]
     username: Mapped[str]
     comment: Mapped["Comment"] = relationship("Comment", back_populates="reactions")
-    reaction: Mapped["Reaction"] = relationship("Reaction")
 
 class Review(BookClubBase):
     __tablename__ = "reviews"

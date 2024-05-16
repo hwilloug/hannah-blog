@@ -31,6 +31,12 @@ params = db_config()
 conn_string = f"postgresql://{params['username']}:{params['password']}@{params['hostname']}:{params['port']}/{params['database']}"
 config.set_main_option('sqlalchemy.url', conn_string)
 
+def include_name(name, type_, parent_names):
+    if type_ == "schema":
+        return name in [None, 'bookclub']
+    else:
+        return True
+
 
 def run_migrations_offline() -> None:
     """Run migrations in 'offline' mode.
@@ -71,7 +77,9 @@ def run_migrations_online() -> None:
 
     with connectable.connect() as connection:
         context.configure(
-            connection=connection, target_metadata=target_metadata
+            connection=connection, target_metadata=target_metadata,
+            include_schemas=True,
+            include_name=include_name
         )
 
         with context.begin_transaction():
