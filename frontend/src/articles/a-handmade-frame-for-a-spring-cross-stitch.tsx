@@ -135,13 +135,13 @@ const CrossStitchFrame: React.FC = () => {
             needed.
           </li>
           <ClickableImage
-            src={`${process.env.REACT_APP_IMAGES_BASE_URL}/spring_cross_stitch_frame_back.jpeg`}
+            src={`${process.env.REACT_APP_IMAGES_BASE_URL}/spring_cross_stitch_frame_back.jpeg`} alt="cross stitch frame back"
           />
           <li>
             <b>Hang, and enjoy!</b>
           </li>
           <ClickableImage
-            src={`${process.env.REACT_APP_IMAGES_BASE_URL}/frame_with_spring_cross_stitch.jpeg`}
+            src={`${process.env.REACT_APP_IMAGES_BASE_URL}/frame_with_spring_cross_stitch.jpeg`} alt="handmade frame with spring cross stitch"
           />
         </Instructions>
       </Section>
