@@ -1,7 +1,6 @@
 import { Box, Container, Grid, styled, useMediaQuery } from "@mui/material";
 import { ReactElement } from "react";
 import { useNavigate } from "react-router-dom";
-import Browse from "../components/Browse";
 import CategoryPreview from "../components/CategoryPreview";
 import EmailSignup from "../components/EmailSignup";
 import FeaturedContent from "../components/FeaturedContent";
@@ -9,7 +8,6 @@ import {
   BodyContainer,
   CategoryB,
   ContainerContainer,
-  SectionTitle,
   StyledButton,
   StyledP,
 } from "../components/StyledComponents";
@@ -28,8 +26,8 @@ const WelcomeContainer = styled(Box)(({ theme }) => ({
 const LatestArticlesGrid = styled(Grid)(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
   borderRadius: "5px",
-  marginTop: "20px",
   padding: "20px",
+  border: `5px solid ${theme.palette.primary.dark}`,
 }));
 
 const WelcomeP = styled(StyledP)(({ theme }) => ({
@@ -128,12 +126,6 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
         </WelcomeContainer>
       </ContainerContainer>
 
-      <div>
-        {categoryPreviews.map((preview) => (
-          <CategoryPreview category={preview.category} key={preview.category} />
-        ))}
-      </div>
-
       <EmailContainer>
         <MiniNavContainer>
           <StyledP>Sign up for email notifications below!</StyledP>
@@ -141,11 +133,13 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
         </MiniNavContainer>
       </EmailContainer>
 
+      <div>
+        {categoryPreviews.map((preview) => (
+          <CategoryPreview category={preview.category} key={preview.category} />
+        ))}
+      </div>
+
       <LatestArticlesGrid container direction="column">
-        <SectionTitle>Latest Articles:</SectionTitle>
-        <Grid item container spacing={2} direction="column">
-          <Browse hidePagination />
-        </Grid>
         <StyledButton
           onClick={() => navigate("/articles")}
           sx={{ textAlign: "center", mt: "20px" }}
