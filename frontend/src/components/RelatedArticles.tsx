@@ -2,7 +2,7 @@ import { Grid, styled, useMediaQuery, useTheme } from "@mui/material";
 import axios, { AxiosResponse } from "axios";
 import { useMemo, useState } from "react";
 import { useLoaderData } from "react-router-dom";
-import { Article } from "..";
+import { Article, mapRespToArticles } from "..";
 import ArticleCard from "./ArticleCard";
 import { ContainerContainer, SectionTitle } from "./StyledComponents";
 
@@ -33,8 +33,14 @@ const RelatedArticles: React.FunctionComponent<RelatedArticlesProps> = ({
         const response = await axios.get(
           `${process.env.REACT_APP_API_URL}/articles?subcategory=${subcategory}`,
         );
+        const relatedArticles = response.data.articles.filter(
+          (d: Article) => d.slug !== slug,
+        );
         setRelatedArticles(
-          response.data.articles.filter((d: Article) => d.slug !== slug),
+          mapRespToArticles({
+            articles: relatedArticles,
+            count: relatedArticles.length,
+          }),
         );
       } catch (e) {
         console.log("couldnt load related articles:", e);
