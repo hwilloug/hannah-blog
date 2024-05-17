@@ -1,6 +1,6 @@
 import { useTheme } from "@mui/material";
 import { ReactElement } from "react";
-import ClickableFullSizeImage from "../components/ClickableFullSizeImage";
+import ClickableImage from "../components/ClickableFullSizeImage";
 import {
   ArticleContentContainer,
   Section,
@@ -20,14 +20,14 @@ const Pies: React.FunctionComponent = (): ReactElement => {
         </p>
       </Section>
       <Section>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/pies_1.jpeg`}
           alt="In progress pic of the pies embroidery"
         />
         <p>In progress...</p>
       </Section>
       <Section>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/pies_2.jpeg`}
           alt="The final pies embroidery"
         />

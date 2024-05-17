@@ -1,4 +1,4 @@
-import ClickableFullSizeImage from "../components/ClickableFullSizeImage";
+import ClickableImage from "../components/ClickableFullSizeImage";
 import {
   ArticleContentContainer,
   Section,
@@ -17,19 +17,19 @@ const Scrapbooking: React.FunctionComponent = () => {
         </p>
       </Section>
       <Section>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/poppy_scrapbooking.jpeg`}
           alt="my cat poppy on the scrapbooking stuff"
         />
         <p>Poppy helping me scrapbook</p>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/scrapbooks_1.jpeg`}
           alt="scrapbooking about cats"
         />
         <p>
           There are pages and pages of cat photos. They truly are my babies ❤️🌸
         </p>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/scrapbooks.jpeg`}
           alt="full scrapbooks"
         />

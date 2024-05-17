@@ -1,4 +1,4 @@
-import ClickableFullSizeImage from "../components/ClickableFullSizeImage";
+import ClickableImage from "../components/ClickableFullSizeImage";
 import {
   ArticleContentContainer,
   Section,
@@ -71,7 +71,7 @@ const CommentsSection: React.FunctionComponent = () => {
         </ol>
         <p>
           Below is the updated architecture diagram for the site:
-          <ClickableFullSizeImage
+          <ClickableImage
             src={`${process.env.REACT_APP_IMAGES_BASE_URL}/architecture_diagram_3.jpeg`}
             alt="AWS Architecture diagram with email newsletter"
           />

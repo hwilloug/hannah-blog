@@ -1,4 +1,4 @@
-import ClickableFullSizeImage from "../components/ClickableFullSizeImage";
+import ClickableImage from "../components/ClickableFullSizeImage";
 import {
   ArticleContentContainer,
   Section,
@@ -29,7 +29,7 @@ const MississippiHaulFeb2024: React.FunctionComponent = () => {
       </Section>
       <Section>
         <SectionHeader>Bakeware & Glassware</SectionHeader>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/mississippi_haul_2.jpeg`}
           alt="Corningware haul. Spice O' Life, Pastel Boquet"
         />
@@ -37,7 +37,7 @@ const MississippiHaulFeb2024: React.FunctionComponent = () => {
           Corningware finds. Top and bottom right: Spice o' Life; bottom left:
           Pastel Boquet
         </p>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/mississippi_haul_3.jpeg`}
           alt="Glassbake blueberry, forest fancies pyrex, fire king ramekin"
         />
@@ -45,12 +45,12 @@ const MississippiHaulFeb2024: React.FunctionComponent = () => {
           Back left: Glassbake blueberry; back right: Forest Fancies pyrex;
           front: Fire King ramekin
         </p>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/mississippi_haul_18.jpeg`}
           alt="Milk glass salt and pepper shaker and bowl"
         />
         <p>Milk glass</p>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/mississippi_haul_19.jpeg`}
           alt="Fire King jadeite and pink bowl"
         />
@@ -58,12 +58,12 @@ const MississippiHaulFeb2024: React.FunctionComponent = () => {
       </Section>
       <Section>
         <SectionHeader>Strawberries</SectionHeader>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/mississippi_haul_5.jpeg`}
           alt="strawberry pitcher; strawberry cheese dome; strawberry hand towel"
         />
         <p>Strawberry finds and gifts</p>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/mississippi_haul_8.jpeg`}
           alt="Heartland stoneware; dinner plate, butter dish, creamer, salt and pepper shakers"
         />
@@ -72,7 +72,7 @@ const MississippiHaulFeb2024: React.FunctionComponent = () => {
           middle right: creamer; front left: gravy boat plate; front right: salt
           and pepper shakers
         </p>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/mississippi_haul_9.jpeg`}
           alt="vintage juice glasses"
         />
@@ -80,7 +80,7 @@ const MississippiHaulFeb2024: React.FunctionComponent = () => {
       </Section>
       <Section>
         <SectionHeader>Ducks</SectionHeader>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/mississippi_haul_11.jpeg`}
           alt="duck bathroom accessories"
         />
@@ -88,7 +88,7 @@ const MississippiHaulFeb2024: React.FunctionComponent = () => {
       </Section>
       <Section>
         <SectionHeader>Clocks</SectionHeader>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/mississippi_haul_14.jpeg`}
           alt="vintage clocks"
         />
@@ -96,17 +96,17 @@ const MississippiHaulFeb2024: React.FunctionComponent = () => {
       </Section>
       <Section>
         <SectionHeader>Lamps</SectionHeader>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/mississippi_haul_15.jpeg`}
           alt="vintage hurricane-style lamps"
         />
         <p>Hurricane-style electric lamps</p>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/mississippi_haul_16.jpeg`}
           alt="vintage wall lamp and tiffany stle lamp shade"
         />
         <p>Left: vintage wall lamp; right: Tiffany-style lamp shade</p>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/mississippi_haul_17.jpeg`}
           alt="small oil lamps"
         />
@@ -114,12 +114,12 @@ const MississippiHaulFeb2024: React.FunctionComponent = () => {
       </Section>
       <Section>
         <SectionHeader>Furniture</SectionHeader>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/glassware_cabinet_2.jpeg`}
           alt="english glassware cabinet"
         />
         <p>An English glassware cabinet</p>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/cat_chest.jpeg`}
           alt="cat tapestry chest"
         />
@@ -127,7 +127,7 @@ const MississippiHaulFeb2024: React.FunctionComponent = () => {
       </Section>
       <Section>
         <SectionHeader>Misc. Finds</SectionHeader>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/mississippi_haul_1.jpeg`}
           alt="vintage ashtray; pink depression glass glass; vintage trays"
         />
@@ -135,32 +135,32 @@ const MississippiHaulFeb2024: React.FunctionComponent = () => {
           Top-left: ashtray; top-right: depression glass trinket holder; bottom:
           cute mini floral trays
         </p>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/mississippi_haul_4.jpeg`}
           alt="vintage vegetables napkin holder"
         />
         <p>Vintage vegetables napkin holder</p>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/mississippi_haul_12.jpeg`}
           alt="fish jelly mold; squirrel jelly mold"
         />
         <p>Jelly molds</p>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/mississippi_haul_13.jpeg`}
           alt="vintage recipes box"
         />
         <p>A vintage recipes box</p>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/mississippi_haul_10.jpeg`}
           alt="vintage canisters; flower planter; vintage butter dish"
         />
         <p>Canisters; a planter; a butter dish</p>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/mississippi_haul_6.jpeg`}
           alt="fall table runner; raspberry table cloth"
         />
         <p>Left: Fall table runner; right: raspberry table cloth</p>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/mississippi_haul_7.jpeg`}
           alt="amish farm canisters"
         />
@@ -168,7 +168,7 @@ const MississippiHaulFeb2024: React.FunctionComponent = () => {
       </Section>
       <Section>
         <p>What's your favorite thing I found? Post in the comments below!</p>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/mississippi_haul.jpeg`}
           alt="antiques haul mississippi"
         />

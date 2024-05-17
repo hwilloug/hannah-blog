@@ -1,4 +1,4 @@
-import ClickableFullSizeImage from "../components/ClickableFullSizeImage";
+import ClickableImage from "../components/ClickableFullSizeImage";
 import {
   ArticleContentContainer,
   Section,
@@ -27,7 +27,7 @@ const PoppysPlaygroundGame: React.FC = () => {
           you are trying to collect cookies without getting caught by the evil
           Tiger.
         </p>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/poppys-playground-sample.gif`}
           alt="Poppy's playground game, a game made with Lua"
         />

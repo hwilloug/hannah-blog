@@ -18,10 +18,11 @@ const ClickableImageContainer = styled("div", {
   },
 }));
 
-const ClickableFullSizeImage: React.FC<{ src: string; alt?: string }> = ({
-  src,
-  alt,
-}) => {
+const ClickableImage: React.FC<{
+  src: string;
+  alt?: string;
+  size?: string;
+}> = ({ src, alt, size = "100%" }) => {
   const [fullSize, setFullSize] = useState(false);
   const [freezeScroll, setFreezeScroll] = useState(false);
 
@@ -42,9 +43,9 @@ const ClickableFullSizeImage: React.FC<{ src: string; alt?: string }> = ({
   };
   return (
     <ClickableImageContainer fullSize={fullSize} onClick={handleClick}>
-      <FullSizeImage src={src} alt={alt} />
+      <FullSizeImage style={{ width: size }} src={src} alt={alt} />
     </ClickableImageContainer>
   );
 };
 
-export default ClickableFullSizeImage;
+export default ClickableImage;

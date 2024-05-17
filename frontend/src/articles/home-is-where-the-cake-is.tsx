@@ -1,6 +1,6 @@
 import { useTheme } from "@mui/material";
 import { ReactElement } from "react";
-import ClickableFullSizeImage from "../components/ClickableFullSizeImage";
+import ClickableImage from "../components/ClickableFullSizeImage";
 import {
   ArticleContentContainer,
   Section,
@@ -24,7 +24,7 @@ const HomeIsWhereTheCakeIs: React.FunctionComponent = (): ReactElement => {
         </p>
       </Section>
       <Section>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/cake_home_4.jpeg`}
           alt="Home is where the cake is design"
         />
@@ -35,21 +35,21 @@ const HomeIsWhereTheCakeIs: React.FunctionComponent = (): ReactElement => {
         </p>
       </Section>
       <Section>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/cake_home_1.jpeg`}
           alt="Tiger sitting under my cross stitch setup"
         />
         <p>In progress...</p>
       </Section>
       <Section>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/cake_home_2.jpeg`}
           alt="Cross stitch home is where the cake is almost complete"
         />
         <p>Almost done!</p>
       </Section>
       <Section>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/cake_home_3.jpeg`}
           alt="Framed home is where the cake is"
         />
@@ -61,7 +61,7 @@ const HomeIsWhereTheCakeIs: React.FunctionComponent = (): ReactElement => {
         </p>
       </Section>
       <Section>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/home_cake_5.jpeg`}
           alt="paired cross stitch with cake and a key"
         />

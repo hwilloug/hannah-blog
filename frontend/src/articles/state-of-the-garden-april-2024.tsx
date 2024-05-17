@@ -1,4 +1,4 @@
-import ClickableFullSizeImage from "../components/ClickableFullSizeImage";
+import ClickableImage from "../components/ClickableFullSizeImage";
 import {
   ArticleContentContainer,
   Section,
@@ -31,14 +31,14 @@ const SOTGApril2024: React.FunctionComponent = () => {
           ), and they happened to have all the types of peppers that I had
           started and let die, so I grabbed one of each of shishito, red bell,
           jalapeño, and sweet banana pepper plants.
-          <ClickableFullSizeImage
+          <ClickableImage
             src={`${process.env.REACT_APP_IMAGES_BASE_URL}/garden_april_2024_4.jpeg`}
             alt="transplanted peppers in a garden bed"
           />
         </p>
         <p>
           I also planted some eggplant.
-          <ClickableFullSizeImage
+          <ClickableImage
             src={`${process.env.REACT_APP_IMAGES_BASE_URL}/garden_april_2024_3.jpeg`}
             alt="transplanted eggplant in a garden bed"
           />
@@ -66,11 +66,11 @@ const SOTGApril2024: React.FunctionComponent = () => {
           of it. Then, I'll cover the bed with plastic (except over the
           strawberries, getting as close to the base as possible) to prevent the
           grass from being able to photosynthesize.
-          <ClickableFullSizeImage
+          <ClickableImage
             src={`${process.env.REACT_APP_IMAGES_BASE_URL}/garden_april_2024_2.jpeg`}
             alt="asparagus garden bed"
           />
-          <ClickableFullSizeImage
+          <ClickableImage
             src={`${process.env.REACT_APP_IMAGES_BASE_URL}/garden_april_2024_1.jpeg`}
             alt="strawberry and onion garden bed"
           />
@@ -87,7 +87,7 @@ const SOTGApril2024: React.FunctionComponent = () => {
           <li>
             First, decide where you want to transplant your plant. Broccoli and
             cauliflower need about 18 inches between each plant.
-            <ClickableFullSizeImage
+            <ClickableImage
               src={`${process.env.REACT_APP_IMAGES_BASE_URL}/broccoli_1.jpeg`}
               alt="how to transplant broccoli and cauliflower"
             />
@@ -96,7 +96,7 @@ const SOTGApril2024: React.FunctionComponent = () => {
             Then, dig a hole a little deeper than the the depth of the plant's
             container with a hand trowel or a potting spade (or your hands if
             you're feeling frisky).
-            <ClickableFullSizeImage
+            <ClickableImage
               src={`${process.env.REACT_APP_IMAGES_BASE_URL}/broccoli_2.jpeg`}
               alt="transplanting broccoli and cauliflower"
             />
@@ -104,7 +104,7 @@ const SOTGApril2024: React.FunctionComponent = () => {
           <li>
             Finally, put soil up to the first set of true leaves. This will help
             the plant keep a strong base and stand up straight as it grows.
-            <ClickableFullSizeImage
+            <ClickableImage
               src={`${process.env.REACT_APP_IMAGES_BASE_URL}/broccoli_3.jpeg`}
               alt="transplanted broccoli and cauliflower"
             />
@@ -121,7 +121,7 @@ const SOTGApril2024: React.FunctionComponent = () => {
       </Section>
       <Section>
         <p>
-          <ClickableFullSizeImage
+          <ClickableImage
             src={`${process.env.REACT_APP_IMAGES_BASE_URL}/broccoli_4.jpeg`}
             alt="transplanted broccoli and cauliflower bed"
           />
@@ -130,7 +130,7 @@ const SOTGApril2024: React.FunctionComponent = () => {
         </p>
       </Section>
       <Section>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/sotg_april_2024.jpeg`}
           alt="some garden beds"
         />

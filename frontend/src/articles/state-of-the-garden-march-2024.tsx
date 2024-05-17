@@ -1,4 +1,4 @@
-import ClickableFullSizeImage from "../components/ClickableFullSizeImage";
+import ClickableImage from "../components/ClickableFullSizeImage";
 import {
   ArticleContentContainer,
   Section,
@@ -15,7 +15,7 @@ const SOTGMarch2024: React.FunctionComponent = () => {
       <Section>
         <SectionHeader>Seedlings</SectionHeader>
         <p>
-          <ClickableFullSizeImage
+          <ClickableImage
             src={`${process.env.REACT_APP_IMAGES_BASE_URL}/grow_lights_feb_2024.jpeg`}
           />
           Indoors, I've got my started seeds and my seedlings without true
@@ -25,10 +25,10 @@ const SOTGMarch2024: React.FunctionComponent = () => {
           moisture and encourage germination.
         </p>
         <p>
-          <ClickableFullSizeImage
+          <ClickableImage
             src={`${process.env.REACT_APP_IMAGES_BASE_URL}/march_2024_garden_1.jpeg`}
           />
-          <ClickableFullSizeImage
+          <ClickableImage
             src={`${process.env.REACT_APP_IMAGES_BASE_URL}/march_2024_garden_2.jpeg`}
           />
           I had forgotten how good it feels to grow the easy stuff like zinnias
@@ -37,10 +37,10 @@ const SOTGMarch2024: React.FunctionComponent = () => {
           come up as well.
         </p>
         <p>
-          <ClickableFullSizeImage
+          <ClickableImage
             src={`${process.env.REACT_APP_IMAGES_BASE_URL}/march_2024_garden_3.jpeg`}
           />
-          <ClickableFullSizeImage
+          <ClickableImage
             src={`${process.env.REACT_APP_IMAGES_BASE_URL}/march_2024_garden_4.jpeg`}
           />
           I moved my seedlings that had a few true leaves outside to make room
@@ -55,27 +55,27 @@ const SOTGMarch2024: React.FunctionComponent = () => {
       <Section>
         <SectionHeader>Beds</SectionHeader>
         <p>
-          <ClickableFullSizeImage
+          <ClickableImage
             src={`${process.env.REACT_APP_IMAGES_BASE_URL}/march_2024_garden_5.jpeg`}
           />
           I've got a few things going outside as well: asparagus, strawberries,
           onions, garlic, and parsley.
         </p>
         <p>
-          <ClickableFullSizeImage
+          <ClickableImage
             src={`${process.env.REACT_APP_IMAGES_BASE_URL}/march_2024_garden_6.jpeg`}
           />
           The parsley I planted spring last year is still going strong.
         </p>
         <p>
-          <ClickableFullSizeImage
+          <ClickableImage
             src={`${process.env.REACT_APP_IMAGES_BASE_URL}/march_2024_garden_7.jpeg`}
           />
           The asparagus I planted last spring is starting to come up. I added a
           layer of compost in January.
         </p>
         <p>
-          <ClickableFullSizeImage
+          <ClickableImage
             src={`${process.env.REACT_APP_IMAGES_BASE_URL}/march_2024_garden_8.jpeg`}
           />
           Finally, the strawberry bed. I didn't really take care of my
@@ -84,7 +84,7 @@ const SOTGMarch2024: React.FunctionComponent = () => {
           this bed a couple weeks ago, and they look healthy.
         </p>
         <p>
-          <ClickableFullSizeImage
+          <ClickableImage
             src={`${process.env.REACT_APP_IMAGES_BASE_URL}/march_2024_garden_9.jpeg`}
           />
           There's a huge clover patch growing on the path between the beds, and

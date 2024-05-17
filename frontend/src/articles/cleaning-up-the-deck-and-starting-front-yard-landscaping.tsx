@@ -1,4 +1,4 @@
-import ClickableFullSizeImage from "../components/ClickableFullSizeImage";
+import ClickableImage from "../components/ClickableFullSizeImage";
 import {
   ArticleContentContainer,
   Section,
@@ -28,11 +28,11 @@ const CleaningUpDeck: React.FC = () => {
           do with the shade from the house; it was listed as needing full-sun,
           but I figured I'd give them a shot anyway.
         </SectionP>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/coral_knockout_rose.jpeg`}
           alt="a coral knockout rose"
         />
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/young_knockout_rose_bush.jpeg`}
           alt="a young coral knockout rose bush"
         />
@@ -46,23 +46,23 @@ const CleaningUpDeck: React.FC = () => {
           already bought and planted them, so I'll do some more research before
           buying something else with which to replace them.
         </SectionP>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/young_bradberry_bush.jpeg`}
           alt="a young bradberry bush"
         />
         <SectionP>
           Here's what the front of the house looked like before:
         </SectionP>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/front_of_house_2024.jpeg`}
           alt="before landscaping the front house"
         />
         <SectionP>And after:</SectionP>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/front-garden-bed-1.jpeg`}
           alt="after landscaping the front of the house"
         />
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/front-garden-bed-3.jpeg`}
           alt="a closer view of the front landscaping"
         />
@@ -72,7 +72,7 @@ const CleaningUpDeck: React.FC = () => {
           doesn't get much sun, so I'll need to decide on different plants than
           the front.
         </SectionP>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/front-garden-bed-2.jpeg`}
           alt="gnome welcome light from cracker barrel"
         />
@@ -98,12 +98,12 @@ const CleaningUpDeck: React.FC = () => {
           again!
         </SectionP>
         <SectionP>Before:</SectionP>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/back-deck-5.jpeg`}
           alt="before cleaning up the back deck; dirty and empty pots"
         />
         <SectionP>After:</SectionP>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/back-deck-2.jpeg`}
           alt="cleaned up back deck; flowers in containers"
         />
@@ -113,7 +113,7 @@ const CleaningUpDeck: React.FC = () => {
           I gave some height to the containers in the back by raising them up on
           stands. Below is the after picture labelled with what's in each pot.
         </SectionP>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/back-deck-2-labelled.jpeg`}
           alt="labelled pic of what's planted on my back deck"
         />
@@ -121,11 +121,11 @@ const CleaningUpDeck: React.FC = () => {
           Apparently I'm really into dahlias this year. Here's close up pics of
           the two I picked out so far:
         </SectionP>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/dahlia_1.jpeg`}
           alt="a flowering dahlia"
         />
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/dahlia_2.jpeg`}
           alt="flowering hypnotic rose bicolor dahlia"
         />
@@ -135,12 +135,12 @@ const CleaningUpDeck: React.FC = () => {
           to be so beautiful!
         </SectionP>
         <SectionP>Before:</SectionP>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/back-deck-4.jpeg`}
           alt="before planting petunias in the railing planter"
         />
         <SectionP>After:</SectionP>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/back-deck-3.jpeg`}
           alt="after planting petunias in the railing planters and cleaning up"
         />
@@ -154,17 +154,17 @@ const CleaningUpDeck: React.FC = () => {
           during the day (just in the mornings), so I picked out impatiens, a
           begonia, and a creeping vine.
         </SectionP>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/front-porch.jpeg`}
           alt="impatients, begonia, creeping vine planted in containers"
         />
         <SectionP>Here's a close up of the begonia and creeping vine:</SectionP>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/begonia.jpeg`}
           alt="a young flowering begonnia and a creeping vine"
         />
         <SectionP>And here's a close up of the impatiens:</SectionP>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/impatiens.jpeg`}
           alt="a young flowering begonnia and a creeping vine"
         />

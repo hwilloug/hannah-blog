@@ -1,6 +1,6 @@
 import { useTheme } from "@mui/material";
 import { ReactElement } from "react";
-import ClickableFullSizeImage from "../components/ClickableFullSizeImage";
+import ClickableImage from "../components/ClickableFullSizeImage";
 import {
   ArticleContentContainer,
   Section,
@@ -23,7 +23,7 @@ const Refactor: React.FunctionComponent = (): ReactElement => {
       </Section>
       <Section>
         <SectionHeader>Architecture</SectionHeader>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/architecture_diagram.jpeg`}
           alt="AWS architecture diagram. S3 React App with Lambda API"
         />

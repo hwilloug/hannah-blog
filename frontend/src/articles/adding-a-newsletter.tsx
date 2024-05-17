@@ -1,4 +1,4 @@
-import ClickableFullSizeImage from "../components/ClickableFullSizeImage";
+import ClickableImage from "../components/ClickableFullSizeImage";
 import EmailSignup from "../components/EmailSignup";
 import {
   ArticleContentContainer,
@@ -18,7 +18,7 @@ const AddingANewsletter: React.FunctionComponent = () => {
       </Section>
       <Section>
         <SectionHeader>Technical Details</SectionHeader>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/architecture_diagram_2.jpeg`}
           alt="AWS Architecture Diagram"
         />

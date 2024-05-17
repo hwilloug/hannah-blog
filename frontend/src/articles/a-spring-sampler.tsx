@@ -1,4 +1,4 @@
-import ClickableFullSizeImage from "../components/ClickableFullSizeImage";
+import ClickableImage from "../components/ClickableFullSizeImage";
 import {
   ArticleContentContainer,
   Section,
@@ -19,23 +19,23 @@ const SpringSampler: React.FunctionComponent = () => {
       </Section>
       <Section>
         <SectionHeader>In Progress Pictures</SectionHeader>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/spring_sampler_1.jpeg`}
           alt="starting the spring sampler cross stitch"
         />
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/spring_sampler_2.jpeg`}
           alt="spring sampler cross stitch in progress"
         />
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/spring_sampler_3.jpeg`}
           alt="spring sampler cross stitch in progress"
         />
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/spring_sampler_4.jpeg`}
           alt="spring sampler cross stitch in progress"
         />
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/spring_sampler_5.jpeg`}
           alt="a close up of the final spring sampler cross stitch"
         />

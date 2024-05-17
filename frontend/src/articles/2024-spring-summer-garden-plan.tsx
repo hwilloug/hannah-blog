@@ -1,6 +1,6 @@
 import { useTheme } from "@mui/material";
 import { ReactElement } from "react";
-import ClickableFullSizeImage from "../components/ClickableFullSizeImage";
+import ClickableImage from "../components/ClickableFullSizeImage";
 import {
   ArticleContentContainer,
   Section,
@@ -20,7 +20,7 @@ const Garden2024Plan: React.FunctionComponent = (): ReactElement => {
       </Section>
       <SectionHeader>Planting Plan</SectionHeader>
       <Section>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/garden_2024.jpeg`}
           alt="Garden 2024 Plan"
         />
@@ -101,7 +101,7 @@ const Garden2024Plan: React.FunctionComponent = (): ReactElement => {
         </p>
       </Section>
       <Section>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/garden_bed_design.jpeg`}
           alt="Garden Bed Design"
         />
@@ -112,14 +112,14 @@ const Garden2024Plan: React.FunctionComponent = (): ReactElement => {
         </p>
       </Section>
       <Section>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/garden_beds_1.jpeg`}
           alt="Garden Beds cut and laid out in shape"
         />
         <p>Cuts made and boards laid out in-shape.</p>
       </Section>
       <Section>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/garden_beds_2.jpeg`}
           alt="Complete garden beds"
         />

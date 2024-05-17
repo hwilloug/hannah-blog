@@ -1,6 +1,6 @@
 import { useTheme } from "@mui/material";
 import { ReactElement } from "react";
-import ClickableFullSizeImage from "../components/ClickableFullSizeImage";
+import ClickableImage from "../components/ClickableFullSizeImage";
 import {
   ArticleContentContainer,
   Section,
@@ -20,7 +20,7 @@ const Curtains: React.FunctionComponent = (): ReactElement => {
         </p>
       </Section>
       <Section>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/kitchen_curtain_1.jpeg`}
           alt="Kitchen valence"
         />
@@ -40,11 +40,11 @@ const Curtains: React.FunctionComponent = (): ReactElement => {
         </p>
       </Section>
       <Section>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/curtain_1.jpeg`}
           alt="Bedroom curtain closed"
         />
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/curtain_2.jpeg`}
           alt="Bedroom curtain open"
         />
@@ -60,7 +60,7 @@ const Curtains: React.FunctionComponent = (): ReactElement => {
         </p>
       </Section>
       <Section>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/living_room_curtain.jpeg`}
           alt="Living room scalloped valence"
         />
@@ -80,7 +80,7 @@ const Curtains: React.FunctionComponent = (): ReactElement => {
         </p>
       </Section>
       <Section>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/door_curtain_3.jpeg`}
           alt="Door scalloped valence"
         />

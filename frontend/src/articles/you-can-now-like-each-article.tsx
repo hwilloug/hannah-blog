@@ -1,5 +1,5 @@
 import SyntaxHighlighter from "react-syntax-highlighter";
-import ClickableFullSizeImage from "../components/ClickableFullSizeImage";
+import ClickableImage from "../components/ClickableFullSizeImage";
 import {
   ArticleContentContainer,
   Code,
@@ -224,7 +224,7 @@ const LikingArticles: React.FC = () => {
           like 😉 You don't need to be logged in or anything, it just saves that
           you liked the article as a cookie.
         </p>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/like_button.gif`}
         />
       </Section>
@@ -282,7 +282,7 @@ const LikingArticles: React.FC = () => {
       </Section>
       <Section>
         <SectionHeader>Initial Architecture</SectionHeader>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/architecture_diagram_3.jpeg`}
         />
       </Section>
@@ -334,7 +334,7 @@ const LikingArticles: React.FC = () => {
         <p>
           Then, I verified that the likes column was in the table by doing a
           simple select statement:
-          <ClickableFullSizeImage
+          <ClickableImage
             src={`${process.env.REACT_APP_IMAGES_BASE_URL}/likes_column_in_db.jpeg`}
             alt="likes column added to database, shown through a sql statement"
           />
@@ -362,7 +362,7 @@ const LikingArticles: React.FC = () => {
         </SyntaxHighlighter>
         <p>
           And here is a successful execution!
-          <ClickableFullSizeImage
+          <ClickableImage
             src={`${process.env.REACT_APP_IMAGES_BASE_URL}/successful_like_lambda.jpeg`}
           />
         </p>
@@ -380,7 +380,7 @@ const LikingArticles: React.FC = () => {
         </SyntaxHighlighter>
         <p>
           And below is the integration in the AWS console!
-          <ClickableFullSizeImage
+          <ClickableImage
             src={`${process.env.REACT_APP_IMAGES_BASE_URL}/api_gateway_like_lambda.jpeg`}
           />
         </p>

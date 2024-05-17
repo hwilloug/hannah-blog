@@ -1,5 +1,5 @@
 import SyntaxHighlighter from "react-syntax-highlighter";
-import ClickableFullSizeImage from "../components/ClickableFullSizeImage";
+import ClickableImage from "../components/ClickableFullSizeImage";
 import {
   ArticleContentContainer,
   Section,
@@ -62,12 +62,12 @@ const Layout: React.FunctionComponent = (): ReactElement => {
           the blog is even more "me."
         </p>
         <p>Before:</p>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/poppylandblog.jpeg`}
           alt="hannah's hobby room original design"
         />
         <p>After:</p>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/colors-overhaul.jpeg`}
           alt="redone hannah's hobby room"
         />

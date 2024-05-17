@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import ClickableFullSizeImage from "../components/ClickableFullSizeImage";
+import ClickableImage from "../components/ClickableFullSizeImage";
 import {
   ArticleContentContainer,
   Section,
@@ -13,21 +13,21 @@ const Arbor: React.FunctionComponent = (): ReactElement => {
         <p></p>
       </Section>
       <Section>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/arbor_3.jpeg`}
           alt="The arbor design"
         />
         <p></p>
       </Section>
       <Section>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/arbor_1.jpeg`}
           alt="The arbor in progress"
         />
         <p></p>
       </Section>
       <Section>
-        <ClickableFullSizeImage
+        <ClickableImage
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/arbor_2.jpeg`}
           alt="The built arbor"
         />

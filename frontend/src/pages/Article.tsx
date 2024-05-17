@@ -8,7 +8,7 @@ import { useCookies } from "react-cookie";
 import { Await, useLoaderData, useNavigate, useParams } from "react-router-dom";
 import { Article, mapRespToArticle } from "..";
 import Categories from "../components/Categories";
-import ClickableFullSizeImage from "../components/ClickableFullSizeImage";
+import ClickableImage from "../components/ClickableFullSizeImage";
 import CommentsSection from "../components/CommentsSection";
 import Loading from "../components/Loading";
 import RelatedArticles from "../components/RelatedArticles";
@@ -61,7 +61,7 @@ const ArticleSubtitle = styled("h3")({
   fontSize: "1.2rem",
 });
 
-const ArticleImage = styled(ClickableFullSizeImage)({
+const ArticleImage = styled(ClickableImage)({
   display: "block",
   maxHeight: "30rem",
   width: "100%",
@@ -197,7 +197,7 @@ const ArticlePage: React.FunctionComponent = (): ReactElement => {
               <>
                 <ArticleContainerContainer>
                   <ArticleContainer>
-                    <ClickableFullSizeImage
+                    <ClickableImage
                       src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
                       alt={article.imgAlt}
                     />
