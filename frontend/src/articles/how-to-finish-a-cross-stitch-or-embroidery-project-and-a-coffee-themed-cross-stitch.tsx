@@ -14,9 +14,23 @@ const CoffeeCrossStitch: React.FC = () => {
           <a href="https://humblecupcoffeeco.com/" target="_blank">
             Humble Cup Coffee Co
           </a>
-          , I began a vintage-looking sampler with a coffee theme! Read on for
-          tips on finishing an embroidery project, as well as some in progress
-          pictures of working this piece.
+          , I began a vintage-looking sampler with a coffee theme! I used a
+          couple patterns to make this, and they are available{" "}
+          <a
+            target="_blank"
+            href="https://www.everythingcrossstitch.com/coffee-and-eggs-mrp-p95257.aspx?k2=e1"
+          >
+            here
+          </a>{" "}
+          and{" "}
+          <a
+            href="https://www.everythingcrossstitch.com/coffee-relax-enjoy-button-twill-tape-included-mrp-p82936.aspx?k2=e1"
+            target="_blank"
+          >
+            here
+          </a>
+          . Read on for tips on finishing an embroidery project, as well as some
+          in progress pictures of working this piece.
         </p>
       </Section>
       <Section>
