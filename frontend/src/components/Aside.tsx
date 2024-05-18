@@ -92,7 +92,7 @@ const Aside: React.FunctionComponent = (): ReactElement => {
     "Finishing up drip irrigation",
     "Spring/Summer 2024 Garden",
     "Finishing up garden arbor & fence",
-    "'Farm Fresh' Cross Stitch"
+    "'Farm Fresh' Cross Stitch",
   ];
 
   const welcomePartial = (

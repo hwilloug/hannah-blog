@@ -106,7 +106,6 @@ const CoffeeCrossStitch: React.FC = () => {
           src={`${process.env.REACT_APP_IMAGES_BASE_URL}/coffee_cross_stitch_4.jpeg`}
           alt="coffee cross-stitch in progress outside in prague"
         />
-        <p>The finished piece!</p>
       </Section>
       <Section>
         <SectionHeader>The Finished Piece</SectionHeader>
