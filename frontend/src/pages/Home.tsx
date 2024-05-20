@@ -82,9 +82,6 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
     {
       category: "Antiquing",
     },
-    {
-      category: "Food",
-    },
   ];
 
   return (

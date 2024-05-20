@@ -117,7 +117,7 @@ const Aside: React.FunctionComponent = (): ReactElement => {
   const obsessionsPartial = (
     <AsideItemContainerContainer>
       <AsideItemContainer>
-        <AsideTitle>Current Obsessions & Upcoming Articles:</AsideTitle>
+        <AsideTitle>Current Projects & Upcoming Articles:</AsideTitle>
         <AsideText>
           <AsideList>
             {obsessions.map((item) => (

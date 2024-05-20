@@ -1,7 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import {
   mdiBookOpenVariant,
-  mdiChefHat,
   mdiCodeBlockTags,
   mdiContentCut,
   mdiFlower,
@@ -49,11 +48,6 @@ export const NAV_ITEMS = [
     name: "Antiquing",
     path: "/antiquing",
     icon: mdiLamp,
-  },
-  {
-    name: "Food",
-    path: "/food",
-    icon: mdiChefHat,
   },
 ];
 

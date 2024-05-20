@@ -36,6 +36,7 @@ const CategoryBrowse: React.FunctionComponent = (): ReactElement => {
             <ul>
               <li>Spring and Summer Garden in USDA zone 8a.</li>
               <li>Installing drip irrigation to my raised beds.</li>
+              <li>Introduction to companion planting</li>
             </ul>
           </>
         );
@@ -54,6 +55,7 @@ const CategoryBrowse: React.FunctionComponent = (): ReactElement => {
             </p>
             <ul>
               <li>Garden arbor and fence</li>
+              <li>Getting started with needlepoint</li>
               <li></li>
             </ul>
           </>
@@ -83,7 +85,15 @@ const CategoryBrowse: React.FunctionComponent = (): ReactElement => {
       case "Antiquing":
         return (
           <>
-            <p></p>
+            <p>
+              Welcome to the antiquing section of my blog! Here, I collect my
+              favorite things and show how I decorate my home. There's not much
+              content yet here, but be prepared for some new articles soon!
+            </p>
+            <ul>
+              <li>How to start a collection</li>
+              <li>How to display your collections</li>
+            </ul>
           </>
         );
       default:
