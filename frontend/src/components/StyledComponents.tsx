@@ -19,7 +19,7 @@ export const StyledP = styled("p")({
 
 export const BrowseContainer = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
-  borderRadius: "20px 5px",
+  borderRadius: "5px 5px",
   padding: "10px",
 
   display: "flex",
