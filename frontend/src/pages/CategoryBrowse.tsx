@@ -34,9 +34,12 @@ const CategoryBrowse: React.FunctionComponent = (): ReactElement => {
             </p>
             <p>Some things I have in the works are:</p>
             <ul>
-              <li>Spring and Summer Garden in USDA zone 8a.</li>
+              <li>Introduction to companion planting.</li>
+              <li>
+                Spring and summer companion planted garden in USDA zone 8a.
+              </li>
               <li>Installing drip irrigation to my raised beds.</li>
-              <li>Introduction to companion planting</li>
+              <li>Introduction to container gardening.</li>
             </ul>
           </>
         );
@@ -54,9 +57,8 @@ const CategoryBrowse: React.FunctionComponent = (): ReactElement => {
               works:
             </p>
             <ul>
-              <li>Garden arbor and fence</li>
-              <li>Getting started with needlepoint</li>
-              <li></li>
+              <li>Garden arbor and fence.</li>
+              <li>Getting started with needlepoint.</li>
             </ul>
           </>
         );
@@ -91,8 +93,8 @@ const CategoryBrowse: React.FunctionComponent = (): ReactElement => {
               content yet here, but be prepared for some new articles soon!
             </p>
             <ul>
-              <li>How to start a collection</li>
-              <li>How to display your collections</li>
+              <li>How to start a collection.</li>
+              <li>How to display your collections.</li>
             </ul>
           </>
         );
@@ -106,27 +108,26 @@ const CategoryBrowse: React.FunctionComponent = (): ReactElement => {
       case "Gardening":
         return (
           <p>
-            I really got into gardening when I was living in Boston in an
+            I got into gardening seriously when I was living in Boston in an
             apartment with a large, southern facing balcony. I got a ton of
             fabric containers and planted as much as I could, from broccoli and
-            beets to tomatoes and peppers. Now, I've got a few raised beds. The
-            hardest part of gardening for me this year is weeding, and we don't
-            have a weed wacker yet, so it's a little messy, but I'm having fun
-            with it.
+            beets to tomatoes and peppers. I learned all about companion
+            planting, and attempted it in my own small container garden. Now,
+            I've got a few raised beds.
           </p>
         );
       case "Crafts":
         return (
           <p>
-            I grew up always doing crafts with my mom, so (something about
-            always being in touch with my creative side). Third grade through
-            fifth grade I was in the knitting club. Eventually I picked it back
-            up my senior year of high school, and from there, I realized
-            knitting could be interesting. I started making purses, and
-            eventually moved on to afghans. I learned how to crochet to enhance
-            my knitting. During Covid quarantine in 2020 I learned how to
-            embroider, and eventually discovered I loved the vintage look of
-            cross stitch, and so that's my favorite hobby lately.
+            I grew up always doing crafts with my mom. Third through fifth grade
+            I was in the knitting club, and eventually I picked it back up my
+            senior year of high school. From there, I realized knitting could
+            actually be interesting. I started making purses, and eventually
+            moved on to afghans and sweaters. I learned how to crochet to
+            enhance my knitting. During Covid quarantine in 2020 I learned how
+            to embroider, and eventually discovered I loved the vintage look of
+            cross stitch. I picked up woodworking to build for the garden, as
+            well as for framing my needlework.
           </p>
         );
       case "Coding":

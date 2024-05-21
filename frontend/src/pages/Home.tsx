@@ -103,8 +103,8 @@ const HomePage: React.FunctionComponent = (): ReactElement => {
               Here, I share what I've been working on and how I did it! There
               are six categories to choose from:{" "}
               <CategoryB>gardening</CategoryB>, <CategoryB>crafts</CategoryB>,{" "}
-              <CategoryB>coding</CategoryB>, <CategoryB>books</CategoryB>,{" "}
-              <CategoryB>antiquing</CategoryB>, and <CategoryB>food</CategoryB>.
+              <CategoryB>coding</CategoryB>, <CategoryB>books</CategoryB>, and{" "}
+              <CategoryB>antiquing</CategoryB>.
             </WelcomeP>
             <WelcomeP>
               I hope you learn something new or find a new hobby to explore.
