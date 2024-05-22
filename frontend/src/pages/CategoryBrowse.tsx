@@ -126,8 +126,8 @@ const CategoryBrowse: React.FunctionComponent = (): ReactElement => {
             moved on to afghans and sweaters. I learned how to crochet to
             enhance my knitting. During Covid quarantine in 2020 I learned how
             to embroider, and eventually discovered I loved the vintage look of
-            cross stitch. I picked up woodworking to build for the garden, as
-            well as for framing my needlework.
+            cross stitch. I picked up woodworking with the help of my dad to
+            build for the garden, as well as for framing my needlework.
           </p>
         );
       case "Coding":
