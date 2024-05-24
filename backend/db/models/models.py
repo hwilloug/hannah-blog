@@ -45,3 +45,5 @@ class Comments(Base):
     body: Mapped[str]
     username: Mapped[str]
     article_slug: Mapped["Article"] = mapped_column(ForeignKey("articles.slug"))
+    parent_id: Mapped[int] = mapped_column(ForeignKey("comments.id"), nullable=True)
+    parent_comment: Mapped["Comments"] = relationship("Comments", remote_side=[id], backref="children")
