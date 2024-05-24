@@ -23,6 +23,7 @@ def lambda_handler(event, context):
     comment = body.get("comment_body")
     article_slug = body.get("article_slug")
     username = body.get("username")
+    parent_comment_id = body.get("parent_comment_id")
     comment_id = uuid4()
     register_uuid()
 
@@ -54,9 +55,15 @@ def lambda_handler(event, context):
     cursor = conn.cursor(cursor_factory=RealDictCursor)
 
     sql = "INSERT INTO comments (id, body, username, article_slug) VALUES (%s, %s, %s, %s)"
+    if parent_comment_id:
+        sql = "INSERT INTO comments (id, body, username, article_slug, parent_id) VALUES (%s, %s, %s, %s, %s)"
+       
     try:
-      cursor.execute(sql, (comment_id, comment, username, article_slug))
-      conn.commit()
+        if parent_comment_id:
+            cursor.execute(sql, (comment_id, comment, username, article_slug, parent_comment_id))
+        else:
+            cursor.execute(sql, (comment_id, comment, username, article_slug))
+        conn.commit()
     except IntegrityError as e:
         print("Error inserting comment", e)
         return {
