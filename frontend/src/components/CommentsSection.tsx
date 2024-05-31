@@ -1,5 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { styled, TextareaAutosize } from "@mui/material";
+import { Chip, styled, TextareaAutosize } from "@mui/material";
 import axios, { AxiosResponse } from "axios";
 import { Suspense, useEffect, useState } from "react";
 import { Await, useLoaderData } from "react-router-dom";
@@ -37,8 +37,10 @@ const CommentsSection: React.FunctionComponent = () => {
     useAuth0();
 
   const [commentBody, setCommentBody] = useState("");
+  const [replyBody, setReplyBody] = useState("");
   const [username, setUsername] = useState("");
   const [newComment, setNewComment] = useState<Comment>();
+  const [newReply, setNewReply] = useState<Comment>();
 
   useEffect(() => {
     const getUsername = async () => {
@@ -76,7 +78,7 @@ const CommentsSection: React.FunctionComponent = () => {
 
               const article = mapRespToArticle(resp.data);
 
-              const postComment = async (slug: string) => {
+              const postComment = async (slug: string, parentId: string) => {
                 if (commentBody.length) {
                   try {
                     await axios.post(
@@ -101,49 +103,62 @@ const CommentsSection: React.FunctionComponent = () => {
                 }
               };
 
-              const makeCommentPartial = (
-                <>
-                  <h4>Post a comment</h4>
-                  <TextArea
-                    minRows={4}
-                    value={commentBody}
-                    onChange={(e) => setCommentBody(e.target.value)}
-                  />
-                  <StyledButton onClick={() => postComment(article.slug)}>
-                    Post Comment
-                  </StyledButton>
-                </>
-              );
+              const postReply = async (slug: string, parentId: string) => {
+                if (replyBody.length) {
+                  try {
+                    console.log({
+                      article_slug: slug,
+                      username: username,
+                      comment_body: replyBody,
+                      parent_id: parentId
+                    })
+                    await axios.post(
+                      `${process.env.REACT_APP_API_URL}/comments`,
+                      {
+                        article_slug: slug,
+                        username: username,
+                        comment_body: replyBody,
+                        parent_id: parentId
+                      },
+                    );
+                    setNewReply({
+                      id: "new_comment",
+                      timestamp: new Date().toString(),
+                      body: replyBody,
+                      username: username,
+                      articleSlug: article.slug,
+                    });
+                    setReplyBody("");
+                  } catch (e) {
+                    console.log("error posting comment", e);
+                  }
+                }
+              }
 
               if (article.comments.length) {
                 return (
                   <>
-                    {article.comments.map((comment) => (
-                      <CommentContainer>
-                        <h4>{comment.username}</h4>
-                        <h5>{new Date(comment.timestamp).toLocaleString()}</h5>
-                        <hr />
-                        <p>{comment.body}</p>
-                      </CommentContainer>
-                    ))}
+                    {article.comments.map((comment) => {
+                      return (<>
+                      <CommentComponent comment={comment} isAuthenticated={isAuthenticated} replyBody={replyBody} setReplyBody={setReplyBody} postComment={postReply}  />
+                        {
+                          comment.children?.map((child) => {
+                            return <CommentComponent comment={child} child={true} isAuthenticated={isAuthenticated} replyBody={replyBody} setReplyBody={setReplyBody} postComment={postReply} />
+                          })
+                        }
+                      </>)
+                    })}
                     {newComment && (
-                      <CommentContainer>
-                        <h4>{newComment.username}</h4>
-                        <h5>
-                          {new Date(newComment.timestamp).toLocaleString()}
-                        </h5>
-                        <hr />
-                        <p>{newComment.body}</p>
-                      </CommentContainer>
+                      <CommentComponent comment={newComment} isAuthenticated={isAuthenticated} replyBody={replyBody} setReplyBody={setReplyBody} postComment={postComment} />
                     )}
-                    {isAuthenticated ? makeCommentPartial : loginPartial}
+                    {isAuthenticated ? <MakeComment article_slug={article.slug} commentBody={commentBody} setCommentBody={setCommentBody} postComment={postComment} /> : loginPartial}
                   </>
                 );
               } else {
                 return (
                   <>
                     <p>No comments yet!</p>
-                    {isAuthenticated ? makeCommentPartial : loginPartial}
+                    {isAuthenticated ? <MakeComment article_slug={article.slug} commentBody={commentBody} setCommentBody={setCommentBody} postComment={postComment} /> : loginPartial}
                   </>
                 );
               }
@@ -156,3 +171,39 @@ const CommentsSection: React.FunctionComponent = () => {
 };
 
 export default CommentsSection;
+
+const MakeComment: React.FC<{article_slug: string, commentBody: string, setCommentBody: Function, postComment: Function, parentId?: string}> = ({commentBody, setCommentBody, postComment, article_slug, parentId}) => {
+  return (
+      <>
+        <h4>Post a comment</h4>
+        <TextArea
+          minRows={4}
+          value={commentBody}
+          onChange={(e) => setCommentBody(e.target.value)}
+        />
+        <StyledButton onClick={() => postComment(article_slug, parentId)}>
+          Post Comment
+        </StyledButton>
+      </>
+  )
+}
+
+const ReplyContainer = styled("p")({
+  textAlign: "end",
+  marginRight: "10px"
+})
+
+const CommentComponent: React.FC<{comment: Comment, child?: boolean, replyBody: string, setReplyBody: Function, postComment: Function, isAuthenticated: boolean}> = ({comment, child, replyBody, setReplyBody, postComment, isAuthenticated}) => {
+  const [reply, setReply] = useState(false)
+
+  return (
+    <CommentContainer style={child ? {marginLeft: "75px"} : {}}>
+      <h4>{comment.username} {comment.username === "hannahwilloughby" && <Chip variant="outlined" color="warning" label="Author" sx={{ml: "10px"}}></Chip>}</h4>
+      <h5>{new Date(comment.timestamp).toLocaleString()}</h5>
+      <hr />
+      <p style={{lineHeight: "1.75"}}>{comment.body}</p>
+      {!child && !reply && isAuthenticated && <ReplyContainer onClick={() => setReply(true)}>Reply</ReplyContainer>}
+      {reply && <MakeComment article_slug={comment.articleSlug} commentBody={replyBody} setCommentBody={setReplyBody} postComment={postComment} parentId={comment.id} />}
+    </CommentContainer>
+  )
+}

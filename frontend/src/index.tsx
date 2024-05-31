@@ -24,6 +24,7 @@ export interface CommentsApiResponse {
   body: string;
   username: string;
   article_slug: string;
+  children: CommentsApiResponse[]
 }
 
 export interface ArticleApiResponse {
@@ -56,6 +57,7 @@ export interface Comment {
   body: string;
   username: string;
   articleSlug: string;
+  children?: Comment[];
 }
 
 export interface Article {
@@ -132,16 +134,20 @@ export const mapRespToArticle = (resp: ApiResponse) => {
     likes: parseInt(resp.article.likes),
     createdAt: resp.article.created_at,
     updatedAt: resp.article.updated_at,
-    comments: resp.comments.map(
-      (comment) =>
-        ({
-          id: comment.id,
-          timestamp: comment.timestamp,
-          body: comment.body,
-          username: comment.username,
-          articleSlug: comment.article_slug,
-        }) as Comment,
-    ),
+    comments: resp.comments.map(comment => ({
+      id: comment.id,
+      timestamp: comment.timestamp,
+      body: comment.body,
+      username: comment.username,
+      articleSlug: comment.article_slug,
+      children: comment.children ? comment.children.map(child => ({
+        id: child.id,
+        timestamp: child.timestamp,
+        body: child.body,
+        username: child.username,
+        articleSlug: child.article_slug
+      })) : []
+    })),
   } as Article;
 };
 

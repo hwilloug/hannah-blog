@@ -36,13 +36,55 @@ def lambda_handler(event, context):
         }
     
     with conn.cursor(cursor_factory=RealDictCursor) as cursor:
-        sql = "SELECT * FROM comments WHERE article_slug = %s"
+        sql = """
+            SELECT 
+                id,
+                timestamp,
+                body,
+                username,
+                article_slug,
+                parent_id
+            FROM 
+                comments
+            WHERE 
+                parent_id IS NULL
+            AND article_slug = %s 
+            ORDER BY 
+                timestamp"""
         cursor.execute(sql, (slug,))
-        comments = cursor.fetchall()
+        parent_comments = cursor.fetchall()
+
+    sorted_comments = []
+    for comment in parent_comments:
+        with conn.cursor(cursor_factory=RealDictCursor) as cursor:
+            sql = """
+                SELECT 
+                    id,
+                    timestamp,
+                    body,
+                    username,
+                    article_slug,
+                    parent_id
+                FROM 
+                    comments
+                WHERE 
+                    parent_id = %s
+                ORDER BY 
+                    timestamp"""
+            cursor.execute(sql, (comment["id"],))
+            child_comments = cursor.fetchall()
+            sorted_comments.append({
+                "id": comment["id"],
+                "timestamp": comment["timestamp"],
+                "body": comment["body"],
+                "username": comment["username"],
+                "article_slug": comment["article_slug"],
+                "children": child_comments
+            })
 
     result = {
         "article": results[0],
-        "comments": comments
+        "comments": sorted_comments
     }
 
     return {
