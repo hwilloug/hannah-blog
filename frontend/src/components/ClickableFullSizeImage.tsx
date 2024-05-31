@@ -3,13 +3,12 @@ import { useEffect, useState } from "react";
 import { FullSizeImage } from "./StyledComponents";
 
 const ClickableImageContainer = styled("div", {
-  shouldForwardProp: (prop) => prop !== "fullSize",
-})<{ fullSize: boolean }>(({ fullSize }) => ({
+  shouldForwardProp: (prop) => prop !== "fullSize" && prop !== "width",
+})<{ fullSize: boolean, width: string }>(({ fullSize, width }) => ({
   position: fullSize ? "absolute" : "initial",
   top: window.scrollY,
   left: 0,
-  height: "100%",
-  width: "100%",
+  width: width,
   overflow: "hidden",
   zIndex: 5,
   backgroundColor: fullSize ? "black" : "none",
@@ -22,7 +21,8 @@ const ClickableImage: React.FC<{
   src: string;
   alt?: string;
   size?: string;
-}> = ({ src, alt, size = "100%" }) => {
+  alignment?: CanvasTextAlign;
+}> = ({ src, alt, size = "100%", alignment = "left" }) => {
   const [fullSize, setFullSize] = useState(false);
   const [freezeScroll, setFreezeScroll] = useState(false);
 
@@ -42,8 +42,8 @@ const ClickableImage: React.FC<{
     setFreezeScroll(!freezeScroll);
   };
   return (
-    <ClickableImageContainer fullSize={fullSize} onClick={handleClick}>
-      <FullSizeImage style={{ width: size }} src={src} alt={alt} />
+    <ClickableImageContainer fullSize={fullSize} width={size} onClick={handleClick} style={{textAlign: alignment}}>
+      <FullSizeImage src={src} alt={alt} />
     </ClickableImageContainer>
   );
 };
