@@ -59,7 +59,7 @@ const FarmFreshCrossStitch: React.FunctionComponent = (): ReactElement => {
             alt="A complete and framed farm fresh cross stitch"
           />
           <p>
-            And here's the final result! I hung it up in my dining room.
+            Here's the final result! I hung it up in my dining room 🌸
           </p>
       </Section>
       <SectionHeader>What I'd Do Differently</SectionHeader>
