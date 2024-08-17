@@ -92,7 +92,8 @@ const Aside: React.FunctionComponent = (): ReactElement => {
     "Finishing up drip irrigation",
     "Spring/Summer 2024 Garden",
     "Finishing up garden arbor & fence",
-    "'Farm Fresh' Cross Stitch",
+    "Barnyard cross-stitch",
+    "A journaling/mood-tracking site"
   ];
 
   const welcomePartial = (
@@ -154,22 +155,22 @@ const Aside: React.FunctionComponent = (): ReactElement => {
     </AsideItemContainerContainer>
   );
 
-  const connectPartial = (
-    <AsideItemContainerContainer>
-      <AsideItemContainer>
-        <a
-          className="twitter-timeline"
-          data-lang="en"
-          data-width="200"
-          data-height="500"
-          data-theme={theme.palette.mode}
-          href="https://twitter.com/HannahHobbyRoom?ref_src=twsrc%5Etfw"
-        >
-          Tweets by @HannahHobbyRoom
-        </a>
-      </AsideItemContainer>
-    </AsideItemContainerContainer>
-  );
+  // const connectPartial = (
+  //   <AsideItemContainerContainer>
+  //     <AsideItemContainer>
+  //       <a
+  //         className="twitter-timeline"
+  //         data-lang="en"
+  //         data-width="200"
+  //         data-height="500"
+  //         data-theme={theme.palette.mode}
+  //         href="https://twitter.com/HannahHobbyRoom?ref_src=twsrc%5Etfw"
+  //       >
+  //         Tweets by @HannahHobbyRoom
+  //       </a>
+  //     </AsideItemContainer>
+  //   </AsideItemContainerContainer>
+  // );
 
   const bookclubPartial = (
     <AsideItemContainerContainer>
@@ -203,8 +204,6 @@ const Aside: React.FunctionComponent = (): ReactElement => {
       {welcomePartial}
       {obsessionsPartial}
       {readingChallengePartial}
-      {bookclubPartial}
-      {connectPartial}
     </AsideContainer>
   );
 };
