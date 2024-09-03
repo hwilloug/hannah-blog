@@ -214,3 +214,11 @@ export const CategoryB = styled("b")(({ theme }) => ({
   padding: "10px 0",
   textDecorationThickness: "1.15px",
 }));
+
+export const ColoredBold = styled("b")(({ theme }) => ({
+  color:
+    theme.palette.mode === "dark"
+      ? theme.palette.secondary.main
+      : theme.palette.secondary.main,
+  padding: "10px 0",
+}));

@@ -90,10 +90,9 @@ const Aside: React.FunctionComponent = (): ReactElement => {
 
   const obsessions = [
     "Finishing up drip irrigation",
-    "Spring/Summer 2024 Garden",
     "Finishing up garden arbor & fence",
     "Barnyard cross-stitch",
-    "A journaling/mood-tracking site"
+    "A journaling/mood-tracking site",
   ];
 
   const welcomePartial = (

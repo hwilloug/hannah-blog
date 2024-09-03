@@ -4,7 +4,7 @@ import { FullSizeImage } from "./StyledComponents";
 
 const ClickableImageContainer = styled("div", {
   shouldForwardProp: (prop) => prop !== "fullSize" && prop !== "width",
-})<{ fullSize: boolean, width: string }>(({ fullSize, width }) => ({
+})<{ fullSize: boolean; width: string }>(({ fullSize, width }) => ({
   position: fullSize ? "absolute" : "initial",
   top: window.scrollY,
   left: 0,
@@ -42,7 +42,12 @@ const ClickableImage: React.FC<{
     setFreezeScroll(!freezeScroll);
   };
   return (
-    <ClickableImageContainer fullSize={fullSize} width={size} onClick={handleClick} style={{textAlign: alignment}}>
+    <ClickableImageContainer
+      fullSize={fullSize}
+      width={size}
+      onClick={handleClick}
+      style={{ textAlign: alignment }}
+    >
       <FullSizeImage src={src} alt={alt} />
     </ClickableImageContainer>
   );
