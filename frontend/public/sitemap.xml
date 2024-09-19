@@ -7,6 +7,10 @@
     <priority>1</priority>
    </url>
 
+   <url>
+    <loc>https://hannahshobbyroom.com/welcome</loc>
+   </url>
+
   <url>
     <loc>https://hannahshobbyroom.com/about/</loc>
    </url>
@@ -208,6 +212,21 @@
   <url>
     <loc>https://hannahshobbyroom.com/articles/elizabethton-antique-haul-may-2024/</loc>
     <lastmod>2024-05-31</lastmod>
+  </url>
+
+  <url>
+    <loc>https://hannahshobbyroom.com/articles/farm-fresh-cross-stitch/</loc>
+    <lastmod>2024-08-17</lastmod>
+  </url>
+
+  <url>
+    <loc>https://hannahshobbyroom.com/articles/how-i-manage-to-keep-my-succulents-alive/</loc>
+    <lastmod>2024-09-03-</lastmod>
+  </url>
+
+  <url>
+    <loc>https://hannahshobbyroom.com/articles/play-with-a-model-of-the-hobby-room/</loc>
+    <lastmod>2024-09-15</lastmod>
   </url>
 
 </urlset>

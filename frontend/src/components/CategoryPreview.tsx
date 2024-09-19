@@ -13,13 +13,13 @@ import {
 
 const CategoryPreviewContainerContainer = styled(ContainerContainer)(
   ({ theme }) => ({
-    backgroundColor: theme.palette.primary.dark,
+    backgroundColor: theme.palette.primary.dark + "99",
     padding: "5px",
   }),
 );
 
 const CategoryPreviewContainer = styled(Container)(({ theme }) => ({
-  backgroundColor: theme.palette.primary.main,
+  backgroundColor: theme.palette.primary.main + "40",
   outline: "1px solid black",
   borderRadius: "5px",
   padding: "10px",

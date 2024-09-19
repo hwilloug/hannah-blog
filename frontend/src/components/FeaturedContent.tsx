@@ -11,7 +11,7 @@ import WindowFrame from "./WindowFrame";
 const FeaturedContentContainer = styled(Box)(({ theme }) => ({
   padding: "10px",
 
-  backgroundColor: theme.palette.primary.main,
+  backgroundColor: theme.palette.primary.main + "99",
   borderRadius: "5px",
 }));
 

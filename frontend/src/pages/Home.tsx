@@ -24,7 +24,7 @@ const WelcomeContainer = styled(Box)(({ theme }) => ({
 }));
 
 const LatestArticlesGrid = styled(Grid)(({ theme }) => ({
-  backgroundColor: theme.palette.primary.main,
+  backgroundColor: theme.palette.primary.main + "99",
   borderRadius: "5px",
   padding: "20px",
   border: `5px solid ${theme.palette.primary.dark}`,
@@ -36,6 +36,7 @@ const WelcomeP = styled(StyledP)(({ theme }) => ({
 
 const EmailContainer = styled(Container)(({ theme }) => ({
   backgroundColor: theme.palette.warning.main,
+  color: `${theme.palette.mode === "dark" ? "white" : "black"}`,
   borderRadius: "5px",
   marginTop: "20px",
   padding: "10px",

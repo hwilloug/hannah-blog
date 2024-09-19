@@ -18,7 +18,7 @@ export const StyledP = styled("p")({
 });
 
 export const BrowseContainer = styled("div")(({ theme }) => ({
-  backgroundColor: theme.palette.primary.main,
+  backgroundColor: theme.palette.primary.main + "99",
   borderRadius: "5px 5px",
   padding: "10px",
 
@@ -31,7 +31,7 @@ export const BrowseContainer = styled("div")(({ theme }) => ({
 export const BodyContainer = styled(Box)(({ theme }) => ({}));
 
 export const ContainerContainer = styled("div")(({ theme }) => ({
-  backgroundColor: theme.palette.primary.main,
+  backgroundColor: theme.palette.primary.main + "99",
   borderRadius: "5px",
   padding: "10px",
   marginTop: "20px",

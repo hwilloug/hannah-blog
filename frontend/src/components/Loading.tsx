@@ -3,8 +3,13 @@ import { ReactElement } from "react";
 
 const LoadingContainer = styled("div")({
   width: "100%",
-  padding: "20px",
-  textAlign: "center",
+  height: "100%",
+  padding: `${window.innerHeight / 2}px auto`,
+
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
 });
 
 const LoaderImg = styled("img")({});

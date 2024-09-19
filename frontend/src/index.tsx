@@ -7,15 +7,14 @@ import {
   LoaderFunction,
   RouterProvider,
 } from "react-router-dom";
-import Game from "./games/Game";
 import "./index.css";
 import Layout from "./Layout";
 import About from "./pages/About";
 import ArticlePage from "./pages/Article";
 import CategoryBrowse from "./pages/CategoryBrowse";
-import Games from "./pages/Games";
 import HomePage from "./pages/Home";
 import Preferences from "./pages/Preferences";
+import WelcomePage from "./pages/Welcome";
 import reportWebVitals from "./reportWebVitals";
 
 export interface CommentsApiResponse {
@@ -153,6 +152,10 @@ export const mapRespToArticles = (resp: ArticlesApiResponse) => {
 
 const router = createBrowserRouter([
   {
+    path: "/welcome",
+    element: <WelcomePage />,
+  },
+  {
     path: "/",
     element: <Layout />,
     children: [
@@ -179,14 +182,6 @@ const router = createBrowserRouter([
         path: ":category",
         element: <CategoryBrowse />,
         loader: articlesLoader,
-      },
-      {
-        path: "games/",
-        element: <Games />,
-      },
-      {
-        path: "games/:game",
-        element: <Game />,
       },
     ],
   },
