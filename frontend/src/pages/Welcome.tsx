@@ -73,6 +73,10 @@ const WelcomePage: React.FC = () => {
               <b>Zoom</b>:
             </Typography>
             <Typography>scroll</Typography>
+            <Typography>
+              <b>Interact</b>:
+            </Typography>
+            <Typography>click</Typography>
           </div>
         </div>
       </div>

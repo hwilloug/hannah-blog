@@ -1,5 +1,7 @@
-import { useLoader } from "@react-three/fiber";
+import { useFrame, useLoader } from "@react-three/fiber";
+import { useRef, useState } from "react";
 import * as THREE from "three";
+import { lerp } from "three/src/math/MathUtils";
 
 interface HobbyBoxProps {
   rotation: [x: number, y: number, z: number];
@@ -14,6 +16,29 @@ const HobbyBox: React.FC<HobbyBoxProps> = ({
   height,
   color,
 }) => {
+  const yarnBallRef = useRef<THREE.Mesh>(null);
+
+  const [clickedOnce, setClickedOnce] = useState(false);
+  const [clickedTwice, setClickedTwice] = useState(false);
+
+  // [1.5, 3.25, 0]
+  useFrame(() => {
+    if (yarnBallRef.current && clickedTwice) {
+      window.location.href = "/crafts";
+    } else if (yarnBallRef.current && clickedOnce) {
+      yarnBallRef.current.position.y = lerp(
+        yarnBallRef.current.position.y,
+        -2.5,
+        0.06,
+      );
+      yarnBallRef.current.position.z = lerp(
+        yarnBallRef.current.position.z,
+        -6,
+        0.075,
+      );
+    }
+  });
+
   const blueFabricTexture = useLoader(
     THREE.TextureLoader,
     "/blue_fabric_texture.jpg",
@@ -94,7 +119,15 @@ const HobbyBox: React.FC<HobbyBoxProps> = ({
         <sphereGeometry args={[1, 32, 32]} />
         <meshStandardMaterial map={purpleYarnTexture} />
       </mesh>
-      <mesh castShadow receiveShadow position={[1, 3.5, -2]}>
+      <mesh
+        castShadow
+        receiveShadow
+        position={[1, 3.5, -2]}
+        ref={yarnBallRef}
+        onClick={() =>
+          clickedOnce ? setClickedTwice(true) : setClickedOnce(true)
+        }
+      >
         <sphereGeometry args={[0.75, 32, 32]} />
         <meshStandardMaterial map={tealYarnTexture} />
       </mesh>

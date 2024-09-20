@@ -153,13 +153,7 @@ const Room: React.FC = () => {
         </mesh>
       </mesh>
       {/* Farm Fresh */}
-      <mesh
-        position={[-33.75, 1, 26]}
-        rotation={frameRotation}
-        onClick={() => (window.location.href = "/crafts")}
-        onPointerEnter={() => setFrameRotation([Math.PI / 24, 0, 0])}
-        onPointerLeave={() => setFrameRotation([0, 0, 0])}
-      >
+      <mesh position={[-33.75, 1, 26]}>
         <mesh receiveShadow>
           <boxGeometry args={[0.5, 6.1, 7.1]} />
           <meshStandardMaterial color="#004000" />
@@ -203,7 +197,13 @@ const Room: React.FC = () => {
         </mesh>
       </mesh>
       {/* Duck */}
-      <mesh position={[-33.75, -7, 27]}>
+      <mesh
+        position={[-33.75, -7, 27]}
+        rotation={frameRotation}
+        onClick={() => (window.location.href = "/antiquing")}
+        onPointerEnter={() => setFrameRotation([Math.PI / 24, 0, 0])}
+        onPointerLeave={() => setFrameRotation([0, 0, 0])}
+      >
         <mesh receiveShadow>
           <boxGeometry args={[0.5, 8, 10]} />
           <meshStandardMaterial color="#804400" />
