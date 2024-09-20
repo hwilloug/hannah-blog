@@ -201,7 +201,19 @@ export const ProgressBar = styled(LinearProgress)(({ theme }) => ({
 
 export const Code = styled("code")(({ theme }) => ({
   backgroundColor:
-    theme.palette.mode === "dark" ? theme.palette.primary.light : "lightgrey",
+    theme.palette.mode === "dark"
+      ? theme.palette.primary.light
+      : "rgb(240, 240, 240)",
+  padding: "16px",
+  width: "100%",
+  display: "block",
+}));
+
+export const InlineCode = styled("code")(({ theme }) => ({
+  backgroundColor:
+    theme.palette.mode === "dark"
+      ? theme.palette.primary.light
+      : "rgb(240, 240, 240)",
   padding: "5px",
 }));
 

@@ -3,6 +3,7 @@ import ClickableImage from "../components/ClickableFullSizeImage";
 import {
   ArticleContentContainer,
   Code,
+  InlineCode,
   Section,
   SectionHeader,
   SubsectionHeader,
@@ -389,9 +390,10 @@ const LikingArticles: React.FC = () => {
         <SubsectionHeader>UI</SubsectionHeader>
         <p>
           All I did for the UI was use a package called{" "}
-          <Code>react-cookie</Code> that updates the cookie that stores the
-          likes. This is wired up to a hook that fires off a POST request to the
-          new api endpoint that increases or decreases the likes on a article.
+          <InlineCode>react-cookie</InlineCode> that updates the cookie that
+          stores the likes. This is wired up to a hook that fires off a POST
+          request to the new api endpoint that increases or decreases the likes
+          on a article.
         </p>
         <SyntaxHighlighter language="typescript">
           {reactCode1}
