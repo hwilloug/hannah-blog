@@ -347,10 +347,12 @@ export default WelcomePage;`;
           I was interested in building a computer that was interactable, then I
           suddenly had the idea to model my hobby room and use it on the blog
           somehow. It's going to be the welcome page, but it is currently a work
-          in progress. Play with the beta model now on{" "}
+          in progress. 
+        </p>
+        <p><b>Play with the beta model now on{" "}
           <a href="/welcome" target="_blank">
             this page
-          </a>
+          </a></b>
           .
         </p>
       </Section>
