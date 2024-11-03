@@ -86,7 +86,7 @@ const PortraitArticleImage = styled("img")({
   width: "100%",
   objectFit: "cover",
   borderRadius: "5px 5px 0 0",
-  maxHeight: "200px",
+  height: "150px",
 });
 
 const PortraitArticleCard: React.FC<{ article: Article }> = ({ article }) => {
@@ -113,7 +113,6 @@ const PortraitArticleCard: React.FC<{ article: Article }> = ({ article }) => {
             src={`${process.env.REACT_APP_IMAGES_BASE_URL}/${article.img}`}
           />
           <PortraitArticleTitle>{article.title}</PortraitArticleTitle>
-          <PortraitArticleSubtitle>{article.subtitle}</PortraitArticleSubtitle>
         </PortraitArticleContainer>
       </WindowFrame>
     </Paper>

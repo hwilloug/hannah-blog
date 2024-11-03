@@ -33,7 +33,7 @@ const HobbyBox: React.FC<HobbyBoxProps> = ({
       );
       yarnBallRef.current.position.z = lerp(
         yarnBallRef.current.position.z,
-        -6,
+        -7,
         0.075,
       );
     }

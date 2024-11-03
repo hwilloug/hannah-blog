@@ -17,6 +17,8 @@ const Chair: React.FC<ChairProps> = ({ position, rotation }) => {
   useFrame(() => {
     if (ref.current && clicked) {
       ref.current.position.x = lerp(ref.current.position.x, -15, 0.1);
+    } else if (ref.current && !clicked) {
+      ref.current.position.x = lerp(ref.current.position.x, -7, 0.1);
     }
   });
 
@@ -26,7 +28,7 @@ const Chair: React.FC<ChairProps> = ({ position, rotation }) => {
       {/* Chair */}
       <mesh
         onClick={() => {
-          setClicked(true);
+          setClicked(!clicked);
         }}
       >
         <mesh>
