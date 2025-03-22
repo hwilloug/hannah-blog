@@ -28,27 +28,41 @@ def lambda_handler(event, context):
     limit = query_params.get("limit", 5)
     page = query_params.get("page", 1)
     offset = (int(page) - 1) * int(limit)
-
-    sql = f"SELECT * FROM {table_name}"
-    count_sql = "SELECT COUNT(*) FROM articles"
+    sql = f"""
+        SELECT a.*, COUNT(c.id) as comment_count 
+        FROM {table_name} a
+        LEFT JOIN comments c ON c.article_slug = a.slug
+    """
+    count_sql = f"""
+        SELECT COUNT(*) as count
+        FROM {table_name}
+    """
     tup = ()
     query = []
+    count_query = []
     if category is not None:
-        query.append("category = %s")
+        query.append("a.category = %s")
+        count_query.append("category = %s")
         tup = tup + (category,)
     if subcategory is not None:
-        query.append("%s = ANY(subcategory)")
+        query.append("%s = ANY(a.subcategory)")
+        count_query.append("subcategory = ANY(%s)")
         tup = tup + (subcategory,)
     if slug is not None:
-        query.append("slug = %s")
+        query.append("a.slug = %s")
+        count_query.append("slug = %s")
         tup = tup + (slug,)
     if featured is not None:
-        query.append("featured = %s")
+        query.append("a.featured = %s")
+        count_query.append("featured = %s")
         tup = tup + (featured,)
     
     if len(query):
         sql = sql + " WHERE " + " AND ".join(query)
-        count_sql = count_sql + " WHERE " + " AND ".join(query)
+        count_sql = count_sql + " WHERE " + " AND ".join(count_query)
+
+    sql = sql + """ GROUP BY a.slug, a.title, a.subtitle, a.img, a.img_alt, a.category,
+                    a.subcategory, a.created_at, a.updated_at, a.likes, a.featured"""
 
     with conn.cursor(cursor_factory=RealDictCursor) as cursor:
         cursor.execute(count_sql, tup)
