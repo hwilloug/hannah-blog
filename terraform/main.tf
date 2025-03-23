@@ -47,7 +47,7 @@ module "articles_api" {
 
   domain        = "blog-api.poppyland.dev"
 
-  lambda_layer_arns = [aws_lambda_layer_version.psycopg2_layer.arn]
+  lambda_layer_arns = [aws_lambda_layer_version.psycopg2_layer.arn, aws_lambda_layer_version.jinja2_layer.arn]
 
   table_name        = "articles"
   database_host     = module.articles_rds_cluster.host

@@ -40,6 +40,31 @@ module "post_email_lambda" {
   lambda_layer_arns = var.lambda_layer_arns
 }
 
+resource "aws_iam_policy" "lambda_email_iam_policy" {
+  name   = "send_new_subscriber_email_lambda_email_iam_policy"
+  path   = "/"
+  policy = <<EOF
+{
+ "Version": "2012-10-17",
+ "Statement": [
+   {
+    "Action": [
+        "ses:SendEmail",
+        "ses:SendRawEmail"
+    ],
+    "Resource": "*",
+    "Effect": "Allow"
+   }
+ ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy_attachment" "lambda_attach_email_policy_to_role" {
+  role       = module.post_email_lambda.role_name
+  policy_arn = aws_iam_policy.lambda_email_iam_policy.arn
+}
+
 module "delete_email_lambda" {
   source = "../lambda"
 

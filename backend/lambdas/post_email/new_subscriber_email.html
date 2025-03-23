@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<style>
+  #container {
+    background-color: #D3DECF;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    margin: 0;
+    background-image: url("https://hannahshobbyroom.com/bg_light.png");
+    background-repeat: "repeat";
+    background-attachment: "fixed";
+  }
+  #header-container {
+    background-color: #4B5646; 
+    color: white; 
+    border: 1px solid black; 
+    border-radius: 5px; 
+    padding: 20px; 
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+  }
+  #card-container {
+    background-color: #7F9679;
+    padding: 10px;
+    border-radius: 20px 5px;
+    margin: 50px; 
+  }
+  #card {
+    background-color: white; 
+    border-radius: 20px 5px; 
+    padding: 20px; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 20px; 
+  }
+  .link {
+    color: black; 
+    text-decoration: none;
+  }
+  #footer-container {
+    background-color: #7F9679;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  #footer {
+    background-color: white; 
+    border: 1px solid black; 
+    border-radius: 5px; 
+    padding: 20px;
+  }
+  #unsubscribe {
+    margin-top: 20px;
+  }
+  .button {
+    background-color: #4B5646;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: none;
+  }
+  .article-container {
+    background-color: #7F9679;
+    padding: 10px;
+    border-radius: 20px 5px;
+    margin: 15px 0; 
+  }
+  .article-card {
+    background-color: white; 
+    border-radius: 20px 5px; 
+    padding: 20px; 
+    display: flex; 
+    flex-direction: row; 
+    gap: 20px; 
+    flex-wrap: wrap;
+  }
+  .article-img {
+    height: 150px;
+    border-radius: 5px;
+  }
+</style>
+<html>
+  <div id="container">
+    <div id="header-container">
+      <img src="https://hannahshobbyroom.com/poppy.png" />
+      <h1>Welcome to Hannah's Hobby Room Newsletter!</h1>
+    </div>
+    <div id="card-container">
+      <div id="card">
+        <h2>Thank you for subscribing!</h2>
+        <p>I'm so excited to have you join my community! I'll be sending you emails whenever I publish new articles, tutorials, and creative inspiration. You are free to unsubscribe at any time, and you can edit your preferences at the link at the bottom of this email.</p>
+        <p>In the meantime, feel free to explore some of my most popular content:</p>
+        <div id="popular-articles">
+          {% for article in articles %}
+          <a href="https://hannahshobbyroom.com/blog/{{ article.slug }}" class="link">
+            <div class="article-container">
+              <div class="article-card">
+                <img src="https://blog-images.poppyland.dev/{{ article.img }}" alt="{{ article.title }}" class="article-img" />
+                <div>
+                  <h2>{{ article.title }}</h2>
+                  <h3>{{ article.subtitle }}</h3>
+                  <p><a href="https://hannahshobbyroom.com/blog/{{ article.slug }}">https://hannahshobbyroom.com/blog/{{ article.slug }}</a></p>
+                </div>
+              </div>
+            </div>
+          </a>
+          {% endfor %}
+        </div>
+        
+        <p>I'd love to hear from you! If you have any questions, comments, or suggestions, please don't hesitate to reach out to me at <a href="mailto:support@hannahshobbyroom.com">support@hannahshobbyroom.com</a>.</p>
+        <a href="https://hannahshobbyroom.com" class="button">Visit the Blog</a>
+      </div>
+    </div>
+    <div id="footer-container">
+      <div id="footer">
+        <h2>Happy hobbying,</h2>
+        <img src="https://hannahshobbyroom.com/signature.png" alt="Hannah" style="height: 50px;" />
+      </div>
+    </div>
+    <div id="unsubscribe">
+      <p><a href="https://hannahshobbyroom.com/preferences?email={{ email }}">Preferences</a></p>
+      <p><a href="https://blog-api.poppyland.dev/newsletter/unsubscribe?email={{ email }}">Unsubscribe</a></p>
+    </div>
+  </div>
+</html>
