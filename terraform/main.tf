@@ -42,10 +42,19 @@ module "articles_rds_cluster" {
   database_name = "hannahshobbyroom"
 }
 
+resource "aws_route53_zone" "zone" {
+  name = "hannahshobbyroom.com"
+}
+
+moved {
+  from = module.dns.aws_route53_zone.zone
+  to   = aws_route53_zone.zone
+}
+
 module "articles_api" {
   source = "./modules/api"
 
-  domain        = "blog-api.poppyland.dev"
+  domain = "blog-api.poppyland.dev"
 
   lambda_layer_arns = [aws_lambda_layer_version.psycopg2_layer.arn, aws_lambda_layer_version.jinja2_layer.arn]
 
@@ -55,50 +64,4 @@ module "articles_api" {
   database_username = module.articles_rds_cluster.username
   database_password = module.articles_rds_cluster.password
   database_name     = module.articles_rds_cluster.database_name
-}
-
-module "dns" {
-  source = "./modules/dns"
-
-  domain = "hannahshobbyroom.com"
-}
-
-module "frontend_bucket" {
-  source = "./modules/cloudfront_s3_bucket"
-
-  acm_certificate_arn = module.dns.acm_certificate_arn
-  api_id              = module.articles_api.id
-  api_origin_id       = module.articles_api.origin_id
-  api_stage_name      = module.articles_api.stage_name
-  bucket_name         = "poppyland-blog-frontend"
-  domain              = "hannahshobbyroom.com"
-  route53_zone_id     = module.dns.route53_zone_id
-}
-
-module "redirect_bucket" {
-  source = "./modules/cloudfront_s3_bucket"
-
-  acm_certificate_arn = data.aws_acm_certificate.poppyland_cert.arn
-  api_id              = module.articles_api.id
-  api_origin_id       = module.articles_api.origin_id
-  api_stage_name      = module.articles_api.stage_name
-  bucket_name         = "poppyland-blog-redirect-frontend"
-  domain              = "blog.poppyland.dev"
-  route53_zone_id     = data.aws_route53_zone.poppyland_zone.zone_id
-}
-
-module "bounce_handler" {
-  source = "./modules/sqs_sns"
-
-  queue_name = "hannahshobbyroom_bounce_handler"
-  notification_type = "Bounce"
-  ses_domain_identity = aws_ses_email_identity.identity.email
-}
-
-module "complaint_handler" {
-  source = "./modules/sqs_sns"
-
-  queue_name = "hannahshobbyroom_complaint_handler"
-  notification_type = "Complaint"
-  ses_domain_identity = aws_ses_email_identity.identity.email
 }
